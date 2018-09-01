@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Utilisateurs</a></li>
+	<li><a href="#second">Groupes</a></li>
+	<li><a href="#third">Admins</a></li>
+	<li><a href="#fourth">Superusers</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Utilisateurs</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:createUser' %}">Ajouter un utilisateur</a></li>
+		<li><a href="">Rechercher un utilisateur</a></li>
+		<li><a href="">Lister tous les utilisateurs</a></li>
+	</ul>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Groupes</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:createGroup' %}">Ajouter un groupe de droit</a></li>
+		<li><a href="{% url 'users:groupsIndex' %}">Lister les groupes de droits</a></li>
+	</ul>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Admins</h2>
+	</header>
+	Les admins ont accès à l'interface admin.<br>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:addAdmin' %}">Ajouter un admin</a></li>
+		<li><a href="{% url 'users:adminsIndex' %}">Lister les admins</a></li>
+	</ul>
+</section>
+<section id="fourth" class="main">
+	<header class="major">
+		<h2>Superusers</h2>
+	</header>
+	Attention : les superusers bypass toutes les vérifications de permissions.<br>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:addSuperuser' %}">Ajouter un superuser</a></li>
+		<li><a href="{% url 'users:superusersIndex' %}">Lister les superuser</a></li>
+	</ul>
+</section>
+{% endblock %}

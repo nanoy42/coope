@@ -26,24 +26,24 @@ class Profile(models.Model):
     cotisationEnd = models.DateTimeField(blank=True, null=True)
 
     @property
-    def solde(self):
+    def balance(self):
         return self.credit - self.debit
 
-    def soldePositif(self):
+    def positiveBalance(self):
         return self.solde() >= 0
 
     @property
-    def classement(self):
-        return Compte.objects.filter(debit__gte=self.debit).count()
+    def rank(self):
+        return Profile.objects.filter(debit__gte=self.debit).count()
 
     @property
-    def alcool(self):
-        consos = Consommation.objects.filter(client=self).select_related('produit')
-        alcool = 0
-        for conso in consos:
-            produit = conso.produit
-            alcool += conso.nombre * float(produit.deg) * produit.volume * 0.79 /10 /1000
-        return alcool
+    def alcohol(self):
+        #consos = Consommation.objects.filter(client=self).select_related('produit')
+        #alcool = 0
+        #for conso in consos:
+            #produit = conso.produit
+            #alcool += conso.nombre * float(produit.deg) * produit.volume * 0.79 /10 /1000
+        return 0
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

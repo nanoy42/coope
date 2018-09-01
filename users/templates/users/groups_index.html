@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Liste des groupes de droit</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des groupes de droit</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Nombre de droits</th>
+					<th>Nombre d'utilisateurs</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for group in groups %}
+				<tr>
+					<td>{{ group.name }}</td>
+					<td>{{ group.permissions.count }}</td>
+					<td>{{ group.user_set.count }}</td>
+					<td><a href="{% url 'users:groupProfile' group.pk %}" class="button small">Voir</a> <a href="{% url 'users:editGroup' group.pk %}" class="button small">Éditer</a> <a href="{% url 'users:deleteGroup' group.pk %}" class="button small">Supprimer</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

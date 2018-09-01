@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block entete %}{{form_entete}}{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">{{form_title}}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>{{form_title}}</h2>
+		<p>{{form_p}}</p>
+	</header>
+	<section>
+		<form action="" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			<button type="submit">{{form_button}}</button>
+		</form>
+	</section>
+</section>
+{% if extra_css %}
+<style>
+{{extra_css}}
+</style>
+{% endif %}
+{% endblock %}

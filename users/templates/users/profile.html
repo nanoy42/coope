@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load static %}
+{% block entete %}{% if self %}<h1>Mon Profil</h1>{% else %}<h1>Profil de {{user}}</h1>{% endif %}{%endblock%}
+
+{% block navbar %}
+<ul>
+	<li><a href="#first">{% if self %}Mes informations {% else %} Informations {% endif %}</a>
+	</li>
+	<li><a href="#second">{% if self %}Mes dernières consommations {% else %} Dernières consommations {% endif %}</a>
+	</li>
+	<li><a href="#third">{% if self %}Mes derniers rechargements{% else %}Derniers rechargements {% endif %}</a>
+	</li>
+	<li><a href="#fourth">{% if self %} Mes cotisations {% else %} Cotisations {% endif %}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<div class="content">
+		<header class="major">
+			<h2>{% if self %} Mes informations {% else %} Informations {% endif %}</h2>
+		</header>
+		<div class="row">
+			<div class="12u">
+				<ul class="alt" id="informationsClient">
+					<li>
+						<b>Nom : </b>{{user.last_name}}<span class="tabulation">
+						<b>Prénom : </b>{{user.first_name}}</span>
+					</li>
+					<li><b>Pseudo : </b>{{user.username}}<span class="tabulation">
+						<b>Mail: </b> {{user.email}}</span>
+					</li>
+					<li>
+						<b>Date inscription : </b>{{user.date_joined}}<span class="tabulation">
+						<b>Fin de cotisation: </b> {{user.profile.cotisationEnd|default:"Aucune cotisation"}}</span>
+					</li>
+					<li><b>Solde : </b>{{user.profile.balance}}<span class="tabulation">
+						<b>Crédit : </b>{{user.profile.credit}}</span><span class="tabulation">
+						<b>Débit : </b>{{user.profile.debit}}</span>
+					</li>
+					<li><b>Groupes : </b>{{user.group_set|join:", "}}</li>
+					<li>
+						<b>Position au classement : </b>{{user.profile.rank}}<span class="tabulation">
+						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol}} kg</span>
+					</li>
+				</ul>
+			</div>
+			<div class="12u">
+				<ul class="alt">
+					<li>
+						{% if self or perms.users.can_change_user %}
+						<span><a href="">Modifier {{self | yesno:"mes,les"}} informations</a></span>
+						<span class="tabulation"><a href="">Changer {{self | yesno:"mon,le"}} mot de passe</a></span>
+						{% endif %}
+						{% if perms.users.can_reset_password %}
+						<span class="tabulation"><a href="">Réinitialiser le mot de passe</a></span>
+						{% endif %}
+						{% if perms.users.can_change_user_perm %}
+						<span class="tabulation"><a href="">Changer les groupes</a></span>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<section class="row uniform">
+	</section>
+</section>
+<section id="second" class="main special">
+	<header class="major">
+		<h2>{{self | yesno:"Mes dernières,Dernières"}} consommations</h2>
+		<p>(Affichage des 10 dernières entrées)</p>
+	</header>
+	<section id="transactions">
+		<div class="table-wrapper">
+			<table>
+				<thead id="headTransaction">
+					<tr>
+						<th>Produit</th>
+						<th>Quantité</th>
+						<th>Montant</th>
+						<th>Type de Paiement</th>
+						<th>Date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="bodyTransaction">
+					{% for consumption in consumptions %}
+					<tr>
+						{% for part in consumption %}
+						<th>{{part}}</th>
+						{%endfor%}
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+<section id="third" class="main special">
+	<header class="major">
+		<h2>{{self | yesno:"Mes derniers,Derniers"}} rechargements</h2>
+		<p>(Affichage des 5 dernières entrées)</p>
+	</header>
+	<section id="rechargements">
+		<div class="table-wrapper">
+			<table>
+				<thead id="headRechargement">
+					<tr>
+						<th>Montant</th>
+						<th>Type de Rechargement</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody id="bodyRechargement">
+					{%for reload in lastReloads%}
+					<tr>
+						<th>{{reload.amount}}</th>
+						<th>{{reload.paymentMethod}}</th>
+						<th>{{reload.date}}</th>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+
+<section id="fourth" class="main special">
+	<header class="major">
+		<h2>{{ self | yesno:"Mes cotisations,Cotisations"}}</h2>
+	</header>
+	<section>
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Montant</th>
+						<th>Date de paiement</th>
+						<th>Moyen de paimement</th>
+						<th>Date de fin</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for cotisation in cotisations %}
+					<tr>
+						<td>{{cotisation.amount}}</td>
+						<td>{{cotisation.paymentDate}}</td>
+						<td>{{cotisation.paymentMethod}}</td>
+						<td>{{cotisation.endDate}}</td>
+					</tr>
+					{% endfor %}
+				</tbdoy>
+			</table>
+		</div>
+	</section>
+</section>
+
+
+
+{%endblock%}
+{%block addScript %}
+<script src="{%static 'js/canvasjs.min.js'%}"></script>
+<script src="{%static 'js/profil.js'%}"></script>
+{%endblock%}

@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}Coopé™ Metz{% endblock %}</title>
+		<link rel="shortcut icon" href="{% static 'favicon16.ico' %}" type="image/x-icon">
+		<link rel="icon" sizes="16x16" href="{% static 'favicon16.ico' %}" type="image/x-icon">
+		<link rel="icon" sizes="32x32" href="{% static 'favicon32.ico' %}" type="image/x-icon">
+		<link rel="icon" sizes="96x96" href="{% static 'favicon96.ico' %}" type="image/x-icon">
+		<link rel="stylesheet" href="{%static 'css/main.css' %}" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</head>
+	<body>
+		<div id="wrapper">
+			<header id="header" class="alt">
+				<span class="logo"><img src="{%static 'Images/coope.png' %}" alt="" /></span>
+				<h1>{% block entete %}{% endblock %}</h1>
+				<h3></h3>
+				<nav>
+					{% include 'nav.html' %}
+				</nav>
+			</header>
+			<nav id="nav">
+				{% block navbar %}{% endblock %}
+			</nav>
+			<div id="main">
+				{% if messages %}
+				<section class="main">
+					<ul class="messages">
+						{% for message in messages %}
+						<li {% if message.tags %} class="{{message.tags}}"{% endif %}>{{message}}</li>
+						{% endfor %}
+					</ul>
+				</section>
+				{% endif %}
+				{% block content %}{% endblock %}
+			</div>
+			<footer id="footer">
+				{% include 'footer.html'%}
+			</footer>
+		</div>
+	</body>
+</html>

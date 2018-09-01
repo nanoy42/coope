@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block entete %}Page introuvable{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Erreur 404</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Erreur 404</h2>
+	</header>
+	<section>
+		Une erreur s'est produite lors de l'accès à cette page (la page que vous demandez n'existe pas). Vous pouvez revenir à l'accueil en cliquant <a href="{% url 'home' %}">ici</a>.
+	</section>
+</section>
+{% endblock %}

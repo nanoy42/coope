@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Général</a></li>
+	<li><a href="#second">Droits</a></li>
+	<li><a href="#third">Utilisateurs</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Général</h2>
+	</header>
+	<div class="row">
+		<div class="12u">
+			Nom : {{ group.name }}
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="6u">
+			<a class="button" href="{% url 'users:editGroup' group.pk %}">Éditer</a>
+		</div>
+		<div class="6u">
+			<a class="button" href="{% url 'users:deleteGroup' group.pk %}">Supprimer</a>
+		</div>
+	</div>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Droits</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Description</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for perm in group.permissions.all %}
+			<tr>
+				<td>{{perm.codename}}</td>
+				<td>{{perm.name}}</td>
+				<td><a class="button small" href="{% url 'users:removeRight' group.pk perm.pk %}">Enlever le droit</a></td>
+			</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Utilisateurs</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom d'utilisateur</th>
+					<th>Profil</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in group.user_set.all %}
+				<tr>
+					<td>{{ user }}</td>
+					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
+					<td><a class="button small" href="{% url 'users:removeUser' group.pk user.pk %}">Retirer</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

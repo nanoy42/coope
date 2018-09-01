@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block entete %}Erreur 500{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Erreur 500</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Erreur 500</h2>
+	</header>
+	<section>
+		Une erreur inconnue jusqu'à lors s'est produite. Un mail a été envoyé aux administrateurs et le problème sera résolu sous peu. Vous pouvez revenir à l'accueil en cliquant <a href="{% url 'home' %}">ici</a>.
+	</section>
+</section>
+{% endblock %}

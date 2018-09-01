@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block entete %}<h1>Gestion des admins</h1>{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Liste des admins</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des admins</h2>
+	</header>
+	<a class="button" href="{% url 'users:addAdmin' %}">Ajouter un admin</a><br><br>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Utilisateur</th>
+					<th>Profil</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in admins %}
+				<tr>
+					<td>{{ user }} {% if user.is_superuser %}(superuser){% endif %}</td>
+					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
+					<td><a class="button small" href="{% url 'users:removeAdmin' user.pk %}">Retirer des admins</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
