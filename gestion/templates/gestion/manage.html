@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+{%block entete%}<h1>Gestion de la Coopé™</h1>{%endblock%}
+
+{% block navbar %}
+<ul>
+	{% if perms.gestion.can_add_consumption_history %}<li><a href="#first">Commande</a></li>{% endif %}
+	{% if perms.gestion.can_add_reload %}<li><a href="#second">Rechargement Client</a></li>{% endif %}
+	{% if perms.gestion.can_add_refund %}<li><a href="#third">Remboursement client</a><li>{% endif %}
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<a class="up_button" href="#intro">
+	UP
+</a>
+<style>
+.up_button{
+	display:block;
+	background-color:white;
+	position:fixed;
+	border-radius:100%;
+	width:50px;
+	height:50px;
+	color:black;
+	text-align:center;
+	line-height:50px;
+	right:1em;
+		bottom : 1em;
+}
+</style>
+<section id="intro" class="main">
+	<div class="spotlight">
+		<div class="content">
+			<header class="major">
+				<h2>Transaction</h2>
+			</header>
+			<div class="row uniform">
+				<div class="12u$">
+					{{gestion_form}}
+				</div>
+			</div>
+			<div class="row uniform">
+				<h3>Récapitulatif</h3>
+			</div>
+			<div class="row uniform">
+				<div class="12u$">
+					<table id="sumUpTable">
+						<thead>
+							<tr>
+								<th>Solde</th>
+								<th>Montant total de la commande</th>
+								<th>Solde après la commande</th>
+								<th>Payer</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="balance">0€</td>
+								<td id="totalAmount">0€</td>
+								<td id="totalAfter">0€</td>
+								<td><button class="btn small">Payer</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row uniform">
+				<h3>Produits</h3>
+			</div>
+			<div class="row uniform">
+				<div class="12u$">
+					<table id="productTable" type="input" name="tableau" class="alt">
+						<thead>
+							<tr>
+								<th>CodeBarre</th>
+								<th>Nom Produit</th>
+								<th>Prix Unitaire</th>
+								<th>Quantité</th>
+								<th>Sous-total</th>
+							</tr>
+						</thead>
+						<tbody id="items">
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row uniform">
+				<div class="12u$">
+					<div class="boutonProduit">
+						<table>
+							<tbody class="actions" id="bouton Produit">
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
+								{% for produit in bieresPression %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="product" target="{{produit.barcode}}">{{produit.name}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not bieresPression|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières bouteilles</td></tr>
+								{% for produit in bieresBouteille %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not bieresBouteille|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Paninis</td></tr>
+								{% for produit in panini %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not panini|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Softs</td></tr>
+								{% for produit in soft %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not soft|divisibleby:4 %}
+								</tr>
+								{% endif %}
+
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bouffe</td></tr>
+								{% for produit in autreBouffe %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not autreBouffe|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% if menus %}
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Menus</td></tr>
+								{% for produit in menus %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr style="text-align:center">
+									{% endif %}
+									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="MN">{{produit.nom}}</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not menus|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endif %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% if perms.gestion.cand_add_reload %}
+<section id="second" class="main">
+	<header class="major">
+		<h2>Rechargement client</h2>
+	</header>
+	<form method="post" action="{% url 'gestion:reload' %}">
+		{% csrf_token %}
+		{{reload_form}}
+		<br>
+		<button type="submit">Recharger</button>
+	</form>
+</section>
+{% endif %}
+{% if perms.gestion.can_refund %}
+<section id="third" class="main">
+	<header class="major">
+		<h2>Remboursement client</h2>
+	</header>
+	<form method="post" action="{% url 'gestion:refund' %}">
+		{% csrf_token %}
+		{{refund_form}}
+		<br>
+		<button type="submit">Rembourser</button>
+	</form>
+</section>
+{% endif %}
+{{gestion_form.media}}
+<script src="{% static 'manage.js' %}"></script>
+{%endblock%}

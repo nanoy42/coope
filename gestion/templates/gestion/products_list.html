@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Produits</a></li>
+	<li><a href="#second">Futs</a></li>
+	<li><a href="#third">Menus</a></li>
+	<li><a href="#fourth">Stocks</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des produits</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'gestion:addProduct' %}">Créer un produit</a></li>
+		<li><a href="{% url 'users:searchUser' %}">Rechercher un produit</a></li>
+		<li><a href="{% url 'users:usersIndex' %}">Lister tous les produits</a></li>
+	</ul>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Futs</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:createGroup' %}">Créer un fut</a></li>
+		<li><a href="">Percuter un fut</a></li>
+		<li><a href="">Lister les futs</a><li>
+	</ul>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Menus</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:addAdmin' %}">Créer un menu</a></li>
+		<li><a href="">Rechercher un menu</a></li>
+		<li><a href="{% url 'users:adminsIndex' %}">Lister les menus</a></li>
+	</ul>
+</section>
+<section id="fourth" class="main">
+	<header class="major">
+		<h2>Stocks</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:addSuperuser' %}">Voir les Stocks</a></li>
+		<li><a href="{% url 'users:superusersIndex' %}">Classement sur un produit</a></li>
+	</ul>
+</section>
+{% endblock %}

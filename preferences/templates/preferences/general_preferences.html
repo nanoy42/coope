@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block entete %}
+<h1>Administration</h1>
+{% endblock %}
+{% block nav %}
+<ul>
+	<li><a href="#first" class="active">Message global</a></li>
+	<li><a href="#second">Site actif</a></li>
+	<li><a href="#third">Bureau</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<form class="main" method="post" action="">
+	{% csrf_token %}
+	<section id="first" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Message global</h2>
+				</header>
+				<div class="row">
+					<div class="12u">
+						{{form.global_message}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="second" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Site actif</h2>
+				</header>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.is_active}}
+						<label for="{{form.is_active.id_for_label}}">Site actif ?</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.active_message}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="third" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Bureau</h2>
+				</header>
+				<div class="row uniform">
+					<div class="6u">
+						{{form.president}}
+					</div>
+					<div class="6u">
+						{{form.vice_president}}
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="6u">
+						{{form.secretary}}
+					</div>
+					<div class="6u">
+						{{form.treasurer}}
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="6u">
+						{{form.grocer}}
+					</div>
+					<div class="6u">
+						{{form.brewer}}
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit">Enregistrer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</form>
+{% endblock %}

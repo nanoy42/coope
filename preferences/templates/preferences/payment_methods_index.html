@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block entete %}<h1>Gestion des moyens de paiement</h1>{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Liste des moyens de paiement</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des moyens de paiement</h2>
+	</header>
+	<a class="button" href="{% url 'preferences:addPaymentMethod' %}">Créer un moyen de paiement</a><br><br>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Actif ?</th>
+					<th>Utilisable dans les cotisations</th>
+					<th>Affecte le solde</th>
+					<th>Administration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pm in paymentMethods %}
+				<tr>
+					<td>{{ pm.name }} </td>
+					<td>{{ pm.is_active | yesno:"Oui, Non"}}</td>
+					<td>{{ pm.is_usable_in_cotisation | yesno:"Oui, Non" }}</td>
+					<td>{{ pm.affect_balance | yesno:"Oui, Non" }}</td>
+					<td><a class="button small" href="{% url 'preferences:editPaymentMethod' pm.pk %}">Modifier</a> <a class="button small" href="{% url 'preferences:deletePaymentMethod' pm.pk %}">Supprimer</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

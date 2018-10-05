@@ -11,6 +11,7 @@
 	<li><a href="#third">{% if self %}Mes derniers rechargements{% else %}Derniers rechargements {% endif %}</a>
 	</li>
 	<li><a href="#fourth">{% if self %} Mes cotisations {% else %} Cotisations {% endif %}</a></li>
+	<li><a href="#fifth">{% if self %} Mes accès gracieux {% else %} Accès gracieux {% endif %}</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -24,7 +25,8 @@
 				<ul class="alt" id="informationsClient">
 					<li>
 						<b>Nom : </b>{{user.last_name}}<span class="tabulation">
-						<b>Prénom : </b>{{user.first_name}}</span>
+							<b>Prénom : </b>{{user.first_name}}</span><span class="tabulation">
+						<b>École : </b>{{user.profile.school}}</span>
 					</li>
 					<li><b>Pseudo : </b>{{user.username}}<span class="tabulation">
 						<b>Mail: </b> {{user.email}}</span>
@@ -37,7 +39,7 @@
 						<b>Crédit : </b>{{user.profile.credit}}</span><span class="tabulation">
 						<b>Débit : </b>{{user.profile.debit}}</span>
 					</li>
-					<li><b>Groupes : </b>{{user.group_set|join:", "}}</li>
+					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
 						<b>Position au classement : </b>{{user.profile.rank}}<span class="tabulation">
 						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol}} kg</span>
@@ -48,14 +50,30 @@
 				<ul class="alt">
 					<li>
 						{% if self or perms.users.can_change_user %}
-						<span><a href="">Modifier {{self | yesno:"mes,les"}} informations</a></span>
-						<span class="tabulation"><a href="">Changer {{self | yesno:"mon,le"}} mot de passe</a></span>
+						<span><a href="{% url 'users:editUser' user.pk %}">Modifier {{self | yesno:"mes,les"}} informations</a></span>
+						{% endif %}
+						{% if self %}
+						<span class="tabulation"><a href="{% url 'users:editPassword' user.pk %}">Changer mon mot de passe</a></span>
 						{% endif %}
 						{% if perms.users.can_reset_password %}
-						<span class="tabulation"><a href="">Réinitialiser le mot de passe</a></span>
+						<span class="tabulation"><a href="{% url 'users:resetPassword' user.pk %}">Réinitialiser le mot de passe</a></span>
 						{% endif %}
 						{% if perms.users.can_change_user_perm %}
-						<span class="tabulation"><a href="">Changer les groupes</a></span>
+						<span class="tabulation"><a href="{% url 'users:editGroups' user.pk %}">Changer les groupes</a></span>
+						{% endif %}
+						{% if request.user.is_staff %}
+						{% if user.is_staff %}
+						<span class="tabulation"><a href="">Retirer des admins</a></span>
+						{% else %}
+						<span class="tabulation"><a href="">Ajouter aux admins</a></span>
+						{% endif %}
+						{% endif %}
+						{% if request.user.is_superuser %}
+						{% if user.is_superuser %}
+						<span class="tabulation"><a href="">Retirer des superusers</a></span>
+						{% else %}
+						<span class="tabulation"><a href="">Ajouter aux superusers</a></span>
+						{% endif %}
 						{% endif %}
 					</li>
 				</ul>
@@ -65,7 +83,7 @@
 	<section class="row uniform">
 	</section>
 </section>
-<section id="second" class="main special">
+<section id="second" class="main">
 	<header class="major">
 		<h2>{{self | yesno:"Mes dernières,Dernières"}} consommations</h2>
 		<p>(Affichage des 10 dernières entrées)</p>
@@ -96,7 +114,7 @@
 		</div>
 	</section>
 </section>
-<section id="third" class="main special">
+<section id="third" class="main">
 	<header class="major">
 		<h2>{{self | yesno:"Mes derniers,Derniers"}} rechargements</h2>
 		<p>(Affichage des 5 dernières entrées)</p>
@@ -125,31 +143,67 @@
 	</section>
 </section>
 
-<section id="fourth" class="main special">
+<section id="fourth" class="main">
 	<header class="major">
 		<h2>{{ self | yesno:"Mes cotisations,Cotisations"}}</h2>
 	</header>
 	<section>
+		<a class="button" href="{% url 'users:addCotisationHistory' user.pk %}">Ajouter une cotisation</a><br><br>
 		<div class="table-wrapper">
 			<table>
 				<thead>
 					<tr>
 						<th>Montant</th>
+						<th>Durée</th>
 						<th>Date de paiement</th>
-						<th>Moyen de paimement</th>
+						<th>Moyen de paiement</th>
 						<th>Date de fin</th>
+						<th>Etat</th>
+						<th>Modération</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for cotisation in cotisations %}
 					<tr>
-						<td>{{cotisation.amount}}</td>
+						<td>{{cotisation.amount}}€</td>
+						<td>{{cotisation.duration}} jours</td>
 						<td>{{cotisation.paymentDate}}</td>
 						<td>{{cotisation.paymentMethod}}</td>
 						<td>{{cotisation.endDate}}</td>
+						<td>{{cotisation.valid}}</td>
+						<td><a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}">Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}">Invalider</a></td>
 					</tr>
 					{% endfor %}
-				</tbdoy>
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+
+<section id="fifth" class="main">
+	<header class="major">
+		<h2>{{ self | yesno:"Mes accès gracieux,Accès gracieux"}}</h2>
+	</header>
+	<section>
+		<a class="button" href="{% url 'users:addWhiteListHistory' user.pk %}">Ajouter un accès à titre gracieux</a><br><br>
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Date de l'ajout</th>
+						<th>Date de fin</th>
+						<th>Durée</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for whitelist in whitelists %}
+					<tr>
+						<td>{{whitelist.paymentDate}}</td>
+						<td>{{whitelist.endDate}}</td>
+						<td>{{whitelist.duration}} jours</td>
+					</tr>
+					{% endfor %}
+				</tbody>
 			</table>
 		</div>
 	</section>

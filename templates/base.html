@@ -1,4 +1,5 @@
 {% load static %}
+{% load vip %}
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,7 +17,7 @@
 			<header id="header" class="alt">
 				<span class="logo"><img src="{%static 'Images/coope.png' %}" alt="" /></span>
 				<h1>{% block entete %}{% endblock %}</h1>
-				<h3></h3>
+				<h3>{% global_message %}</h3>
 				<nav>
 					{% include 'nav.html' %}
 				</nav>

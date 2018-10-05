@@ -1,0 +1,37 @@
+{% if request.user.is_authenticated %}
+<span class="tabulation2">
+	<a href="{% url 'users:profile' request.user.pk %}">Mon profil</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'gestion:manage' %}">Caisse</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'users:index' %}">Gestion des clients</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'gestion:productsIndex' %}">Gestion des produits</a>
+</span>
+<span class="tabulation2">
+	<a href="">Comptabilité</a>
+</span>
+<span class="tabulation2">
+	<a href="">Classement</a>
+</span>
+<span class="tabulation2">
+	<a href="">Classement sur l'année</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'preferences:generalPreferences' %}">Admin</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'preferences:cotisationsIndex' %}">Cotisations</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'preferences:paymentMethodsIndex' %}">Moyens de paiement</a>
+</span>
+<span class="tabulation2">
+	<a href="{% url 'users:logout' %}">Deconnexion</a>
+</span>
+{% else %}
+<a href="{% url 'users:login' %}">Connexion</a>
+{% endif %}

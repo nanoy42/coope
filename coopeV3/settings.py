@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'gestion',
     'users',
     'preferences',
+    'coopeV3',
+    'dal',
+    'dal_select2',
 ]
 
 MIDDLEWARE = [

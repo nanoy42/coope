@@ -6,6 +6,7 @@
 	<li><a href="#second">Groupes</a></li>
 	<li><a href="#third">Admins</a></li>
 	<li><a href="#fourth">Superusers</a></li>
+	<li><a href="#fifth">Écoles</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -16,8 +17,8 @@
 	Actions possibles :
 	<ul>
 		<li><a href="{% url 'users:createUser' %}">Ajouter un utilisateur</a></li>
-		<li><a href="">Rechercher un utilisateur</a></li>
-		<li><a href="">Lister tous les utilisateurs</a></li>
+		<li><a href="{% url 'users:searchUser' %}">Rechercher un utilisateur</a></li>
+		<li><a href="{% url 'users:usersIndex' %}">Lister tous les utilisateurs</a></li>
 	</ul>
 </section>
 <section id="second" class="main">
@@ -50,6 +51,16 @@
 	<ul>
 		<li><a href="{% url 'users:addSuperuser' %}">Ajouter un superuser</a></li>
 		<li><a href="{% url 'users:superusersIndex' %}">Lister les superuser</a></li>
+	</ul>
+</section>
+<section id="fifth" class="main">
+	<header class="major">
+		<h2>Écoles</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		<li><a href="{% url 'users:createSchool' %}">Ajouter une école</a></li>
+		<li><a href="{% url 'users:schoolsIndex' %}">Lister les écoles</a></li>
 	</ul>
 </section>
 {% endblock %}

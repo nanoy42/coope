@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Reload, Refund, Product, Keg
+
+admin.site.register(Reload)
+admin.site.register(Refund)
+admin.site.register(Product)
+admin.site.register(Keg)

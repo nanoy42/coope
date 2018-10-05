@@ -1,17 +1,3 @@
-#listePseudoTransaction {
-}
-
-#listePseudoTransaction  .item {
-	padding: 3px;
-	font-family: Helvetica;
-	border: 1px solid #c0c0c0;
-}
-
-#istePseudoTransaction  .item:hover {
-	background-color: #f2f2f2;
-	cursor: pointer;
-}
-
-.itemSelected {
-	background-color: #dcdcdc;
+.select2-container{
+	color: !black;
 }
