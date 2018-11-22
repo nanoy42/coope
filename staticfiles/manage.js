@@ -1,4 +1,4 @@
-totalAmount = 0
+total = 0
 products = []
 paymentMethod = null
 balance = 0
@@ -63,5 +63,17 @@ $(document).ready(function(){
 		alert("Une erreur inconnue est survenue");
 		window.location.reload()
 	});
+	});
+	$(".pay_button").click(function(){
+		alert('Tentative de paiment avec le moyen ' + $(this).attr('data-payment'));
+		console.log(products)
+		$.post("order", {"user":id, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length, "order": JSON.stringify(products), "amount": total}, function(data){
+			alert(data);
+			location.reload();
+		}).fail(function(data){
+			alert("Impossible d'effectuer la transaction");
+			location.reload();
+		});
+		
 	});
 });

@@ -30,6 +30,7 @@ urlpatterns = [
     path('all-users-autocomplete', views.AllUsersAutocomplete.as_view(), name="all-users-autocomplete"),
     path('active-users-autcocomplete', views.ActiveUsersAutocomplete.as_view(), name="active-users-autocomplete"),
     path('non-super-users-autocomplete', views.NonSuperUserAutocomplete.as_view(), name="non-super-users-autocomplete"),
+    path('non-admin-users-autocomplete', views.NonAdminUserAutocomplete.as_view(), name="non-admin-users-autocomplete"),
     path('getUser/<int:pk>', views.getUser, name="getUser"),
     path('addCotisationHistory/<int:pk>', views.addCotisationHistory, name="addCotisationHistory"),
     path('validateCotisationHistory/<int:pk>', views.validateCotisationHistory, name="validateCotisationHistory"),
@@ -39,4 +40,5 @@ urlpatterns = [
     path('createSchool', views.createSchool, name="createSchool"),
     path('editSchool/<int:pk>', views.editSchool, name="editSchool"),
     path('deleteSchool/<int:pk>', views.deleteSchool, name="deleteSchool"),
+    path('allReloads/<int:pk>/<int:page>', views.allReloads, name="allReloads"),
 ]

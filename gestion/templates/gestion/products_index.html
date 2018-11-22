@@ -16,8 +16,8 @@
 	Actions possibles :
 	<ul>
 		<li><a href="{% url 'gestion:addProduct' %}">Créer un produit</a></li>
-		<li><a href="{% url 'users:searchUser' %}">Rechercher un produit</a></li>
-		<li><a href="{% url 'users:usersIndex' %}">Lister tous les produits</a></li>
+		<li><a href="{% url 'gestion:searchProduct' %}">Rechercher un produit</a></li>
+		<li><a href="{% url 'gestion:productsList' %}">Lister tous les produits</a></li>
 	</ul>
 </section>
 <section id="second" class="main">
@@ -26,9 +26,10 @@
 	</header>
 	Actions possibles :
 	<ul>
-		<li><a href="{% url 'gestion:addBarrel' %}">Créer un fut</a></li>
+		<li><a href="{% url 'gestion:addKeg' %}">Créer un fut</a></li>
 		<li><a href="">Percuter un fut</a></li>
 		<li><a href="">Lister les futs</a></li>
+		<li><a href="">Historique des futs</a></li>
 	</ul>
 </section>
 <section id="third" class="main">

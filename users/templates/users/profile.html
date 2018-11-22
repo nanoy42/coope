@@ -130,13 +130,13 @@
 					</tr>
 				</thead>
 				<tbody id="bodyRechargement">
-					{%for reload in lastReloads%}
+					{% for reload in reloads %}
 					<tr>
-						<th>{{reload.amount}}</th>
-						<th>{{reload.paymentMethod}}</th>
+						<th>{{reload.amount}}€</th>
+						<th>{{reload.PaymentMethod}}</th>
 						<th>{{reload.date}}</th>
 					</tr>
-					{%endfor%}
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>
@@ -208,11 +208,4 @@
 		</div>
 	</section>
 </section>
-
-
-
-{%endblock%}
-{%block addScript %}
-<script src="{%static 'js/canvasjs.min.js'%}"></script>
-<script src="{%static 'js/profil.js'%}"></script>
 {%endblock%}

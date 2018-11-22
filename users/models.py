@@ -4,6 +4,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from preferences.models import PaymentMethod, Cotisation
+from gestion.models import ConsumptionHistory
 
 class School(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nom")
@@ -12,6 +13,11 @@ class School(models.Model):
         return self.name
 
 class CotisationHistory(models.Model):
+    class Meta:
+        permissions = (
+            ("validate_consumptionhistory", "Peut (in)valider les cotisations"),
+        )
+
     WAITING = 0
     VALID = 1
     INVALID = 2
@@ -57,12 +63,12 @@ class Profile(models.Model):
 
     @property
     def alcohol(self):
-        #consos = Consommation.objects.filter(client=self).select_related('produit')
-        #alcool = 0
-        #for conso in consos:
-            #produit = conso.produit
-            #alcool += conso.nombre * float(produit.deg) * produit.volume * 0.79 /10 /1000
-        return 0
+        consumptions = ConsumptionHistory.objects.filter(customer=self.user).select_related('product')
+        alcohol = 0
+        for consumption in consumptions:
+            product = consumption.product
+            alcohol += consumption.quantity * float(product.deg) * product.volume * 0.79 /10 /1000
+        return alcohol
 
     def __str__(self):
         return str(self.user)
@@ -75,3 +81,8 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+def str_user(self):
+    return self.username + " (" + self.first_name + " " + self.last_name + ", " + str(self.profile.balance) + "€)" 
+
+User.add_to_class("__str__", str_user)

@@ -61,7 +61,7 @@
 								<td id="balance">0€</td>
 								<td id="totalAmount">0€</td>
 								<td id="totalAfter">0€</td>
-								<td><button class="btn small">Payer</button></td>
+								<td>{% for pm in pay_buttons %}<button class="btn small pay_button" data-payment="{{pm.pk}}">{{pm.name}}</button> {% endfor %}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -93,11 +93,11 @@
 						<table>
 							<tbody class="actions" id="bouton Produit">
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
-								{% for produit in bieresPression %}
+								{% for product in bieresPression %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product" target="{{produit.barcode}}">{{produit.name}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -106,11 +106,11 @@
 								</tr>
 								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières bouteilles</td></tr>
-								{% for produit in bieresBouteille %}
+								{% for product in bieresBouteille %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -119,11 +119,11 @@
 								</tr>
 								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Paninis</td></tr>
-								{% for produit in panini %}
+								{% for product in panini %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -132,11 +132,11 @@
 								</tr>
 								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Softs</td></tr>
-								{% for produit in soft %}
+								{% for product in soft %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -146,11 +146,11 @@
 								{% endif %}
 
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bouffe</td></tr>
-								{% for produit in autreBouffe %}
+								{% for product in autreBouffe %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="{{produit.typeSaisie}}">{{produit.nom}}</button></td>
+									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -160,11 +160,11 @@
 								{% endif %}
 								{% if menus %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Menus</td></tr>
-								{% for produit in menus %}
+								{% for product in menus %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{produit.codeBarre}}" type="MN">{{produit.nom}}</button></td>
+									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="MN">{{product.nom}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -208,5 +208,7 @@
 </section>
 {% endif %}
 {{gestion_form.media}}
+{{reload_form.media}}
+{{refund_form.media}}
 <script src="{% static 'manage.js' %}"></script>
 {%endblock%}

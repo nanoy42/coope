@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 
 from .models import Cotisation, PaymentMethod, GeneralPreferences
 
@@ -6,6 +7,14 @@ class CotisationForm(forms.ModelForm):
     class Meta:
         model = Cotisation
         fields = "__all__"
+   
+    def clean_amount(self):
+        if self.cleaned_data['amount'] <= 0:
+            raise ValidationError(
+                "Le montant doit être strictement positif"
+            )
+        else:
+            return self.cleaned_data['amount']
 
 class PaymentMethodForm(forms.ModelForm):
     class Meta:

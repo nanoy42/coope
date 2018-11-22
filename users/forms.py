@@ -25,14 +25,13 @@ class EditGroupForm(forms.ModelForm):
         fields = "__all__"
 
 class SelectUserForm(forms.Form):
-    user = forms.ModelChoiceField(queryset=User.objects.all(), label="Utilisateur")
+    user = forms.ModelChoiceField(queryset=User.objects.all(), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:all-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectNonSuperUserForm(forms.Form):
     user = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:non-super-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectNonAdminUserForm(forms.Form):
-    user = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}))
-
+    user = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:non-admin-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class GroupsEditForm(forms.ModelForm):
     class Meta:

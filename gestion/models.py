@@ -138,7 +138,7 @@ class MenuHistory(models.Model):
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_selled")
 
     def __str__(self):
-        return "{2} a consommé {0} {1}".format(self.quantite, self.menu, self.client)
+        return "{2} a consommé {0} {1}".format(self.quantity, self.menu, self.customer)
 
 class ConsumptionHistory(models.Model):
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_taken")

@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
 
 from dal import autocomplete
@@ -8,14 +9,38 @@ from preferences.models import PaymentMethod
 from coopeV3.widgets import SearchField
 
 class ReloadForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ReloadForm, self).__init__(*args, **kwargs)
+        self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True)
+        
     class Meta:
         model = Reload
         fields = ("customer", "amount", "PaymentMethod")
+        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
+
+    def clean_amount(self):
+        if self.cleaned_data['amount'] <= 0:
+            raise ValidationError(
+                "Le montant doit être strictement positif"
+            )
+        else:
+            return self.cleaned_data['amount']
+
 
 class RefundForm(forms.ModelForm):
     class Meta:
         model = Refund
         fields = ("customer", "amount")
+        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
+
+    def clean_amount(self):
+        if self.cleaned_data['amount'] <= 0:
+            raise ValidationError(
+                "Le montant doit être strictement positif"
+            )
+        else:
+            return self.cleaned_data['amount']
+
 
 class ProductForm(forms.ModelForm):
     class Meta:
@@ -32,6 +57,11 @@ class MenuForm(forms.ModelForm):
         model = Menu
         fields = "__all__"
 
+class SearchProductForm(forms.Form):
+    product = forms.ModelChoiceField(queryset=Product.objects.all(), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:products-autocomplete', attrs={'data-minimum-input-length':2}))
+
+class SearchMenuForm(forms.Form):
+    menu = forms.ModelChoiceField(queryset=Menu.objects.all(), required=True, label="Menu", widget=autocomplete.ModelSelect2(url='gestion:menus-autocomplete', attrs={'data-minimum-input-length':2}))
+
 class GestionForm(forms.Form):
     client = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Client", widget=autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}))
-    paymentMethod = forms.ModelChoiceField(queryset=PaymentMethod.objects.all(), required=True, label="Moyen de paiement")

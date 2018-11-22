@@ -3,7 +3,8 @@ from django.db import models
 class PaymentMethod(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nom")
     is_active = models.BooleanField(default=True, verbose_name="Actif")
-    is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Utilisable pour les cotisations")
+    is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Cotisations ?")
+    is_usable_in_reload = models.BooleanField(default=True, verbose_name="Rechargements ?")
     affect_balance = models.BooleanField(default=False, verbose_name="Affecte le solde")
 
     def __str__(self):
