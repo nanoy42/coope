@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Général</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Général</h2>
+    </header>
+    <a class="button small">(Dés)Activer</a> <a class="button small">Modifier</a> <a href="#" class="button small">Supprimer</a><br>
+        <strong>Nom</strong> : {{ product.name }}<br>
+        <strong>Prix de vente</strong> : {{ product.amount }}€<br>
+        <strong>Stock en soute</strong> : {{ product.stockHold }}<br>
+        <strong>Stock au bar</strong> : {{ product.stockBar }}<br>
+        <strong>Code Barre</strong> : {{ product.barcode }}<br>
+        <strong>Catégorie</strong> : {{ product.category }}<br>
+        <strong>Actif</strong> : {{ product.active }}<br>
+        <strong>Dégré</strong> : {{ product.deg }}<br>
+        <strong>Volume</strong> : {{ product.volume }}cl<br>
+</section>
+{% endblock %}

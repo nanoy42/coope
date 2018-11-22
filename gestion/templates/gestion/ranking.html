@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{%load static %}
+{%block entete%}<h1>Classement</h1>{%endblock%}
+{% block nav %}
+<ul>
+	<li><a href="#first">Meilleurs consommateurs (débit)</a></li>
+	<li><a href="#second">Meilleurs consommateurs (alcool)</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="intro" class="main">
+	<div class="spotlight">
+		<div class="content">
+			<header class="major">
+				<h2>Meilleurs consommateurs (débit)</h2>
+			</header>
+			<div class="row">
+				<div class="8u 12u$(medium)">
+					<table>
+						<thead>
+							<tr>
+								<th>Place</th>
+								<th>Pseudo</th>
+								<th>Debit</th>
+							</tr>
+						</thead>
+						<tbody>
+							{%for customer in bestBuyers%}
+							<tr>
+                                <th>{{ forloop.counter }}</th>
+                                <th>{{ customer.username }}</th>
+                                <th>{{ customer.profile.debit }}€</th>
+							</tr>
+							{%endfor%}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="second" class="main">
+	<div class="spotlight">
+		<div class="content">
+			<header class="major">
+				<h2>Meilleurs consommateurs (alcool)</h2>
+			</header>
+			<div class="row">
+				<div class="8u 12u$(medium)">
+					<table>
+						<thead>
+							<tr>
+								<th>Place</th>
+								<th>Pseudo</th>
+								<th>Nombre de kilos ingérés</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for customer in bestDrinkers %}
+							<tr>
+                                <th>{{ forloop.counter }}</th>
+                                <th>{{ customer.0.username }}</th>
+                                <th>{{ customer.1 }}</th>
+							</tr>
+							{%endfor%}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}

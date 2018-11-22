@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block entete %}<h1>Rechargements</h1>{%endblock%}
+
+{% block navbar %}
+<ul>
+	<li><a href="#first">Rechargements ({{user}})</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main special">
+	<header class="major">
+		<h2>Rechargements ({{user}})</h2>
+	</header>
+	<section id="rechargements">
+		<div class="table-wrapper">
+			<table>
+				<thead id="headRechargement">
+					<tr>
+						<th>Montant</th>
+						<th>Type de Rechargement</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+				<tbody id="bodyRechargement">
+					{% for reload in reloads %}
+					<tr>
+						<th>{{reload.amount}}€</th>
+						<th>{{reload.PaymentMethod}}</th>
+						<th>{{reload.date}}</th>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+        </div>
+        <div class="pagination special">
+            <span class="step-links">
+                {% if reloads.has_previous %}
+                    <a href="{% url 'users:allReloads' user.pk 1 %}">&laquo; Première </a>
+                    <a href="{% url 'users:allReloads' user.pk reloads.previous_page_number %}"> Précédente </a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ reloads.number }} sur {{ reloads.paginator.num_pages }}.
+                </span>
+        
+                {% if reloads.has_next %}
+                <a href="{% url 'users:allReloads' user.pk reloads.next_page_number %}"> Suivante </a>
+                <a href="{% url 'users:allReloads' user.pk reloads.paginator.num_pages %}"> Dernière &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+	</section>
+</section>
+{%endblock%}
