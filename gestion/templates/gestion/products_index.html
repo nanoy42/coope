@@ -5,7 +5,6 @@
 	<li><a href="#first">Produits</a></li>
 	<li><a href="#second">Futs</a></li>
 	<li><a href="#third">Menus</a></li>
-	<li><a href="#fourth">Stocks</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -39,18 +38,8 @@
 	Actions possibles :
 	<ul>
 		<li><a href="{% url 'gestion:addMenu' %}">Créer un menu</a></li>
-		<li><a href="">Rechercher un menu</a></li>
-		<li><a href="{% url 'users:adminsIndex' %}">Lister les menus</a></li>
-	</ul>
-</section>
-<section id="fourth" class="main">
-	<header class="major">
-		<h2>Stocks</h2>
-	</header>
-	Actions possibles :
-	<ul>
-		<li><a href="{% url 'users:addSuperuser' %}">Voir les Stocks</a></li>
-		<li><a href="{% url 'users:superusersIndex' %}">Classement sur un produit</a></li>
+		<li><a href="{% url 'gestion:searchMenu' %}">Rechercher un menu</a></li>
+		<li><a href="{% url 'gestion:menusList' %}">Lister les menus</a></li>
 	</ul>
 </section>
 {% endblock %}

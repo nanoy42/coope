@@ -155,8 +155,19 @@ def addProduct(request):
     if(form.is_valid()):
         form.save()
         messages.success(request, "Le produit a bien été ajouté")
-        return redirect(reverse('gestion:productsIndex'))
+        return redirect(reverse('gestion:productsList'))
     return render(request, "form.html", {"form": form, "form_title": "Ajout d'un produit", "form_button": "Ajouter"})
+
+@login_required
+@permission_required('gestion.edit_product')
+def editProduct(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    form = ProductForm(request.POST or None, instance=product)
+    if(form.is_valid()):
+        form.save()
+        messages.success(request, "Le produit a bien été modifié")
+        return redirect(reverse('gestion:productsList'))
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un produit", "form_button": "Modifier"})
 
 @login_required
 @permission_required('gestion.view_product')
@@ -177,18 +188,31 @@ def searchProduct(request):
 def productProfile(request, pk):
     product = get_object_or_404(Product, pk=pk)
     return render(request, "gestion/product_profile.html", {"product": product})
-    
+  
 @login_required
 def getProduct(request, barcode):
     product = Product.objects.get(barcode=barcode)
     data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount" : product.amount})
     return HttpResponse(data, content_type='application/json')
 
+@login_required
+@permission_required('gestion.edit_product')
+def switch_activate(request, pk):
+    """
+    If the product is active, switch to not active.
+    If the product is not active, switch to active.
+    """
+    product = get_object_or_404(Product, pk=pk)
+    product.is_active = 1 - product.is_active
+    product.save()
+    messages.success(request, "La disponibilité du produit a bien été changée")
+    return redirect(reverse('gestion:productsList'))
+
 class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Product.objects.all()
         if self.q:
-           qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__istartswith=self.q)
         return qs
 
 ########## Kegs ##########
@@ -325,9 +349,20 @@ def addMenu(request):
     if(form.is_valid()):
         menu = form.save()
         messages.success(request, "Le menu " + menu.name + " a bien été ajouté")
-        return redirect(reverse('gestion:productsIndex'))
+        return redirect(reverse('gestion:menusList'))
     return render(request, "form.html", {"form":form, "form_title": "Ajout d'un menu", "form_button": "Ajouter", "extra_css": extra_css})
 
+@login_required
+@permission_required('gestion.edit_menu')
+def edit_menu(request, pk):
+    menu = get_object_or_404(Menu, pk=pk)
+    form = MenuForm(request.POST or None, instance=menu)
+    extra_css = "#id_articles{height:200px;}"
+    if form.is_valid():
+        form.save()
+        messages.success(request, "Le menu a bien été modifié")
+        return redirect(reverse('gestion:menusList'))
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un menu", "form_button": "Modifier", "extra_css": extra_css})
 
 @login_required
 @permission_required('gestion.view_menu')
@@ -352,9 +387,28 @@ def searchMenu(request):
     """
     form = SearchMenuForm(request.POST or None)
     if(form.is_valid()):
-        menu = form.menu
-        return redirect(reverse('gestion:changeMenu', kwargs={'pk':menu.pk}))
+        menu = form.cleaned_data['menu']
+        return redirect(reverse('gestion:editMenu', kwargs={'pk':menu.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Recherche d'un menu", "form_button": "Modifier"})
+
+@login_required
+@permission_required('gestion.view_menu')
+def menus_list(request):
+    menus = Menu.objects.all()
+    return render(request, "gestion/menus_list.html", {"menus": menus})
+
+@login_required
+@permission_required('gestion.edit_menu')
+def switch_activate_menu(request, pk):
+    """
+    If the menu is active, switch to not active.
+    If the menu is not active, switch to active.
+    """
+    menu = get_object_or_404(Menu, pk=pk)
+    menu.is_active = 1 - menu.is_active
+    menu.save()
+    messages.success(request, "La disponibilité du menu a bien été changée")
+    return redirect(reverse('gestion:menusList'))
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):

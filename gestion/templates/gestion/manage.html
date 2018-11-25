@@ -123,7 +123,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -136,7 +136,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -146,11 +146,11 @@
 								{% endif %}
 
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bouffe</td></tr>
-								{% for product in autreBouffe %}
+								{% for product in food %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="{{product.typeSaisie}}">{{product.nom}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -164,7 +164,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="boutonsProduit" disabled target="{{product.codeBarre}}" type="MN">{{product.nom}}</button></td>
+									<td><button class="product" target="{{product.barcode}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}

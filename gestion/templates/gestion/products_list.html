@@ -36,10 +36,10 @@
 					<td>{{ product.stockBar }}</td>
 					<td>{{ product.barcode }}</td>
 					<td>{{ product.category }}</td>
-					<td>{{ product.is_active }}</td>
-					<td>{{ product.degree }}</td>
-					<td>{{ product.volume }}</td>
-					<td></td>
+					<td>{{ product.is_active | yesno:"Oui, Non"}}</td>
+					<td>{{ product.deg }}</td>
+					<td>{{ product.volume }} cl</td>
+					<td><a href="{% url 'gestion:productProfile' product.pk %}" class="button small">Profil</a> <a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small">Modifier</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Liste des menus</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des menus</h2>
+	</header>
+	<a class="button" href="{% url 'gestion:addMenu' %}">Créer un menu</a><br><br>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Code barre</th>
+					<th>Produits</th>
+					<th>Actif</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for menu in menus %}
+				<tr>
+					<td>{{ menu.name }}</td>
+					<td>{{ menu.amount}} €</td>
+					<td>{{ menu.barcode }}</td>
+					<td>{% for art in menu.articles.all %}{{art}},{% endfor %}</td>
+					<td>{{ menu.is_active | yesno:"Oui, Non"}}</td>
+					<td><a href="{% url 'gestion:switchActivateMenu' menu.pk %}" class="button small">{% if menu.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editMenu' menu.pk %}" class="button small">Modifier</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

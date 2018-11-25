@@ -9,13 +9,13 @@ def admin_required(view):
     """
     Test if the user is staff
     """
-    return user_passes_test(view, lambda u:u.is_staff)
+    return user_passes_test(lambda u: u.is_staff)(view)
 
 def superuser_required(view):
     """
     Test if the user is superuser
     """
-    return user_passes_test(view, lambda u:u.is_superuser)
+    return user_passes_test(lambda u: u.is_superuser)(view)
 
 def self_or_has_perm(pkName, perm):
     """

@@ -10,6 +10,8 @@ urlpatterns = [
     path('productsIndex', views.productsIndex, name="productsIndex"),
     path('productsList', views.productsList, name="productsList"),
     path('addProduct', views.addProduct, name="addProduct"),
+    path('editProduct/<int:pk>', views.editProduct, name="editProduct"),
+    path('switchActivate/<int:pk>', views.switch_activate, name="switchActivate"),
     path('addKeg', views.addKeg, name="addKeg"),
     path('openKeg', views.openKeg, name="openKeg"),
     path('closeKeg', views.closeKeg, name="closeKeg"),
@@ -19,6 +21,10 @@ urlpatterns = [
     path('openDirectKeg/<int:pk>', views.openDirectKeg, name="openDirectKeg"),
     path('closeDirectKeg/<int:pk>', views.closeDirectKeg, name="closeDirectKeg"),
     path('addMenu', views.addMenu, name="addMenu"),
+    path('searchMenu', views.searchMenu, name="searchMenu"),
+    path('editMenu/<int:pk>', views.edit_menu, name="editMenu"),
+    path('menusList', views.menus_list, name="menusList"),
+    path('swicthActivateMenu/<int:pk>', views.switch_activate_menu, name="switchActivateMenu"),
     path('getProduct/<str:barcode>', views.getProduct, name="getProduct"),
     path('order', views.order, name="order"),
     path('ranking', views.ranking, name="ranking"),
@@ -28,5 +34,5 @@ urlpatterns = [
     path('products-autocomplete', views.ProductsAutocomplete.as_view(), name="products-autocomplete"),
     path('kegs-positive-autocomplete', views.KegPositiveAutocomplete.as_view(), name="kegs-positive-autocomplete"),
     path('kegs-active-autocomplete', views.KegActiveAutocomplete.as_view(), name="kegs-active-autocomplete"),
-
+    path('menus-autcomplete', views.MenusAutocomplete.as_view(), name="menus-autocomplete"),
 ]

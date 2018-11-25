@@ -15,7 +15,7 @@ from dal import autocomplete
 from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, active_required
 from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm
-from gestion.models import Reload
+from gestion.models import Reload, Consumption, ConsumptionHistory
 
 @active_required
 def loginView(request):
@@ -112,7 +112,28 @@ def profile(request, pk):
     cotisations = CotisationHistory.objects.filter(user=user)
     whitelists = WhiteListHistory.objects.filter(user=user)
     reloads = Reload.objects.filter(customer=user).order_by('-date')
-    return render(request, "users/profile.html", {"user":user, "self":self, "cotisations":cotisations, "whitelists": whitelists, "reloads": reloads})
+    consumptionsChart = Consumption.objects.filter(customer=user)
+    products = []
+    quantities = []
+    for ch in consumptionsChart:
+        if ch.product in products:
+            i = products.index(ch.product)
+            quantities[i] += ch.quantity
+        else:
+            products.append(ch.product)
+            quantities.append(ch.quantity)
+    lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
+    return render(request, "users/profile.html", 
+                {
+                    "user":user,
+                    "self":self,
+                    "cotisations":cotisations,
+                    "whitelists": whitelists,
+                    "reloads": reloads,
+                    "products": products,
+                    "quantities": quantities,
+                    "lastConsumptions": lastConsumptions
+                })
 
 @active_required
 @login_required
