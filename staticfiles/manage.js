@@ -74,6 +74,5 @@ $(document).ready(function(){
 			alert("Impossible d'effectuer la transaction");
 			location.reload();
 		});
-		
 	});
 });

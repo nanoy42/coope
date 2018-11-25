@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Historique du fût</a></li>
+
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Historique du fût {{ keg.name }}</h2>
+	</header>
+	<a href="{% url 'gestion:kegsList' %}">Retour à la liste des fûts</a><br><br>
+	{% for kegH in kegHistory %}
+		<h2>Du {{kegH.openingDate}} au {{kegH.closingDate | default:"?"}}</h2>
+		Quantité vendue : {{ kegH.quantitySold }} L<br>
+		Montant vendu : {{ kegH.amountSold }} €(prix fût : {{keg.amount}} €)<br><br>
+	{% endfor %}
+</section>
+{% endblock %}

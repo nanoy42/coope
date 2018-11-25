@@ -27,9 +27,9 @@
 	Actions possibles :
 	<ul>
 		<li><a href="{% url 'gestion:addKeg' %}">Créer un fut</a></li>
-		<li><a href="">Percuter un fut</a></li>
-		<li><a href="">Lister les futs</a></li>
-		<li><a href="">Historique des futs</a></li>
+		<li><a href="{% url 'gestion:openKeg' %}">Percuter un fut</a></li>
+		<li><a href="{% url 'gestion:closeKeg' %}">Fermer un fût</a></li>
+		<li><a href="{% url 'gestion:kegsList' %}">Lister les futs</a></li>
 	</ul>
 </section>
 <section id="third" class="main">

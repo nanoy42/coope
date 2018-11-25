@@ -627,8 +627,8 @@ def addCotisationHistory(request, pk):
     if(form.is_valid()):
         cotisation = form.save(commit=False)
         if(cotisation.paymentMethod.affect_balance):
-            if(user.profile.balance >= cotisation.amount):
-                user.profile.balance -= cotisation.amount
+            if(user.profile.balance >= cotisation.cotisation.amount):
+                user.profile.debit += cotisation.cotisation.amount
             else:
                 cotisation.delete()
                 messages.error(request, "Solde insuffisant")

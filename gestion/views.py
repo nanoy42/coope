@@ -5,6 +5,7 @@ from django.http import HttpResponse, Http404
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
+from django.utils import timezone
 
 from coopeV3.acl import active_required, acl_or
 
@@ -12,8 +13,8 @@ import simplejson as json
 from dal import autocomplete
 from decimal import *
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm
-from .models import Product, Menu, Keg, ConsumptionHistory
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption
 from preferences.models import PaymentMethod
 
 @active_required
@@ -44,26 +45,62 @@ def manage(request):
 @permission_required('gestion.add_consumptionhistory')
 @csrf_exempt
 def order(request):
-    print(request.POST)
     if("user" not in request.POST or "paymentMethod" not in request.POST or "amount" not in request.POST or "order" not in request.POST):
-        raise Http404("Erreur du POST")
+        return HttpResponse("Erreur du POST")
     else:
         user = get_object_or_404(User, pk=request.POST['user'])
         paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
         amount = Decimal(request.POST['amount'])
         order = json.loads(request.POST["order"])
         if(len(order) == 0 or amount == 0):
-            raise Http404("Pas de commande")
+            return HttpResponse("Pas de commande")
+        adherentRequired = False
+        for o in order:
+            product = get_object_or_404(Product, pk=o["pk"])
+            adherentRequired = adherentRequired or product.adherentRequired
+        if(adherentRequired and not user.profile.is_adherent):
+            return HttpResponse("N'est pas adhérent et devrait l'être")
         if(paymentMethod.affect_balance):
             if(user.profile.balance < amount):
-                raise Http404("Solde inférieur au prix de la commande")
+                return HttpResponse("Solde inférieur au prix de la commande")
             else:
                 user.profile.debit += amount
                 user.save()
         for o in order:
-            print(o)
             product = get_object_or_404(Product, pk=o["pk"])
-            ch = ConsumptionHistory(customer = user, quantity = int(o["quantity"]), paymentMethod=paymentMethod, product=product, amount=int(o["quantity"])*product.amount, coopeman=request.user)
+            quantity = int(o["quantity"])
+            if(product.category == Product.P_PRESSION):
+                keg = get_object_or_404(Keg, pinte=product)
+                if(not keg.is_active):
+                    return HttpResponse("Une erreur inconnue s'est produite")
+                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                kegHistory.quantitySold += Decimal(quantity * 0.5)
+                kegHistory.amountSold += Decimal(quantity * product.amount)
+                kegHistory.save()
+            elif(product.category == Product.D_PRESSION):
+                keg = get_object_or_404(Keg, demi=product)
+                if(not keg.is_active):
+                    return HttpResponse("Une erreur inconnue s'est produite")
+                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                kegHistory.quantitySold += Decimal(quantity * 0.25)
+                kegHistory.amountSold += Decimal(quantity * product.amount)
+                kegHistory.save()
+            elif(product.category == Product.G_PRESSION):
+                keg = get_object_or_404(Keg, galopin=product)
+                if(not keg.is_active):
+                    return HttpResponse("Une erreur inconnue s'est produite")
+                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                kegHistory.quantitySold += Decimal(quantity * 0.125)
+                kegHistory.amountSold += Decimal(quantity * product.amount)
+                kegHistory.save()
+            else:
+                if(product.stockHold > 0):
+                    product.stockHold -= 1
+                    product.save()
+            consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
+            consumption.quantity += quantity
+            consumption.save()
+            ch = ConsumptionHistory(customer = user, quantity = quantity, paymentMethod=paymentMethod, product=product, amount=int(o["quantity"])*product.amount, coopeman=request.user)
             ch.save()
         return HttpResponse("La commande a bien été effectuée")
 
@@ -163,9 +200,120 @@ def addKeg(request):
     if(form.is_valid()):
         keg = form.save()
         messages.success(request, "Le fût " + keg.name + " a bien été ajouté")
-        return redirect(reverse('gestion:productsIndex'))
+        return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form":form, "form_title": "Ajout d'un fût", "form_button": "Ajouter"})
 
+@login_required
+@permission_required('gestion.edit_keg')
+def editKeg(request, pk):
+    keg = get_object_or_404(Keg, pk=pk)
+    form = KegForm(request.POST or None, instance=keg)
+    if(form.is_valid()):
+        form.save()
+        messages.success(request, "Le fût a bien été modifié")
+        return redirect(reverse('gestion:kegsList'))
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un fût", "form_button": "Modifier"})
+
+@login_required
+@permission_required('gestion.open_keg')
+def openKeg(request):
+    form = SelectPositiveKegForm(request.POST or None)
+    if(form.is_valid()):
+        keg = form.cleaned_data['keg']
+        previousKegHistory = KegHistory.objects.filter(keg=keg).filter(isCurrentKegHistory=True)
+        for pkh in previousKegHistory:
+            pkh.isCurrentKegHistory = False
+            pkh.closingDate = timezone.now()
+            pkh.save()
+        kegHistory = KegHistory(keg = keg)
+        kegHistory.save()
+        keg.stockHold -= 1
+        keg.is_active = True
+        keg.save()
+        messages.success(request, "Le fut a bien été percuté")
+        return redirect(reverse('gestion:kegsList'))
+    return render(request, "form.html", {"form": form, "form_title":"Percutage d'un fût", "form_button":"Percuter"})
+
+@login_required
+@permission_required('gestion.open_keg')
+def openDirectKeg(request, pk):
+    keg = get_object_or_404(Keg, pk=pk)
+    if(keg.stockHold > 0):
+        previousKegHistory = KegHistory.objects.filter(keg=keg).filter(isCurrentKegHistory=True)
+        for pkh in previousKegHistory:
+            pkh.isCurrentKegHistory = False
+            pkh.closingDate = timezone.now()
+            pkh.save()
+        kegHistory = KegHistory(keg = keg)
+        kegHistory.save()
+        keg.stockHold -= 1
+        keg.is_active = True
+        keg.save()
+        messages.success(request, "Le fût a bien été percuté")
+    else:
+        messages.error(request, "Il n'y a pas de fût en stock")
+    return redirect(reverse('gestion:kegsList'))
+
+@login_required
+@permission_required('gestion.close_keg')
+def closeKeg(request):
+    form = SelectActiveKegForm(request.POST or None)
+    if(form.is_valid()):
+        keg = form.cleaned_data['keg']
+        kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+        kegHistory.isCurrentKegHistory = False
+        kegHistory.closingDate = timezone.now()
+        kegHistory.save()
+        keg.is_active = False
+        keg.save()
+        messages.success(request, "Le fût a bien été fermé")
+        return redirect(reverse('gestion:kegsList'))
+    return render(request, "form.html", {"form": form, "form_title":"Fermeture d'un fût", "form_button":"Fermer le fût"})
+
+@login_required
+@permission_required('gestion:close_keg')
+def closeDirectKeg(request, pk):
+    keg = get_object_or_404(Keg, pk=pk)
+    if(keg.is_active):
+        kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+        kegHistory.isCurrentKegHistory = False
+        kegHistory.closingDate = timezone.now()
+        kegHistory.save()
+        keg.is_active = False
+        keg.save()
+        messages.success(request, "Le fût a bien été fermé")
+    else:
+        messages.error(request, "Le fût n'est pas ouvert")
+    return redirect(reverse('gestion:kegsList'))
+
+@login_required
+@permission_required('gestion.view_keg')
+def kegsList(request):
+    kegs_active = KegHistory.objects.filter(isCurrentKegHistory=True)
+    ids_actives = kegs_active.values('id')
+    kegs_inactive = Keg.objects.exclude(id__in = ids_actives)
+    return render(request, "gestion/kegs_list.html", {"kegs_active": kegs_active, "kegs_inactive": kegs_inactive})
+
+@login_required
+@permission_required('gestion.view_keghistory')
+def kegH(request, pk):
+    keg = get_object_or_404(Keg, pk=pk)
+    kegHistory = KegHistory.objects.filter(keg=keg).order_by('-openingDate')
+    return render(request, "gestion/kegh.html", {"keg": keg, "kegHistory": kegHistory})
+
+class KegActiveAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Keg.objects.filter(is_active = True)
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+        return qs
+
+class KegPositiveAutocomplete(autocomplete.Select2QuerySetView):
+    def get_queryset(self):
+        qs = Keg.objects.filter(stockHold__gt = 0)
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+        return qs
 
 ########## Menus ##########
 

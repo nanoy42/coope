@@ -30,6 +30,7 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Actif")
     volume = models.IntegerField(default=0)
     deg = models.DecimalField(default=0,max_digits=5, decimal_places=2, verbose_name="Degré")
+    adherentRequired = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -61,6 +62,12 @@ def isGalopin(id):
         )
 
 class Keg(models.Model):
+    class Meta:
+        permissions = (
+            ("open_keg", "Peut percuter les fûts"),
+            ("close_keg", "Peut fermer les fûts")
+        )
+
     name = models.CharField(max_length=20, unique=True, verbose_name="Nom")
     stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
     barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
@@ -75,12 +82,20 @@ class Keg(models.Model):
         return self.name
 
 class KegHistory(models.Model):
-    Keg = models.ForeignKey(Keg, on_delete=models.PROTECT)
+    keg = models.ForeignKey(Keg, on_delete=models.PROTECT)
     openingDate = models.DateTimeField(auto_now_add=True)
-    quantitySold = models.DecimalField(decimal_places=2, max_digits=5)
-    amountSold = models.DecimalField(decimal_places=2, max_digits=5)
-    closingDate = models.DateTimeField()
+    quantitySold = models.DecimalField(decimal_places=2, max_digits=5, default=0)
+    amountSold = models.DecimalField(decimal_places=2, max_digits=5, default=0)
+    closingDate = models.DateTimeField(null=True, blank=True)
     isCurrentKegHistory = models.BooleanField(default=True)
+
+    def __str__(self):
+        res = "Fût de " + str(self.keg) + " (" + str(self.openingDate) + " - "
+        if(self.closingDate):
+            res += str(self.closingDate) + ")"
+        else:
+            res += "?)"
+        return res
 
 class Reload(models.Model):
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="reload_taken", verbose_name="Client")
@@ -152,3 +167,11 @@ class ConsumptionHistory(models.Model):
 
     def __str__(self):
         return "{0} {1} consommé par {2} le {3} (encaissé par {4})".format(self.quantity, self.product, self.customer, self.date, self.coopeman)
+
+class Consumption(models.Model):
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_global_taken")
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    quantity = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return "Consommation de " + str(self.customer) + " concernant le produit " + str(self.product)

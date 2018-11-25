@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.utils import timezone
 
 from preferences.models import PaymentMethod, Cotisation
 from gestion.models import ConsumptionHistory
@@ -49,6 +50,13 @@ class Profile(models.Model):
     debit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True)
     cotisationEnd = models.DateTimeField(blank=True, null=True)
+
+    @property
+    def is_adherent(self):
+        if(self.cotisationEnd and self.cotisationEnd > timezone.now()):
+            return True
+        else:
+            return False
 
     @property
     def balance(self):

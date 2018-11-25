@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Liste des fûts actifs</a></li>
+	<li><a href="#second">Liste des fûts inactifs</a></li>
+
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des fûts actifs</h2>
+	</header>
+	<a class="button" href="{% url 'gestion:addKeg' %}">Créer un fût</a>
+	<a class="button" href="{% url 'gestion:openKeg' %}">Percuter un fût</a>
+	<a class="button" href="{% url 'gestion:closeKeg' %}">Fermer un fût</a>
+	<br><br>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Stock en soute</th>
+					<th>Code barre</th>
+					<th>Capacité</th>
+					<th>Quantité vendue</th>
+					<th>Montant vendu</th>
+					<th>Prix du fût</th>
+					<th>Historique</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for kegH in kegs_active %}
+				<tr>
+					<td>{{ kegH.keg.name }}</td>
+					<td>{{ kegH.keg.stockHold}}</td>
+					<td>{{ kegH.keg.barcode }}</td>
+					<td>{{ kegH.keg.capacity }} L</td>
+					<td>{{ kegH.quantitySold }} L</td>
+					<td>{{ kegH.amountSold }} €</td>
+					<td>{{ kegH.keg.amount }} €</td>
+					<td><a href="{% url 'gestion:kegH' kegH.keg.pk %}">Voir</a></td>
+					<td><a href="{% url 'gestion:closeDirectKeg' kegH.keg.pk %}" class="button small">Fermer</a> <a href="{% url 'gestion:editKeg' kegH.keg.pk %}" class="button small">Modifier</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des fûts inactifs</h2>
+	</header>
+	<a class="button" href="{% url 'gestion:addKeg' %}">Créer un fût</a>
+	<a class="button" href="{% url 'gestion:openKeg' %}">Percuter un fût</a>
+	<a class="button" href="{% url 'gestion:closeKeg' %}">Fermer un fût</a>
+	<br><br>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Stock en soute</th>
+					<th>Code barre</th>
+					<th>Capacité</th>
+					<th>Prix du fût</th>
+					<th>Historique</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for keg in kegs_inactive %}
+				<tr>
+					<td>{{ keg.name }}</td>
+					<td>{{ keg.stockHold}}</td>
+					<td>{{ keg.barcode }}</td>
+					<td>{{ keg.capacity }} L</td>
+					<td>{{ keg.amount }} €</td>
+					<td><a href="{% url 'gestion:kegH' keg.pk %}">Voir</a></td>
+					<td>{% if keg.stockHold > 0 %}<a href="{% url 'gestion:openDirectKeg' keg.pk %}" class="button small">Percuter</a>{% endif %} <a href="{% url 'gestion:editKeg' keg.pk %}" class="button small">Modifier</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
