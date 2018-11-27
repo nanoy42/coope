@@ -18,28 +18,12 @@ class ReloadForm(forms.ModelForm):
         fields = ("customer", "amount", "PaymentMethod")
         widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
 
-    def clean_amount(self):
-        if self.cleaned_data['amount'] <= 0:
-            raise ValidationError(
-                "Le montant doit être strictement positif"
-            )
-        else:
-            return self.cleaned_data['amount']
-
 
 class RefundForm(forms.ModelForm):
     class Meta:
         model = Refund
         fields = ("customer", "amount")
         widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
-
-    def clean_amount(self):
-        if self.cleaned_data['amount'] <= 0:
-            raise ValidationError(
-                "Le montant doit être strictement positif"
-            )
-        else:
-            return self.cleaned_data['amount']
 
 
 class ProductForm(forms.ModelForm):

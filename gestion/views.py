@@ -14,7 +14,7 @@ from dal import autocomplete
 from decimal import *
 
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory
 from preferences.models import PaymentMethod
 
 @active_required
@@ -52,12 +52,16 @@ def order(request):
         paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
         amount = Decimal(request.POST['amount'])
         order = json.loads(request.POST["order"])
-        if(len(order) == 0 or amount == 0):
+        menus = json.loads(request.POST["menus"])
+        if (not order) and (not menus):
             return HttpResponse("Pas de commande")
         adherentRequired = False
         for o in order:
             product = get_object_or_404(Product, pk=o["pk"])
             adherentRequired = adherentRequired or product.adherentRequired
+        for m in menus:
+            menu = get_object_or_404(Menu, pk=m["pk"])
+            adherentRequired = adherentRequired or menu.adherent_required
         if(adherentRequired and not user.profile.is_adherent):
             return HttpResponse("N'est pas adhérent et devrait l'être")
         if(paymentMethod.affect_balance):
@@ -72,7 +76,7 @@ def order(request):
             if(product.category == Product.P_PRESSION):
                 keg = get_object_or_404(Keg, pinte=product)
                 if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite")
+                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
                 kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
                 kegHistory.quantitySold += Decimal(quantity * 0.5)
                 kegHistory.amountSold += Decimal(quantity * product.amount)
@@ -80,7 +84,7 @@ def order(request):
             elif(product.category == Product.D_PRESSION):
                 keg = get_object_or_404(Keg, demi=product)
                 if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite")
+                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
                 kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
                 kegHistory.quantitySold += Decimal(quantity * 0.25)
                 kegHistory.amountSold += Decimal(quantity * product.amount)
@@ -88,7 +92,7 @@ def order(request):
             elif(product.category == Product.G_PRESSION):
                 keg = get_object_or_404(Keg, galopin=product)
                 if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite")
+                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
                 kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
                 kegHistory.quantitySold += Decimal(quantity * 0.125)
                 kegHistory.amountSold += Decimal(quantity * product.amount)
@@ -100,8 +104,19 @@ def order(request):
             consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
             consumption.quantity += quantity
             consumption.save()
-            ch = ConsumptionHistory(customer = user, quantity = quantity, paymentMethod=paymentMethod, product=product, amount=int(o["quantity"])*product.amount, coopeman=request.user)
+            ch = ConsumptionHistory(customer = user, quantity = quantity, paymentMethod=paymentMethod, product=product, amount=int(quantity*product.amount), coopeman=request.user)
             ch.save()
+        for m in menus:
+            menu = get_object_or_404(Menu, pk=m["pk"])
+            quantity = int(m["quantity"])
+            mh = MenuHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, menu=menu, amount=int(quantity*menu.amount), coopeman=request.user)
+            mh.save()
+            for article in menu.articles.all():
+                consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
+                consumption.quantity += quantity
+                consumption.save()
+                ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=article, amount=int(quantity*article.amount), coopeman=request.user, menu=mh)
+                ch.save()
         return HttpResponse("La commande a bien été effectuée")
 
 @login_required
@@ -409,6 +424,12 @@ def switch_activate_menu(request, pk):
     menu.save()
     messages.success(request, "La disponibilité du menu a bien été changée")
     return redirect(reverse('gestion:menusList'))
+
+@login_required
+def get_menu(request, barcode):
+    menu = get_object_or_404(Menu, barcode=barcode)
+    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount})
+    return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):

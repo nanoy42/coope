@@ -651,8 +651,8 @@ def addCotisationHistory(request, pk):
             if(user.profile.balance >= cotisation.cotisation.amount):
                 user.profile.debit += cotisation.cotisation.amount
             else:
-                cotisation.delete()
                 messages.error(request, "Solde insuffisant")
+                return redirect(reverse('users:profile',kwargs={'pk':user.pk}))
         cotisation.user = user
         cotisation.coopeman = request.user
         cotisation.amount = cotisation.cotisation.amount
@@ -708,7 +708,7 @@ def addWhiteListHistory(request, pk):
         if(user.profile.cotisationEnd):
             whiteList.endDate = user.profile.cotisationEnd + timedelta(days=whiteList.duration)
         else:
-            whiteList = datetime.now() + timedelta(days=whiteList.duration)
+            whiteList.endDate = datetime.now() + timedelta(days=whiteList.duration)
         user.profile.cotisationEnd = whiteList.endDate
         user.save()
         whiteList.save()

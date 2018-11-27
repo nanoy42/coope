@@ -24,6 +24,7 @@ urlpatterns = [
     path('searchMenu', views.searchMenu, name="searchMenu"),
     path('editMenu/<int:pk>', views.edit_menu, name="editMenu"),
     path('menusList', views.menus_list, name="menusList"),
+    path('getMenu/<str:barcode>', views.get_menu, name="getMenu"),
     path('swicthActivateMenu/<int:pk>', views.switch_activate_menu, name="switchActivateMenu"),
     path('getProduct/<str:barcode>', views.getProduct, name="getProduct"),
     path('order', views.order, name="order"),

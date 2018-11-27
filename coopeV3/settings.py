@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'preferences',
     'coopeV3',
     'dal',
-    'dal_select2',   
+    'dal_select2',
+    'simple_history',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'coopeV3.urls'

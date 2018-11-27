@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
-
+from simple_history.models import HistoricalRecords
 from preferences.models import PaymentMethod, Cotisation
 from gestion.models import ConsumptionHistory
 
 class School(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nom")
+    history = HistoricalRecords()
 
     def __str__(self):
         return self.name
@@ -36,6 +37,7 @@ class CotisationHistory(models.Model):
     cotisation = models.ForeignKey(Cotisation, on_delete=models.PROTECT, verbose_name="Type de cotisation")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="cotisation_made")
     valid = models.IntegerField(choices=VALIDATION_CHOICES, default=WAITING)
+    history = HistoricalRecords()
 
 class WhiteListHistory(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -43,6 +45,7 @@ class WhiteListHistory(models.Model):
     endDate = models.DateTimeField()
     duration = models.PositiveIntegerField(verbose_name="Durée", help_text="Durée de l'accès gracieux en jour")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="whitelist_made")
+    history = HistoricalRecords()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -50,6 +53,7 @@ class Profile(models.Model):
     debit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True)
     cotisationEnd = models.DateTimeField(blank=True, null=True)
+    history = HistoricalRecords()
 
     @property
     def is_adherent(self):
@@ -91,6 +95,10 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
 def str_user(self):
-    return self.username + " (" + self.first_name + " " + self.last_name + ", " + str(self.profile.balance) + "€)" 
+    if(self.profile.is_adherent):
+        fin = "Adhérent"
+    else:
+        fin = "Non adhérent"
+    return self.username + " (" + self.first_name + " " + self.last_name + ", " + str(self.profile.balance) + "€, " + fin + ")" 
 
 User.add_to_class("__str__", str_user)
