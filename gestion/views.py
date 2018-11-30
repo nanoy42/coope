@@ -115,8 +115,9 @@ def order(request):
                 consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                 consumption.quantity += quantity
                 consumption.save()
-                ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=article, amount=int(quantity*article.amount), coopeman=request.user, menu=mh)
-                ch.save()
+                if(article.stockHold > 0):
+                    article.stockHold -= 1
+                    article.save()
         return HttpResponse("La commande a bien été effectuée")
 
 @login_required
@@ -155,6 +156,28 @@ def refund(request):
     else:
         messages.error(request, "Le remboursement a échoué")
     return redirect(reverse('gestion:manage'))
+
+@login_required
+@permission_required('gestion.delete_consumptionhistory')
+def cancel_consumption(request, pk):
+    consumption = get_object_or_404(ConsumptionHistory, pk=pk)
+    user = consumption.customer
+    user.profile.debit -= consumption.amount
+    user.save()
+    consumption.delete()
+    messages.success(request, "La consommation a bien été annulée")
+    return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
+
+@login_required
+@permission_required('gestion.delete_menuhistory')
+def cancel_menu(request, pk):
+    menu_history = get_object_or_404(MenuHistory, pk=pk)
+    user = menu_history.customer
+    user.profile.debit -= menu_history.amount
+    user.save()
+    menu_history.delete()
+    messages.success(request, "La consommation du menu a bien été annulée")
+    return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
 
 ########## Products ##########
 

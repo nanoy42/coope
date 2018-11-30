@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+{% block entete %}<h1>Consommations</h1>{%endblock%}
+
+{% block navbar %}
+<ul>
+	<li><a href="#first">Consommations ({{user}})</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main special">
+	<header class="major">
+		<h2>Consommations ({{user}})</h2>
+	</header>
+	<section id="rechargements">
+		<div class="table-wrapper">
+			<table>
+				<thead id="headTransaction">
+					<tr>
+						<th>Produit</th>
+						<th>Quantité</th>
+						<th>Montant</th>
+						<th>Type de Paiement</th>
+						<th>Date</th>
+						<th>Annuler</th>
+					</tr>
+				</thead>
+				<tbody id="bodyTransaction">
+					{% for c in consumptions %}
+					<tr>
+						<td>{{c.product}}</td>
+						<td>{{c.quantity}}</td>
+						<td>{{c.amount}}</td>
+						<td>{{c.paymentMethod}}</td>
+						<td>{{c.date}}</td>
+						<td><a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a></td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+        </div>
+        <div class="pagination special">
+            <span class="step-links">
+                {% if consumptions.has_previous %}
+                    <a href="{% url 'users:allConsumptions' user.pk 1 %}">&laquo; Première </a>
+                    <a href="{% url 'users:allConsumptions' user.pk consumptions.previous_page_number %}"> Précédente </a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ consumptions.number }} sur {{ consumptions.paginator.num_pages }}.
+                </span>
+        
+                {% if consumptions.has_next %}
+                <a href="{% url 'users:allConsumptions' user.pk consumptions.next_page_number %}"> Suivante </a>
+                <a href="{% url 'users:allConsumptions' user.pk consumptions.paginator.num_pages %}"> Dernière &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+	</section>
+</section>
+{%endblock%}

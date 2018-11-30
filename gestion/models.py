@@ -180,7 +180,6 @@ class ConsumptionHistory(models.Model):
     paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now_add=True)
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    menu = models.ForeignKey(MenuHistory, on_delete=models.CASCADE, null=True, blank=True)
     amount = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_selled")
     history = HistoricalRecords()

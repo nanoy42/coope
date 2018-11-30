@@ -41,4 +41,6 @@ urlpatterns = [
     path('editSchool/<int:pk>', views.editSchool, name="editSchool"),
     path('deleteSchool/<int:pk>', views.deleteSchool, name="deleteSchool"),
     path('allReloads/<int:pk>/<int:page>', views.allReloads, name="allReloads"),
+    path('allConsumptions/<int:pk>/<int:page>', views.all_consumptions, name="allConsumptions"),
+    path('allMenus/<int:pk>/<int:page>', views.all_menus, name="allMenus"),
 ]

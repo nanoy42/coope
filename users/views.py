@@ -15,7 +15,7 @@ from dal import autocomplete
 from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, active_required
 from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm
-from gestion.models import Reload, Consumption, ConsumptionHistory
+from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 
 @active_required
 def loginView(request):
@@ -123,6 +123,7 @@ def profile(request, pk):
             products.append(ch.product)
             quantities.append(ch.quantity)
     lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
+    lastMenus = MenuHistory.objects.filter(customer=user).order_by('-date')[:10]
     return render(request, "users/profile.html", 
                 {
                     "user":user,
@@ -132,7 +133,8 @@ def profile(request, pk):
                     "reloads": reloads,
                     "products": products,
                     "quantities": quantities,
-                    "lastConsumptions": lastConsumptions
+                    "lastConsumptions": lastConsumptions,
+                    "lastMenus": lastMenus,
                 })
 
 @active_required
@@ -380,10 +382,68 @@ def allReloads(request, pk, page):
     """
     user = get_object_or_404(User, pk=pk)
     allReloads = Reload.objects.filter(customer=user).order_by('-date')
-    paginator = Paginator(allReloads, 2)
+    paginator = Paginator(allReloads, 10)
     reloads = paginator.get_page(page)
     return render(request, "users/allReloads.html", {"reloads": reloads, "user":user})
 
+@active_required
+@login_required
+@self_or_has_perm('pk', 'auth.view_user')
+def all_consumptions(request, pk, page):
+    """
+    Display all the consumptions of the requested user.
+
+    ``pk``
+        The pk of the user.
+    ``page``
+        The page number.
+
+    **Context**
+    
+    ``reloads``
+        The reloads of the page.
+    ``user``
+        The requested user
+
+    **Template**
+
+    :template:`users/all_consumptions.html`
+    """
+    user = get_object_or_404(User, pk=pk)
+    all_consumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')
+    paginator = Paginator(all_consumptions, 10)
+    consumptions = paginator.get_page(page)
+    return render(request, "users/all_consumptions.html", {"consumptions": consumptions, "user":user})
+
+@active_required
+@login_required
+@self_or_has_perm('pk', 'auth.view_user')
+def all_menus(request, pk, page):
+    """
+    Display all the menus of the requested user.
+
+    ``pk``
+        The pk of the user.
+    ``page``
+        The page number.
+
+    **Context**
+    
+    ``reloads``
+        The reloads of the page.
+    ``user``
+        The requested user
+
+    **Template**
+
+    :template:`users/all_menus.html`
+    """
+    user = get_object_or_404(User, pk=pk)
+    all_menus = MenuHistory.objects.filter(customer=user).order_by('-date')
+    paginator = Paginator(all_menus, 10)
+    menus = paginator.get_page(page)
+    return render(request, "users/all_menus.html", {"menus": menus, "user":user})
+    
 ########## Groups ##########
 
 @active_required

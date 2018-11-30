@@ -127,7 +127,7 @@
 <section id="second" class="main">
 	<header class="major">
 		<h2>{{self | yesno:"Mes dernières,Dernières"}} consommations</h2>
-		<p>(Affichage des 10 dernières entrées)</p>
+		<p>(Affichage des 10 dernières entrées : <a href="{% url 'users:allConsumptions' user.pk 1 %}">Voir toutes les entrées</a>)</p>
 	</header>
 	<section id="transactions">
 		<div class="table-wrapper">
@@ -139,7 +139,7 @@
 						<th>Montant</th>
 						<th>Type de Paiement</th>
 						<th>Date</th>
-						<th></th>
+						<th>Annuler</th>
 					</tr>
 				</thead>
 				<tbody id="bodyTransaction">
@@ -150,7 +150,41 @@
 						<td>{{c.amount}}</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
-						<td></td>
+						<td><a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a></td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+<section id="secondbis" class="main">
+	<header class="major">
+		<h2>{{self | yesno:"Mes derniers,Derniers"}} menus</h2>
+		<p>(Affichage des 5 dernières entrées : <a href="{% url 'users:allMenus' user.pk 1 %}">Voir toutes les entrées</a>)</p>
+	</header>
+	<section id="transactions">
+		<div class="table-wrapper">
+			<table>
+				<thead id="headTransaction">
+					<tr>
+						<th>Menu</th>
+						<th>Quantité</th>
+						<th>Montant</th>
+						<th>Type de Paiement</th>
+						<th>Date</th>
+						<th>Annuler</th>
+					</tr>
+				</thead>
+				<tbody id="bodyTransaction">
+					{% for m in lastMenus %}
+					<tr>
+						<td>{{m.menu}}</td>
+						<td>{{m.quantity}}</td>
+						<td>{{m.amount}}</td>
+						<td>{{m.paymentMethod}}</td>
+						<td>{{m.date}}</td>
+						<td><a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a></td>
 					</tr>
 					{%endfor%}
 				</tbody>
@@ -161,7 +195,7 @@
 <section id="third" class="main">
 	<header class="major">
 		<h2>{{self | yesno:"Mes derniers,Derniers"}} rechargements</h2>
-		<p>(Affichage des 5 dernières entrées)</p>
+		<p>(Affichage des 5 dernières entrées : <a href="{% url 'users:allReloads' user.pk 1 %}">Voir toutes les entrées</a>)</p>
 	</header>
 	<section>
 		<div class="table-wrapper">
