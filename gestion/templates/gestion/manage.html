@@ -5,9 +5,9 @@
 
 {% block navbar %}
 <ul>
-	{% if perms.gestion.can_add_consumption_history %}<li><a href="#first">Commande</a></li>{% endif %}
-	{% if perms.gestion.can_add_reload %}<li><a href="#second">Rechargement Client</a></li>{% endif %}
-	{% if perms.gestion.can_add_refund %}<li><a href="#third">Remboursement client</a><li>{% endif %}
+	{% if perms.gestion.add_consumptionhistory %}<li><a href="#first">Commande</a></li>{% endif %}
+	{% if perms.gestion.add_reload %}<li><a href="#second">Rechargement Client</a></li>{% endif %}
+	{% if perms.gestion.add_refund %}<li><a href="#third">Remboursement client</a><li>{% endif %}
 </ul>
 {% endblock %}
 
@@ -31,6 +31,7 @@
 		bottom : 1em;
 }
 </style>
+{% if perms.gestion.add_consumptionhistory %}
 <section id="intro" class="main">
 	<div class="spotlight">
 		<div class="content">
@@ -182,7 +183,8 @@
 		</div>
 	</div>
 </section>
-{% if perms.gestion.cand_add_reload %}
+{% endif %}
+{% if perms.gestion.add_reload %}
 <section id="second" class="main">
 	<header class="major">
 		<h2>Rechargement client</h2>

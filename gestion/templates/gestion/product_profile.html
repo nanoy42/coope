@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
 {% block navbar %}
 <ul>
 	<li><a href="#first">Général</a></li>
@@ -10,7 +10,7 @@
 	<header class="major">
 		<h2>Général</h2>
     </header>
-    <a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small">Modifier</a><br>
+    {% if perms.gestion.change_product %}<a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small">Modifier</a><br>{% endif %}
         <strong>Nom</strong> : {{ product.name }}<br>
         <strong>Prix de vente</strong> : {{ product.amount }}€<br>
         <strong>Stock en soute</strong> : {{ product.stockHold }}<br>

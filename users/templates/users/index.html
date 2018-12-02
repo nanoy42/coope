@@ -16,9 +16,13 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.auth.add_user}
 		<li><a href="{% url 'users:createUser' %}">Ajouter un utilisateur</a></li>
+		{% endif %}
+		{% if perms.auth.view_user %}
 		<li><a href="{% url 'users:searchUser' %}">Rechercher un utilisateur</a></li>
 		<li><a href="{% url 'users:usersIndex' %}">Lister tous les utilisateurs</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="second" class="main">
@@ -27,8 +31,10 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.auth.view_group %}
 		<li><a href="{% url 'users:createGroup' %}">Ajouter un groupe de droit</a></li>
 		<li><a href="{% url 'users:groupsIndex' %}">Lister les groupes de droits</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="third" class="main">
@@ -38,8 +44,10 @@
 	Les admins ont accès à l'interface admin.<br>
 	Actions possibles :
 	<ul>
+		{% if request.user.is_staff %}
 		<li><a href="{% url 'users:addAdmin' %}">Ajouter un admin</a></li>
 		<li><a href="{% url 'users:adminsIndex' %}">Lister les admins</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="fourth" class="main">
@@ -49,8 +57,10 @@
 	Attention : les superusers bypass toutes les vérifications de permissions.<br>
 	Actions possibles :
 	<ul>
+		{% if request.user.is_superuser %}
 		<li><a href="{% url 'users:addSuperuser' %}">Ajouter un superuser</a></li>
 		<li><a href="{% url 'users:superusersIndex' %}">Lister les superuser</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="fifth" class="main">
@@ -59,8 +69,12 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.gestion.add_school %}
 		<li><a href="{% url 'users:createSchool' %}">Ajouter une école</a></li>
+		{% endif %}
+		{% if perms.gestion.view_school %}
 		<li><a href="{% url 'users:schoolsIndex' %}">Lister les écoles</a></li>
+		{% endif %}
 	</ul>
 </section>
 {% endblock %}

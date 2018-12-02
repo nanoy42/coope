@@ -23,7 +23,7 @@
 				{% for school in schools %}
 				<tr>
 					<td>{{ school }}</td>
-					<td><a class="button small" href="{% url 'users:editSchool' school.pk %}">Modifier</a> <a class="button small" href="{% url 'users:deleteSchool' school.pk %}">Supprimer</a></td>
+					<td>{% if perms.gestion.change_school %}<a class="button small" href="{% url 'users:editSchool' school.pk %}">Modifier</a> {% endif %}{% if perms.gestion.delete_school %}<a class="button small" href="{% url 'users:deleteSchool' school.pk %}">Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

@@ -14,9 +14,13 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.gestion.add_product %}
 		<li><a href="{% url 'gestion:addProduct' %}">Créer un produit</a></li>
+		{% endif %}
+		{% if permis.gestion.view_product}
 		<li><a href="{% url 'gestion:searchProduct' %}">Rechercher un produit</a></li>
 		<li><a href="{% url 'gestion:productsList' %}">Lister tous les produits</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="second" class="main">
@@ -25,10 +29,18 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.gestion.add_keg %}
 		<li><a href="{% url 'gestion:addKeg' %}">Créer un fut</a></li>
+		{% endif %}
+		{% if perms.gestion.open_keg}
 		<li><a href="{% url 'gestion:openKeg' %}">Percuter un fut</a></li>
+		{% endif %}
+		{% if perms.gestion.close_keg}
 		<li><a href="{% url 'gestion:closeKeg' %}">Fermer un fût</a></li>
+		{% endif %}
+		{% if perms.gestion.view_keg}
 		<li><a href="{% url 'gestion:kegsList' %}">Lister les futs</a></li>
+		{% endif %}
 	</ul>
 </section>
 <section id="third" class="main">
@@ -37,9 +49,13 @@
 	</header>
 	Actions possibles :
 	<ul>
+		{% if perms.gestion.add_menu %}
 		<li><a href="{% url 'gestion:addMenu' %}">Créer un menu</a></li>
+		{% endif %}
+		{% if perms.gestion.view_menu %}
 		<li><a href="{% url 'gestion:searchMenu' %}">Rechercher un menu</a></li>
 		<li><a href="{% url 'gestion:menusList' %}">Lister les menus</a></li>
+		{% endif %}
 	</ul>
 </section>
 {% endblock %}

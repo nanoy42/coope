@@ -33,7 +33,7 @@
 						<td>{{c.amount}}</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
-						<td><a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a></td>
+						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>

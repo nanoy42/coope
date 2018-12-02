@@ -33,7 +33,7 @@
 						<td>{{m.amount}}</td>
 						<td>{{m.paymentMethod}}</td>
 						<td>{{m.date}}</td>
-						<td><a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a></td>
+						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>

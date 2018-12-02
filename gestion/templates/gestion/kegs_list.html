@@ -12,9 +12,15 @@
 	<header class="major">
 		<h2>Liste des fûts actifs</h2>
 	</header>
+	{% if perms.gestion.add_keg %}
 	<a class="button" href="{% url 'gestion:addKeg' %}">Créer un fût</a>
+	{% endif %}
+	{% if perms.gestion.open_keg %}
 	<a class="button" href="{% url 'gestion:openKeg' %}">Percuter un fût</a>
+	{% endif %}
+	{% if perms.gestion.close_keg %}
 	<a class="button" href="{% url 'gestion:closeKeg' %}">Fermer un fût</a>
+	{% endif %}
 	<br><br>
 	<div class="table-wrapper">
 		<table>
@@ -42,7 +48,7 @@
 					<td>{{ kegH.amountSold }} €</td>
 					<td>{{ kegH.keg.amount }} €</td>
 					<td><a href="{% url 'gestion:kegH' kegH.keg.pk %}">Voir</a></td>
-					<td><a href="{% url 'gestion:closeDirectKeg' kegH.keg.pk %}" class="button small">Fermer</a> <a href="{% url 'gestion:editKeg' kegH.keg.pk %}" class="button small">Modifier</a></td>
+					<td>{% if perms.gestion.close_keg %}<a href="{% url 'gestion:closeDirectKeg' kegH.keg.pk %}" class="button small">Fermer</a> {% endif %}{% if perms.gestion.change_keg %}<a href="{% url 'gestion:editKeg' kegH.keg.pk %}" class="button small">Modifier</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -53,9 +59,15 @@
 	<header class="major">
 		<h2>Liste des fûts inactifs</h2>
 	</header>
+	{% if perms.gestion.add_keg %}
 	<a class="button" href="{% url 'gestion:addKeg' %}">Créer un fût</a>
+	{% endif %}
+	{% if perms.gestion.open_keg %}
 	<a class="button" href="{% url 'gestion:openKeg' %}">Percuter un fût</a>
+	{% endif %}
+	{% if perms.gestion.close_keg %}
 	<a class="button" href="{% url 'gestion:closeKeg' %}">Fermer un fût</a>
+	{% endif %}
 	<br><br>
 	<div class="table-wrapper">
 		<table>
@@ -79,7 +91,7 @@
 					<td>{{ keg.capacity }} L</td>
 					<td>{{ keg.amount }} €</td>
 					<td><a href="{% url 'gestion:kegH' keg.pk %}">Voir</a></td>
-					<td>{% if keg.stockHold > 0 %}<a href="{% url 'gestion:openDirectKeg' keg.pk %}" class="button small">Percuter</a>{% endif %} <a href="{% url 'gestion:editKeg' keg.pk %}" class="button small">Modifier</a></td>
+					<td>{% if perms.gestion.open_keg %}{% if keg.stockHold > 0 %}<a href="{% url 'gestion:openDirectKeg' keg.pk %}" class="button small">Percuter</a> {% endif %}{% endif %}{% if perms.gestion.change_keg %}<a href="{% url 'gestion:editKeg' keg.pk %}" class="button small">Modifier</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

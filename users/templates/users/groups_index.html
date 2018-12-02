@@ -10,7 +10,9 @@
 	<header class="major">
 		<h2>Liste des groupes de droit</h2>
 	</header>
+	{% if perms.auth.add_group %}
 	<a href="{% url 'users:createGroup' %}" class="button">Ajouter un groupe de droit</a><br><br>
+	{% endif %}
 	<div class="table-wrapper">
 		<table>
 			<thead>
@@ -27,7 +29,7 @@
 					<td>{{ group.name }}</td>
 					<td>{{ group.permissions.count }}</td>
 					<td>{{ group.user_set.count }}</td>
-					<td><a href="{% url 'users:groupProfile' group.pk %}" class="button small">Voir</a> <a href="{% url 'users:editGroup' group.pk %}" class="button small">Éditer</a> <a href="{% url 'users:deleteGroup' group.pk %}" class="button small">Supprimer</a></td>
+					<td><a href="{% url 'users:groupProfile' group.pk %}" class="button small">Voir</a> {% if perms.auth.change_group %}<a href="{% url 'users:editGroup' group.pk %}" class="button small">Éditer</a> {% endif %}{% if perms.auth.delete_group %}<a href="{% url 'users:deleteGroup' group.pk %}" class="button small">Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

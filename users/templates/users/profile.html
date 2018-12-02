@@ -150,7 +150,7 @@
 						<td>{{c.amount}}</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
-						<td><a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a></td>
+						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>
@@ -184,7 +184,7 @@
 						<td>{{m.amount}}</td>
 						<td>{{m.paymentMethod}}</td>
 						<td>{{m.date}}</td>
-						<td><a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a></td>
+						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>
@@ -249,7 +249,7 @@
 						<td>{{cotisation.paymentMethod}}</td>
 						<td>{{cotisation.endDate}}</td>
 						<td>{{cotisation.valid}}</td>
-						<td><a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}">Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}">Invalider</a></td>
+						<td>{% if perms.users.validate_cotisationHistory %}<a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}">Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}">Invalider</a>{% endif %}</td>
 					</tr>
 					{% endfor %}
 				</tbody>

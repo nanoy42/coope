@@ -19,12 +19,16 @@
 	</div>
 	<br>
 	<div class="row">
+		{% if perms.auth.change_group %}
 		<div class="6u">
 			<a class="button" href="{% url 'users:editGroup' group.pk %}">Éditer</a>
 		</div>
+		{% endif %}
+		{% if perms.auth.delete_group %}
 		<div class="6u">
 			<a class="button" href="{% url 'users:deleteGroup' group.pk %}">Supprimer</a>
 		</div>
+		{% endif %}
 	</div>
 </section>
 <section id="second" class="main">
