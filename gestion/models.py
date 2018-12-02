@@ -1,12 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
-from preferences.models import PaymentMethod
-from django.core.exceptions import ValidationError
 from simple_history.models import HistoricalRecords
 from django.core.validators import MinValueValidator
+from preferences.models import PaymentMethod
+from django.core.exceptions import ValidationError
 
 
 class Product(models.Model):
+    """
+    Stores a product
+    """
     P_PRESSION = 'PP'
     D_PRESSION = 'DP'
     G_PRESSION = 'GP'
@@ -23,6 +26,8 @@ class Product(models.Model):
         (FOOD, "Bouffe autre que panini"),
         (PANINI, "Bouffe pour panini"),
     )
+    class Meta:
+        verbose_name = "Produit"
     name = models.CharField(max_length=40, verbose_name="Nom", unique=True)
     amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Prix de vente", validators=[MinValueValidator(0)])
     stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
@@ -66,7 +71,11 @@ def isGalopin(id):
         )
 
 class Keg(models.Model):
+    """
+    Stores a keg
+    """
     class Meta:
+        verbose_name = "Fût"
         permissions = (
             ("open_keg", "Peut percuter les fûts"),
             ("close_keg", "Peut fermer les fûts")
@@ -87,6 +96,12 @@ class Keg(models.Model):
         return self.name
 
 class KegHistory(models.Model):
+    """
+    Stores a keg history, related to :model:`gestion.Keg`
+    """
+    class Meta:
+        verbose_name = "Historique de fût"
+
     keg = models.ForeignKey(Keg, on_delete=models.PROTECT)
     openingDate = models.DateTimeField(auto_now_add=True)
     quantitySold = models.DecimalField(decimal_places=2, max_digits=5, default=0)
@@ -104,6 +119,12 @@ class KegHistory(models.Model):
         return res
 
 class Reload(models.Model):
+    """
+    Stores reloads
+    """
+    class Meta:
+        verbose_name = "Rechargement"
+    
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="reload_taken", verbose_name="Client")
     amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     PaymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT, verbose_name="Moyen de paiement")
@@ -124,15 +145,13 @@ class Raming(models.Model):
     def __str__(self):
         return "Percussion d'un {0} effectué par {1} le {2}".format(self.keg, self.coopeman, self.date)
 
-class Stocking(models.Model):
-    date = models.DateTimeField(auto_now_add=True)
-    history = HistoricalRecords()
-
-    def __str__(self):
-        return "Inventaire fait le {0}".format(self.date)
-
-
 class Refund(models.Model):
+    """
+    Stores refunds
+    """
+    class Meta:
+        verbose_name = "Remboursement"
+
     date = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="refund_taken", verbose_name="Client")
     amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
@@ -144,6 +163,9 @@ class Refund(models.Model):
 
 
 class Menu(models.Model):
+    """
+    Stores menus
+    """
     name = models.CharField(max_length=255, verbose_name="Nom")
     amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
@@ -162,6 +184,12 @@ class Menu(models.Model):
         return res
 
 class MenuHistory(models.Model):
+    """
+    Stores MenuHistory related to :model:`gestion.Menu`
+    """
+    class Meta:
+        verbose_name = "Historique de menu"
+
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_taken")
     quantity = models.PositiveIntegerField(default=0)
     paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
@@ -175,6 +203,12 @@ class MenuHistory(models.Model):
         return "{2} a consommé {0} {1}".format(self.quantity, self.menu, self.customer)
 
 class ConsumptionHistory(models.Model):
+    """
+    Stores consumption history related to :model:`gestion.Product`
+    """
+    class Meta:
+        verbose_name = "Consommation"
+
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_taken")
     quantity = models.PositiveIntegerField(default=0)
     paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
@@ -188,6 +222,12 @@ class ConsumptionHistory(models.Model):
         return "{0} {1} consommé par {2} le {3} (encaissé par {4})".format(self.quantity, self.product, self.customer, self.date, self.coopeman)
 
 class Consumption(models.Model):
+    """
+    Stores total consumptions
+    """
+    class Meta:
+        verbose_name = "Consommation totale"
+
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_global_taken")
     product = models.ForeignKey(Product, on_delete=models.PROTECT)
     quantity = models.PositiveIntegerField(default=0)

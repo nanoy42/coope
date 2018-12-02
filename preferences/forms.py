@@ -4,17 +4,26 @@ from django.core.exceptions import ValidationError
 from .models import Cotisation, PaymentMethod, GeneralPreferences
 
 class CotisationForm(forms.ModelForm):
+    """
+    Form to add and edit cotisations
+    """
     class Meta:
         model = Cotisation
         fields = "__all__"
 
 class PaymentMethodForm(forms.ModelForm):
+    """
+    Form to add and edit payment methods
+    """
     class Meta:
         model = PaymentMethod
         fields = "__all__"
 
 
 class GeneralPreferencesForm(forms.ModelForm):
+    """
+    Form to edit the general preferences
+    """
     class Meta:
         model = GeneralPreferences
         fields = "__all__"

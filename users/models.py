@@ -8,6 +8,12 @@ from preferences.models import PaymentMethod, Cotisation
 from gestion.models import ConsumptionHistory
 
 class School(models.Model):
+    """
+    Stores school
+    """
+    class Meta:
+        verbose_name = "École"
+
     name = models.CharField(max_length=255, verbose_name="Nom")
     history = HistoricalRecords()
 
@@ -15,9 +21,13 @@ class School(models.Model):
         return self.name
 
 class CotisationHistory(models.Model):
+    """
+    Stores cotisations history, related to :model:`preferences.Cotisation`
+    """
     class Meta:
+        verbose_name = "Historique cotisation"
         permissions = (
-            ("validate_consumptionhistory", "Peut (in)valider les cotisations"),
+            ("validate_cotisationhistory", "Peut (in)valider les cotisations"),
         )
 
     WAITING = 0
@@ -40,6 +50,12 @@ class CotisationHistory(models.Model):
     history = HistoricalRecords()
 
 class WhiteListHistory(models.Model):
+    """
+    Stores whitelist history
+    """
+    class Meta:
+        verbose_name = "Historique accès gracieux"
+
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     paymentDate = models.DateTimeField(auto_now_add=True)
     endDate = models.DateTimeField()
@@ -48,6 +64,12 @@ class WhiteListHistory(models.Model):
     history = HistoricalRecords()
 
 class Profile(models.Model):
+    """
+    Stores user profile
+    """
+    class Meta:
+        verbose_name = "Profil"
+
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     credit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     debit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
@@ -57,6 +79,9 @@ class Profile(models.Model):
 
     @property
     def is_adherent(self):
+        """
+        Test if a user is adherent
+        """
         if(self.cotisationEnd and self.cotisationEnd > timezone.now()):
             return True
         else:
@@ -64,17 +89,29 @@ class Profile(models.Model):
 
     @property
     def balance(self):
+        """
+        Computes user balance
+        """
         return self.credit - self.debit
 
     def positiveBalance(self):
+        """
+        Test if the user balance is positive or null
+        """
         return self.balance >= 0
 
     @property
     def rank(self):
+        """
+        Computes the rank (by debit) of the user
+        """
         return Profile.objects.filter(debit__gte=self.debit).count()
 
     @property
     def alcohol(self):
+        """
+        Computes ingerated alcohol
+        """
         consumptions = ConsumptionHistory.objects.filter(customer=self.user).select_related('product')
         alcohol = 0
         for consumption in consumptions:
@@ -87,15 +124,24 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
+    """
+    Create profile when user is created
+    """
     if created:
         Profile.objects.create(user=instance)
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
+    """
+    Save profile when user is saved
+    """
     instance.profile.save()
 
 def str_user(self):
-    if(self.profile.is_adherent):
+    """
+    Rewrite str method for user
+    """
+    if self.profile.is_adherent:
         fin = "Adhérent"
     else:
         fin = "Non adhérent"

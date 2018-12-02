@@ -4,6 +4,9 @@ from django.core.validators import MinValueValidator
 
 
 class PaymentMethod(models.Model):
+    """
+    Stores payment methods
+    """
     name = models.CharField(max_length=255, verbose_name="Nom")
     is_active = models.BooleanField(default=True, verbose_name="Actif")
     is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Cotisations ?")
@@ -15,6 +18,9 @@ class PaymentMethod(models.Model):
         return self.name
 
 class GeneralPreferences(models.Model):
+    """
+    Stores a unique line of general preferences
+    """
     is_active = models.BooleanField(default=True)
     active_message = models.TextField(blank=True)
     global_message = models.TextField(blank=True)
@@ -27,6 +33,9 @@ class GeneralPreferences(models.Model):
     history = HistoricalRecords()
 
 class Cotisation(models.Model):
+    """
+    Stores cotisations
+    """
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant", validators=[MinValueValidator(0)])
     duration = models.PositiveIntegerField(verbose_name="Durée de la cotisation (jours)")
     history = HistoricalRecords()

@@ -11,8 +11,20 @@ from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm
 
 @active_required
 @login_required
-@permission_required('preferences.add_generalpreferences')
+@permission_required('preferences.change_generalpreferences')
 def generalPreferences(request):
+    """
+    Display form to edit the general preferences
+
+    **Context**
+
+    ``form``
+        The GeneralPreferences form instance
+
+    **Template**
+
+    :template:`preferences/general_preferences.html`
+    """
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
     form = GeneralPreferencesForm(request.POST or None, instance=gp)
     if(form.is_valid()):
@@ -25,6 +37,18 @@ def generalPreferences(request):
 @login_required
 @permission_required('preferences.view_cotisation')
 def cotisationsIndex(request):
+    """
+    Lists the cotisations
+
+    **Context**
+
+    ``cotisations``
+        List of cotisations
+
+    **Template**
+
+    :template:`preferences/cotisations_index.html`
+    """
     cotisations = Cotisation.objects.all()
     return render(request, "preferences/cotisations_index.html", {"cotisations": cotisations})
 
@@ -32,6 +56,24 @@ def cotisationsIndex(request):
 @login_required
 @permission_required('preferences.add_cotisation')
 def addCotisation(request):
+    """
+    Form to add a cotisation
+
+    **Context**
+
+    ``form``
+        The CotisationForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the form button
+
+    **Template**
+
+    :template:`form.html`
+    """
     form = CotisationForm(request.POST or None)
     if(form.is_valid()):
         cotisation = form.save()
@@ -43,6 +85,27 @@ def addCotisation(request):
 @login_required
 @permission_required('preferences.change_cotisation')
 def editCotisation(request, pk):
+    """
+    Form to edit a cotisation
+
+    ``pk``
+        The primary key of the cotisation
+
+    **Context**
+
+    ``form``
+        The CotisationForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the form button
+
+    **Template**
+
+    :template:`form.html`
+    """
     cotisation = get_object_or_404(Cotisation, pk=pk)
     form = CotisationForm(request.POST or None, instance=cotisation)
     if(form.is_valid()):
@@ -55,6 +118,12 @@ def editCotisation(request, pk):
 @login_required
 @permission_required('preferences.delete_cotisation')
 def deleteCotisation(request,pk):
+    """
+    Delete a cotisation
+
+    ``pk``
+        The primary key of the cotisation to delete
+    """
     cotisation = get_object_or_404(Cotisation, pk=pk)
     message = "La cotisation (" + str(cotisation.duration) + " jours, " + str(cotisation.amount) + "€) a bien été supprimée"
     cotisation.delete()
@@ -68,6 +137,18 @@ def deleteCotisation(request,pk):
 @login_required
 @permission_required('preferences.view_paymentmethod')
 def paymentMethodsIndex(request):
+    """
+    Lists the paymentMethods
+
+    **Context**
+
+    ``paymentMethods``
+        List of paymentMethods
+
+    **Template**
+
+    :template:`preferences/payment_methods_index.html`
+    """
     paymentMethods =  PaymentMethod.objects.all()
     return render(request, "preferences/payment_methods_index.html", {"paymentMethods": paymentMethods})
 
@@ -75,6 +156,24 @@ def paymentMethodsIndex(request):
 @login_required
 @permission_required('preferences.add_paymentmethod')
 def addPaymentMethod(request):
+    """
+    Form to add a paymentMethod
+
+    **Context**
+
+    ``form``
+        The CotisationForm form paymentMethod
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the form button
+
+    **Template**
+
+    :template:`form.html`
+    """
     form = PaymentMethodForm(request.POST or None)
     if(form.is_valid()):
         paymentMethod = form.save()
@@ -86,6 +185,27 @@ def addPaymentMethod(request):
 @login_required
 @permission_required('preferences.change_paymentmethod')
 def editPaymentMethod(request, pk):
+    """
+    Form to edit a paymentMethod
+
+    ``pk``
+        The primary key of the paymentMethod
+
+    **Context**
+
+    ``form``
+        The PaymentMethodForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the form button
+
+    **Template**
+
+    :template:`form.html`
+    """
     paymentMethod = get_object_or_404(PaymentMethod, pk=pk)
     form = PaymentMethodForm(request.POST or None, instance=paymentMethod)
     if(form.is_valid()):
@@ -98,6 +218,12 @@ def editPaymentMethod(request, pk):
 @login_required
 @permission_required('preferences.delete_paymentmethod')
 def deletePaymentMethod(request,pk):
+    """
+    Delete a paymentMethod
+
+    ``pk``
+        The primary key of the paymentMethod to delete
+    """
     paymentMethod = get_object_or_404(PaymentMethod, pk=pk)
     message = "Le moyen de paiement " + paymentMethod.name + " a bien été supprimé"
     paymentMethod.delete()

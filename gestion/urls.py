@@ -29,7 +29,6 @@ urlpatterns = [
     path('getProduct/<str:barcode>', views.getProduct, name="getProduct"),
     path('order', views.order, name="order"),
     path('ranking', views.ranking, name="ranking"),
-    path('annualRanking', views.annualRanking, name="annualRanking"),
     path('searchProduct', views.searchProduct, name="searchProduct"),
     path('cancelConsumption/<int:pk>', views.cancel_consumption, name="cancelConsumption"),
     path('cancelMenu/<int:pk>', views.cancel_menu, name="cancelMenu"),

@@ -623,6 +623,18 @@ def removeUser(request, groupPk, userPk):
 @login_required
 @admin_required
 def adminsIndex(request):
+    """
+    Lists the staff
+
+    **Context**
+
+    ``admins``
+        List of staff
+
+    **Template**
+
+    :template:`users/admins_index.html`
+    """
     admins = User.objects.filter(is_staff=True)
     return render(request, "users/admins_index.html", {"admins": admins})
 
@@ -630,6 +642,24 @@ def adminsIndex(request):
 @login_required
 @admin_required
 def addAdmin(request):
+    """
+    Form to add a member to staff
+
+    **Context**
+
+    ``form``
+        The SelectNonAdminUserForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     form = SelectNonAdminUserForm(request.POST or None)
     if(form.is_valid()):
         user = form.cleaned_data['user']
@@ -637,12 +667,18 @@ def addAdmin(request):
         user.save()
         messages.success(request, "L'utilisateur " + user.username + " a bien été rajouté aux admins")
         return redirect(reverse('users:adminsIndex'))
-    return render(request, "form.html", {"form_entete": "Gestion des admins", "form": form, "form_title": "Ajout d'un admin", "form_button":"Ajouter l'utilisateur aux admins"})
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un admin", "form_button":"Ajouter l'utilisateur aux admins"})
 
 @active_required
 @login_required
 @admin_required
 def removeAdmin(request, pk):
+    """
+    Remove an user form staff
+
+    ``pk``
+        The primary key of the user
+    """
     user = get_object_or_404(User, pk=pk)
     if user.is_staff:
         if user.is_superuser:
@@ -664,6 +700,18 @@ def removeAdmin(request, pk):
 @login_required
 @superuser_required
 def superusersIndex(request):
+    """
+    Lists the superusers
+
+    **Context**
+
+    ``superusers``
+        List of superusers
+
+    **Template**
+
+    :template:`users/superusers_index.html`
+    """
     superusers = User.objects.filter(is_superuser=True)
     return render(request, "users/superusers_index.html", {"superusers": superusers})
 
@@ -671,8 +719,26 @@ def superusersIndex(request):
 @login_required
 @superuser_required
 def addSuperuser(request):
+    """
+    Displays a form to add a superuser
+
+    **Context**
+
+    ``form``
+        The SelectNonSuperUserForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     form = SelectNonSuperUserForm(request.POST or None)
-    if(form.is_valid()):
+    if form.is_valid():
         user = form.cleaned_data['user']
         user.is_admin = True
         user.is_superuser = True
@@ -685,6 +751,12 @@ def addSuperuser(request):
 @login_required
 @superuser_required
 def removeSuperuser(request, pk):
+    """
+    Removes a user from superusers
+
+    ``pk``
+        The primary key of the user
+    """
     user = get_object_or_404(User, pk=pk)
     if user.is_superuser:
         if User.objects.filter(is_superuser=True).count() > 1:
@@ -703,6 +775,27 @@ def removeSuperuser(request, pk):
 @login_required
 @permission_required('users.add_cotisationhistory')
 def addCotisationHistory(request, pk):
+    """
+    Add a cotisation to the requested user
+
+    ``pk``
+        The primary key of the user
+
+     **Context**
+
+    ``form``
+        The addCotisationHistoryForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     user = get_object_or_404(User, pk=pk)
     form = addCotisationHistoryForm(request.POST or None)
     if(form.is_valid()):
@@ -730,8 +823,14 @@ def addCotisationHistory(request, pk):
 
 @active_required
 @login_required
-@permission_required('users.validate_consumptionhistory')
+@permission_required('users.validate_cotisationhistory')
 def validateCotisationHistory(request, pk):
+    """
+    Validate the requested :model:`users.CotisationHistory`
+
+    ``pk``
+        The primary key of the :model:`users.CotisationHistory`
+    """
     cotisationHistory = get_object_or_404(CotisationHistory, pk=pk)
     cotisationHistory.valid = CotisationHistory.VALID
     cotisationHistory.save()
@@ -740,8 +839,14 @@ def validateCotisationHistory(request, pk):
 
 @active_required
 @login_required
-@permission_required('users.validate_consumptionhistory')
+@permission_required('users.validate_cotisationhistory')
 def invalidateCotisationHistory(request, pk):
+    """
+    Invalidate the requested :model:`users.CotisationHistory`
+
+    ``pk``
+        The primary key of the :model:`users.CotisationHistory`
+    """
     cotisationHistory = get_object_or_404(CotisationHistory, pk=pk)
     cotisationHistory.valid = CotisationHistory.INVALID
     cotisationHistory.save()
@@ -759,6 +864,27 @@ def invalidateCotisationHistory(request, pk):
 @login_required
 @permission_required('users.add_whitelisthistory')
 def addWhiteListHistory(request, pk):
+    """
+    Add a :model:`users.WhitelistHistory` to the requested user
+
+    ``pk``
+        The primary key of the user
+
+     **Context**
+
+    ``form``
+        The addWhiteListHistoryForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     user = get_object_or_404(User, pk=pk)
     form = addWhiteListHistoryForm(request.POST or None)
     if(form.is_valid()):
@@ -782,6 +908,18 @@ def addWhiteListHistory(request, pk):
 @login_required
 @permission_required('users.view_school')
 def schoolsIndex(request):
+    """
+    Lists the :model:`users.School`
+
+    **Context**
+
+    ``schools``
+        List of the :model:`users.School`
+
+    **Template**
+    
+    :template:`users/schools_index.html`
+    """
     schools = School.objects.all()
     return render(request, "users/schools_index.html", {"schools": schools})
 
@@ -789,8 +927,26 @@ def schoolsIndex(request):
 @login_required
 @permission_required('users.add_school')
 def createSchool(request):
+    """
+    Displays form to create :model:`users.School`
+
+    **Context**
+
+    ``form``
+        The SchoolForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     form = SchoolForm(request.POST or None)
-    if(form.is_valid()):
+    if form.is_valid():
         form.save()
         messages.success(request, "L'école a bien été créée")
         return redirect(reverse('users:schoolsIndex'))
@@ -800,6 +956,27 @@ def createSchool(request):
 @login_required
 @permission_required('users.change_school')
 def editSchool(request, pk):
+    """
+    Displays form to create :model:`users.School`
+
+    ``pk``
+        The primary key of :model:`users.School`
+
+    **Context**
+
+    ``form``
+        The SchoolForm form instance
+
+    ``form_title``
+        The title of the form
+
+    ``form_button``
+        The text of the button
+
+    **Template**
+
+    :template:`form.html`
+    """
     school = get_object_or_404(School, pk=pk)
     form = SchoolForm(request.POST or None, instance=school)
     if(form.is_valid()):
@@ -812,6 +989,12 @@ def editSchool(request, pk):
 @login_required
 @permission_required('users.delete_school')
 def deleteSchool(request, pk):
+    """
+    Delete a :model:`users.School`
+
+    ``pk``
+        The primary key of the school to delete
+    """
     school = get_object_or_404(School, pk=pk)
     message = "L'école " + str(school) + " a bien été supprimée"
     school.delete()
@@ -821,6 +1004,9 @@ def deleteSchool(request, pk):
 ########## Autocomplete searchs ##########
 
 class AllUsersAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autcomplete for all users
+    """
     def get_queryset(self):
         qs = User.objects.all()
         if self.q:
@@ -828,6 +1014,9 @@ class AllUsersAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
 class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete for active users
+    """
     def get_queryset(self):
         qs = User.objects.filter(is_active=True)
         if self.q:
@@ -835,11 +1024,17 @@ class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
 class AdherentAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete for adherents
+    """
     def get_queryset(self):
         qs = User.objects.all()
         return qs
 
 class NonSuperUserAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete for non-superuser users
+    """
     def get_queryset(self):
         qs = User.objects.filter(is_superuser=False)
         if self.q:
@@ -847,6 +1042,9 @@ class NonSuperUserAutocomplete(autocomplete.Select2QuerySetView):
         return qs
 
 class NonAdminUserAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete for non-admin users
+    """
     def get_queryset(self):
         qs = User.objects.filter(is_staff=False)
         if self.q:
