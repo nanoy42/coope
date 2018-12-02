@@ -91,10 +91,10 @@ def manage(request):
         "pay_buttons": pay_buttons
         })
 
+@csrf_exempt
 @active_required
 @login_required
 @permission_required('gestion.add_consumptionhistory')
-@csrf_exempt
 def order(request):
     """
     Process the given order. Called by a js/JQuery script.

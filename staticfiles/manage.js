@@ -56,11 +56,11 @@ function generate_html(){
 	html =""
 	for(k=0;k<products.length;k++){
 		product = products[k]
-		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(product.quantity * product.amount) + '</td></tr>';
+		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + '</td></tr>';
 	}
 	for(k=0; k<menus.length;k++){
 		menu = menus[k]
-		html += '<tr><td>' + menu.barcode + '</td><td>' + menu.name + '</td><td>' + String(menu.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(menu.quantity * menu.amount) + '</td></tr>';
+		html += '<tr><td>' + menu.barcode + '</td><td>' + menu.name + '</td><td>' + String(menu.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(Number((menu.quantity * menu.amount).toFixed(2))) + '</td></tr>';
 	}
 	$("#items").html(html)
 	updateTotal();
@@ -74,9 +74,9 @@ function updateTotal(){
 	for(k=0; k<menus.length;k++){
 		total += menus[k].quantity * menus[k].amount;
 	}
-	$("#totalAmount").text(String(total) + "€")
+	$("#totalAmount").text(String(Number(total.toFixed(2))) + "€")
 	totalAfter = balance - total
-	$("#totalAfter").text(totalAfter + "€")
+	$("#totalAfter").text(String(Number(totalAfter.toFixed(2))) + "€")
 }
 
 function updateInput(a){
