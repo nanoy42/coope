@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "/home/nanoy/.virtualenvs/coopeV3/bin/python",
-    "python.linting.pylintArgs": [
-        "--load-plugins=pylint_django"
-   ],
-}
