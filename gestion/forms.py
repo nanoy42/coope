@@ -34,7 +34,7 @@ class ProductForm(forms.ModelForm):
 class KegForm(forms.ModelForm):
     class Meta:
         model = Keg
-        fields = "__all__"
+        exclude = ("is_active", )
 
 class MenuForm(forms.ModelForm):
     class Meta:

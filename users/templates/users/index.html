@@ -16,7 +16,7 @@
 	</header>
 	Actions possibles :
 	<ul>
-		{% if perms.auth.add_user}
+		{% if perms.auth.add_user %}
 		<li><a href="{% url 'users:createUser' %}">Ajouter un utilisateur</a></li>
 		{% endif %}
 		{% if perms.auth.view_user %}

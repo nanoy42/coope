@@ -166,6 +166,8 @@ def createUser(request):
         user.save()
         user.profile.school = form.cleaned_data['school']
         user.save()
+        messages.success(request, "L'utilisateur a bien été créé")
+        return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
     return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer l'utilisateur"})
 
 @active_required

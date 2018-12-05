@@ -38,7 +38,7 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Actif")
     volume = models.PositiveIntegerField(default=0)
     deg = models.DecimalField(default=0,max_digits=5, decimal_places=2, verbose_name="Degré", validators=[MinValueValidator(0)])
-    adherentRequired = models.BooleanField(default=True)
+    adherentRequired = models.BooleanField(default=True, verbose_name="Adhérent requis")
     history = HistoricalRecords()
 
     def __str__(self):
@@ -63,7 +63,7 @@ def isDemi(id):
         )
 
 def isGalopin(id):
-    product = Product.objects.get(id)
+    product = Product.objects.get(id=id)
     if product.category != Product.G_PRESSION:
         raise ValidationError(
             ('%(product)s n\'est pas un galopin'),
@@ -84,7 +84,7 @@ class Keg(models.Model):
     name = models.CharField(max_length=20, unique=True, verbose_name="Nom")
     stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
     barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Prix du fût", validators=[MinValueValidator(0)])
+    amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Prix du fût", validators=[MinValueValidator(0)])
     capacity = models.IntegerField(default=30, verbose_name="Capacité (L)")
     pinte = models.ForeignKey(Product, on_delete=models.PROTECT, related_name="futp", validators=[isPinte])
     demi = models.ForeignKey(Product, on_delete=models.PROTECT, related_name="futd", validators=[isDemi])
@@ -126,7 +126,7 @@ class Reload(models.Model):
         verbose_name = "Rechargement"
     
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="reload_taken", verbose_name="Client")
-    amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
+    amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     PaymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT, verbose_name="Moyen de paiement")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="reload_realized")
     date = models.DateTimeField(auto_now_add=True)
@@ -154,7 +154,7 @@ class Refund(models.Model):
 
     date = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="refund_taken", verbose_name="Client")
-    amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
+    amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="refund_realized")
     history = HistoricalRecords()
 
@@ -167,7 +167,7 @@ class Menu(models.Model):
     Stores menus
     """
     name = models.CharField(max_length=255, verbose_name="Nom")
-    amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
+    amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
     articles = models.ManyToManyField(Product, verbose_name="Produits")
     is_active = models.BooleanField(default=False, verbose_name="Actif")
@@ -195,7 +195,7 @@ class MenuHistory(models.Model):
     paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
     date = models.DateTimeField(auto_now_add=True)
     menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
-    amount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_selled")
     history = HistoricalRecords()
 

@@ -71,8 +71,8 @@ class Profile(models.Model):
         verbose_name = "Profil"
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    credit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
-    debit = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    credit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    debit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True)
     cotisationEnd = models.DateTimeField(blank=True, null=True)
     history = HistoricalRecords()
