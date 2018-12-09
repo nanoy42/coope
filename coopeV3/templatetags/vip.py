@@ -1,5 +1,5 @@
 from django import template
-
+import random
 from preferences.models import GeneralPreferences
 
 register = template.Library()
@@ -37,4 +37,5 @@ def grocer():
 @register.simple_tag
 def global_message():
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    return gp.global_message
+    messages = gp.global_message.split("\n")
+    return random.choice(messages)
