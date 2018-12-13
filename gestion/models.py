@@ -135,16 +135,6 @@ class Reload(models.Model):
     def __str__(self):
         return "Rechargement effectue par {0} le {1} ({2} euros, coopeman : {3})".format(self.customer, self.date, self.amount, self.coopeman)
 
-
-class Raming(models.Model):
-    keg = models.ForeignKey(Keg, on_delete=models.PROTECT)
-    coopeman = models.ForeignKey(User, on_delete=models.PROTECT)
-    date = models.DateTimeField(auto_now_add=True)
-    history = HistoricalRecords()
-
-    def __str__(self):
-        return "Percussion d'un {0} effectué par {1} le {2}".format(self.keg, self.coopeman, self.date)
-
 class Refund(models.Model):
     """
     Stores refunds

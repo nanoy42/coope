@@ -1,4 +1,4 @@
-CoopeV3 by Nanoy
+# CoopeV3 by Nanoy
 
 ## Installation 
 Pour installer le projet : 

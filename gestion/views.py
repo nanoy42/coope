@@ -233,6 +233,9 @@ def cancel_consumption(request, pk):
     user = consumption.customer
     user.profile.debit -= consumption.amount
     user.save()
+    consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
+    consumptionT.quantity -= consumption.quantity
+    consumptionT.save()
     consumption.delete()
     messages.success(request, "La consommation a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -251,6 +254,10 @@ def cancel_menu(request, pk):
     user = menu_history.customer
     user.profile.debit -= menu_history.amount
     user.save()
+    for product in manu_history.menu.articles:
+        consumptionT = Consumption.objects.get(customer=user, product=product)
+        consumptionT -= menu_history.quantity
+        consumptionT.save()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     menu_history.delete()
     messages.success(request, "La consommation du menu a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
