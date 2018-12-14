@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block entete %}Site inactif{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Site inactif</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Site inactif</h2>
+	</header>
+	<section>
+		Le site coope.rez est actuellement inactif.<br>
+
+		<strong>Raison : {{message}}</strong>
+	</section>
+</section>
+{% endblock %}

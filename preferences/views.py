@@ -229,3 +229,13 @@ def deletePaymentMethod(request,pk):
     paymentMethod.delete()
     messages.success(request, message)
     return redirect(reverse('preferences:paymentMethodsIndex'))
+
+########## Active Site ##########
+
+def inactive(request):
+    """
+    Displays inactive view
+    """
+    gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
+    return render(request, 'preferences/inactive.html', {"message": gp.active_message})
+    
