@@ -35,7 +35,7 @@ def active_required(view):
     def wrapper(request, *args, **kwargs):
         gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
         if(not gp.is_active):
-            return redirect(reverse('preferences:inactif'))
+            return redirect(reverse('preferences:inactive'))
         return view(request, *args, **kwargs)
     return wrapper
     

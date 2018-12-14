@@ -158,7 +158,7 @@ def order(request):
             consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
             consumption.quantity += quantity
             consumption.save()
-            ch = ConsumptionHistory(customer = user, quantity = quantity, paymentMethod=paymentMethod, product=product, amount=int(quantity*product.amount), coopeman=request.user)
+            ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
             ch.save()
         for m in menus:
             menu = get_object_or_404(Menu, pk=m["pk"])

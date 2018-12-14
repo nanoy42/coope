@@ -13,4 +13,5 @@ urlpatterns = [
     path('addPaymentMethod', views.addPaymentMethod, name="addPaymentMethod"),
     path('editPaymentMethod/<int:pk>', views.editPaymentMethod, name="editPaymentMethod"),
     path('deletePaymentMethod/<int:pk>', views.deletePaymentMethod, name="deletePaymentMethod"),
+    path('inactive', views.inactive, name="inactive"),
 ]
