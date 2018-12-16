@@ -300,9 +300,9 @@ def addProduct(request):
     """
     form = ProductForm(request.POST or None)
     if(form.is_valid()):
-        form.save()
+        product = form.save()
         messages.success(request, "Le produit a bien été ajouté")
-        return redirect(reverse('gestion:productsList'))
+        return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Ajout d'un produit", "form_button": "Ajouter"})
 
 @active_required
@@ -335,7 +335,7 @@ def editProduct(request, pk):
     if(form.is_valid()):
         form.save()
         messages.success(request, "Le produit a bien été modifié")
-        return redirect(reverse('gestion:productsList'))
+        return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Modification d'un produit", "form_button": "Modifier"})
 
 @active_required
@@ -433,7 +433,7 @@ def switch_activate(request, pk):
     product.is_active = 1 - product.is_active
     product.save()
     messages.success(request, "La disponibilité du produit a bien été changée")
-    return redirect(reverse('gestion:productsList'))
+    return redirect(reverse('gestion:productProfile', kwargs={'pk': product.pk}))
 
 class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
