@@ -11,7 +11,7 @@ from coopeV3.widgets import SearchField
 class ReloadForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReloadForm, self).__init__(*args, **kwargs)
-        self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True)
+        self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True).filter(is_active=True)
         
     class Meta:
         model = Reload

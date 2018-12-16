@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User, Group
 from dal import autocomplete
 from .models import School, CotisationHistory, WhiteListHistory
+from preferences.models import PaymentMethod
 
 class LoginForm(forms.Form):
     """
@@ -84,6 +85,10 @@ class addCotisationHistoryForm(forms.ModelForm):
     """
     Form to add a cotisation to user
     """
+    def __init__(self, *args, **kwargs):
+        super(addCotisationHistoryForm, self).__init__(*args, **kwargs)
+        self.fields['paymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_cotisation=True).filter(is_active=True)
+
     class Meta:
         model = CotisationHistory
         fields = ("cotisation", "paymentMethod")
