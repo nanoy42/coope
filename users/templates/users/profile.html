@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block entete %}{% if self %}<h1>Mon Profil</h1>{% else %}<h1>Profil de {{user}}</h1>{% endif %}{%endblock%}
+{% block entete %}{% if self %}Mon Profil{% else %}Profil de {{user}}{% endif %}{%endblock%}
 
 {% block navbar %}
 <ul>
