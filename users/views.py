@@ -111,7 +111,7 @@ def profile(request, pk):
     self = request.user == user
     cotisations = CotisationHistory.objects.filter(user=user)
     whitelists = WhiteListHistory.objects.filter(user=user)
-    reloads = Reload.objects.filter(customer=user).order_by('-date')
+    reloads = Reload.objects.filter(customer=user).order_by('-date')[:5]
     consumptionsChart = Consumption.objects.filter(customer=user)
     products = []
     quantities = []
