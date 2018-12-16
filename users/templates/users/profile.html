@@ -42,7 +42,7 @@
 					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
 						<b>Position au classement : </b>{{user.profile.rank}}<span class="tabulation">
-						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol}} kg</span>
+						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol | floatformat:"-2"}} kg</span>
 					</li>
 				</ul>
 			</div>
