@@ -32,6 +32,12 @@ class ProductForm(forms.ModelForm):
         fields = "__all__"
 
 class KegForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(KegForm, self).__init__(*args, **kwargs)
+        self.fields['pinte'].queryset = Product.objects.filter(category=Product.P_PRESSION)
+        self.fields['demi'].queryset = Product.objects.filter(category=Product.D_PRESSION)
+        self.fields['galopin'].queryset = Product.objects.filter(category=Product.G_PRESSION)
+
     class Meta:
         model = Keg
         exclude = ("is_active", )
