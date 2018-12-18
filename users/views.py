@@ -105,19 +105,11 @@ def export_csv(request):
             top.append(dict(ExportForm.FIELDS_CHOICES)[field])
         writer.writerow(top)
         for user in users:
-            userD = model_to_dict(user)
-            profileD = model_to_dict(user.profile)
             row = [user.pk]
             for field in fields:
-                if "profile" in field:
-                    if "balance" in field:
-                        row.append(user.profile.balance)
-                    elif "school" in field:
-                        row.append(str(user.profile.school))
-                    else:
-                        row.append(profileD[field[8:]])
-                else:
-                    row.append(userD[field])
+                r = getattr(user.profile, field, None)
+                if r is not None:
+                    row.append(str(r))
             writer.writerow(row)
         return response
     else:

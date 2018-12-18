@@ -122,10 +122,10 @@ class ExportForm(forms.Form):
         ('last_name', 'Nom'),
         ('first_name', 'Prénom'),
         ('email', 'Adresse mail'),
-        ('profile.school', 'École'),
-        ('profile.balance', 'Solde'),
-        ('profile.credit', 'Crédit'),
-        ('profile.debit', 'Débit')
+        ('school', 'École'),
+        ('balance', 'Solde'),
+        ('credit', 'Crédit'),
+        ('debit', 'Débit')
     )
     query_type = forms.ChoiceField(choices=QUERY_TYPE_CHOICES, label="Ensemble de la demande")
     fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=FIELDS_CHOICES, label="Champs")
