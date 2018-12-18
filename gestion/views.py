@@ -231,8 +231,9 @@ def cancel_consumption(request, pk):
     """
     consumption = get_object_or_404(ConsumptionHistory, pk=pk)
     user = consumption.customer
-    user.profile.debit -= consumption.amount
-    user.save()
+    if consumption.paymentMethod.affect_balance:
+        user.profile.debit -= consumption.amount
+        user.save()
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
     consumptionT.quantity -= consumption.quantity
     consumptionT.save()
@@ -252,8 +253,9 @@ def cancel_menu(request, pk):
     """
     menu_history = get_object_or_404(MenuHistory, pk=pk)
     user = menu_history.customer
-    user.profile.debit -= menu_history.amount
-    user.save()
+    if menu_history.paymentMethod.affect_balance:
+        user.profile.debit -= menu_history.amount
+        user.save()
     for product in manu_history.menu.articles:
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
