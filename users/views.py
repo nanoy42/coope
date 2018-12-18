@@ -7,14 +7,16 @@ from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.decorators import login_required, permission_required
+from django.forms.models import model_to_dict
 
 import simplejson as json
 from datetime import datetime, timedelta
 from dal import autocomplete
+import csv
 
 from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, active_required
 from .models import CotisationHistory, WhiteListHistory, School
-from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm
+from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
 from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 
 @active_required
@@ -72,7 +74,54 @@ def index(request):
 
     :template:`users/index.html`
     """
-    return render(request, "users/index.html")
+    export_form = ExportForm(request.POST or None)
+    return render(request, "users/index.html", {"export_form": export_form})
+
+def export_csv(request):
+    export_form = ExportForm(request.POST or None)
+    if export_form.is_valid():
+        users = User.objects
+        qt = export_form.cleaned_data['query_type']
+        if qt == 'all':
+            users = users.all()
+            filename="Utilisateurs-coope"
+        elif qt == 'all_active':
+            users = users.filter(is_active=True)
+            filename="Utilisateurs-actifs-coope"
+        elif qt == 'adherent':
+            pks = [x.pk for x in User.objects.all() if x.profile.is_adherent]
+            users = users.filter(pk__in=pks)
+            filename="Adherents-coope"
+        elif qt == 'adherent_active':
+            pks = [x.pk for x in User.objects.filter(is_active=True) if x.profile.is_adherent]
+            users = users.filter(pk__in=pks)
+            filename="Adherents-actifs-coope"
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename="'+ filename + '.csv"'
+        writer = csv.writer(response)
+        fields = export_form.cleaned_data['fields']
+        top = ["#"]
+        for field in fields:
+            top.append(dict(ExportForm.FIELDS_CHOICES)[field])
+        writer.writerow(top)
+        for user in users:
+            userD = model_to_dict(user)
+            profileD = model_to_dict(user.profile)
+            row = [user.pk]
+            for field in fields:
+                if "profile" in field:
+                    if "balance" in field:
+                        row.append(user.profile.balance)
+                    elif "school" in field:
+                        row.append(str(user.profile.school))
+                    else:
+                        row.append(profileD[field[8:]])
+                else:
+                    row.append(userD[field])
+            writer.writerow(row)
+        return response
+    else:
+        return redirect(reverse('users:index'))
 
 ########## users ##########
 

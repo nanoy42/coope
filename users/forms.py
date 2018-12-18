@@ -108,3 +108,24 @@ class SchoolForm(forms.ModelForm):
     class Meta:
         model = School
         fields = "__all__"
+
+class ExportForm(forms.Form):
+    QUERY_TYPE_CHOICES = (
+        ('all', 'Tous les comptes'),
+        ('all_active', 'Tous les comptes actifs'),
+        ('adherent', 'Tous les adhérents'),
+        ('adherent_active', 'Tous les adhérents actifs')
+    )
+
+    FIELDS_CHOICES = (
+        ('username', 'Nom d\'utilisateur'),
+        ('last_name', 'Nom'),
+        ('first_name', 'Prénom'),
+        ('email', 'Adresse mail'),
+        ('profile.school', 'École'),
+        ('profile.balance', 'Solde'),
+        ('profile.credit', 'Crédit'),
+        ('profile.debit', 'Débit')
+    )
+    query_type = forms.ChoiceField(choices=QUERY_TYPE_CHOICES, label="Ensemble de la demande")
+    fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=FIELDS_CHOICES, label="Champs")
