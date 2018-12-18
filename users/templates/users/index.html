@@ -7,6 +7,7 @@
 	<li><a href="#third">Admins</a></li>
 	<li><a href="#fourth">Superusers</a></li>
 	<li><a href="#fifth">Écoles</a></li>
+	<li><a href="#sixth">Exportation de données</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -76,5 +77,15 @@
 		<li><a href="{% url 'users:schoolsIndex' %}">Lister les écoles</a></li>
 		{% endif %}
 	</ul>
+</section>
+<section id="sixth" class="main">
+	<header class="major">
+		<h2>Exportation de données</h2>
+	</header>
+	<form action="{% url 'users:exportCSV' %}" method="POST">
+		{% csrf_token %}
+		{{export_form}}
+		<button class="button" target="_blank">Exporter au format csv</button>
+	</form>
 </section>
 {% endblock %}
