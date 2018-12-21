@@ -30,6 +30,7 @@ class GeneralPreferences(models.Model):
     secretary = models.CharField(max_length=255, blank=True)
     brewer = models.CharField(max_length=255, blank=True)
     grocer = models.CharField(max_length=255, blank=True)
+    use_pinte_monitoring = models.BooleanField(default=False)
     history = HistoricalRecords()
 
 class Cotisation(models.Model):

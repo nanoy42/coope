@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block entete %}Administration{% endblock %}
-{% block nav %}
+{% block navbar %}
 <ul>
-	<li><a href="#first" class="active">Message global</a></li>
+	<li><a href="#first">Message global</a></li>
 	<li><a href="#second">Site actif</a></li>
 	<li><a href="#third">Bureau</a></li>
+	<li><a href="#fourth">Autre</a></li>
 </ul>
 {% endblock %}
 
@@ -73,6 +74,21 @@
 					</div>
 					<div class="6u">
 						{{form.brewer}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="fourth" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Autre</h2>
+				</header>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.use_pinte_monitoring}}
+						<label for="{{form.is_active.id_for_label}}">Utiliser le suivi de pinte ?</label>
 					</div>
 				</div>
 				<div class="row uniform">
