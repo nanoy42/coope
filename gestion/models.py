@@ -225,3 +225,11 @@ class Consumption(models.Model):
 
     def __str__(self):
         return "Consommation de " + str(self.customer) + " concernant le produit " + str(self.product)
+
+class Pinte(models.Model):
+    """
+    Stores a physical pinte
+    """
+    current_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, default=None, related_name="pinte_owned_currently")
+    previous_owner = models.ForeignKey(User, on_delete=models.PROTECT, null=True, default=None, related_name="pinte_owned_previously")
+    last_update_date = models.DateTimeField(auto_now=True)
