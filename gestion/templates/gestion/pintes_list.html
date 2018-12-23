@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block entete %}Gestion des produits{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Général</a></li>
+	<li><a href="#second">Liste des pintes non rendues</a></li>
+	<li><a href="#third">Liste des pintes rendues</a></li>
+
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Général</h2>
+	</header>
+	{% if perms.gestion.add_pinte %}
+	<a class="button" href="{% url 'gestion:addPintes' %}">Créer une ou plusieurs pintes</a><br><br>
+	{% endif %}
+	Il a y actuellement {{ taken_pintes.count|add:free_pintes.count }} pintes, parmis lesquelles <strong>{{ free_pintes.count }} sont rendues</strong> et <strong>{{ taken_pintes.count }} ne sont pas rendues</strong>.
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Liste des pintes non rendues</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Numéro</th>
+					<th>Possesseur actuel</th>
+					<th>Possesseur précédent</th>
+					<th>Date du dernier changement</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pinte in taken_pintes %}
+				<tr>
+					<td>{{ pinte.pk }}</td>
+					<td>{{ pinte.current_owner }}</td>
+					<td>{{ pinte.previous_owner }}</td>
+					<td>{{ pinte.last_update_date }}</td>
+					<td>{% if perms.gestion.change_pinte %} <a href="{% url 'gestion:release' pinte.pk %}" class="button small">Libérer</a>{% endif %}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Liste des pintes rendues</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Numéro</th>
+					<th>Possesseur précédent</th>
+					<th>Date du dernier changement</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pinte in free_pintes %}
+				<tr>
+					<td>{{ pinte.pk }}</td>
+					<td>{{ pinte.previous_owner }}</td>
+					<td>{{ pinte.last_update_date }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
