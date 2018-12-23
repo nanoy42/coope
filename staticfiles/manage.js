@@ -10,7 +10,10 @@ nbPintes = 0;
 use_pinte_monitoring = false;
 
 function get_config(){
-	use_pinte_monitoring = true;
+	res = $.get("../preferences/getConfig", function(data){
+		console.log(data.use_pinte_monitoring)
+		use_pinte_monitoring = data.use_pinte_monitoring;
+	});
 }
 
 function get_product(barcode){
@@ -131,19 +134,21 @@ $(document).ready(function(){
 	});
 	});
 	$(".pay_button").click(function(){
-		message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
-		while(nbPintes > 0){
-			id_pinte = window.prompt(message,"");
-			if(id_pinte == null){
-				return; 
-			}else{
-				id_pinte = parseInt(id_pinte);
-				if(!Number.isInteger(id_pinte) || id_pinte < 0){
-					message = "Numéro incorrect. Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?";
+		if(use_pinte_monitoring){
+			message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
+			while(nbPintes > 0){
+				id_pinte = window.prompt(message,"");
+				if(id_pinte == null){
+					return; 
 				}else{
-					listPintes.push(id_pinte)
-					nbPintes -= 1;
-					message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
+					id_pinte = parseInt(id_pinte);
+					if(!Number.isInteger(id_pinte) || id_pinte < 0){
+						message = "Numéro incorrect. Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?";
+					}else{
+						listPintes.push(id_pinte)
+						nbPintes -= 1;
+						message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
+					}
 				}
 			}
 		}
