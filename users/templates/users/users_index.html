@@ -17,6 +17,9 @@
 				<tr>
 					<th>Utilisateur</th>
 					<th>Profil</th>
+					{% if perms.auth.change_user %}
+					<th>Activer / Désactiver</th>
+					{% endif %}
 				</tr>
 			</thead>
 			<tbody>
@@ -24,6 +27,9 @@
 				<tr>
 					<td>{{ user }}</td>
 					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
+					{% if perms.auth.change_user %}
+					<td><a class="button small" href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></td>
+					{% endif %}
 				</tr>
 				{% endfor %}
 			</tbody>

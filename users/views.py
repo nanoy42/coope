@@ -487,6 +487,16 @@ def all_menus(request, pk, page):
     menus = paginator.get_page(page)
     return render(request, "users/all_menus.html", {"menus": menus, "user":user})
     
+@active_required
+@login_required
+@permission_required('auth.change_user')
+def switch_activate_user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    user.is_active = 1 - user.is_active
+    user.save()
+    messages.success(request, "Le statut de l'utilisateur a bien été changé")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+    
 ########## Groups ##########
 
 @active_required
