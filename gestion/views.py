@@ -916,8 +916,21 @@ def allocate(pinte_pk, user):
 
 @active_required
 @login_required
+@permission_required('gestion.change_pinte')
+def release(request, pinte_pk):
+    """
+    View to release a pinte
+    """
+    if allocate(pinte_pk, None):
+        messages.success(request, "La pinte a bien été libérée")
+    else:
+        messages.error(request, "Impossible de libérer la pinte")
+    return redirect(reverse('gestion:pintesList'))
+    
+@active_required
+@login_required
 @permission_required('gestion.add_pinte')
-def create_pintes(request):
+def add_pintes(request):
     form = PinteForm(request.POST or None)
     if form.is_valid():
         ids = form.cleaned_data['ids']
@@ -953,3 +966,11 @@ def release_pintes(request):
         messages.success(request, str(i) + " pinte(s) a(ont) été libérée(s)")
         return redirect(reverse('gestion:productsIndex'))
     return render(request, "form.html", {"form": form, "form_title": "Libérer des pintes", "form_button": "Libérer"})
+
+@active_required
+@login_required
+@permission_required('gestion.view_pinte')
+def pintes_list(request):
+    free_pintes = Pinte.objects.filter(current_owner=None)
+    taken_pintes = Pinte.objects.exclude(current_owner=None)
+    return render(request, "gestion/pintes_list.html", {"free_pintes": free_pintes, "taken_pintes": taken_pintes})

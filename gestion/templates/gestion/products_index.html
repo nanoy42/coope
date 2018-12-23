@@ -66,13 +66,13 @@
 	Actions possibles :
 	<ul>
 		{% if perms.gestion.add_pinte %}
-		<li><a href="{% url 'gestion:createPintes' %}">Créer une ou plusieurs pintes</a></li>
+		<li><a href="{% url 'gestion:addPintes' %}">Créer une ou plusieurs pintes</a></li>
 		{% endif %}
 		{% if perms.gestion.change_pinte %}
 		<li><a href="{% url 'gestion:releasePintes' %}">Libérer des pintes</a></li>
 		{% endif %}
 		{% if perms.gestion.view_pinte %}
-		<li><a href="{% url 'gestion:menusList' %}">Lister les pintes</a></li>
+		<li><a href="{% url 'gestion:pintesList' %}">Lister les pintes</a></li>
 		{% endif %}
 	</ul>
 </section>
