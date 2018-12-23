@@ -13,9 +13,9 @@ import simplejson as json
 from dal import autocomplete
 from decimal import *
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory
-from preferences.models import PaymentMethod
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte
+from preferences.models import PaymentMethod, GeneralPreferences
 
 @active_required
 @login_required
@@ -107,6 +107,8 @@ def order(request):
         amount = Decimal(request.POST['amount'])
         order = json.loads(request.POST["order"])
         menus = json.loads(request.POST["menus"])
+        listPintes = json.loads(request.POST["listPintes"])
+        gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
         if (not order) and (not menus):
             return HttpResponse("Pas de commande")
         adherentRequired = False
@@ -118,6 +120,14 @@ def order(request):
             adherentRequired = adherentRequired or menu.adherent_required
         if(adherentRequired and not user.profile.is_adherent):
             return HttpResponse("N'est pas adhérent et devrait l'être")
+        # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
+        # s'il a trop de pintes non rendues, puis je réalloue les pintes
+        for pinte in listPintes:
+            allocate(pinte, None)
+        if(gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
+            return HttpResponse("Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes.")
+        for pinte in listPintes:
+            allocate(pinte, user)
         if(paymentMethod.affect_balance):
             if(user.profile.balance < amount):
                 return HttpResponse("Solde inférieur au prix de la commande")
@@ -418,7 +428,11 @@ def getProduct(request, barcode):
         The requested barcode
     """
     product = Product.objects.get(barcode=barcode)
-    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount" : product.amount})
+    if product.category == Product.P_PRESSION:
+        nb_pintes = 1
+    else:
+        nb_pintes = 0
+    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
@@ -845,7 +859,11 @@ def get_menu(request, barcode):
         The requested barcode
     """
     menu = get_object_or_404(Menu, barcode=barcode)
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount})
+    nb_pintes = 0
+    for article in menu.articles:
+        if article.category == Product.P_PRESSION:
+            nb_pintes +=1
+    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, needQuantityButton: False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
@@ -886,3 +904,80 @@ def ranking(request):
         list.append([customer, alcohol])
     bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
     return render(request, "gestion/ranking.html", {"bestBuyers": bestBuyers, "bestDrinkers": bestDrinkers})
+
+########## Pinte monitoring ##########
+
+def allocate(pinte_pk, user):
+    """
+    Allocate a pinte to a user or release the pinte if user is None
+    """
+    try:
+        pinte = Pinte.objects.get(pk=pinte_pk)
+        if pinte.current_owner is not None:
+            pinte.previous_owner = pinte.current_owner
+        pinte.current_owner = user
+        pinte.save()
+        return True
+    except Pinte.DoesNotExist:
+        return False
+
+@active_required
+@login_required
+@permission_required('gestion.change_pinte')
+def release(request, pinte_pk):
+    """
+    View to release a pinte
+    """
+    if allocate(pinte_pk, None):
+        messages.success(request, "La pinte a bien été libérée")
+    else:
+        messages.error(request, "Impossible de libérer la pinte")
+    return redirect(reverse('gestion:pintesList'))
+    
+@active_required
+@login_required
+@permission_required('gestion.add_pinte')
+def add_pintes(request):
+    form = PinteForm(request.POST or None)
+    if form.is_valid():
+        ids = form.cleaned_data['ids']
+        if ids != "":
+            ids = ids.split(" ")
+        else:
+            ids = range(form.cleaned_data['begin'], form.cleaned_data['end'] + 1)
+        i = 0
+        for id in ids:
+            if not Pinte.objects.filter(pk=id).exists():
+                new_pinte = Pinte(pk=int(id))
+                new_pinte.save()
+                i += 1
+        messages.success(request, str(i) + " pinte(s) a(ont) été ajoutée(s)")
+        return redirect(reverse('gestion:productsIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Ajouter des pintes", "form_button": "Ajouter"})
+
+@active_required
+@login_required
+@permission_required('gestion.change_pinte')
+def release_pintes(request):
+    form = PinteForm(request.POST or None)
+    if form.is_valid():
+        ids = form.cleaned_data['ids']
+        if ids != "":
+            ids = ids.split(" ")
+        else:
+            ids = range(form.cleaned_data['begin'], form.cleaned_data['end'] + 1)
+        i = 0
+        for id in ids:
+            if allocate(id, None):
+                i += 1
+        messages.success(request, str(i) + " pinte(s) a(ont) été libérée(s)")
+        return redirect(reverse('gestion:productsIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Libérer des pintes", "form_button": "Libérer"})
+
+@active_required
+@login_required
+@permission_required('gestion.view_pinte')
+def pintes_list(request):
+    free_pintes = Pinte.objects.filter(current_owner=None)
+    taken_pintes = Pinte.objects.exclude(current_owner=None)
+    return render(request, "gestion/pintes_list.html", {"free_pintes": free_pintes, "taken_pintes": taken_pintes})

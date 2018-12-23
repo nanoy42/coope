@@ -5,20 +5,32 @@ paymentMethod = null
 balance = 0
 username = ""
 id = 0
+listPintes = []
+nbPintes = 0;
+use_pinte_monitoring = false;
+
+function get_config(){
+	res = $.get("../preferences/getConfig", function(data){
+		console.log(data.use_pinte_monitoring)
+		use_pinte_monitoring = data.use_pinte_monitoring;
+	});
+}
 
 function get_product(barcode){
 	res = $.get("getProduct/" + barcode, function(data){
-		add_product(data.pk, data.barcode, data.name, data.amount);
+		nbPintes += data.nb_pintes;
+		add_product(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
 	});
 }
 
 function get_menu(barcode){
 	res = $.get("getMenu/" + barcode, function(data){
-		add_menu(data.pk, data.barcode, data.name, data.amount);
+		nbPintes += data.nb_pintes;
+		add_menu(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
 	});
 }
 
-function add_product(pk, barcode, name, amount){
+function add_product(pk, barcode, name, amount, needQuantityButton){
 	exist = false
 	index = -1
 	for(k=0;k < products.length; k++){
@@ -27,10 +39,18 @@ function add_product(pk, barcode, name, amount){
 			index = k
 		}
 	}
-	if(exist){
-		products[index].quantity += 1;
+	if(needQuantityButton){
+		quantity = parseInt(window.prompt("Quantité ?",""));
 	}else{
-		products.push({"pk": pk, "barcode": barcode, "name": name, "amount": amount, "quantity": 1});
+		quantity = 1;
+	}
+	if(quantity == null || !Number.isInteger(quantity)){
+		quantity = 1;
+	}
+	if(exist){
+		products[index].quantity += quantity;
+	}else{
+		products.push({"pk": pk, "barcode": barcode, "name": name, "amount": amount, "quantity": quantity});
 	}
 	generate_html()
 }
@@ -53,7 +73,7 @@ function add_menu(pk, barcode, name, amount){
 }
 
 function generate_html(){
-	html =""
+	html = "";
 	for(k=0;k<products.length;k++){
 		product = products[k]
 		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + '</td></tr>';
@@ -94,6 +114,7 @@ function updateMenuInput(a){
 }
 
 $(document).ready(function(){
+	get_config();
 	$(".product").click(function(){
 		product = get_product($(this).attr('target'));
 	});
@@ -113,7 +134,25 @@ $(document).ready(function(){
 	});
 	});
 	$(".pay_button").click(function(){
-		$.post("order", {"user":id, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length + menus.length, "order": JSON.stringify(products), "amount": total, "menus": JSON.stringify(menus)}, function(data){
+		if(use_pinte_monitoring){
+			message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
+			while(nbPintes > 0){
+				id_pinte = window.prompt(message,"");
+				if(id_pinte == null){
+					return; 
+				}else{
+					id_pinte = parseInt(id_pinte);
+					if(!Number.isInteger(id_pinte) || id_pinte < 0){
+						message = "Numéro incorrect. Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?";
+					}else{
+						listPintes.push(id_pinte)
+						nbPintes -= 1;
+						message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"
+					}
+				}
+			}
+		}
+		$.post("order", {"user":id, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length + menus.length, "order": JSON.stringify(products), "amount": total, "menus": JSON.stringify(menus), "listPintes": JSON.stringify(listPintes)}, function(data){
 			alert(data);
 			location.reload();
 		}).fail(function(data){

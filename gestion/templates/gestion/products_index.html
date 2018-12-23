@@ -5,6 +5,7 @@
 	<li><a href="#first">Produits</a></li>
 	<li><a href="#second">Futs</a></li>
 	<li><a href="#third">Menus</a></li>
+	<li><a href="#fourth">Pintes</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -55,6 +56,23 @@
 		{% if perms.gestion.view_menu %}
 		<li><a href="{% url 'gestion:searchMenu' %}">Rechercher un menu</a></li>
 		<li><a href="{% url 'gestion:menusList' %}">Lister les menus</a></li>
+		{% endif %}
+	</ul>
+</section>
+<section id="fourth" class="main">
+	<header class="major">
+		<h2>Pintes</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		{% if perms.gestion.add_pinte %}
+		<li><a href="{% url 'gestion:addPintes' %}">Créer une ou plusieurs pintes</a></li>
+		{% endif %}
+		{% if perms.gestion.change_pinte %}
+		<li><a href="{% url 'gestion:releasePintes' %}">Libérer des pintes</a></li>
+		{% endif %}
+		{% if perms.gestion.view_pinte %}
+		<li><a href="{% url 'gestion:pintesList' %}">Lister les pintes</a></li>
 		{% endif %}
 	</ul>
 </section>

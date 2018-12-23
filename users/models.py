@@ -119,6 +119,13 @@ class Profile(models.Model):
             alcohol += consumption.quantity * float(product.deg) * product.volume * 0.79 /10 /1000
         return alcohol
 
+    @property
+    def nb_pintes(self):
+        """
+        Return the number of pintes currently owned
+        """
+        return self.user.pintes_owned_currently.count()
+
     def __str__(self):
         return str(self.user)
 
@@ -128,9 +135,12 @@ class Profile(models.Model):
         tente de retourner l'attribut de l'user associé à l'instance
         """
         try:
-            r = super().__getattr__(name)
+            r = self.__getattribute__(name)
         except AttributeError:
-            r = getattr(self.user, name)
+            try:
+                r = super().__getattr__(name)
+            except AttributeError:
+                r = getattr(self.user, name)
         return r
 
 

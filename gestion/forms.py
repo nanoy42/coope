@@ -61,3 +61,8 @@ class SelectPositiveKegForm(forms.Form):
 
 class SelectActiveKegForm(forms.Form):
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(is_active = True), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-active-autocomplete'))
+
+class PinteForm(forms.Form):
+    ids = forms.CharField(widget=forms.Textarea, label="Numéros", help_text="Numéros séparés par un espace. Laissez vide pour utiliser le range.", required=False)
+    begin = forms.IntegerField(label="Début", help_text="Début du range", required=False)
+    end = forms.IntegerField(label="Fin", help_text="Fin du range", required=False)
