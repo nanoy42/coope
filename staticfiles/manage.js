@@ -11,20 +11,19 @@ use_pinte_monitoring = false;
 
 function get_config(){
 	res = $.get("../preferences/getConfig", function(data){
-		console.log(data.use_pinte_monitoring)
 		use_pinte_monitoring = data.use_pinte_monitoring;
 	});
 }
 
-function get_product(barcode){
-	res = $.get("getProduct/" + barcode, function(data){
+function get_product(id){
+	res = $.get("getProduct/" + id, function(data){
 		nbPintes += data.nb_pintes;
 		add_product(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
 	});
 }
 
-function get_menu(barcode){
-	res = $.get("getMenu/" + barcode, function(data){
+function get_menu(id){
+	res = $.get("getMenu/" + id, function(data){
 		nbPintes += data.nb_pintes;
 		add_menu(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
 	});
@@ -115,12 +114,15 @@ function updateMenuInput(a){
 
 $(document).ready(function(){
 	get_config();
+
 	$(".product").click(function(){
 		product = get_product($(this).attr('target'));
 	});
+
 	$(".menu").click(function(){
 		menu = get_menu($(this).attr('target'));
-	})
+	});
+
 	$("#id_client").on('change', function(){
 		id = $("#id_client").val();
 		$.get("/users/getUser/" + id, function(data){
@@ -133,6 +135,11 @@ $(document).ready(function(){
 		window.location.reload()
 	});
 	});
+
+	$("#id_product").on('change', function(){
+		product = get_product(parseInt($("#id_product").val()));		
+	});
+
 	$(".pay_button").click(function(){
 		if(use_pinte_monitoring){
 			message = "Il reste " + nbPintes.toString() + " pintes à renseigner. Numéro de la pinte ?"

@@ -55,6 +55,7 @@ class SearchMenuForm(forms.Form):
 
 class GestionForm(forms.Form):
     client = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Client", widget=autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}))
+    product = forms.ModelChoiceField(queryset=Product.objects.filter(is_active=True), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:active-products-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectPositiveKegForm(forms.Form):
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(stockHold__gt = 0), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-positive-autocomplete'))
