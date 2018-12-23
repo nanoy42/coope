@@ -74,6 +74,9 @@
 		{% if perms.gestion.view_pinte %}
 		<li><a href="{% url 'gestion:pintesList' %}">Lister les pintes</a></li>
 		{% endif %}
+		{% if perms.auth.view_user %}
+		<li><a href="{% url 'gestion:pintesUserList' %}">Lister les utilisateurs n'ayant pas rendu leurs pintes</a></li>
+		{% endif %}
 	</ul>
 </section>
 {% endblock %}
