@@ -34,6 +34,7 @@ urlpatterns = [
     path('cancelMenu/<int:pk>', views.cancel_menu, name="cancelMenu"),
     path('productProfile/<int:pk>', views.productProfile, name="productProfile"),
     path('createPintes', views.create_pintes, name="createPintes"),
+    path('releasePintes', views.release_pintes, name="releasePintes"),
     path('products-autocomplete', views.ProductsAutocomplete.as_view(), name="products-autocomplete"),
     path('kegs-positive-autocomplete', views.KegPositiveAutocomplete.as_view(), name="kegs-positive-autocomplete"),
     path('kegs-active-autocomplete', views.KegActiveAutocomplete.as_view(), name="kegs-active-autocomplete"),
