@@ -37,6 +37,7 @@ urlpatterns = [
     path('releasePintes', views.release_pintes, name="releasePintes"),
     path('pintesList', views.pintes_list, name="pintesList"),
     path('release/<int:pinte_pk>', views.release, name="release"),
+    path('pintesUserList', views.pintes_user_list, name="pintesUserList"),
     path('products-autocomplete', views.ProductsAutocomplete.as_view(), name="products-autocomplete"),
     path('kegs-positive-autocomplete', views.KegPositiveAutocomplete.as_view(), name="kegs-positive-autocomplete"),
     path('kegs-active-autocomplete', views.KegActiveAutocomplete.as_view(), name="kegs-active-autocomplete"),

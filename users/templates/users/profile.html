@@ -42,7 +42,8 @@
 					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
 						<b>Position au classement : </b>{{user.profile.rank}}<span class="tabulation">
-						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol | floatformat:"-2"}} kg</span>
+						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol | floatformat:"-2"}} kg</span><span class="tabulation">
+						<b>Nombre de pinte(s) non rendue(s) : </b> {{ user.pintes_owned_currently.count }} </span>
 					</li>
 				</ul>
 			</div>

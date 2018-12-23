@@ -981,3 +981,11 @@ def pintes_list(request):
     free_pintes = Pinte.objects.filter(current_owner=None)
     taken_pintes = Pinte.objects.exclude(current_owner=None)
     return render(request, "gestion/pintes_list.html", {"free_pintes": free_pintes, "taken_pintes": taken_pintes})
+
+@active_required
+@login_required
+@permission_required('auth.view_user')
+def pintes_user_list(request):
+    pks = [x.pk for x in User.objects.all() if x.profile.nb_pintes > 0]
+    users = User.objects.filter(pk__in=pks)
+    return render(request, "gestion/pintes_user_list.html", {"users": users})

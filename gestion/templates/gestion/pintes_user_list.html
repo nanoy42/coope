@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block entete %}Gestion des produits{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Liste des utilisateurs n'ayant pas rendu leur pinte</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des utilisateurs n'ayant pas rendu leur pinte</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Utilisateur</th>
+					<th>Profil</th>
+					<th>Nombre de pintes non rendues</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+				<tr>
+					<td>{{ user }}</td>
+					<td><a href="{% url 'users:profile' user.pk %}" class="button small">Profil</a></td>
+					<td>{{ user.pintes_owned_currently.count }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
