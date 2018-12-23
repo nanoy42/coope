@@ -15,7 +15,7 @@ from decimal import *
 
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte
-from preferences.models import PaymentMethod
+from preferences.models import PaymentMethod, GeneralPreferences
 
 @active_required
 @login_required
@@ -108,6 +108,7 @@ def order(request):
         order = json.loads(request.POST["order"])
         menus = json.loads(request.POST["menus"])
         listPintes = json.loads(request.POST["listPintes"])
+        gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
         if (not order) and (not menus):
             return HttpResponse("Pas de commande")
         adherentRequired = False
@@ -119,14 +120,20 @@ def order(request):
             adherentRequired = adherentRequired or menu.adherent_required
         if(adherentRequired and not user.profile.is_adherent):
             return HttpResponse("N'est pas adhérent et devrait l'être")
+        # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
+        # s'il a trop de pintes non rendues, puis je réalloue les pintes
+        for pinte in listPintes:
+            allocate(pinte, None)
+        if(gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
+            return HttpResponse("Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes.")
+        for pinte in listPintes:
+            allocate(pinte, user)
         if(paymentMethod.affect_balance):
             if(user.profile.balance < amount):
                 return HttpResponse("Solde inférieur au prix de la commande")
             else:
                 user.profile.debit += amount
                 user.save()
-        for pinte in listPintes:
-            allocate(pinte, user)
         for o in order:
             product = get_object_or_404(Product, pk=o["pk"])
             quantity = int(o["quantity"])

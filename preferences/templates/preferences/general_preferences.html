@@ -5,7 +5,7 @@
 	<li><a href="#first">Message global</a></li>
 	<li><a href="#second">Site actif</a></li>
 	<li><a href="#third">Bureau</a></li>
-	<li><a href="#fourth">Autre</a></li>
+	<li><a href="#fourth">Suivi de pintes</a></li>
 </ul>
 {% endblock %}
 
@@ -83,12 +83,18 @@
 		<div class="spotlight">
 			<div class="content">
 				<header class="major">
-					<h2>Autre</h2>
+					<h2>Suivi de pintes</h2>
 				</header>
 				<div class="row uniform">
 					<div class="12u">
 						{{form.use_pinte_monitoring}}
-						<label for="{{form.is_active.id_for_label}}">Utiliser le suivi de pinte ?</label>
+						<label for="{{form.use_pinte_monitoring.id_for_label}}">Utiliser le suivi de pinte ?</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.lost_pintes_allowed}}
+						<label for="{{form.lost_pintes_allowed.id_for_label}}">Nombre de pintes non rendues avant d'interdire la consommation (0 pour ne jamais l'interdire, nécessite le suivi de pinte actif)</label>
 					</div>
 				</div>
 				<div class="row uniform">
