@@ -13,7 +13,7 @@ import simplejson as json
 from dal import autocomplete
 from decimal import *
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, CreatePinteForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte
 from preferences.models import PaymentMethod
 
@@ -913,3 +913,24 @@ def allocate(pinte_pk, user):
         return True
     except Pinte.DoesNotExist:
         return False
+
+@active_required
+@login_required
+@permission_required('gestion.add_pinte')
+def create_pintes(request):
+    form = CreatePinteForm(request.POST or None)
+    if form.is_valid():
+        ids = form.cleaned_data['ids']
+        if ids != "":
+            ids = ids.split(" ")
+        else:
+            ids = range(form.cleaned_data['begin'], form.cleaned_data['end'] + 1)
+        i = 0
+        for id in ids:
+            if not Pinte.objects.filter(pk=id).exists():
+                new_pinte = Pinte(pk=int(id))
+                new_pinte.save()
+                i += 1
+        messages.success(request, str(i) + " pinte(s) a(ont) été ajoutée(s)")
+        return redirect(reverse('gestion:productsIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Ajouter des pintes", "form_button": "Ajouter"})
