@@ -14,7 +14,7 @@ from dal import autocomplete
 from decimal import *
 
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte
 from preferences.models import PaymentMethod
 
 @active_required
@@ -107,6 +107,7 @@ def order(request):
         amount = Decimal(request.POST['amount'])
         order = json.loads(request.POST["order"])
         menus = json.loads(request.POST["menus"])
+        listPintes = json.loads(request.POST["listPintes"])
         if (not order) and (not menus):
             return HttpResponse("Pas de commande")
         adherentRequired = False
@@ -124,6 +125,8 @@ def order(request):
             else:
                 user.profile.debit += amount
                 user.save()
+        for pinte in listPintes:
+            allocate(pinte, user)
         for o in order:
             product = get_object_or_404(Product, pk=o["pk"])
             quantity = int(o["quantity"])
@@ -418,7 +421,11 @@ def getProduct(request, barcode):
         The requested barcode
     """
     product = Product.objects.get(barcode=barcode)
-    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount" : product.amount})
+    if product.category == Product.P_PRESSION:
+        nb_pintes = 1
+    else:
+        nb_pintes = 0
+    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
@@ -845,7 +852,11 @@ def get_menu(request, barcode):
         The requested barcode
     """
     menu = get_object_or_404(Menu, barcode=barcode)
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount})
+    nb_pintes = 0
+    for article in menu.articles:
+        if article.category == Product.P_PRESSION:
+            nb_pintes +=1
+    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, needQuantityButton: False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
@@ -886,3 +897,19 @@ def ranking(request):
         list.append([customer, alcohol])
     bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
     return render(request, "gestion/ranking.html", {"bestBuyers": bestBuyers, "bestDrinkers": bestDrinkers})
+
+########## Pinte monitoring ##########
+
+def allocate(pinte_pk, user):
+    """
+    Allocate a pinte to a user or release the pinte if user is None
+    """
+    try:
+        pinte = Pinte.objects.get(pk=pinte_pk)
+        if pinte.current_owner is not None:
+            pinte.previous_owner = pinte.current_owner
+        pinte.current_owner = user
+        pinte.save()
+        return True
+    except Pinte.DoesNotExist:
+        return False
