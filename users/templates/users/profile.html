@@ -25,19 +25,19 @@
 				<ul class="alt" id="informationsClient">
 					<li>
 						<b>Nom : </b>{{user.last_name}}<span class="tabulation">
-							<b>Prénom : </b>{{user.first_name}}</span><span class="tabulation">
+						<b>Prénom : </b>{{user.first_name}}</span><span class="tabulation">
 						<b>École : </b>{{user.profile.school}}</span>
 					</li>
-					<li><b>Pseudo : </b>{{user.username}}<span class="tabulation">
-						<b>Mail: </b> {{user.email}}</span>
+					<li><b>Nom d'utilisateur : </b>{{user.username}}<span class="tabulation">
+						<b>Adresse mail: </b> {{user.email}}</span>
 					</li>
 					<li>
 						<b>Date inscription : </b>{{user.date_joined}}<span class="tabulation">
 						<b>Fin de cotisation: </b> {{user.profile.cotisationEnd|default:"Aucune cotisation"}}</span>
 					</li>
-					<li><b>Solde : </b>{{user.profile.balance}}<span class="tabulation">
-						<b>Crédit : </b>{{user.profile.credit}}</span><span class="tabulation">
-						<b>Débit : </b>{{user.profile.debit}}</span>
+					<li><b>Solde : </b>{{user.profile.balance}} €<span class="tabulation">
+						<b>Crédit : </b>{{user.profile.credit}} €</span><span class="tabulation">
+						<b>Débit : </b>{{user.profile.debit}} €</span>
 					</li>
 					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
@@ -151,7 +151,7 @@
 					<tr>
 						<td>{{c.product}}</td>
 						<td>{{c.quantity}}</td>
-						<td>{{c.amount}}</td>
+						<td>{{c.amount}} €</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
 						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a>{% endif %}</td>
@@ -185,7 +185,7 @@
 					<tr>
 						<td>{{m.menu}}</td>
 						<td>{{m.quantity}}</td>
-						<td>{{m.amount}}</td>
+						<td>{{m.amount}} €</td>
 						<td>{{m.paymentMethod}}</td>
 						<td>{{m.date}}</td>
 						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a>{% endif %}</td>
@@ -214,7 +214,7 @@
 				<tbody>
 					{% for reload in reloads %}
 					<tr>
-						<td>{{reload.amount}}€</td>
+						<td>{{reload.amount}} €</td>
 						<td>{{reload.PaymentMethod}}</td>
 						<td>{{reload.date}}</td>
 					</tr>
@@ -240,14 +240,14 @@
 						<th>Date de paiement</th>
 						<th>Moyen de paiement</th>
 						<th>Date de fin</th>
-						<th>Etat</th>
+						<th>État</th>
 						<th>Modération</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for cotisation in cotisations %}
 					<tr>
-						<td>{{cotisation.amount}}€</td>
+						<td>{{cotisation.amount}} €</td>
 						<td>{{cotisation.duration}} jours</td>
 						<td>{{cotisation.paymentDate}}</td>
 						<td>{{cotisation.paymentMethod}}</td>
