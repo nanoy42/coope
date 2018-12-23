@@ -76,6 +76,9 @@
 						<span class="tabulation"><a href="">Ajouter aux superusers</a></span>
 						{% endif %}
 						{% endif %}
+						{% if perms.auth.change_user %}
+						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
+						{% endif %}
 					</li>
 				</ul>
 			</div>
