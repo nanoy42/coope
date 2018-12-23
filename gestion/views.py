@@ -420,14 +420,14 @@ def productProfile(request, pk):
 
 @active_required
 @login_required
-def getProduct(request, barcode):
+def getProduct(request, pk):
     """
     Get :model:`gestion.Product` by barcode. Called by a js/JQuery script
 
-    ``barcode``
-        The requested barcode
+    ``pk``
+        The requested pk
     """
-    product = Product.objects.get(barcode=barcode)
+    product = Product.objects.get(pk=pk)
     if product.category == Product.P_PRESSION:
         nb_pintes = 1
     else:
@@ -457,6 +457,16 @@ class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
     def get_queryset(self):
         qs = Product.objects.all()
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+        return qs
+
+class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete view for active :model:`gestion.Product`
+    """
+    def get_queryset(self):
+        qs = Product.objects.filter(is_active=True)
         if self.q:
             qs = qs.filter(name__istartswith=self.q)
         return qs
@@ -851,14 +861,14 @@ def switch_activate_menu(request, pk):
 @active_required
 @login_required
 @permission_required('gestion.view_menu')
-def get_menu(request, barcode):
+def get_menu(request, pk):
     """
     Search :model:`gestion.Menu` by barcode
 
-    ``barcode``
-        The requested barcode
+    ``pk``
+        The requested pk
     """
-    menu = get_object_or_404(Menu, barcode=barcode)
+    menu = get_object_or_404(Menu, pk=pk)
     nb_pintes = 0
     for article in menu.articles:
         if article.category == Product.P_PRESSION:
