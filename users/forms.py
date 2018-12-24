@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.models import User, Group
 from dal import autocomplete
 from .models import School, CotisationHistory, WhiteListHistory
+from preferences.models import PaymentMethod
 
 class LoginForm(forms.Form):
     """
@@ -84,6 +85,10 @@ class addCotisationHistoryForm(forms.ModelForm):
     """
     Form to add a cotisation to user
     """
+    def __init__(self, *args, **kwargs):
+        super(addCotisationHistoryForm, self).__init__(*args, **kwargs)
+        self.fields['paymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_cotisation=True).filter(is_active=True)
+
     class Meta:
         model = CotisationHistory
         fields = ("cotisation", "paymentMethod")
@@ -103,3 +108,24 @@ class SchoolForm(forms.ModelForm):
     class Meta:
         model = School
         fields = "__all__"
+
+class ExportForm(forms.Form):
+    QUERY_TYPE_CHOICES = (
+        ('all', 'Tous les comptes'),
+        ('all_active', 'Tous les comptes actifs'),
+        ('adherent', 'Tous les adhérents'),
+        ('adherent_active', 'Tous les adhérents actifs')
+    )
+
+    FIELDS_CHOICES = (
+        ('username', 'Nom d\'utilisateur'),
+        ('last_name', 'Nom'),
+        ('first_name', 'Prénom'),
+        ('email', 'Adresse mail'),
+        ('school', 'École'),
+        ('balance', 'Solde'),
+        ('credit', 'Crédit'),
+        ('debit', 'Débit')
+    )
+    query_type = forms.ChoiceField(choices=QUERY_TYPE_CHOICES, label="Ensemble de la demande")
+    fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=FIELDS_CHOICES, label="Champs")

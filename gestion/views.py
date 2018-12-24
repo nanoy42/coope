@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
+from django.http import HttpResponseRedirect
 
 from coopeV3.acl import active_required, acl_or
 
@@ -13,9 +14,9 @@ import simplejson as json
 from dal import autocomplete
 from decimal import *
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory
-from preferences.models import PaymentMethod
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload
+from preferences.models import PaymentMethod, GeneralPreferences
 
 @active_required
 @login_required
@@ -107,6 +108,8 @@ def order(request):
         amount = Decimal(request.POST['amount'])
         order = json.loads(request.POST["order"])
         menus = json.loads(request.POST["menus"])
+        listPintes = json.loads(request.POST["listPintes"])
+        gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
         if (not order) and (not menus):
             return HttpResponse("Pas de commande")
         adherentRequired = False
@@ -118,6 +121,14 @@ def order(request):
             adherentRequired = adherentRequired or menu.adherent_required
         if(adherentRequired and not user.profile.is_adherent):
             return HttpResponse("N'est pas adhérent et devrait l'être")
+        # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
+        # s'il a trop de pintes non rendues, puis je réalloue les pintes
+        for pinte in listPintes:
+            allocate(pinte, None)
+        if(gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
+            return HttpResponse("Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes.")
+        for pinte in listPintes:
+            allocate(pinte, user)
         if(paymentMethod.affect_balance):
             if(user.profile.balance < amount):
                 return HttpResponse("Solde inférieur au prix de la commande")
@@ -194,6 +205,24 @@ def reload(request):
     else:
         messages.error(request, "Le rechargement a échoué")
     return redirect(reverse('gestion:manage'))
+
+@active_required
+@login_required
+@permission_required('gestion.delete_reload')
+def cancel_reload(request, pk):
+    """
+    Cancel a reload
+    """
+    reload_entry = get_object_or_404(Reload, pk=pk)
+    if reload_entry.customer.profile.balance >= reload_entry.amount:
+        reload_entry.customer.profile.credit -= reload_entry.amount
+        reload_entry.customer.save()
+        reload_entry.delete()
+        messages.success(request, "Le rechargement a bien été annulé.")
+    else:
+        messages.error(request, "Impossible d'annuler le rechargement. Le solde deviendrait négatif.")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 
 @active_required
 @login_required
@@ -302,9 +331,9 @@ def addProduct(request):
     """
     form = ProductForm(request.POST or None)
     if(form.is_valid()):
-        form.save()
+        product = form.save()
         messages.success(request, "Le produit a bien été ajouté")
-        return redirect(reverse('gestion:productsList'))
+        return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Ajout d'un produit", "form_button": "Ajouter"})
 
 @active_required
@@ -337,7 +366,7 @@ def editProduct(request, pk):
     if(form.is_valid()):
         form.save()
         messages.success(request, "Le produit a bien été modifié")
-        return redirect(reverse('gestion:productsList'))
+        return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Modification d'un produit", "form_button": "Modifier"})
 
 @active_required
@@ -410,15 +439,19 @@ def productProfile(request, pk):
 
 @active_required
 @login_required
-def getProduct(request, barcode):
+def getProduct(request, pk):
     """
     Get :model:`gestion.Product` by barcode. Called by a js/JQuery script
 
-    ``barcode``
-        The requested barcode
+    ``pk``
+        The requested pk
     """
-    product = Product.objects.get(barcode=barcode)
-    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount" : product.amount})
+    product = Product.objects.get(pk=pk)
+    if product.category == Product.P_PRESSION:
+        nb_pintes = 1
+    else:
+        nb_pintes = 0
+    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
@@ -435,7 +468,7 @@ def switch_activate(request, pk):
     product.is_active = 1 - product.is_active
     product.save()
     messages.success(request, "La disponibilité du produit a bien été changée")
-    return redirect(reverse('gestion:productsList'))
+    return redirect(reverse('gestion:productProfile', kwargs={'pk': product.pk}))
 
 class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
@@ -443,6 +476,16 @@ class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
     def get_queryset(self):
         qs = Product.objects.all()
+        if self.q:
+            qs = qs.filter(name__istartswith=self.q)
+        return qs
+
+class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete view for active :model:`gestion.Product`
+    """
+    def get_queryset(self):
+        qs = Product.objects.filter(is_active=True)
         if self.q:
             qs = qs.filter(name__istartswith=self.q)
         return qs
@@ -837,15 +880,19 @@ def switch_activate_menu(request, pk):
 @active_required
 @login_required
 @permission_required('gestion.view_menu')
-def get_menu(request, barcode):
+def get_menu(request, pk):
     """
     Search :model:`gestion.Menu` by barcode
 
-    ``barcode``
-        The requested barcode
+    ``pk``
+        The requested pk
     """
-    menu = get_object_or_404(Menu, barcode=barcode)
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount})
+    menu = get_object_or_404(Menu, pk=pk)
+    nb_pintes = 0
+    for article in menu.articles:
+        if article.category == Product.P_PRESSION:
+            nb_pintes +=1
+    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, needQuantityButton: False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
@@ -886,3 +933,88 @@ def ranking(request):
         list.append([customer, alcohol])
     bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
     return render(request, "gestion/ranking.html", {"bestBuyers": bestBuyers, "bestDrinkers": bestDrinkers})
+
+########## Pinte monitoring ##########
+
+def allocate(pinte_pk, user):
+    """
+    Allocate a pinte to a user or release the pinte if user is None
+    """
+    try:
+        pinte = Pinte.objects.get(pk=pinte_pk)
+        if pinte.current_owner is not None:
+            pinte.previous_owner = pinte.current_owner
+        pinte.current_owner = user
+        pinte.save()
+        return True
+    except Pinte.DoesNotExist:
+        return False
+
+@active_required
+@login_required
+@permission_required('gestion.change_pinte')
+def release(request, pinte_pk):
+    """
+    View to release a pinte
+    """
+    if allocate(pinte_pk, None):
+        messages.success(request, "La pinte a bien été libérée")
+    else:
+        messages.error(request, "Impossible de libérer la pinte")
+    return redirect(reverse('gestion:pintesList'))
+    
+@active_required
+@login_required
+@permission_required('gestion.add_pinte')
+def add_pintes(request):
+    form = PinteForm(request.POST or None)
+    if form.is_valid():
+        ids = form.cleaned_data['ids']
+        if ids != "":
+            ids = ids.split(" ")
+        else:
+            ids = range(form.cleaned_data['begin'], form.cleaned_data['end'] + 1)
+        i = 0
+        for id in ids:
+            if not Pinte.objects.filter(pk=id).exists():
+                new_pinte = Pinte(pk=int(id))
+                new_pinte.save()
+                i += 1
+        messages.success(request, str(i) + " pinte(s) a(ont) été ajoutée(s)")
+        return redirect(reverse('gestion:productsIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Ajouter des pintes", "form_button": "Ajouter"})
+
+@active_required
+@login_required
+@permission_required('gestion.change_pinte')
+def release_pintes(request):
+    form = PinteForm(request.POST or None)
+    if form.is_valid():
+        ids = form.cleaned_data['ids']
+        if ids != "":
+            ids = ids.split(" ")
+        else:
+            ids = range(form.cleaned_data['begin'], form.cleaned_data['end'] + 1)
+        i = 0
+        for id in ids:
+            if allocate(id, None):
+                i += 1
+        messages.success(request, str(i) + " pinte(s) a(ont) été libérée(s)")
+        return redirect(reverse('gestion:productsIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Libérer des pintes", "form_button": "Libérer"})
+
+@active_required
+@login_required
+@permission_required('gestion.view_pinte')
+def pintes_list(request):
+    free_pintes = Pinte.objects.filter(current_owner=None)
+    taken_pintes = Pinte.objects.exclude(current_owner=None)
+    return render(request, "gestion/pintes_list.html", {"free_pintes": free_pintes, "taken_pintes": taken_pintes})
+
+@active_required
+@login_required
+@permission_required('auth.view_user')
+def pintes_user_list(request):
+    pks = [x.pk for x in User.objects.all() if x.profile.nb_pintes > 0]
+    users = User.objects.filter(pk__in=pks)
+    return render(request, "gestion/pintes_user_list.html", {"users": users})

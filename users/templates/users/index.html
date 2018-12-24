@@ -1,15 +1,29 @@
 {% extends 'base.html' %}
-{% block entete %}<h1>Gestion des utilisateurs</h1>{% endblock %}
+{% block entete %}Gestion des utilisateurs{% endblock %}
 {% block navbar%}
 <ul>
+	{% if perms.auth.add_user or perms.auth.view_user %}
 	<li><a href="#first">Utilisateurs</a></li>
+	{% endif %}
+	{% if perms.auth.add_group or perms.auth.view_group %}
 	<li><a href="#second">Groupes</a></li>
+	{% endif %}
+	{% if request.user.is_staff %}
 	<li><a href="#third">Admins</a></li>
+	{% endif %}
+	{% if request.user.is_superuser %}
 	<li><a href="#fourth">Superusers</a></li>
+	{% endif %}
+	{% if perms.users.add_school or perms.users.view_school %}
 	<li><a href="#fifth">Écoles</a></li>
+	{% endif %}
+	{% if perms.aut.view_user %}
+	<li><a href="#sixth">Exportation de données</a></li>
+	{% endif %}
 </ul>
 {% endblock %}
 {% block content %}
+{% if perms.auth.add_user or perms.auth.view_user %}
 <section id="first" class="main">
 	<header class="major">
 		<h2>Utilisateurs</h2>
@@ -25,18 +39,24 @@
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.auth.add_group or perms.auth.view_group %}
 <section id="second" class="main">
 	<header class="major">
 		<h2>Groupes</h2>
 	</header>
 	Actions possibles :
 	<ul>
-		{% if perms.auth.view_group %}
+		{% if perms.auth.add_group %}
 		<li><a href="{% url 'users:createGroup' %}">Ajouter un groupe de droit</a></li>
+		{% endif %}
+		{% if perms.auth.view_group %}
 		<li><a href="{% url 'users:groupsIndex' %}">Lister les groupes de droits</a></li>
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if request.user.is_staff %}
 <section id="third" class="main">
 	<header class="major">
 		<h2>Admins</h2>
@@ -44,12 +64,12 @@
 	Les admins ont accès à l'interface admin.<br>
 	Actions possibles :
 	<ul>
-		{% if request.user.is_staff %}
 		<li><a href="{% url 'users:addAdmin' %}">Ajouter un admin</a></li>
 		<li><a href="{% url 'users:adminsIndex' %}">Lister les admins</a></li>
-		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if request.user.is_superuser %}
 <section id="fourth" class="main">
 	<header class="major">
 		<h2>Superusers</h2>
@@ -57,24 +77,37 @@
 	Attention : les superusers bypass toutes les vérifications de permissions.<br>
 	Actions possibles :
 	<ul>
-		{% if request.user.is_superuser %}
 		<li><a href="{% url 'users:addSuperuser' %}">Ajouter un superuser</a></li>
 		<li><a href="{% url 'users:superusersIndex' %}">Lister les superuser</a></li>
-		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.users.add_school or perms.users.view_school %}
 <section id="fifth" class="main">
 	<header class="major">
 		<h2>Écoles</h2>
 	</header>
 	Actions possibles :
 	<ul>
-		{% if perms.gestion.add_school %}
+		{% if perms.users.add_school %}
 		<li><a href="{% url 'users:createSchool' %}">Ajouter une école</a></li>
 		{% endif %}
-		{% if perms.gestion.view_school %}
+		{% if perms.users.view_school %}
 		<li><a href="{% url 'users:schoolsIndex' %}">Lister les écoles</a></li>
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.auth.view_user %}
+<section id="sixth" class="main">
+	<header class="major">
+		<h2>Exportation de données</h2>
+	</header>
+	<form action="{% url 'users:exportCSV' %}" method="POST">
+		{% csrf_token %}
+		{{export_form}}
+		<button class="button" target="_blank">Exporter au format csv</button>
+	</form>
+</section>
+{% endif %}
 {% endblock %}

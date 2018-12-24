@@ -14,4 +14,5 @@ urlpatterns = [
     path('editPaymentMethod/<int:pk>', views.editPaymentMethod, name="editPaymentMethod"),
     path('deletePaymentMethod/<int:pk>', views.deletePaymentMethod, name="deletePaymentMethod"),
     path('inactive', views.inactive, name="inactive"),
+    path('getConfig', views.get_config, name="getConfig"),
 ]

@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
-{% block entete %}<h1>Gestion des produits</h1>{% endblock %}
+{% block entete %}Gestion des produits{% endblock %}
 {% block navbar%}
 <ul>
+	{% if perms.gestion.add_product or perms.gestion.view_product %}
 	<li><a href="#first">Produits</a></li>
+	{% endif %}
+	{% if perms.gestion.add_keg or perms.gestion.open_keg or perms.gestion.close_keg or perms.gestion.view_keg %}
 	<li><a href="#second">Futs</a></li>
+	{% endif %}
+	{% if perms.gestion.add_menu or perms.gestion.view_menu %}
 	<li><a href="#third">Menus</a></li>
+	{% endif %}	
+	{% if perms.gestion.add_pinte or perms.gestion.change_pinte or perms.gestion.view_pinte or perms.auth.view_user %}
+	<li><a href="#fourth">Pintes</a></li>
+	{% endif %}
 </ul>
 {% endblock %}
 {% block content %}
+{% if perms.gestion.add_product or perms.gestion.view_product %}
 <section id="first" class="main">
 	<header class="major">
 		<h2>Produits</h2>
@@ -23,6 +33,8 @@
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.gestion.add_keg or perms.gestion.open_keg or perms.gestion.close_keg or perms.gestion.view_keg %}
 <section id="second" class="main">
 	<header class="major">
 		<h2>Futs</h2>
@@ -43,6 +55,8 @@
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.gestion.add_menu or perms.gestion.view_menu %}
 <section id="third" class="main">
 	<header class="major">
 		<h2>Menus</h2>
@@ -58,4 +72,27 @@
 		{% endif %}
 	</ul>
 </section>
+{% endif %}
+{% if perms.gestion.add_pinte or perms.gestion.change_pinte or perms.gestion.view_pinte or perms.auth.view_user %}
+<section id="fourth" class="main">
+	<header class="major">
+		<h2>Pintes</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		{% if perms.gestion.add_pinte %}
+		<li><a href="{% url 'gestion:addPintes' %}">Créer une ou plusieurs pintes</a></li>
+		{% endif %}
+		{% if perms.gestion.change_pinte %}
+		<li><a href="{% url 'gestion:releasePintes' %}">Libérer des pintes</a></li>
+		{% endif %}
+		{% if perms.gestion.view_pinte %}
+		<li><a href="{% url 'gestion:pintesList' %}">Lister les pintes</a></li>
+		{% endif %}
+		{% if perms.auth.view_user %}
+		<li><a href="{% url 'gestion:pintesUserList' %}">Lister les utilisateurs n'ayant pas rendu leurs pintes</a></li>
+		{% endif %}
+	</ul>
+</section>
+{% endif %}
 {% endblock %}

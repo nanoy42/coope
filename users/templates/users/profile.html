@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block entete %}{% if self %}<h1>Mon Profil</h1>{% else %}<h1>Profil de {{user}}</h1>{% endif %}{%endblock%}
+{% block entete %}{% if self %}Mon Profil{% else %}Profil de {{user}}{% endif %}{%endblock%}
 
 {% block navbar %}
 <ul>
@@ -25,24 +25,25 @@
 				<ul class="alt" id="informationsClient">
 					<li>
 						<b>Nom : </b>{{user.last_name}}<span class="tabulation">
-							<b>Prénom : </b>{{user.first_name}}</span><span class="tabulation">
+						<b>Prénom : </b>{{user.first_name}}</span><span class="tabulation">
 						<b>École : </b>{{user.profile.school}}</span>
 					</li>
-					<li><b>Pseudo : </b>{{user.username}}<span class="tabulation">
-						<b>Mail: </b> {{user.email}}</span>
+					<li><b>Nom d'utilisateur : </b>{{user.username}}<span class="tabulation">
+						<b>Adresse mail: </b> {{user.email}}</span>
 					</li>
 					<li>
 						<b>Date inscription : </b>{{user.date_joined}}<span class="tabulation">
 						<b>Fin de cotisation: </b> {{user.profile.cotisationEnd|default:"Aucune cotisation"}}</span>
 					</li>
-					<li><b>Solde : </b>{{user.profile.balance}}<span class="tabulation">
-						<b>Crédit : </b>{{user.profile.credit}}</span><span class="tabulation">
-						<b>Débit : </b>{{user.profile.debit}}</span>
+					<li><b>Solde : </b>{{user.profile.balance}} €<span class="tabulation">
+						<b>Crédit : </b>{{user.profile.credit}} €</span><span class="tabulation">
+						<b>Débit : </b>{{user.profile.debit}} €</span>
 					</li>
 					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
 						<b>Position au classement : </b>{{user.profile.rank}}<span class="tabulation">
-						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol}} kg</span>
+						<b>Quantité d'alcool ingérée : </b>{{user.profile.alcohol | floatformat:"-2"}} kg</span><span class="tabulation">
+						<b>Nombre de pinte(s) non rendue(s) : </b> {{ user.pintes_owned_currently.count }} </span>
 					</li>
 				</ul>
 			</div>
@@ -74,6 +75,9 @@
 						{% else %}
 						<span class="tabulation"><a href="">Ajouter aux superusers</a></span>
 						{% endif %}
+						{% endif %}
+						{% if perms.auth.change_user %}
+						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
 						{% endif %}
 					</li>
 				</ul>
@@ -147,7 +151,7 @@
 					<tr>
 						<td>{{c.product}}</td>
 						<td>{{c.quantity}}</td>
-						<td>{{c.amount}}</td>
+						<td>{{c.amount}} €</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
 						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a>{% endif %}</td>
@@ -181,7 +185,7 @@
 					<tr>
 						<td>{{m.menu}}</td>
 						<td>{{m.quantity}}</td>
-						<td>{{m.amount}}</td>
+						<td>{{m.amount}} €</td>
 						<td>{{m.paymentMethod}}</td>
 						<td>{{m.date}}</td>
 						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a>{% endif %}</td>
@@ -205,14 +209,20 @@
 						<th>Montant</th>
 						<th>Type de Rechargement</th>
 						<th>Date</th>
+						{% if perms.gestion.delete_reload %}
+						<th>Annuler</th>
+						{% endif %}
 					</tr>
 				</thead>
 				<tbody>
 					{% for reload in reloads %}
 					<tr>
-						<td>{{reload.amount}}€</td>
+						<td>{{reload.amount}} €</td>
 						<td>{{reload.PaymentMethod}}</td>
 						<td>{{reload.date}}</td>
+						{% if perms.gestion.delete_reload %}
+						<th><a href="{% url 'gestion:cancelReload' reload.pk %}" class="button small">Annuler</a></th>
+						{% endif %}
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -236,14 +246,14 @@
 						<th>Date de paiement</th>
 						<th>Moyen de paiement</th>
 						<th>Date de fin</th>
-						<th>Etat</th>
+						<th>État</th>
 						<th>Modération</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for cotisation in cotisations %}
 					<tr>
-						<td>{{cotisation.amount}}€</td>
+						<td>{{cotisation.amount}} €</td>
 						<td>{{cotisation.duration}} jours</td>
 						<td>{{cotisation.paymentDate}}</td>
 						<td>{{cotisation.paymentMethod}}</td>

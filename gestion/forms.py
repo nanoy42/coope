@@ -11,7 +11,7 @@ from coopeV3.widgets import SearchField
 class ReloadForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ReloadForm, self).__init__(*args, **kwargs)
-        self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True)
+        self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True).filter(is_active=True)
         
     class Meta:
         model = Reload
@@ -32,6 +32,12 @@ class ProductForm(forms.ModelForm):
         fields = "__all__"
 
 class KegForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(KegForm, self).__init__(*args, **kwargs)
+        self.fields['pinte'].queryset = Product.objects.filter(category=Product.P_PRESSION)
+        self.fields['demi'].queryset = Product.objects.filter(category=Product.D_PRESSION)
+        self.fields['galopin'].queryset = Product.objects.filter(category=Product.G_PRESSION)
+
     class Meta:
         model = Keg
         exclude = ("is_active", )
@@ -49,9 +55,15 @@ class SearchMenuForm(forms.Form):
 
 class GestionForm(forms.Form):
     client = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Client", widget=autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}))
+    product = forms.ModelChoiceField(queryset=Product.objects.filter(is_active=True), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:active-products-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectPositiveKegForm(forms.Form):
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(stockHold__gt = 0), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-positive-autocomplete'))
 
 class SelectActiveKegForm(forms.Form):
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(is_active = True), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-active-autocomplete'))
+
+class PinteForm(forms.Form):
+    ids = forms.CharField(widget=forms.Textarea, label="Numéros", help_text="Numéros séparés par un espace. Laissez vide pour utiliser le range.", required=False)
+    begin = forms.IntegerField(label="Début", help_text="Début du range", required=False)
+    end = forms.IntegerField(label="Fin", help_text="Fin du range", required=False)

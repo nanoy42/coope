@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block entete%}<h1>Gestion de la Coopé™</h1>{%endblock%}
+{%block entete%}Gestion de la Coopé™{%endblock%}
 
 {% block navbar %}
 <ul>
@@ -99,7 +99,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -112,7 +112,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -125,7 +125,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -133,12 +133,12 @@
 								{% if not panini|divisibleby:4 %}
 								</tr>
 								{% endif %}
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Softs</td></tr>
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Boissons sans alcool</td></tr>
 								{% for product in soft %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -147,12 +147,12 @@
 								</tr>
 								{% endif %}
 
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bouffe</td></tr>
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">En-cas</td></tr>
 								{% for product in food %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}
@@ -166,7 +166,7 @@
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="menu {% if product.adherent_required %}special{% endif%}" target="{{product.barcode}}">{{product.name}}</button></td>
+									<td><button class="menu {% if product.adherent_required %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
 									{% if forloop.counter|divisibleby:4 %}
 								</tr>
 								{% endif %}

@@ -119,8 +119,30 @@ class Profile(models.Model):
             alcohol += consumption.quantity * float(product.deg) * product.volume * 0.79 /10 /1000
         return alcohol
 
+    @property
+    def nb_pintes(self):
+        """
+        Return the number of pintes currently owned
+        """
+        return self.user.pintes_owned_currently.count()
+
     def __str__(self):
         return str(self.user)
+
+    def __getattr__(self, name):
+        """
+        Tente de retourner l'attribut de l'instance et si l'attribut n'existe pas,
+        tente de retourner l'attribut de l'user associé à l'instance
+        """
+        try:
+            r = self.__getattribute__(name)
+        except AttributeError:
+            try:
+                r = super().__getattr__(name)
+            except AttributeError:
+                r = getattr(self.user, name)
+        return r
+
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

@@ -4,7 +4,7 @@
 </span>
 {% if perms.gestion.add_consumptionhistory or perms.gestion.add_refund or perms.gestion.add_reload %}
 <span class="tabulation2">
-	<a href="{% url 'gestion:manage' %}">Caisse</a>
+	<a href="{% url 'gestion:manage' %}">Transactions</a>
 </span>
 {% endif %}
 {% if perms.auth.add_user or perms.auth.view_user or perms.auth.add_group or perms.auth.view_group or perms.users.add_school or perms.users.view_school %}
