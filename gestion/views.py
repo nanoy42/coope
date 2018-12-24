@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
+from django.http import HttpResponseRedirect
 
 from coopeV3.acl import active_required, acl_or
 
@@ -14,7 +15,7 @@ from dal import autocomplete
 from decimal import *
 
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload
 from preferences.models import PaymentMethod, GeneralPreferences
 
 @active_required
@@ -204,6 +205,24 @@ def reload(request):
     else:
         messages.error(request, "Le rechargement a échoué")
     return redirect(reverse('gestion:manage'))
+
+@active_required
+@login_required
+@permission_required('gestion.delete_reload')
+def cancel_reload(request, pk):
+    """
+    Cancel a reload
+    """
+    reload_entry = get_object_or_404(Reload, pk=pk)
+    if reload_entry.customer.profile.balance >= reload_entry.amount:
+        reload_entry.customer.profile.credit -= reload_entry.amount
+        reload_entry.customer.save()
+        reload_entry.delete()
+        messages.success(request, "Le rechargement a bien été annulé.")
+    else:
+        messages.error(request, "Impossible d'annuler le rechargement. Le solde deviendrait négatif.")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 
 @active_required
 @login_required

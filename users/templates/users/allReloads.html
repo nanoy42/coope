@@ -20,14 +20,20 @@
 						<th>Montant</th>
 						<th>Type de Rechargement</th>
 						<th>Date</th>
+						{% if perms.gestion.delete_reload %}
+						<th>Annuler</th>
+						{% endif %}
 					</tr>
 				</thead>
 				<tbody id="bodyRechargement">
 					{% for reload in reloads %}
 					<tr>
-						<th>{{reload.amount}}€</th>
-						<th>{{reload.PaymentMethod}}</th>
-						<th>{{reload.date}}</th>
+						<td>{{reload.amount}}€</td>
+						<td>{{reload.PaymentMethod}}</td>
+						<td>{{reload.date}}</td>
+						{% if perms.gestion.delete_reload %}
+						<td><a href="{% url 'gestion:cancelReload' reload.pk %}" class="button small">Annuler</a></td>
+						{% endif %}
 					</tr>
 					{% endfor %}
 				</tbody>

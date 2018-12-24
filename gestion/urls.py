@@ -43,4 +43,5 @@ urlpatterns = [
     path('kegs-positive-autocomplete', views.KegPositiveAutocomplete.as_view(), name="kegs-positive-autocomplete"),
     path('kegs-active-autocomplete', views.KegActiveAutocomplete.as_view(), name="kegs-active-autocomplete"),
     path('menus-autcomplete', views.MenusAutocomplete.as_view(), name="menus-autocomplete"),
+    path('cancelReload/<int:pk>', views.cancel_reload, name="cancelReload"),
 ]
