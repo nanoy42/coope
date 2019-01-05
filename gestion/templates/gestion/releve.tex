@@ -1,0 +1,71 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eurosym}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{tabu}
+\author{Généré par CoopeV3}
+\title{Relevé Coopé Technopôle Metz}
+\begin{document}
+\maketitle
+\section{Informations générales}
+\begin{longtabu}{|X|X|X|}
+\hline
+\multicolumn{2}{|c|}{Généré le } & \textbf{ {{- now | date('d/m/Y H:i:s') -}} }\\
+\hline
+Infos & De & \textbf{ {{- begin | date('d/m/Y H:i:s')-}} } \\
+\cline{2-3} & À & \textbf{ {{- end | date('d/m/Y H:i:s') -}} }\\
+\hline
+Estimations & Espèces & \textbf{ {{- value_especes | latex_safe -}} \euro{}} \\
+\cline{2-3} & Lydia & \textbf{ {{- value_lydia | latex_safe -}} \euro{}} \\
+\cline{2-3} & Chèques & \textbf{ {{- value_cheque | latex_safe -}} \euro{}} \\
+\hline
+\end{longtabu}
+\section{Transactions}
+\begin{longtabu}{|c|X|X|X|X|X|}
+\hline
+\# & Date & Client & Montant & Moyen de paiement & Produit (Qté) \\ 
+\hline 
+{% for consumption in consumptions %}
+{{consumption.pk}} & {{consumption.date | date('d/m/Y H:i:s')}} & {{consumption.customer.first_name|latex_safe}} {{consumption.customer.last_name|latex_safe}} & {{consumption.amount}} \euro{} & {{consumption.paymentMethod}} & {{consumption.product}} (x{{consumption.quantity}})\\ 
+\hline
+{% endfor %}
+\end{longtabu}
+\section{Rechargements}
+\begin{longtabu}{|c|X|X|X|X|}
+\hline 
+\# & Date & Client & Montant & Moyen de paiement \\ 
+\hline 
+{% for reload in reloads %}
+{{reload.pk}} & {{ reload.date | date('d/m/Y H:i:s')}} & {{reload.customer.first_name | latex_safe}} {{reload.customer.last_name | latex_safe}} & {{ reload.amount }} \euro{} & {{reload.PaymentMethod}} \\ 
+\hline
+{% endfor %}
+\end{longtabu}
+\section{Remboursement}
+\begin{longtabu}{|c|X|X|X|}
+\hline 
+\# & Date & Client & Montant\\ 
+\hline
+{% for refund in refunds %}
+{{refund.pk}} & {{ refund.date | date('d/m/Y H:i:s')}} & {{refund.customer.first_name|latex_safe}} {{refund.customer.last_name|latex_safe}} & {{ refund.amount }} \euro{}\\ 
+\hline
+{% endfor %}
+\end{longtabu} 
+\section{Cotisations}
+\begin{longtabu}{|c|X|X|X|X|X|}
+\hline 
+\# & Date & Client & Montant & Durée & Moyen de paiement \\ 
+\hline
+{% for cot in cotisations %}
+{{cot.pk}} & {{ cot.paymentDate | date('d/m/Y H:i:s')}} & {{cot.user.first_name|latex_safe}} {{cot.user.last_name|latex_safe}}  & {{cot.amount}} \euro{} & {{cot.duration}} jours & {{cot.paymentMethod}} \\ 
+\hline
+{% endfor %}
+\end{longtabu} 
+\end{document}

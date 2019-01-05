@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'dal',
     'dal_select2',
     'simple_history',
+    'django_tex',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,14 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+    },
+     {
+        'NAME': 'tex',
+        'BACKEND': 'django_tex.engine.TeXEngine', 
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'gestion.environment.my_environment',
+        }
     },
 ]
 
