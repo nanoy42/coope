@@ -8,15 +8,19 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 
-from coopeV3.acl import active_required, acl_or
+from django_tex.views import render_to_pdf
+
+from coopeV3.acl import active_required, acl_or, admin_required
 
 import simplejson as json
 from dal import autocomplete
 from decimal import *
+import datetime
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund
 from preferences.models import PaymentMethod, GeneralPreferences
+from users.models import CotisationHistory
 
 @active_required
 @login_required
@@ -26,10 +30,10 @@ def manage(request):
     Display the manage page
 
     **Context**
-    
+
     ``gestion_form``
         The manage form
-    
+
     ``reload_form``
         The :model:`gestion.Reload` form
 
@@ -44,13 +48,13 @@ def manage(request):
 
     ``panini``
         A list of active :model:`gestion.Product` corresponding to panini items
-        
+
     ``food``
         A list of active :model:`gestion.Product` corresponding to non-panini items
 
     ``soft``
         A list of active :model:`gestion.Product` correspond to non alcoholic beverage
-    
+
     ``menus``
         The list of active :model:`gestion.Menu`
 
@@ -288,7 +292,7 @@ def cancel_menu(request, pk):
     for product in manu_history.menu.articles:
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
-        consumptionT.save()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        consumptionT.save()
     menu_history.delete()
     messages.success(request, "La consommation du menu a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -318,7 +322,7 @@ def addProduct(request):
 
     ``form``
         The ProductForm instance
-    
+
     ``form_title``
         The title for the form template
 
@@ -350,7 +354,7 @@ def editProduct(request, pk):
 
     ``form``
         The ProductForm instance
-    
+
     ``form_title``
         The title for the form template
 
@@ -399,7 +403,7 @@ def searchProduct(request):
 
     ``form``
         The SearchProductForm instance
-    
+
     ``form_title``
         The title for the form template
 
@@ -426,7 +430,7 @@ def productProfile(request, pk):
         The primary key of the requested :model:`gestion.Product`
 
     **Context**
-    
+
     ``product``
         The :model:`gestion.Product` instance
 
@@ -500,10 +504,10 @@ def addKeg(request):
     Display a form to add a :model:`gestion.Keg`
 
     **Context**
-    
+
     ``form``
         The KegForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -532,10 +536,10 @@ def editKeg(request, pk):
         The primary key of the requested :model:`gestion.Keg`
 
     **Context**
-    
+
     ``form``
         The KegForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -562,10 +566,10 @@ def openKeg(request):
     Display a form to open a :model:`gestion.Keg`
 
     **Context**
-    
+
     ``form``
         The SelectPositiveKegForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -628,10 +632,10 @@ def closeKeg(request):
     Display a form to close a :model:`gestion.Keg`
 
     **Context**
-    
+
     ``form``
         The SelectActiveKegForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -716,7 +720,7 @@ def kegH(request, pk):
 
     ``keg``
         The :model:`gestion.Keg` instance
-    
+
     ``kegHistory``
         List of :model:`gestion.KegHistory` attached to keg
 
@@ -758,10 +762,10 @@ def addMenu(request):
     Display a form to add a :model:`gestion.Menu`
 
     **Context**
-    
+
     ``form``
         The MenuForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -791,10 +795,10 @@ def edit_menu(request, pk):
         The primary key of requested :model:`gestion.Menu`
 
     **Context**
-    
+
     ``form``
         The MenuForm instance
-    
+
     ``form_title``
         The title for the :template:`form.html` template
 
@@ -962,7 +966,7 @@ def release(request, pinte_pk):
     else:
         messages.error(request, "Impossible de libérer la pinte")
     return redirect(reverse('gestion:pintesList'))
-    
+
 @active_required
 @login_required
 @permission_required('gestion.add_pinte')
@@ -1018,3 +1022,51 @@ def pintes_user_list(request):
     pks = [x.pk for x in User.objects.all() if x.profile.nb_pintes > 0]
     users = User.objects.filter(pk__in=pks)
     return render(request, "gestion/pintes_user_list.html", {"users": users})
+
+@active_required
+@login_required
+@admin_required
+def gen_releve(request):
+    form = GenerateReleveForm(request.POST or None)
+    if form.is_valid():
+        begin, end = form.cleaned_data['begin'], form.cleaned_data['end']
+        consumptions = ConsumptionHistory.objects.filter(date__gte=begin).filter(date__lte=end).order_by('-date')
+        reloads = Reload.objects.filter(date__gt=begin).filter(date__lt=end).order_by('-date')
+        refunds = Refund.objects.filter(date__gt=begin).filter(date__lt=end).order_by('-date')
+        cotisations = CotisationHistory.objects.filter(paymentDate__gt=begin).filter(paymentDate__lt=end).order_by('-paymentDate')
+        especes = PaymentMethod.objects.get(name="Espèces")
+        lydia = PaymentMethod.objects.get(name="Lydia")
+        cheque = PaymentMethod.objects.get(name="Chèque")
+        value_especes = 0
+        value_lydia = 0
+        value_cheque = 0
+        for consumption in consumptions:
+            pm = consumption.paymentMethod
+            if pm == especes:
+                value_especes += consumption.amount
+            elif pm == lydia:
+                value_lydia += consumption.amount
+            elif pm == cheque:
+                value_cheque += consumption.amount
+        for reload in reloads:
+            pm = reload.PaymentMethod
+            if pm == especes:
+                value_especes += reload.amount
+            elif pm == lydia:
+                value_lydia += reload.amount
+            elif pm == cheque:
+                value_cheque += reload.amount
+        for refund in refunds:
+            value_especes -= refund.amount
+        for cot in cotisations:
+            pm = cot.paymentMethod
+            if pm == especes:
+                value_especes += cot.amount
+            elif pm == lydia:
+                value_lydia += cot.amount
+            elif pm == cheque:
+                value_cheque += cot.amount
+        now = datetime.datetime.now()
+        return render_to_pdf(request, 'gestion/releve.tex', {"consumptions": consumptions, "reloads": reloads, "refunds": refunds, "cotisations": cotisations, "begin": begin, "end": end, "now": now, "value_especes": value_especes, "value_lydia": value_lydia, "value_cheque": value_cheque}, filename="releve.pdf")
+    else:
+        return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer"})

@@ -67,3 +67,7 @@ class PinteForm(forms.Form):
     ids = forms.CharField(widget=forms.Textarea, label="Numéros", help_text="Numéros séparés par un espace. Laissez vide pour utiliser le range.", required=False)
     begin = forms.IntegerField(label="Début", help_text="Début du range", required=False)
     end = forms.IntegerField(label="Fin", help_text="Fin du range", required=False)
+
+class GenerateReleveForm(forms.Form):
+    begin = forms.DateTimeField(label="Date de début")
+    end = forms.DateTimeField(label="Date de fin")

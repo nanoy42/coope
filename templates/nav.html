@@ -25,6 +25,11 @@
 	<a href="{% url 'preferences:generalPreferences' %}">Admin</a>
 </span>
 {% endif %}
+{% if request.user.is_staff %}
+<span class="tabulation2">
+	<a href="{% url 'gestion:gen_releve' %}">Comptabilité</a>
+</span>
+{% endif %}
 {% if perms.preferences.view_cotisation %}
 <span class="tabulation2">
 	<a href="{% url 'preferences:cotisationsIndex' %}">Cotisations</a>
