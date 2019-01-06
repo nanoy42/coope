@@ -22,6 +22,7 @@
 					<th>Cotisations ?</th>
 					<th>Rechargements ?</th>
 					<th>Affecte le solde</th>
+					<th>Icône</th>
 					<th>Administration</th>
 				</tr>
 			</thead>
@@ -33,6 +34,7 @@
 					<td>{{ pm.is_usable_in_cotisation | yesno:"Oui, Non" }}</td>
 					<td>{{ pm.is_usable_in_reload | yesno:"Oui, Non" }}</td>
 					<td>{{ pm.affect_balance | yesno:"Oui, Non" }}</td>
+					<td><i class="fa fa-{{ pm.icon }}"></i></td>
 					<td>{% if perms.preferences.change_paymentmethod %}<a class="button small" href="{% url 'preferences:editPaymentMethod' pm.pk %}">Modifier</a> {% endif %}{% if perms.preferences.delete_paymentmethod %}<a class="button small" href="{% url 'preferences:deletePaymentMethod' pm.pk %}">Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}

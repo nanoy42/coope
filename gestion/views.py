@@ -76,6 +76,8 @@ def manage(request):
     soft = Product.objects.filter(category=Product.SOFT).filter(is_active=True)
     menus = Menu.objects.filter(is_active=True)
     kegs = Keg.objects.filter(is_active=True)
+    gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
+    floating_buttons = gp.floating_buttons
     for keg in kegs:
         if(keg.pinte):
             bieresPression.append(keg.pinte)
@@ -93,7 +95,8 @@ def manage(request):
         "food": food,
         "soft": soft,
         "menus": menus,
-        "pay_buttons": pay_buttons
+        "pay_buttons": pay_buttons,
+        "floating_buttons": floating_buttons,
         })
 
 @csrf_exempt
