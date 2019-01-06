@@ -13,10 +13,31 @@
 
 
 {% block content %}
+{% if floating_buttons %}
+<div class="alt_payment_buttons">
+	{% for pm in pay_buttons %}
+		<button class="button small pay_button" data-payment="{{pm.pk}}"><i class="fa fa-{{pm.icon}}"></i></button><br>
+	{% endfor %}
+</div>
+{% endif %}
 <a class="up_button" href="#intro">
 	UP
 </a>
 <style>
+.alt_payment_buttons{
+	display:block;
+	background-color:white;
+	position:fixed;
+	right:0;
+	padding-right: 1em;
+	top:50%;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+.alt_payment_buttons button{
+	min-width: 0 !important;
+	background-color: white !important;
+}
 .up_button{
 	display:block;
 	background-color:white;
@@ -28,7 +49,7 @@
 	text-align:center;
 	line-height:50px;
 	right:1em;
-		bottom : 1em;
+	bottom : 1em;
 }
 </style>
 {% if perms.gestion.add_consumptionhistory %}
@@ -63,7 +84,7 @@
 								<td id="balance">0€</td>
 								<td id="totalAmount">0€</td>
 								<td id="totalAfter">0€</td>
-								<td>{% for pm in pay_buttons %}<button class="btn small pay_button" data-payment="{{pm.pk}}">{{pm.name}}</button> {% endfor %}</td>
+								<td>{% for pm in pay_buttons %}<button class="btn small pay_button" data-payment="{{pm.pk}}"><i class="fa fa-{{pm.icon}}"></i> {{pm.name}}</button> {% endfor %}</td>
 							</tr>
 						</tbody>
 					</table>

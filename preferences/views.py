@@ -33,6 +33,7 @@ def generalPreferences(request):
     form = GeneralPreferencesForm(request.POST or None, instance=gp)
     if(form.is_valid()):
         form.save()
+        messages.success(request, "Les préférences générales ont bien été mises à jour")
     return render(request, "preferences/general_preferences.html", {"form": form})
 
 ########## Cotisations ##########
