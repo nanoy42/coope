@@ -1,3 +1,5 @@
+## v3.2.1
+* Le module django_tex est directement inclu dans le projet (disparition du module sur pip)
 ## v3.2.0
 * Ajout d'icônes (avec font awesome)
 * Amélioration du diagramme sur le profil (couleurs, valeur pour les fromages et charcuts, seuil des 1%)
