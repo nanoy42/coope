@@ -63,20 +63,6 @@
 						{% if perms.users.can_change_user_perm %}
 						<span class="tabulation"><a href="{% url 'users:editGroups' user.pk %}">Changer les groupes</a></span>
 						{% endif %}
-						{% if request.user.is_staff %}
-						{% if user.is_staff %}
-						<span class="tabulation"><a href="">Retirer des admins</a></span>
-						{% else %}
-						<span class="tabulation"><a href="">Ajouter aux admins</a></span>
-						{% endif %}
-						{% endif %}
-						{% if request.user.is_superuser %}
-						{% if user.is_superuser %}
-						<span class="tabulation"><a href="">Retirer des superusers</a></span>
-						{% else %}
-						<span class="tabulation"><a href="">Ajouter aux superusers</a></span>
-						{% endif %}
-						{% endif %}
 						{% if perms.auth.change_user %}
 						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
 						{% endif %}
