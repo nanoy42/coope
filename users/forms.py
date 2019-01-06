@@ -129,3 +129,4 @@ class ExportForm(forms.Form):
     )
     query_type = forms.ChoiceField(choices=QUERY_TYPE_CHOICES, label="Ensemble de la demande")
     fields = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple, choices=FIELDS_CHOICES, label="Champs")
+    group = forms.ModelChoiceField(queryset=Group.objects.all(), empty_label="Tous les groupes", required=False, label="Groupe")

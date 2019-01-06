@@ -83,19 +83,24 @@ def export_csv(request):
         users = User.objects
         qt = export_form.cleaned_data['query_type']
         if qt == 'all':
-            users = users.all()
-            filename="Utilisateurs-coope"
+            filename = "Utilisateurs-coope"
+            if not export_form.cleaned_data['group']:
+                users = users.all()
         elif qt == 'all_active':
             users = users.filter(is_active=True)
-            filename="Utilisateurs-actifs-coope"
+            filename = "Utilisateurs-actifs-coope"
         elif qt == 'adherent':
             pks = [x.pk for x in User.objects.all() if x.profile.is_adherent]
             users = users.filter(pk__in=pks)
-            filename="Adherents-coope"
+            filename = "Adherents-coope"
         elif qt == 'adherent_active':
             pks = [x.pk for x in User.objects.filter(is_active=True) if x.profile.is_adherent]
             users = users.filter(pk__in=pks)
-            filename="Adherents-actifs-coope"
+            filename = "Adherents-actifs-coope"
+        if export_form.cleaned_data['group']:
+            group = export_form.cleaned_data['group']
+            users = users.filter(groups=group)
+            filename += "(" + group.name + ")"
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="'+ filename + '.csv"'
         writer = csv.writer(response)
