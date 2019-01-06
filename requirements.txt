@@ -4,3 +4,4 @@ pytz==2018.5
 simplejson==3.16.0
 docutils==0.14
 django-simple-history==2.5.1
+jinja2==2.10

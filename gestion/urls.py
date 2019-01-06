@@ -44,4 +44,5 @@ urlpatterns = [
     path('kegs-active-autocomplete', views.KegActiveAutocomplete.as_view(), name="kegs-active-autocomplete"),
     path('menus-autcomplete', views.MenusAutocomplete.as_view(), name="menus-autocomplete"),
     path('cancelReload/<int:pk>', views.cancel_reload, name="cancelReload"),
+    path('gen_releve', views.gen_releve, name="gen_releve"),
 ]

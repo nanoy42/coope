@@ -6,6 +6,7 @@
 	<li><a href="#second">Site actif</a></li>
 	<li><a href="#third">Bureau</a></li>
 	<li><a href="#fourth">Suivi de pintes</a></li>
+	<li><a href="fifth">Autre</a></li>
 </ul>
 {% endblock %}
 
@@ -21,6 +22,11 @@
 				<div class="row">
 					<div class="12u">
 						{{form.global_message}}
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit">Enregistrer</button>
 					</div>
 				</div>
 			</div>
@@ -41,6 +47,11 @@
 				<div class="row uniform">
 					<div class="12u">
 						{{form.active_message}}
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit">Enregistrer</button>
 					</div>
 				</div>
 			</div>
@@ -76,6 +87,11 @@
 						{{form.brewer}}
 					</div>
 				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit">Enregistrer</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -95,6 +111,26 @@
 					<div class="12u">
 						{{form.lost_pintes_allowed}}
 						<label for="{{form.lost_pintes_allowed.id_for_label}}">Nombre de pintes non rendues avant d'interdire la consommation (0 pour ne jamais l'interdire, nécessite le suivi de pinte actif)</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit">Enregistrer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="fifth" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Autre</h2>
+				</header>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.floating_buttons}}
+						<label for="{{form.floating_buttons.id_for_label}}">Utiliser les boutons de paiement flottants ?</label>
 					</div>
 				</div>
 				<div class="row uniform">

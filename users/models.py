@@ -169,4 +169,5 @@ def str_user(self):
         fin = "Non adhérent"
     return self.username + " (" + self.first_name + " " + self.last_name + ", " + str(self.profile.balance) + "€, " + fin + ")" 
 
+
 User.add_to_class("__str__", str_user)

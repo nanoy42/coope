@@ -39,6 +39,7 @@ class Product(models.Model):
     volume = models.PositiveIntegerField(default=0)
     deg = models.DecimalField(default=0,max_digits=5, decimal_places=2, verbose_name="Degré", validators=[MinValueValidator(0)])
     adherentRequired = models.BooleanField(default=True, verbose_name="Adhérent requis")
+    showingMultiplier = models.PositiveIntegerField(default=1)
     history = HistoricalRecords()
 
     def __str__(self):

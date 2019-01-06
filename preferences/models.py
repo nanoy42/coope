@@ -12,6 +12,7 @@ class PaymentMethod(models.Model):
     is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Cotisations ?")
     is_usable_in_reload = models.BooleanField(default=True, verbose_name="Rechargements ?")
     affect_balance = models.BooleanField(default=False, verbose_name="Affecte le solde")
+    icon = models.CharField(max_length=255, verbose_name="Icône", blank=True)
     history = HistoricalRecords()
 
     def __str__(self):
@@ -32,6 +33,7 @@ class GeneralPreferences(models.Model):
     grocer = models.CharField(max_length=255, blank=True)
     use_pinte_monitoring = models.BooleanField(default=False)
     lost_pintes_allowed = models.PositiveIntegerField(default=0)
+    floating_buttons = models.BooleanField(default=False)
     history = HistoricalRecords()
 
 class Cotisation(models.Model):
