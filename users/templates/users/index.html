@@ -106,6 +106,7 @@
 	<form action="{% url 'users:exportCSV' %}" method="POST">
 		{% csrf_token %}
 		{{export_form}}
+		<br>
 		<button class="button" target="_blank">Exporter au format csv</button>
 	</form>
 </section>
