@@ -154,15 +154,25 @@ def profile(request, pk):
     whitelists = WhiteListHistory.objects.filter(user=user)
     reloads = Reload.objects.filter(customer=user).order_by('-date')[:5]
     consumptionsChart = Consumption.objects.filter(customer=user)
+    products_pre = []
+    quantities_pre = []
+    for ch in consumptionsChart:
+        if ch.product in products_pre:
+            i = products_pre.index(ch.product)
+            quantities_pre[i] += int(ch.quantity/ch.product.showingMultiplier)
+        else:
+            products_pre.append(ch.product)
+            quantities_pre.append(int(ch.quantity/ch.product.showingMultiplier))
+    tot = len(products_pre)
+    totQ = sum(quantities_pre)
     products = []
     quantities = []
-    for ch in consumptionsChart:
-        if ch.product in products:
-            i = products.index(ch.product)
-            quantities[i] += ch.quantity
-        else:
-            products.append(ch.product)
-            quantities.append(ch.quantity)
+    for k in range(tot):
+        if quantities_pre[k]/totQ >= 0.01:
+            products.append(products_pre[k])
+            quantities.append(quantities_pre[k])
+    print(products)
+    print(quantities)
     lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
     lastMenus = MenuHistory.objects.filter(customer=user).order_by('-date')[:10]
     return render(request, "users/profile.html", 
