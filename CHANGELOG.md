@@ -1,3 +1,10 @@
+## v3.2.0
+* Ajout d'icônes (avec font awesome)
+* Amélioration du diagramme sur le profil (couleurs, valeur pour les fromages et charcuts, seuil des 1%)
+* Boutons flottants sur la page de transation (avec options pour activer ou désactiver)
+* Ajout du module comptabilité (génération de relevé entre deux dates)
+* Exportation en csv par groupe
+* Liens pour ajouter/retirer des admins/superusers enlevés sur le profil
 ## v3.1.0
 * Tronque la quantité d'alcool ingéré sur le profil (fix #8)
 * La modification des produits retourne sur la pge de profil du produit (fix #9)
