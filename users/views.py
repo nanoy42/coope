@@ -8,6 +8,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.forms.models import model_to_dict
+from django.utils import timezone
 
 import simplejson as json
 from datetime import datetime, timedelta
@@ -878,7 +879,7 @@ def addCotisationHistory(request, pk):
         cotisation.coopeman = request.user
         cotisation.amount = cotisation.cotisation.amount
         cotisation.duration = cotisation.cotisation.duration
-        if(user.profile.cotisationEnd):
+        if(user.profile.cotisationEnd and user.profile.cotisationEnd > timezone.now()):
             cotisation.endDate = user.profile.cotisationEnd + timedelta(days=cotisation.cotisation.duration)
         else:
             cotisation.endDate = datetime.now() + timedelta(days=cotisation.cotisation.duration)
