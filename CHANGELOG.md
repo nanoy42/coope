@@ -1,3 +1,5 @@
+## v3.2.2
+* Fix cotisation cancer
 ## v3.2.1
 * Le module django_tex est directement inclu dans le projet (disparition du module sur pip)
 ## v3.2.0
