@@ -10,7 +10,7 @@
 {% block content %}
 <section id="first" class="main special">
 	<header class="major">
-		<h2>Consommations de menus ({{user}})</h2>
+		<h2>Consommations de menus (<a href="{% url 'profile:users' user.pk %}">{{user}}</a>)</h2>
 	</header>
 	<section id="rechargements">
 		<div class="table-wrapper">

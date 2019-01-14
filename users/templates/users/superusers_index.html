@@ -23,7 +23,7 @@
 			<tbody>
 				{% for user in superusers %}
 				<tr>
-					<td>{{ user }}</td>
+					<td><a href="{% url 'profile:users' user.pk %}">{{user}}</a></td>
 					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
 					<td><a class="button small" href="{% url 'users:removeSuperuser' user.pk %}">Retirer des superusers</a></td>
 				</tr>

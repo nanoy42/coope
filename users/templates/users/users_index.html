@@ -25,7 +25,7 @@
 			<tbody>
 				{% for user in users %}
 				<tr>
-					<td>{{ user }}</td>
+					<td><a href="{% url 'profile:users' user.pk %}">{{user}}</a></td>
 					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
 					{% if perms.auth.change_user %}
 					<td><a class="button small" href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></td>
