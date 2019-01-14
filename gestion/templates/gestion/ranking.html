@@ -28,7 +28,7 @@
 							{%for customer in bestBuyers%}
 							<tr>
                                 <th>{{ forloop.counter }}</th>
-                                <th>{{ customer.username }}</th>
+                                <th><a href="{% url 'users:profile' customer.pk %}">{{ customer.username }}</a></th>
                                 <th>{{ customer.profile.debit }}€</th>
 							</tr>
 							{%endfor%}
@@ -59,7 +59,7 @@
 							{% for customer in bestDrinkers %}
 							<tr>
                                 <th>{{ forloop.counter }}</th>
-                                <th>{{ customer.0.username }}</th>
+                                <th><a href="{% url 'users:profile' customer.0.pk %}">{{ customer.0.username }}</a></th>
                                 <th>{{ customer.1 }}</th>
 							</tr>
 							{%endfor%}

@@ -124,7 +124,7 @@
 				<tbody id="bodyTransaction">
 					{% for c in lastConsumptions %}
 					<tr>
-						<td>{{c.product}}</td>
+						<td>{% if perms.gestion.view_product %}<a href="{% url 'gestion:productProfile' c.product.pk %}">{{ c.product.name }}</a>{% else %}{{c.product}}{% endif %}</td>
 						<td>{{c.quantity}}</td>
 						<td>{{c.amount}} €</td>
 						<td>{{c.paymentMethod}}</td>

@@ -32,7 +32,7 @@
 			<tbody>
 				{% for product in products %}
 				<tr>
-					<td>{{ product.name }}</td>
+					<td><a href="{% url 'gestion:productProfile' product.pk %}">{{ product.name }}</a></td>
 					<td>{{ product.amount}}</td>
 					<td>{{ product.stockHold }}</td>
 					<td>{{ product.stockBar }}</td>

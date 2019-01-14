@@ -72,7 +72,7 @@
 			<tbody>
 				{% for user in group.user_set.all %}
 				<tr>
-					<td>{{ user }}</td>
+					<td><a href="{% url 'profile:users' user.pk %}">{{user}}</a></td>
 					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
 					<td><a class="button small" href="{% url 'users:removeUser' group.pk user.pk %}">Retirer</a></td>
 				</tr>

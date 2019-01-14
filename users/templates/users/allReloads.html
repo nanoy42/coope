@@ -4,7 +4,7 @@
 
 {% block navbar %}
 <ul>
-	<li><a href="#first">Rechargements ({{user}})</a></li>
+	<li><a href="#first">Rechargements (<a href="{% url 'profile:users' user.pk %}">{{user}}</a>)</a></li>
 </ul>
 {% endblock %}
 {% block content %}

@@ -23,7 +23,7 @@
 			<tbody>
 				{% for user in admins %}
 				<tr>
-					<td>{{ user }} {% if user.is_superuser %}(superuser){% endif %}</td>
+					<td><a href="{% url 'users:profile' user.pk %}">{{ user }}</a>{ {% if user.is_superuser %}(superuser){% endif %}</td>
 					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
 					<td>{% if not user.is_superuser %}<a class="button small" href="{% url 'users:removeAdmin' user.pk %}">Retirer des admins</a>{% endif %}</td>
 				</tr>
