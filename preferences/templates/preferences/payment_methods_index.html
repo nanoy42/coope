@@ -11,7 +11,7 @@
 		<h2>Liste des moyens de paiement</h2>
 	</header>
 	{% if perms.preferences.add_paymentmethod %}
-	<a class="button" href="{% url 'preferences:addPaymentMethod' %}">Créer un moyen de paiement</a><br><br>
+	<a class="button" href="{% url 'preferences:addPaymentMethod' %}"><i class="fa fa-plus-square"></i> Créer un moyen de paiement</a><br><br>
 	{% endif %}
 	<div class="table-wrapper">
 		<table>
@@ -35,7 +35,7 @@
 					<td>{{ pm.is_usable_in_reload | yesno:"Oui, Non" }}</td>
 					<td>{{ pm.affect_balance | yesno:"Oui, Non" }}</td>
 					<td><i class="fa fa-{{ pm.icon }}"></i></td>
-					<td>{% if perms.preferences.change_paymentmethod %}<a class="button small" href="{% url 'preferences:editPaymentMethod' pm.pk %}">Modifier</a> {% endif %}{% if perms.preferences.delete_paymentmethod %}<a class="button small" href="{% url 'preferences:deletePaymentMethod' pm.pk %}">Supprimer</a>{% endif %}</td>
+					<td>{% if perms.preferences.change_paymentmethod %}<a class="button small" href="{% url 'preferences:editPaymentMethod' pm.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_paymentmethod %}<a class="button small" href="{% url 'preferences:deletePaymentMethod' pm.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

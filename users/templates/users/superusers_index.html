@@ -10,7 +10,7 @@
 	<header class="major">
 		<h2>Liste des superusers</h2>
 	</header>
-	<a class="button" href="{% url 'users:addSuperuser' %}">Ajouter un superuser</a><br><br>
+	<a class="button" href="{% url 'users:addSuperuser' %}"><i class="fa fa-user-plus"></i> Ajouter un superuser</a><br><br>
 	<div class="table-wrapper">
 		<table>
 			<thead>
@@ -23,9 +23,9 @@
 			<tbody>
 				{% for user in superusers %}
 				<tr>
-					<td><a href="{% url 'profile:users' user.pk %}">{{user}}</a></td>
-					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
-					<td><a class="button small" href="{% url 'users:removeSuperuser' user.pk %}">Retirer des superusers</a></td>
+					<td><a href="{% url 'users:profile' user.pk %}">{{user}}</a></td>
+					<td><a class="button small" href="{% url 'users:profile' user.pk %}"><i class="fa fa-user"></i> Profil</a></td>
+					<td><a class="button small" href="{% url 'users:removeSuperuser' user.pk %}"><i class="fa fa-minus-square"></i> Retirer des superusers</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

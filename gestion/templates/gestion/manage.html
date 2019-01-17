@@ -61,7 +61,7 @@
 			</header>
 			<div class="row uniform">
 				<div class="12u$">
-					<a class="button small" href="">Annuler</a><br><br>
+					<a class="button small" href=""><i class="fa fa-times"></i> Annuler</a><br><br>
 					{{gestion_form}}
 				</div>
 			</div>
@@ -214,7 +214,7 @@
 		{% csrf_token %}
 		{{reload_form}}
 		<br>
-		<button type="submit">Recharger</button>
+		<button type="submit"><i class="fa fa-hand-holding-usd"></i> Recharger</button>
 	</form>
 </section>
 {% endif %}
@@ -227,7 +227,7 @@
 		{% csrf_token %}
 		{{refund_form}}
 		<br>
-		<button type="submit">Rembourser</button>
+		<button type="submit"><i class="fa fa-file-invoice-dollar"></i> Rembourser</button>
 	</form>
 </section>
 {% endif %}

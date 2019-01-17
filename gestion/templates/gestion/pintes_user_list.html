@@ -23,7 +23,7 @@
 				{% for user in users %}
 				<tr>
 					<td><a href="{% url 'users:profile' user.pk">{{user}}</a></td>
-					<td><a href="{% url 'users:profile' user.pk %}" class="button small">Profil</a></td>
+					<td><a href="{% url 'users:profile' user.pk %}" class="button small"><i class="fa fa-user"></i> Profil</a></td>
 					<td>{{ user.pintes_owned_currently.count }}</td>
 				</tr>
 				{% endfor %}

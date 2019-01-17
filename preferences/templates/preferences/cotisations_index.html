@@ -11,7 +11,7 @@
 		<h2>Liste des cotisations</h2>
 	</header>
 	{% if perms.preferences.add_cotisation %}
-	<a class="button" href="{% url 'preferences:addCotisation' %}">Créer une cotisation</a><br><br>
+	<a class="button" href="{% url 'preferences:addCotisation' %}"><i class="fa fa-plus-square"></i> Créer une cotisation</a><br><br>
 	{% endif %}
 	<div class="table-wrapper">
 		<table>
@@ -27,7 +27,7 @@
 				<tr>
 					<td>{{ cotisation.duration }} jours</td>
 					<td>{{ cotisation.amount }} €</td>
-					<td>{% if perms.preferences.change_cotisation %}<a class="button small" href="{% url 'preferences:editCotisation' cotisation.pk %}">Modifier</a> {% endif %}{% if perms.preferences.delete_cotisation %}<a class="button small" href="{% url 'preferences:deleteCotisation' cotisation.pk %}">Supprimer</a>{% endif %}</td>
+					<td>{% if perms.preferences.change_cotisation %}<a class="button small" href="{% url 'preferences:editCotisation' cotisation.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_cotisation %}<a class="button small" href="{% url 'preferences:deleteCotisation' cotisation.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

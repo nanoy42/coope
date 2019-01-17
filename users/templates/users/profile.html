@@ -52,19 +52,19 @@
 				<ul class="alt">
 					<li>
 						{% if self or perms.users.can_change_user %}
-						<span><a href="{% url 'users:editUser' user.pk %}">Modifier {{self | yesno:"mes,les"}} informations</a></span>
+						<span><a href="{% url 'users:editUser' user.pk %}"><i class="fa fa-pencil-alt"></i> Modifier {{self | yesno:"mes,les"}} informations</a></span>
 						{% endif %}
 						{% if self %}
-						<span class="tabulation"><a href="{% url 'users:editPassword' user.pk %}">Changer mon mot de passe</a></span>
+						<span class="tabulation"><a href="{% url 'users:editPassword' user.pk %}"><i class="fa fa-user-lock"></i> Changer mon mot de passe</a></span>
 						{% endif %}
 						{% if perms.users.can_reset_password %}
-						<span class="tabulation"><a href="{% url 'users:resetPassword' user.pk %}">Réinitialiser le mot de passe</a></span>
+						<span class="tabulation"><a href="{% url 'users:resetPassword' user.pk %}"><i class="fa fa-lock-open"></i> Réinitialiser le mot de passe</a></span>
 						{% endif %}
 						{% if perms.users.can_change_user_perm %}
-						<span class="tabulation"><a href="{% url 'users:editGroups' user.pk %}">Changer les groupes</a></span>
+						<span class="tabulation"><a href="{% url 'users:editGroups' user.pk %}"><i class="fa fa-layer-group"></i> Changer les groupes</a></span>
 						{% endif %}
 						{% if perms.auth.change_user %}
-						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
+						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}"><i class="fa fa-check-circle"></i> {{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
 						{% endif %}
 					</li>
 				</ul>
@@ -129,7 +129,7 @@
 						<td>{{c.amount}} €</td>
 						<td>{{c.paymentMethod}}</td>
 						<td>{{c.date}}</td>
-						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small">Annuler</a>{% endif %}</td>
+						<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' c.pk %}" class="button small"><i class="fa fa-times"></i> Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>
@@ -163,7 +163,7 @@
 						<td>{{m.amount}} €</td>
 						<td>{{m.paymentMethod}}</td>
 						<td>{{m.date}}</td>
-						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small">Annuler</a>{% endif %}</td>
+						<td>{% if perms.gestion.delete_menuhistory %}<a href="{% url 'gestion:cancelMenu' m.pk %}" class="button small"><i class="fa fa-times"></i> Annuler</a>{% endif %}</td>
 					</tr>
 					{%endfor%}
 				</tbody>
@@ -196,7 +196,7 @@
 						<td>{{reload.PaymentMethod}}</td>
 						<td>{{reload.date}}</td>
 						{% if perms.gestion.delete_reload %}
-						<th><a href="{% url 'gestion:cancelReload' reload.pk %}" class="button small">Annuler</a></th>
+						<th><a href="{% url 'gestion:cancelReload' reload.pk %}" class="button small"><i class="fa fa-times"></i> Annuler</a></th>
 						{% endif %}
 					</tr>
 					{% endfor %}
@@ -211,7 +211,7 @@
 		<h2>{{ self | yesno:"Mes cotisations,Cotisations"}}</h2>
 	</header>
 	<section>
-		<a class="button" href="{% url 'users:addCotisationHistory' user.pk %}">Ajouter une cotisation</a><br><br>
+		<a class="button" href="{% url 'users:addCotisationHistory' user.pk %}"><i class="fa fa-comments-dollar"></i> Ajouter une cotisation</a><br><br>
 		<div class="table-wrapper">
 			<table>
 				<thead>
@@ -234,7 +234,7 @@
 						<td>{{cotisation.paymentMethod}}</td>
 						<td>{{cotisation.endDate}}</td>
 						<td>{{cotisation.valid}}</td>
-						<td>{% if perms.users.validate_cotisationHistory %}<a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}">Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}">Invalider</a>{% endif %}</td>
+						<td>{% if perms.users.validate_cotisationHistory %}<a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}"><i class="fa fa-check-circle"></i> Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}"><i class="fa fa-times-circle"></i> Invalider</a>{% endif %}</td>
 					</tr>
 					{% endfor %}
 				</tbody>
@@ -248,7 +248,7 @@
 		<h2>{{ self | yesno:"Mes accès gracieux,Accès gracieux"}}</h2>
 	</header>
 	<section>
-		<a class="button" href="{% url 'users:addWhiteListHistory' user.pk %}">Ajouter un accès à titre gracieux</a><br><br>
+		<a class="button" href="{% url 'users:addWhiteListHistory' user.pk %}"><i class="fa fa-handshake"></i> Ajouter un accès à titre gracieux</a><br><br>
 		<div class="table-wrapper">
 			<table>
 				<thead>

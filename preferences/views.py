@@ -84,7 +84,7 @@ def addCotisation(request):
         cotisation = form.save()
         messages.success(request, "La cotisation (" + str(cotisation.duration) + " jours, " + str(cotisation.amount) + "€) a bien été créée")
         return redirect(reverse('preferences:cotisationsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Création d'une cotisation", "form_button": "Créer"})
+    return render(request, "form.html", {"form": form, "form_title": "Création d'une cotisation", "form_button": "Créer", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -117,7 +117,7 @@ def editCotisation(request, pk):
         cotisation = form.save()
         messages.success(request, "La cotisation (" + str(cotisation.duration) + " jours, " + str(cotisation.amount) + "€) a bien été modifiée")
         return redirect(reverse('preferences:cotisationsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Modification d'une cotisation", "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'une cotisation", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required
@@ -184,7 +184,7 @@ def addPaymentMethod(request):
         paymentMethod = form.save()
         messages.success(request, "Le moyen de paiement " + paymentMethod.name + " a bien été crée")
         return redirect(reverse('preferences:paymentMethodsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Création d'un moyen de paiement", "form_button": "Créer"})
+    return render(request, "form.html", {"form": form, "form_title": "Création d'un moyen de paiement", "form_button": "Créer", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -217,7 +217,7 @@ def editPaymentMethod(request, pk):
         paymentMethod = form.save()
         messages.success(request, "Le moyen de paiment " + paymentMethod.name + " a bien été modifié")
         return redirect(reverse('preferences:paymentMethodsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Modification d'un moyen de paiement", "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un moyen de paiement", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required

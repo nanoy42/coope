@@ -21,12 +21,12 @@
 	<div class="row">
 		{% if perms.auth.change_group %}
 		<div class="6u">
-			<a class="button" href="{% url 'users:editGroup' group.pk %}">Éditer</a>
+			<a class="button" href="{% url 'users:editGroup' group.pk %}"><i class="fa fa-pencil-alt"></i> Éditer</a>
 		</div>
 		{% endif %}
 		{% if perms.auth.delete_group %}
 		<div class="6u">
-			<a class="button" href="{% url 'users:deleteGroup' group.pk %}">Supprimer</a>
+			<a class="button" href="{% url 'users:deleteGroup' group.pk %}"><i class="fa fa-trash"></i> Supprimer</a>
 		</div>
 		{% endif %}
 	</div>
@@ -49,7 +49,7 @@
 			<tr>
 				<td>{{perm.codename}}</td>
 				<td>{{perm.name}}</td>
-				<td><a class="button small" href="{% url 'users:removeRight' group.pk perm.pk %}">Enlever le droit</a></td>
+				<td><a class="button small" href="{% url 'users:removeRight' group.pk perm.pk %}"><i class="fa fa-minus-square"></i> Enlever le droit</a></td>
 			</tr>
 			{% endfor %}
 			</tbody>
@@ -72,9 +72,9 @@
 			<tbody>
 				{% for user in group.user_set.all %}
 				<tr>
-					<td><a href="{% url 'profile:users' user.pk %}">{{user}}</a></td>
-					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
-					<td><a class="button small" href="{% url 'users:removeUser' group.pk user.pk %}">Retirer</a></td>
+					<td><a href="{% url 'users:profile' user.pk %}">{{user}}</a></td>
+					<td><a class="button small" href="{% url 'users:profile' user.pk %}"><i class="fa fa-user"></i> Profil</a></td>
+					<td><a class="button small" href="{% url 'users:removeUser' group.pk user.pk %}"><i class="fa fa-minus-square"></i> Retirer</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

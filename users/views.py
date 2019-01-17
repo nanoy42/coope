@@ -52,7 +52,7 @@ def loginView(request):
                return redirect(reverse('users:profile', kwargs={'pk':request.user.pk}))
         else:
             messages.error(request, "Nom d'utilisateur et/ou mot de passe invalide")
-    return render(request, "form.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter"})
+    return render(request, "form.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter", "form_button_icon": "sign-in-alt"})
 
 @active_required
 @login_required
@@ -225,7 +225,7 @@ def createUser(request):
         user.save()
         messages.success(request, "L'utilisateur a bien été créé")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer l'utilisateur"})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer l'utilisateur", "form_button_icon": "user-plus"})
 
 @active_required
 @login_required
@@ -252,7 +252,7 @@ def searchUser(request):
     form = SelectUserForm(request.POST or None)
     if(form.is_valid()):
         return redirect(reverse('users:profile', kwargs={"pk":form.cleaned_data['user'].pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form": form, "form_title": "Rechercher un utilisateur", "form_button": "Afficher le profil"})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form": form, "form_title": "Rechercher un utilisateur", "form_button": "Afficher le profil", "form_button_icon": "search"})
 
 @active_required
 @login_required
@@ -305,7 +305,7 @@ def editGroups(request, pk):
         messages.success(request, "Les groupes de l'utilisateur " + user.username + " ont bien été enregistrés.")
         return redirect(reverse('users:profile', kwargs={'pk':pk}))
     extra_css = "#id_groups{height:200px;}"
-    return render(request, "form.html", {"form_entete": "Gestion de l'utilisateur " + user.username, "form": form, "form_title": "Modification des groupes", "form_button": "Enregistrer", "extra_css": extra_css})
+    return render(request, "form.html", {"form_entete": "Gestion de l'utilisateur " + user.username, "form": form, "form_title": "Modification des groupes", "form_button": "Enregistrer", "form_button_icon": "pencil-alt", "extra_css": extra_css})
 
 @active_required
 @login_required
@@ -345,7 +345,7 @@ def editPassword(request, pk):
                 return redirect(reverse('users:profile', kwargs={'pk':pk}))
             else:
                 messages.error(request, "Le mot de passe actuel est incorrect")
-        return render(request, "form.html", {"form_entete": "Modification de mon compte", "form": form, "form_title": "Modification de mon mot de passe", "form_button": "Modifier mon mot de passe"})
+        return render(request, "form.html", {"form_entete": "Modification de mon compte", "form": form, "form_title": "Modification de mon mot de passe", "form_button": "Modifier mon mot de passe", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required
@@ -379,7 +379,7 @@ def editUser(request, pk):
         user.save()
         messages.success(request, "Les modifications ont bien été enregistrées")
         return redirect(reverse('users:profile', kwargs={'pk': pk}))
-    return render(request, "form.html", {"form_entete":"Modification du compte " + user.username, "form": form, "form_title": "Modification des informations", "form_button": "Modifier"})
+    return render(request, "form.html", {"form_entete":"Modification du compte " + user.username, "form": form, "form_title": "Modification des informations", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required
@@ -583,7 +583,7 @@ def createGroup(request):
         group = form.save()
         messages.success(request, "Le groupe " + form.cleaned_data['name'] + " a bien été crée.")
         return redirect(reverse('users:groupProfile', kwargs={'pk': group.pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title": "Création d'un groupe de droit", "form_button": "Créer le groupe de droit"})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title": "Création d'un groupe de droit", "form_button": "Créer le groupe de droit", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -617,7 +617,7 @@ def editGroup(request, pk):
         form.save()
         messages.success(request, "Le groupe " + group.name + " a bien été modifié.")
         return redirect(reverse('users:groupProfile', kwargs={'pk': group.pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form": form, "form_title": "Modification du groupe de droit " + group.name, "form_button": "Modifier le groupe de droit", "extra_css":extra_css})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form": form, "form_title": "Modification du groupe de droit " + group.name, "form_button": "Modifier le groupe de droit", "form_button_icon": "pencil-alt", "extra_css":extra_css})
 
 @active_required
 @login_required
@@ -736,7 +736,7 @@ def addAdmin(request):
         user.save()
         messages.success(request, "L'utilisateur " + user.username + " a bien été rajouté aux admins")
         return redirect(reverse('users:adminsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un admin", "form_button":"Ajouter l'utilisateur aux admins"})
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un admin", "form_button": "Ajouter l'utilisateur aux admins", "form_button_icon": "user-plus"})
 
 @active_required
 @login_required
@@ -814,7 +814,7 @@ def addSuperuser(request):
         user.save()
         messages.success(request, "L'utilisateur " + user.username + " a bien été rajouté aux superusers")
         return redirect(reverse('users:superusersIndex'))
-    return render(request, "form.html", {"form_entete": "Gestion des superusers", "form": form, "form_title": "Ajout d'un superuser", "form_button":"Ajouter l'utilisateur aux superusers"})
+    return render(request, "form.html", {"form_entete": "Gestion des superusers", "form": form, "form_title": "Ajout d'un superuser", "form_button":"Ajouter l'utilisateur aux superusers", "form_button_icon": "user-plus"})
 
 @active_required
 @login_required
@@ -888,7 +888,7 @@ def addCotisationHistory(request, pk):
         cotisation.save()
         messages.success(request, "La cotisation a bien été ajoutée")
         return redirect(reverse('users:profile',kwargs={'pk':user.pk}))
-    return render(request, "form.html",{"form": form, "form_title": "Ajout d'une cotisation pour l'utilisateur " + str(user), "form_button": "Ajouter"})
+    return render(request, "form.html",{"form": form, "form_title": "Ajout d'une cotisation pour l'utilisateur " + str(user), "form_button": "Ajouter", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -969,7 +969,7 @@ def addWhiteListHistory(request, pk):
         whiteList.save()
         messages.success(request, "L'accès gracieux a bien été ajouté")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
-    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un accès gracieux pour " + user.username, "form_button": "Ajouter"})
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un accès gracieux pour " + user.username, "form_button": "Ajouter", "form_button_icon": "plus-square"})
 
 ########## Schools ##########
 
@@ -1019,7 +1019,7 @@ def createSchool(request):
         form.save()
         messages.success(request, "L'école a bien été créée")
         return redirect(reverse('users:schoolsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Création d'une école", "form_button": "Créer"})
+    return render(request, "form.html", {"form": form, "form_title": "Création d'une école", "form_button": "Créer", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -1052,7 +1052,7 @@ def editSchool(request, pk):
         form.save()
         messages.success(request, "L'école a bien été modifiée")
         return redirect(reverse('users:schoolsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Modification de l'école " + str(school), "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Modification de l'école " + str(school), "form_button": "Modifier", "form_button": "pencil-alt"})
 
 @active_required
 @login_required

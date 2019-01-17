@@ -341,7 +341,7 @@ def addProduct(request):
         product = form.save()
         messages.success(request, "Le produit a bien été ajouté")
         return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
-    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un produit", "form_button": "Ajouter"})
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un produit", "form_button": "Ajouter", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -374,7 +374,7 @@ def editProduct(request, pk):
         form.save()
         messages.success(request, "Le produit a bien été modifié")
         return redirect(reverse('gestion:productProfile', kwargs={'pk':product.pk}))
-    return render(request, "form.html", {"form": form, "form_title": "Modification d'un produit", "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un produit", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required
@@ -420,7 +420,7 @@ def searchProduct(request):
     form = SearchProductForm(request.POST or None)
     if(form.is_valid()):
         return redirect(reverse('gestion:productProfile', kwargs={'pk': form.cleaned_data['product'].pk }))
-    return render(request, "form.html", {"form": form, "form_title":"Rechercher un produit", "form_button": "Rechercher"})
+    return render(request, "form.html", {"form": form, "form_title":"Rechercher un produit", "form_button": "Rechercher", "form_button_icon": "search"})
 
 @active_required
 @login_required
@@ -526,7 +526,7 @@ def addKeg(request):
         keg = form.save()
         messages.success(request, "Le fût " + keg.name + " a bien été ajouté")
         return redirect(reverse('gestion:kegsList'))
-    return render(request, "form.html", {"form":form, "form_title": "Ajout d'un fût", "form_button": "Ajouter"})
+    return render(request, "form.html", {"form":form, "form_title": "Ajout d'un fût", "form_button": "Ajouter", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -559,7 +559,7 @@ def editKeg(request, pk):
         form.save()
         messages.success(request, "Le fût a bien été modifié")
         return redirect(reverse('gestion:kegsList'))
-    return render(request, "form.html", {"form": form, "form_title": "Modification d'un fût", "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un fût", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
 
 @active_required
 @login_required
@@ -598,7 +598,7 @@ def openKeg(request):
         keg.save()
         messages.success(request, "Le fut a bien été percuté")
         return redirect(reverse('gestion:kegsList'))
-    return render(request, "form.html", {"form": form, "form_title":"Percutage d'un fût", "form_button":"Percuter"})
+    return render(request, "form.html", {"form": form, "form_title":"Percutage d'un fût", "form_button":"Percuter", "form_button_icon": "fill-drip"})
 
 @active_required
 @login_required
@@ -660,7 +660,7 @@ def closeKeg(request):
         keg.save()
         messages.success(request, "Le fût a bien été fermé")
         return redirect(reverse('gestion:kegsList'))
-    return render(request, "form.html", {"form": form, "form_title":"Fermeture d'un fût", "form_button":"Fermer le fût"})
+    return render(request, "form.html", {"form": form, "form_title":"Fermeture d'un fût", "form_button":"Fermer le fût", "form_button_icon": "fill"})
 
 @active_required
 @login_required
@@ -785,7 +785,7 @@ def addMenu(request):
         menu = form.save()
         messages.success(request, "Le menu " + menu.name + " a bien été ajouté")
         return redirect(reverse('gestion:menusList'))
-    return render(request, "form.html", {"form":form, "form_title": "Ajout d'un menu", "form_button": "Ajouter", "extra_css": extra_css})
+    return render(request, "form.html", {"form":form, "form_title": "Ajout d'un menu", "form_button": "Ajouter", "form_button_icon": "plus-square", "extra_css": extra_css})
 
 @active_required
 @login_required
@@ -819,7 +819,7 @@ def edit_menu(request, pk):
         form.save()
         messages.success(request, "Le menu a bien été modifié")
         return redirect(reverse('gestion:menusList'))
-    return render(request, "form.html", {"form": form, "form_title": "Modification d'un menu", "form_button": "Modifier", "extra_css": extra_css})
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un menu", "form_button": "Modifier", "form_button_icon": "pencil-alt", "extra_css": extra_css})
 
 @active_required
 @login_required
@@ -847,7 +847,7 @@ def searchMenu(request):
     if(form.is_valid()):
         menu = form.cleaned_data['menu']
         return redirect(reverse('gestion:editMenu', kwargs={'pk':menu.pk}))
-    return render(request, "form.html", {"form": form, "form_title": "Recherche d'un menu", "form_button": "Modifier"})
+    return render(request, "form.html", {"form": form, "form_title": "Recherche d'un menu", "form_button": "Modifier", "form_button_icon": "search"})
 
 @active_required
 @login_required
@@ -989,7 +989,7 @@ def add_pintes(request):
                 i += 1
         messages.success(request, str(i) + " pinte(s) a(ont) été ajoutée(s)")
         return redirect(reverse('gestion:productsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Ajouter des pintes", "form_button": "Ajouter"})
+    return render(request, "form.html", {"form": form, "form_title": "Ajouter des pintes", "form_button": "Ajouter", "form_button_icon": "plus-square"})
 
 @active_required
 @login_required
@@ -1008,7 +1008,7 @@ def release_pintes(request):
                 i += 1
         messages.success(request, str(i) + " pinte(s) a(ont) été libérée(s)")
         return redirect(reverse('gestion:productsIndex'))
-    return render(request, "form.html", {"form": form, "form_title": "Libérer des pintes", "form_button": "Libérer"})
+    return render(request, "form.html", {"form": form, "form_title": "Libérer des pintes", "form_button": "Libérer", "form_button_icon": "glass-whiskey"})
 
 @active_required
 @login_required
@@ -1072,4 +1072,4 @@ def gen_releve(request):
         now = datetime.datetime.now()
         return render_to_pdf(request, 'gestion/releve.tex', {"consumptions": consumptions, "reloads": reloads, "refunds": refunds, "cotisations": cotisations, "begin": begin, "end": end, "now": now, "value_especes": value_especes, "value_lydia": value_lydia, "value_cheque": value_cheque}, filename="releve.pdf")
     else:
-        return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer"})
+        return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer", "form_button_icon": "file-pdf"})
