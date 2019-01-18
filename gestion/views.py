@@ -939,7 +939,12 @@ def ranking(request):
         alcohol = customer.profile.alcohol
         list.append([customer, alcohol])
     bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
-    return render(request, "gestion/ranking.html", {"bestBuyers": bestBuyers, "bestDrinkers": bestDrinkers})
+    form = SearchProductForm(request.POST or None)
+    if(form.is_valid()):
+        product_ranking = form.cleaned_data['product'].ranking
+    else:
+        product_ranking = None
+    return render(request, "gestion/ranking.html", {"bestBuyers": bestBuyers, "bestDrinkers": bestDrinkers, "product_ranking": product_ranking, "form": form})
 
 ########## Pinte monitoring ##########
 

@@ -45,6 +45,22 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def user_ranking(self, pk):
+        user = User.objects.get(pk=pk)
+        consumptions = ConsumptionHistory.objects.filter(customer=user).filter(product=self)
+        # add menu
+        nb = 0
+        for consumption in consumptions:
+            nb += consumption.quantity
+        return (user, nb)
+
+    @property
+    def ranking(self):
+        users = User.objects.all()
+        ranking = [self.user_ranking(user.pk) for user in users]
+        ranking.sort(key=lambda x:x[1], reverse=True)
+        return ranking[0:25]
+
 
 def isPinte(id):
     product = Product.objects.get(id=id)
