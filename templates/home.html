@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block entete %}Accueil{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Accueil</a></li>
+	<li><a href="#second">Les pressions du moment</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Accueil</h2>
+	</header>
+	<section>
+		{{ home_text }}
+	</section>
+</section>
+<section id="second" class="main">
+		<header class="major">
+			<h2>Les pressions du moment</h2>
+		</header>
+		<section>
+			Les bières pressions actuellement en Coopé : 
+			<ul>
+				{% for keg in kegs %}
+				<li>{{keg}} ({% if keg.pinte %} Pinte : {{keg.pinte.amount}}€,{% endif %}{% if keg.demi %} Demi : {{keg.demi.amount}}€,{% endif %}{% if keg.galopin %} Galopin : {{keg.galopin.amount}}€{% endif %})</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</section>
+{% endblock %}

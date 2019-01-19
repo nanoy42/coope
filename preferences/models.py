@@ -34,6 +34,7 @@ class GeneralPreferences(models.Model):
     use_pinte_monitoring = models.BooleanField(default=False)
     lost_pintes_allowed = models.PositiveIntegerField(default=0)
     floating_buttons = models.BooleanField(default=False)
+    home_text = models.TextField(blank=True)
     history = HistoricalRecords()
 
 class Cotisation(models.Model):
