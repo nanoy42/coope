@@ -44,5 +44,16 @@
 				{% include 'footer.html'%}
 			</footer>
 		</div>
+		{% if request.user.is_authenticated %}
+			<script>
+				time = {% logout_time %};
+				function logout(){
+					window.location.replace("{% url 'users:logout' %}");
+				}
+				if(time != 0){
+					setTimeout(logout, 60000 * time);
+				}
+			</script>
+		{% endif %}
 	</body>
 </html>
