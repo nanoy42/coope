@@ -35,6 +35,7 @@ class GeneralPreferences(models.Model):
     lost_pintes_allowed = models.PositiveIntegerField(default=0)
     floating_buttons = models.BooleanField(default=False)
     home_text = models.TextField(blank=True)
+    automatic_logout_time = models.PositiveIntegerField(null=True)
     history = HistoricalRecords()
 
 class Cotisation(models.Model):

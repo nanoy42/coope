@@ -39,3 +39,9 @@ def global_message():
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
     messages = gp.global_message.split("\n")
     return random.choice(messages)
+
+@register.simple_tag
+def logout_time():
+    gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
+    logout_time = gp.automatic_logout_time
+    return logout_time
