@@ -76,6 +76,16 @@
 			<script src="{% static 'chart.min.js' %}"></script>
 			<script>
 			var ctx = document.getElementById("myChart").getContext('2d');
+			baseColor = Math.round(Math.random()*255) + "," + Math.round(Math.random()*255) + "," + Math.round(Math.random()*255);
+			console.log(baseColor)
+			$.get("http://www.thecolorapi.com/scheme?rgb=" + baseColor + "&mode=analogic&count={{products | length}}", function( data ) {
+			colors = data.colors
+			console.log(colors)
+			var bgColor = []
+			for(var i = 0; i < colors.length; i++){
+				color = colors[i]
+				bgColor.push("rgb(" + color.rgb.r + "," + color.rgb.g + "," + color.rgb.b + ")")
+			}
 			var myChart = new Chart(ctx, {
 				type: 'pie',
 				data: {
@@ -83,11 +93,7 @@
 					datasets: [{
 						label: '# of Votes',
 						data: [{% for q in quantities %}{{q}}, {% endfor %}],
-						backgroundColor: [
-						{% for q in products %}	
-						'rgb({% random_filter 0 255 %}, {% random_filter 0 255 %}, {% random_filter 0 255 %})',
-						{% endfor %}
-						],
+						backgroundColor: bgColor
 					}]
 				},
 				options: {
@@ -100,6 +106,7 @@
 					}
 				}
 			});
+			}, "json" );
 			</script>
 	</section>
 </section>
