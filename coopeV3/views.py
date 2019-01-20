@@ -17,3 +17,6 @@ def homepage(request):
     gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
     kegs = Keg.objects.filter(is_active=True)
     return render(request, "home.html", {"home_text": gp.home_text, "kegs": kegs})
+
+def coope_runner(request):
+    return render(request, "coope-runner.html")

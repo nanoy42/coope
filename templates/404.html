@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block entete %}Page introuvable{% endblock %}
 {% block navbar %}
 <ul>
@@ -6,6 +7,30 @@
 </ul>
 {% endblock %}
 {% block content %}
+<script>
+	onkeydown = function(e)
+	{
+		var touche = e.keyCode;
+		var touche_lettre = String.fromCharCode(touche);
+		gauche = false;
+		haut = false;
+		bas = false;
+		droite = false;
+			
+		if(touche == 37 || touche_lettre == "Q")    //Le déplacement à gauche
+			gauche = true;
+		if(touche == 38 || touche_lettre == "Z")
+			haut = true;
+		if(touche == 39 || touche_lettre == "D")    //Le déplacement à droite
+			droite = true;
+		if(touche == 40 || touche_lettre == "S")    //Le déplacement en bas
+			bas = true;
+
+		if(gauche || droite || haut || bas) // Bloquer le défilement
+			e.preventDefault()
+			return false;
+	}
+</script>
 <section id="first" class="main">
 	<header class="major">
 		<h2>Erreur 404</h2>
@@ -13,5 +38,6 @@
 	<section>
 		Une erreur s'est produite lors de l'accès à cette page (la page que vous demandez n'existe pas). Vous pouvez revenir à l'accueil en cliquant <a href="{% url 'home' %}">ici</a>.
 	</section>
+	<object type="text/html" data="{% url 'coope-runner' %}" width="100%" height="200">
 </section>
 {% endblock %}
