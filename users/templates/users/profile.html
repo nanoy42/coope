@@ -2,7 +2,7 @@
 {% load static %}
 {% load users_extra %}
 {% block entete %}{% if self %}Mon Profil{% else %}Profil de {{user}}{% endif %}{%endblock%}
-
+{% block extra_script %}<script src="{% static 'jquery.js' %}"></script>{% endblock %}
 {% block navbar %}
 <ul>
 	<li><a href="#first">{% if self %}Mes informations {% else %} Informations {% endif %}</a>

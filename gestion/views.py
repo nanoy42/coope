@@ -7,19 +7,20 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
 from django.http import HttpResponseRedirect
+from django.db import transaction
+
+from datetime import datetime, timedelta
 
 from django_tex.views import render_to_pdf
-
 from coopeV3.acl import active_required, acl_or, admin_required
 
 import simplejson as json
 from dal import autocomplete
 from decimal import *
-import datetime
 
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund
-from preferences.models import PaymentMethod, GeneralPreferences
+from preferences.models import PaymentMethod, GeneralPreferences, Cotisation
 from users.models import CotisationHistory
 
 @active_required
@@ -77,6 +78,7 @@ def manage(request):
     menus = Menu.objects.filter(is_active=True)
     kegs = Keg.objects.filter(is_active=True)
     gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
+    cotisations = Cotisation.objects.all()
     floating_buttons = gp.floating_buttons
     for keg in kegs:
         if(keg.pinte):
@@ -97,6 +99,7 @@ def manage(request):
         "menus": menus,
         "pay_buttons": pay_buttons,
         "floating_buttons": floating_buttons,
+        "cotisations": cotisations
         })
 
 @csrf_exempt
@@ -107,90 +110,135 @@ def order(request):
     """
     Process the given order. Called by a js/JQuery script.
     """
-    if("user" not in request.POST or "paymentMethod" not in request.POST or "amount" not in request.POST or "order" not in request.POST):
-        return HttpResponse("Erreur du POST")
-    else:
-        user = get_object_or_404(User, pk=request.POST['user'])
-        paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
-        amount = Decimal(request.POST['amount'])
-        order = json.loads(request.POST["order"])
-        menus = json.loads(request.POST["menus"])
-        listPintes = json.loads(request.POST["listPintes"])
-        gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-        if (not order) and (not menus):
-            return HttpResponse("Pas de commande")
-        adherentRequired = False
-        for o in order:
-            product = get_object_or_404(Product, pk=o["pk"])
-            adherentRequired = adherentRequired or product.adherentRequired
-        for m in menus:
-            menu = get_object_or_404(Menu, pk=m["pk"])
-            adherentRequired = adherentRequired or menu.adherent_required
-        if(adherentRequired and not user.profile.is_adherent):
-            return HttpResponse("N'est pas adhérent et devrait l'être")
-        # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
-        # s'il a trop de pintes non rendues, puis je réalloue les pintes
-        for pinte in listPintes:
-            allocate(pinte, None)
-        if(gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
-            return HttpResponse("Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes.")
-        for pinte in listPintes:
-            allocate(pinte, user)
-        if(paymentMethod.affect_balance):
-            if(user.profile.balance < amount):
-                return HttpResponse("Solde inférieur au prix de la commande")
+    error_message = "Impossible d'effectuer la transaction. Toute opération abandonnée. Veuillez contacter le président ou le trésorier"
+    try:
+        with transaction.atomic():
+            if("user" not in request.POST or "paymentMethod" not in request.POST or "amount" not in request.POST or "order" not in request.POST):
+                raise Exception("Erreur du post")
             else:
-                user.profile.debit += amount
-                user.save()
-        for o in order:
-            product = get_object_or_404(Product, pk=o["pk"])
-            quantity = int(o["quantity"])
-            if(product.category == Product.P_PRESSION):
-                keg = get_object_or_404(Keg, pinte=product)
-                if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
-                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
-                kegHistory.quantitySold += Decimal(quantity * 0.5)
-                kegHistory.amountSold += Decimal(quantity * product.amount)
-                kegHistory.save()
-            elif(product.category == Product.D_PRESSION):
-                keg = get_object_or_404(Keg, demi=product)
-                if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
-                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
-                kegHistory.quantitySold += Decimal(quantity * 0.25)
-                kegHistory.amountSold += Decimal(quantity * product.amount)
-                kegHistory.save()
-            elif(product.category == Product.G_PRESSION):
-                keg = get_object_or_404(Keg, galopin=product)
-                if(not keg.is_active):
-                    return HttpResponse("Une erreur inconnue s'est produite. Veuillez contacter le trésorier ou le président")
-                kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
-                kegHistory.quantitySold += Decimal(quantity * 0.125)
-                kegHistory.amountSold += Decimal(quantity * product.amount)
-                kegHistory.save()
-            else:
-                if(product.stockHold > 0):
-                    product.stockHold -= 1
-                    product.save()
-            consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
-            consumption.quantity += quantity
-            consumption.save()
-            ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
-            ch.save()
-        for m in menus:
-            menu = get_object_or_404(Menu, pk=m["pk"])
-            quantity = int(m["quantity"])
-            mh = MenuHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, menu=menu, amount=int(quantity*menu.amount), coopeman=request.user)
-            mh.save()
-            for article in menu.articles.all():
-                consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
-                consumption.quantity += quantity
-                consumption.save()
-                if(article.stockHold > 0):
-                    article.stockHold -= 1
-                    article.save()
-        return HttpResponse("La commande a bien été effectuée")
+                user = get_object_or_404(User, pk=request.POST['user'])
+                paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
+                amount = Decimal(request.POST['amount'])
+                order = json.loads(request.POST["order"])
+                menus = json.loads(request.POST["menus"])
+                listPintes = json.loads(request.POST["listPintes"])
+                cotisations = json.loads(request.POST['cotisations'])
+                gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+                if (not order) and (not menus) and (not cotisations):
+                    error_message = "Pas de commande"
+                    raise Exception(error_message)
+                if(cotisations):
+                    for co in cotisations:
+                        cotisation = Cotisation.objects.get(pk=co['pk'])
+                        for i in range(co['quantity']):
+                            cotisation_history = CotisationHistory(cotisation=cotisation)
+                            if(paymentMethod.affect_balance):
+                                if(user.profile.balance >= cotisation_history.cotisation.amount):
+                                    user.profile.debit += cotisation_history.cotisation.amount
+                                else:
+                                    error_message = "Solde insuffisant"
+                                    raise Exception(error_message)
+                            cotisation_history.user = user
+                            cotisation_history.coopeman = request.user
+                            cotisation_history.amount = cotisation.amount
+                            cotisation_history.duration = cotisation.duration
+                            cotisation_history.paymentMethod = paymentMethod
+                            if(user.profile.cotisationEnd and user.profile.cotisationEnd > timezone.now()):
+                                cotisation_history.endDate = user.profile.cotisationEnd + timedelta(days=cotisation.duration)
+                            else:
+                                cotisation_history.endDate = timezone.now() + timedelta(days=cotisation.duration)
+                            user.profile.cotisationEnd = cotisation_history.endDate
+                            user.save()
+                            cotisation_history.save()
+                adherentRequired = False
+                for o in order:
+                    product = get_object_or_404(Product, pk=o["pk"])
+                    adherentRequired = adherentRequired or product.adherentRequired
+                for m in menus:
+                    menu = get_object_or_404(Menu, pk=m["pk"])
+                    adherentRequired = adherentRequired or menu.adherent_required
+                if(adherentRequired and not user.profile.is_adherent):
+                    error_message = "N'est pas adhérent et devrait l'être."
+                    raise Exception(error_message)
+                # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
+                # s'il a trop de pintes non rendues, puis je réalloue les pintes
+                for pinte in listPintes:
+                    allocate(pinte, None)
+                if(gp.use_pinte_monitoring and gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
+                    error_message = "Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes."
+                    raise Exception(error_message)
+                for pinte in listPintes:
+                    allocate(pinte, user)
+                if(paymentMethod.affect_balance):
+                    if(user.profile.balance < amount):
+                        error_message = "Solde inférieur au prix de la commande"
+                        raise Exception(error_message)
+                    else:
+                        user.profile.debit += amount
+                        user.save()
+                for o in order:
+                    product = get_object_or_404(Product, pk=o["pk"])
+                    quantity = int(o["quantity"])
+                    if(product.category == Product.P_PRESSION):
+                        keg = get_object_or_404(Keg, pinte=product)
+                        if(not keg.is_active):
+                            raise Exception("Fût non actif")
+                        kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                        kegHistory.quantitySold += Decimal(quantity * 0.5)
+                        kegHistory.amountSold += Decimal(quantity * product.amount)
+                        kegHistory.save()
+                    elif(product.category == Product.D_PRESSION):
+                        keg = get_object_or_404(Keg, demi=product)
+                        if(not keg.is_active):
+                            raise Exception("Fût non actif")
+                        kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                        kegHistory.quantitySold += Decimal(quantity * 0.25)
+                        kegHistory.amountSold += Decimal(quantity * product.amount)
+                        kegHistory.save()
+                    elif(product.category == Product.G_PRESSION):
+                        keg = get_object_or_404(Keg, galopin=product)
+                        if(not keg.is_active):
+                            raise Exception("Fût non actif")
+                        kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                        kegHistory.quantitySold += Decimal(quantity * 0.125)
+                        kegHistory.amountSold += Decimal(quantity * product.amount)
+                        kegHistory.save()
+                    else:
+                        if(product.stockHold > 0):
+                            product.stockHold -= 1
+                            product.save()
+                    consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
+                    consumption.quantity += quantity
+                    consumption.save()
+                    ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
+                    ch.save()
+                    if(user.profile.balance > Decimal(product.amount * quantity)):
+                        user.profile.debit += Decimal(product.amount*quantity)
+                    else:
+                        error_message = "Solde insuffisant"
+                        raise Exception(error_message)
+                for m in menus:
+                    menu = get_object_or_404(Menu, pk=m["pk"])
+                    quantity = int(m["quantity"])
+                    mh = MenuHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, menu=menu, amount=int(quantity*menu.amount), coopeman=request.user)
+                    mh.save()
+                    if(user.profile.balance > Decimal(menu.amount * quantity)):
+                        user.profile.debit += Decimal(menu.amount*quantity)
+                    else:
+                        error_message = "Solde insuffisant"
+                        raise Exception(error_message)
+                    for article in menu.articles.all():
+                        consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
+                        consumption.quantity += quantity
+                        consumption.save()
+                        if(article.stockHold > 0):
+                            article.stockHold -= 1
+                            article.save()
+                return HttpResponse("La commande a bien été effectuée")
+    except Exception as e:
+        print(e)
+        print("test")
+        return HttpResponse(error_message)
 
 @active_required
 @login_required
@@ -899,7 +947,7 @@ def get_menu(request, pk):
     for article in menu.articles:
         if article.category == Product.P_PRESSION:
             nb_pintes +=1
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, needQuantityButton: False, "nb_pintes": nb_pintes})
+    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
@@ -1074,7 +1122,7 @@ def gen_releve(request):
                 value_lydia += cot.amount
             elif pm == cheque:
                 value_cheque += cot.amount
-        now = datetime.datetime.now()
+        now = datetime.now()
         return render_to_pdf(request, 'gestion/releve.tex', {"consumptions": consumptions, "reloads": reloads, "refunds": refunds, "cotisations": cotisations, "begin": begin, "end": end, "now": now, "value_especes": value_especes, "value_lydia": value_lydia, "value_cheque": value_cheque}, filename="releve.pdf")
     else:
         return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer", "form_button_icon": "file-pdf"})

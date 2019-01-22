@@ -1,4 +1,4 @@
-import json
+import simplejson as json
 
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
@@ -135,6 +135,19 @@ def deleteCotisation(request,pk):
     messages.success(request, message)
     return redirect(reverse('preferences:cotisationsIndex'))
 
+@active_required
+@login_required
+@permission_required('preferences.view_cotisation')
+def get_cotisation(request, pk):
+    """
+    Get a cotisation by pk
+
+    ``pk``
+        The primary key of the cotisation
+    """
+    cotisation = get_object_or_404(Cotisation, pk=pk)
+    data = json.dumps({"pk": cotisation.pk, "duration": cotisation.duration, "amount" : cotisation.amount, "needQuantityButton": False})
+    return HttpResponse(data, content_type='application/json')
 
 ########## Payment Methods ##########
 

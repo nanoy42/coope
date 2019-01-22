@@ -1,10 +1,11 @@
 total = 0
 products = []
 menus = []
+cotisations = []
 paymentMethod = null
 balance = 0
 username = ""
-id = 0
+id_user = 0
 listPintes = []
 nbPintes = 0;
 use_pinte_monitoring = false;
@@ -29,9 +30,15 @@ function get_menu(id){
 	});
 }
 
+function get_cotisation(id){
+	res = $.get("../preferences/getCotisation/" + id, function(data){
+		add_cotisation(data.pk, "", data.duration, data.amount, data.needQuantityButton);
+	});
+}
+
 function add_product(pk, barcode, name, amount, needQuantityButton){
 	exist = false
-	index = -1
+	index = -1;
 	for(k=0;k < products.length; k++){
 		if(products[k].pk == pk){
 			exist = true
@@ -71,15 +78,36 @@ function add_menu(pk, barcode, name, amount){
 	generate_html();
 }
 
+function add_cotisation(pk, barcode, duration, amount){
+	exist = false;
+	index = -1;
+	for(k=0; k < cotisations.length; k++){
+		if(cotisations[k].pk == pk){
+			exist = true;
+			index = k;
+		}
+	}
+	if(exist){
+		cotisations[index].quantity += 1;
+	}else{
+		cotisations.push({"pk": pk, "barcode": barcode, "duration": duration, "amount": amount, "quantity":1});
+	}
+	generate_html();
+}
+
 function generate_html(){
 	html = "";
+	for(k=0;k<cotisations.length;k++){
+		cotisation = cotisations[k];
+		html += '<tr><td></td><td>Cotisation ' + String(cotisation.duration) + ' jours</td><td>' + String(cotisation.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateCotisationInput(this)" value="' + String(cotisation.quantity) + '"/></td><td>' + String(Number((cotisation.quantity * cotisation.amount).toFixed(2))) + ' €</td></tr>';
+	}
 	for(k=0;k<products.length;k++){
 		product = products[k]
-		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + '</td></tr>';
+		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + ' €</td></tr>';
 	}
 	for(k=0; k<menus.length;k++){
 		menu = menus[k]
-		html += '<tr><td>' + menu.barcode + '</td><td>' + menu.name + '</td><td>' + String(menu.amount) + '</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(Number((menu.quantity * menu.amount).toFixed(2))) + '</td></tr>';
+		html += '<tr><td>' + menu.barcode + '</td><td>' + menu.name + '</td><td>' + String(menu.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(Number((menu.quantity * menu.amount).toFixed(2))) + ' €</td></tr>';
 	}
 	$("#items").html(html)
 	updateTotal();
@@ -92,6 +120,9 @@ function updateTotal(){
 	}
 	for(k=0; k<menus.length;k++){
 		total += menus[k].quantity * menus[k].amount;
+	}
+	for(k=0; k<cotisations.length;k++){
+		total += cotisations[k].quantity * cotisations[k].amount;
 	}
 	$("#totalAmount").text(String(Number(total.toFixed(2))) + "€")
 	totalAfter = balance - total
@@ -112,7 +143,15 @@ function updateMenuInput(a){
 	generate_html();
 }
 
+function updateCotisationInput(a){
+	quantity = parseInt(a.value);
+	k = parseInt(a.getAttribute("data-target"));
+	cotisations[k].quantity = quantity;
+	generate_html();
+}
+
 $(document).ready(function(){
+	$(".cotisation-hidden").hide();
 	get_config();
 
 	$(".product").click(function(){
@@ -123,12 +162,20 @@ $(document).ready(function(){
 		menu = get_menu($(this).attr('target'));
 	});
 
+	$(".cotisation").click(function(){
+		cotisation = get_cotisation($(this).attr('target'));
+	});
+
 	$("#id_client").on('change', function(){
-		id = $("#id_client").val();
-		$.get("/users/getUser/" + id, function(data){
+		id_user = $("#id_client").val();
+		$.get("/users/getUser/" + id_user, function(data){
 		balance = data.balance;
 		username = data.username;
+		is_adherent = data.is_adherent;
 		$("#balance").html(balance + "€");
+		if(!is_adherent){
+			$(".cotisation-hidden").show();
+		}
 		updateTotal();
 	}).fail(function(){
 		alert("Une erreur inconnue est survenue");
@@ -159,7 +206,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-		$.post("order", {"user":id, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length + menus.length, "order": JSON.stringify(products), "amount": total, "menus": JSON.stringify(menus), "listPintes": JSON.stringify(listPintes)}, function(data){
+		$.post("order", {"user":id_user, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length + menus.length + cotisations.length, "order": JSON.stringify(products), "amount": total, "menus": JSON.stringify(menus), "listPintes": JSON.stringify(listPintes), "cotisations": JSON.stringify(cotisations)}, function(data){
 			alert(data);
 			location.reload();
 		}).fail(function(data){

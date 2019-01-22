@@ -115,6 +115,19 @@
 					<div class="boutonProduit">
 						<table>
 							<tbody class="actions" id="bouton Produit">
+								<tr class="cotisation-hidden" style="text-align:center; font-weight:bold;"><td colspan="4">Cotisations</td></tr>
+								{% for cotisation in cotisations %}
+								{% if forloop.counter0|divisibleby:4 %}
+								<tr class="cotisation-hidden" style="text-align:center">
+									{% endif %}
+									<td class="cotisation-hidden"><button class="cotisation" target="{{cotisation.pk}}">Cotisation {{cotisation.duration}} jours ({{cotisation.amount}} €)</button></td>
+									{% if forloop.counter|divisibleby:4 %}
+								</tr>
+								{% endif %}
+								{% endfor %}
+								{% if not bieresPression|divisibleby:4 %}
+								</tr>
+								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
 								{% for product in bieresPression %}
 								{% if forloop.counter0|divisibleby:4 %}

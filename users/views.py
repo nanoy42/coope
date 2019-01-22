@@ -413,7 +413,7 @@ def getUser(request, pk):
         The pk of the user
     """
     user = get_object_or_404(User, pk=pk)
-    data = json.dumps({"username": user.username, "balance": user.profile.balance})
+    data = json.dumps({"username": user.username, "balance": user.profile.balance, "is_adherent": user.profile.is_adherent})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
