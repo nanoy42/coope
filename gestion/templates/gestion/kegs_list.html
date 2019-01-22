@@ -33,6 +33,7 @@
 					<th>Quantité vendue</th>
 					<th>Montant vendu</th>
 					<th>Prix du fût</th>
+					<th>Degré</th>
 					<th>Historique</th>
 					<th>Administrer</th>
 				</tr>
@@ -47,6 +48,7 @@
 					<td>{{ kegH.quantitySold }} L</td>
 					<td>{{ kegH.amountSold }} €</td>
 					<td>{{ kegH.keg.amount }} €</td>
+					<td>{{ kegH.keg.pinte.deg }}°</td>
 					<td><a href="{% url 'gestion:kegH' kegH.keg.pk %}">Voir</a></td>
 					<td>{% if perms.gestion.close_keg %}<a href="{% url 'gestion:closeDirectKeg' kegH.keg.pk %}" class="button small"><i class="fa fa-fill"></i> Fermer</a> {% endif %}{% if perms.gestion.change_keg %}<a href="{% url 'gestion:editKeg' kegH.keg.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
 				</tr>
@@ -78,6 +80,7 @@
 					<th>Code barre</th>
 					<th>Capacité</th>
 					<th>Prix du fût</th>
+					<th>Degré</th>
 					<th>Historique</th>
 					<th>Administrer</th>
 				</tr>
@@ -90,6 +93,7 @@
 					<td>{{ keg.barcode }}</td>
 					<td>{{ keg.capacity }} L</td>
 					<td>{{ keg.amount }} €</td>
+					<td>{{ keg.pinte.deg }}°</td>
 					<td><a href="{% url 'gestion:kegH' keg.pk %}">Voir</a></td>
 					<td>{% if perms.gestion.open_keg %}{% if keg.stockHold > 0 %}<a href="{% url 'gestion:openDirectKeg' keg.pk %}" class="button small"><i class="fa fa-fill-drip"></i> Percuter</a> {% endif %}{% endif %}{% if perms.gestion.change_keg %}<a href="{% url 'gestion:editKeg' keg.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
 				</tr>

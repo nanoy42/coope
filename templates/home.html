@@ -23,7 +23,7 @@
 			Les bières pressions actuellement en Coopé : 
 			<ul>
 				{% for keg in kegs %}
-				<li>{{keg}} ({% if keg.pinte %} Pinte : {{keg.pinte.amount}}€,{% endif %}{% if keg.demi %} Demi : {{keg.demi.amount}}€,{% endif %}{% if keg.galopin %} Galopin : {{keg.galopin.amount}}€{% endif %})</li>
+				<li>{{keg}} ({% if keg.pinte %} Pinte : {{keg.pinte.amount}}€,{% endif %}{% if keg.demi %} Demi : {{keg.demi.amount}}€,{% endif %}{% if keg.galopin %} Galopin : {{keg.galopin.amount}}€{% endif %}) : {{keg.pinte.deg}}°</li>
 				{% endfor %}
 			</ul>
 		</section>
