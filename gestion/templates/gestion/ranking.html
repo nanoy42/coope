@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {%load static %}
 {%block entete%}Classement{%endblock%}
-{% block nav %}
+{% block navbar %}
 <ul>
 	<li><a href="#first">Meilleurs consommateurs (débit)</a></li>
 	<li><a href="#second">Meilleurs consommateurs (alcool)</a></li>
+	<li><a href="#third">Classement par produit</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -28,7 +29,7 @@
 							{%for customer in bestBuyers%}
 							<tr>
                                 <th>{{ forloop.counter }}</th>
-                                <th>{{ customer.username }}</th>
+                                <th><a href="{% url 'users:profile' customer.pk %}">{{ customer.username }}</a></th>
                                 <th>{{ customer.profile.debit }}€</th>
 							</tr>
 							{%endfor%}
@@ -59,7 +60,7 @@
 							{% for customer in bestDrinkers %}
 							<tr>
                                 <th>{{ forloop.counter }}</th>
-                                <th>{{ customer.0.username }}</th>
+                                <th><a href="{% url 'users:profile' customer.0.pk %}">{{ customer.0.username }}</a></th>
                                 <th>{{ customer.1 }}</th>
 							</tr>
 							{%endfor%}
@@ -70,4 +71,44 @@
 		</div>
 	</div>
 </section>
+<section id="third" class="main">
+	<div class="spotlight">
+		<div class="content">
+			<header class="major">
+				<h2>Classement par produit</h2>
+			</header>
+			<div class="row">
+				<div class="8u 12u$(medium)">
+					<form action="" method="POST">
+						{% csrf_token %}
+						{{form}}
+						<br><br>
+						<button type="submit" class="button">Afficher</button>
+					</form>
+					{% if product_ranking %}
+					<table>
+						<thead>
+							<tr>
+								<th>Place</th>
+								<th>Pseudo</th>
+								<th>Quantités consommées</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for customer in product_ranking %}
+							<tr>
+                                <th>{{ forloop.counter }}</th>
+                                <th><a href="{% url 'users:profile' customer.0.pk %}">{{ customer.0.username }}</a></th>
+                                <th>{{ customer.1 }}</th>
+							</tr>
+							{%endfor%}
+						</tbody>
+					</table>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{{form.media}}
 {%endblock%}

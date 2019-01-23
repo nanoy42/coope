@@ -1,3 +1,6 @@
+<span class="tabulation2">
+	<i class="fa fa-home"></i> <a href="{% url 'homepage' %}">Accueil</a>
+</span>
 {% if request.user.is_authenticated %}
 <span class="tabulation2">
 	<i class="fa fa-user"></i> <a href="{% url 'users:profile' request.user.pk %}">Mon profil</a>
@@ -18,11 +21,11 @@
 </span>
 {% endif %}
 <span class="tabulation2">
+	<br>
 	<i class="fa fa-list-ol"></i> <a href="{% url 'gestion:ranking' %}">Classement</a>
 </span>
 {% if perms.preferences.change_generalpreferences %}
 <span class="tabulation2">
-	<br>
 	<i class="fa fa-tools"></i> <a href="{% url 'preferences:generalPreferences' %}">Admin</a>
 </span>
 {% endif %}
@@ -45,5 +48,7 @@
 	<i class="fa fa-bed"></i> <a href="{% url 'users:logout' %}">Deconnexion</a>
 </span>
 {% else %}
-<i class="fa fa-sign-in"></i> <a href="{% url 'users:login' %}">Connexion</a>
+<span class="tabulation2">
+	<i class="fa fa-sign-in-alt"></i> <a href="{% url 'users:login' %}">Connexion</a>
+</span>
 {% endif %}

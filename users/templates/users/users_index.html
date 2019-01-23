@@ -10,7 +10,7 @@
 	<header class="major">
 		<h2>Liste des utilisateurs</h2>
 	</header>
-	<a class="button" href="{% url 'users:createUser' %}">Créer un utilisateur</a><br><br>
+	<a class="button" href="{% url 'users:createUser' %}"><i class="fa fa-user-plus"></i> Créer un utilisateur</a><br><br>
 	<div class="table-wrapper">
 		<table>
 			<thead>
@@ -25,10 +25,10 @@
 			<tbody>
 				{% for user in users %}
 				<tr>
-					<td>{{ user }}</td>
-					<td><a class="button small" href="{% url 'users:profile' user.pk %}">Profil</a></td>
+					<td><a href="{% url 'users:profile' user.pk %}">{{user}}</a></td>
+					<td><a class="button small" href="{% url 'users:profile' user.pk %}"><i class="fa fa-user"></i> Profil</a></td>
 					{% if perms.auth.change_user %}
-					<td><a class="button small" href="{% url 'users:switchActivateUser' user.pk %}">{{ user.is_active | yesno:"Désa,A"}}ctiver</a></td>
+					<td><a class="button small" href="{% url 'users:switchActivateUser' user.pk %}">{% if user.is_active %}<i class="fa fa-times-circle"></i> Désactiver{% else %}<i class="fa fa-check-circle"></i> Activer{% endif %}</a></td>
 					{% endif %}
 				</tr>
 				{% endfor %}

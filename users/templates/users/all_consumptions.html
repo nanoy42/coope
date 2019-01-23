@@ -10,7 +10,7 @@
 {% block content %}
 <section id="first" class="main special">
 	<header class="major">
-		<h2>Consommations ({{user}})</h2>
+		<h2>Consommations (<a href="{% url 'users:profile' user.pk %}">{{user}}</a>)</h2>
 	</header>
 	<section id="rechargements">
 		<div class="table-wrapper">
@@ -28,7 +28,7 @@
 				<tbody id="bodyTransaction">
 					{% for c in consumptions %}
 					<tr>
-						<td>{{c.product}}</td>
+						<td>{% if perms.gestion.view_product %}<a href="{% url 'gestion:productProfile' c.product.pk %}">{{ c.product.name }}{% else %}{{c.product.name}}{% endif %}</a></td>
 						<td>{{c.quantity}}</td>
 						<td>{{c.amount}}</td>
 						<td>{{c.paymentMethod}}</td>

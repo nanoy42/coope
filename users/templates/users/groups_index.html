@@ -11,7 +11,7 @@
 		<h2>Liste des groupes de droit</h2>
 	</header>
 	{% if perms.auth.add_group %}
-	<a href="{% url 'users:createGroup' %}" class="button">Ajouter un groupe de droit</a><br><br>
+	<a href="{% url 'users:createGroup' %}" class="button"><i class="fa fa-plus-square"></i> Ajouter un groupe de droit</a><br><br>
 	{% endif %}
 	<div class="table-wrapper">
 		<table>
@@ -29,7 +29,7 @@
 					<td>{{ group.name }}</td>
 					<td>{{ group.permissions.count }}</td>
 					<td>{{ group.user_set.count }}</td>
-					<td><a href="{% url 'users:groupProfile' group.pk %}" class="button small">Voir</a> {% if perms.auth.change_group %}<a href="{% url 'users:editGroup' group.pk %}" class="button small">Éditer</a> {% endif %}{% if perms.auth.delete_group %}<a href="{% url 'users:deleteGroup' group.pk %}" class="button small">Supprimer</a>{% endif %}</td>
+					<td><a href="{% url 'users:groupProfile' group.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a> {% if perms.auth.change_group %}<a href="{% url 'users:editGroup' group.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Éditer</a> {% endif %}{% if perms.auth.delete_group %}<a href="{% url 'users:deleteGroup' group.pk %}" class="button small"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

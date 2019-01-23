@@ -36,5 +36,6 @@ class GeneralPreferencesForm(forms.ModelForm):
             'treasurer': forms.TextInput(attrs={'placeholder': 'Trésorier'}),
             'brewer': forms.TextInput(attrs={'placeholder': 'Maître brasseur'}),
             'grocer': forms.TextInput(attrs={'placeholder': 'Epic épicier'}),
+            'home_text': forms.Textarea(attrs={'placeholder': 'Ce message sera affiché sur la page d\'accueil'})
         }
 

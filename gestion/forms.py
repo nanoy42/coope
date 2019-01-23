@@ -16,20 +16,21 @@ class ReloadForm(forms.ModelForm):
     class Meta:
         model = Reload
         fields = ("customer", "amount", "PaymentMethod")
-        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
+        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}), 'amount': forms.TextInput}
 
 
 class RefundForm(forms.ModelForm):
     class Meta:
         model = Refund
         fields = ("customer", "amount")
-        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2})}
+        widgets = {'customer': autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}), 'amount': forms.TextInput}
 
 
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+        widgets = {'amount': forms.TextInput}
 
 class KegForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -41,11 +42,13 @@ class KegForm(forms.ModelForm):
     class Meta:
         model = Keg
         exclude = ("is_active", )
+        widgets = {'amount': forms.TextInput}
 
 class MenuForm(forms.ModelForm):
     class Meta:
         model = Menu
         fields = "__all__"
+        widgets = {'amount': forms.TextInput}
 
 class SearchProductForm(forms.Form):
     product = forms.ModelChoiceField(queryset=Product.objects.all(), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:products-autocomplete', attrs={'data-minimum-input-length':2}))

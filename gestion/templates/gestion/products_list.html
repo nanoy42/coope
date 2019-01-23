@@ -11,7 +11,7 @@
 		<h2>Liste des produits</h2>
 	</header>
 	{% if perms.gestion.add_product %}
-	<a class="button" href="{% url 'gestion:addProduct' %}">Créer un produit</a><br><br>
+	<a class="button" href="{% url 'gestion:addProduct' %}"><i class="fa fa-boxes"></i> Créer un produit</a><br><br>
 	{% endif %}
 	<div class="table-wrapper">
 		<table>
@@ -32,7 +32,7 @@
 			<tbody>
 				{% for product in products %}
 				<tr>
-					<td>{{ product.name }}</td>
+					<td><a href="{% url 'gestion:productProfile' product.pk %}">{{ product.name }}</a></td>
 					<td>{{ product.amount}}</td>
 					<td>{{ product.stockHold }}</td>
 					<td>{{ product.stockBar }}</td>
@@ -41,7 +41,7 @@
 					<td>{{ product.is_active | yesno:"Oui, Non"}}</td>
 					<td>{{ product.deg }}</td>
 					<td>{{ product.volume }} cl</td>
-					<td><a href="{% url 'gestion:productProfile' product.pk %}" class="button small">Profil</a> {% if perms.gestion.change_product %}<a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small">Modifier</a>{% endif %}</td>
+					<td><a href="{% url 'gestion:productProfile' product.pk %}" class="button small"><i class="fa fa-eye"></i> Profil</a> {% if perms.gestion.change_product %}<a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}<i class="fa fa-times-circle"></i> Désa{% else %}<i class="fa fa-check-circle"></i> A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
 				</tr>
 				{% endfor %}
 			</tbody>

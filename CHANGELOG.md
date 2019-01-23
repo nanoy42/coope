@@ -1,3 +1,15 @@
+## v3.3.0
+* Ajout d'icônes
+* Le . est utilisé pour les décimaux
+* Ajout de liens vers les profils de produits et utilisateurs
+* Ajout de cotisations dans les transactions
+* Ajout d'une page d'accueil. Les pressions du moment y sont affichées
+* Belles couleurs sur le diagramme
+* Verouillage automatique de la caisse
+* Classement par produit
+* Fix invalidation
+* Recherche plus intuitive (le startswith devient contains)
+* Easter egg sur 404
 ## v3.2.2
 * Fix cotisation cancer
 ## v3.2.1

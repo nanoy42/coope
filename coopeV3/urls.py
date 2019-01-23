@@ -20,6 +20,8 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name="home"),
+    path('home', views.homepage, name="homepage"),
+    path('coope-runner', views.coope_runner, name="coope-runner"),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
