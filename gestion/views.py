@@ -532,7 +532,7 @@ class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Product.objects.all()
         if self.q:
-            qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__contains=self.q)
         return qs
 
 class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
@@ -542,7 +542,7 @@ class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Product.objects.filter(is_active=True)
         if self.q:
-            qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__contains=self.q)
         return qs
 
 ########## Kegs ##########
@@ -790,7 +790,7 @@ class KegActiveAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Keg.objects.filter(is_active = True)
         if self.q:
-            qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__contains=self.q)
         return qs
 
 class KegPositiveAutocomplete(autocomplete.Select2QuerySetView):
@@ -800,7 +800,7 @@ class KegPositiveAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Keg.objects.filter(stockHold__gt = 0)
         if self.q:
-            qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__contains=self.q)
         return qs
 
 ########## Menus ##########
@@ -957,7 +957,7 @@ class MenusAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = Menu.objects.all()
         if self.q:
-            qs = qs.filter(name__istartswith=self.q)
+            qs = qs.filter(name__contains=self.q)
         return qs
 
 ########## Ranking ##########
