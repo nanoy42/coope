@@ -1079,7 +1079,7 @@ class AllUsersAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = User.objects.all()
         if self.q:
-            qs = qs.filter(Q(username__contains=self.q) | Q(first_name__contains=self.q) | Q(last_name__contains=self.q))
+            qs = qs.filter(Q(username__icontains=self.q) | Q(first_name__icontains=self.q) | Q(last_name__icontains=self.q))
         return qs
 
 class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
@@ -1089,7 +1089,7 @@ class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = User.objects.filter(is_active=True)
         if self.q:
-            qs = qs.filter(Q(username__contains=self.q) | Q(first_name__contains=self.q) | Q(last_name__contains=self.q))
+            qs = qs.filter(Q(username__icontains=self.q) | Q(first_name__icontains=self.q) | Q(last_name__icontains=self.q))
         return qs
 
 class AdherentAutocomplete(autocomplete.Select2QuerySetView):
@@ -1101,7 +1101,7 @@ class AdherentAutocomplete(autocomplete.Select2QuerySetView):
         pks = [x.pk for x in qs if x.is_adherent]
         qs = User.objects.filter(pk__in=pks)
         if self.q:
-            qs = qs.filter(Q(username__contains=self.q) | Q(first_name__contains=self.q) | Q(last_name__contains=self.q))
+            qs = qs.filter(Q(username__icontains=self.q) | Q(first_name__icontains=self.q) | Q(last_name__icontains=self.q))
         return qs
 
 
@@ -1112,7 +1112,7 @@ class NonSuperUserAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = User.objects.filter(is_superuser=False)
         if self.q:
-            qs = qs.filter(Q(username__contains=self.q) | Q(first_name__contains=self.q) | Q(last_name__contains=self.q))
+            qs = qs.filter(Q(username__icontains=self.q) | Q(first_name__icontains=self.q) | Q(last_name__icontains=self.q))
         return qs
 
 class NonAdminUserAutocomplete(autocomplete.Select2QuerySetView):
@@ -1122,5 +1122,5 @@ class NonAdminUserAutocomplete(autocomplete.Select2QuerySetView):
     def get_queryset(self):
         qs = User.objects.filter(is_staff=False)
         if self.q:
-            qs = qs.filter(Q(username__contains=self.q) | Q(first_name__contains=self.q) | Q(last_name__contains=self.q))
+            qs = qs.filter(Q(username__icontains=self.q) | Q(first_name__icontains=self.q) | Q(last_name__icontains=self.q))
         return qs
