@@ -80,7 +80,6 @@
 			console.log(baseColor)
 			$.get("http://www.thecolorapi.com/scheme?rgb=" + baseColor + "&mode=analogic&count={{products | length}}", function( data ) {
 			colors = data.colors
-			console.log(colors)
 			var bgColor = []
 			for(var i = 0; i < colors.length; i++){
 				color = colors[i]
