@@ -922,7 +922,7 @@ def invalidateCotisationHistory(request, pk):
     user = cotisationHistory.user
     user.profile.cotisationEnd = user.profile.cotisationEnd - timedelta(days=cotisationHistory.duration)
     if(cotisationHistory.paymentMethod.affect_balance):
-        user.profile.balance += cotisation.amount
+        user.profile.debit -= cotisationHistory.cotisation.amount
     user.save()
     messages.success(request, "La cotisation a bien été invalidée")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
