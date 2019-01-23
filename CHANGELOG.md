@@ -1,3 +1,5 @@
+## v3.3.1
+* contains devient icontains pour enlever la sensibilité à la casse
 ## v3.3.0
 * Ajout d'icônes
 * Le . est utilisé pour les décimaux
