@@ -753,7 +753,7 @@ def kegsList(request):
     :template:`gestion/kegs_list.html`
     """
     kegs_active = KegHistory.objects.filter(isCurrentKegHistory=True)
-    ids_actives = kegs_active.values('id')
+    ids_actives = kegs_active.values('keg__id')
     kegs_inactive = Keg.objects.exclude(id__in = ids_actives)
     return render(request, "gestion/kegs_list.html", {"kegs_active": kegs_active, "kegs_inactive": kegs_inactive})
 
