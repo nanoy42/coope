@@ -1,3 +1,6 @@
+## v3.3.2
+* fix de la vérification du solde dans la commande
+* fix de l'affichage de la liste des fûts
 ## v3.3.1
 * contains devient icontains pour enlever la sensibilité à la casse
 ## v3.3.0
