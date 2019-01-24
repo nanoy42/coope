@@ -169,13 +169,6 @@ def order(request):
                     raise Exception(error_message)
                 for pinte in listPintes:
                     allocate(pinte, user)
-                if(paymentMethod.affect_balance):
-                    if(user.profile.balance < amount):
-                        error_message = "Solde inférieur au prix de la commande"
-                        raise Exception(error_message)
-                    else:
-                        user.profile.debit += amount
-                        user.save()
                 for o in order:
                     product = get_object_or_404(Product, pk=o["pk"])
                     quantity = int(o["quantity"])
@@ -212,7 +205,7 @@ def order(request):
                     consumption.save()
                     ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
                     ch.save()
-                    if(user.profile.balance > Decimal(product.amount * quantity)):
+                    if(user.profile.balance >= Decimal(product.amount*quantity)):
                         user.profile.debit += Decimal(product.amount*quantity)
                     else:
                         error_message = "Solde insuffisant"
@@ -222,7 +215,7 @@ def order(request):
                     quantity = int(m["quantity"])
                     mh = MenuHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, menu=menu, amount=int(quantity*menu.amount), coopeman=request.user)
                     mh.save()
-                    if(user.profile.balance > Decimal(menu.amount * quantity)):
+                    if(user.profile.balance >= Decimal(menu.amount*quantity)):
                         user.profile.debit += Decimal(menu.amount*quantity)
                     else:
                         error_message = "Solde insuffisant"
@@ -234,6 +227,7 @@ def order(request):
                         if(article.stockHold > 0):
                             article.stockHold -= 1
                             article.save()
+                user.save()
                 return HttpResponse("La commande a bien été effectuée")
     except Exception as e:
         print(e)
