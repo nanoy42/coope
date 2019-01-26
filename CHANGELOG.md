@@ -1,3 +1,5 @@
+## v3.3.3
+* fix commande (moyen de paiment n'affectant pas le solde)
 ## v3.3.2
 * fix de la vérification du solde dans la commande
 * fix de l'affichage de la liste des fûts
