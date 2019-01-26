@@ -205,21 +205,23 @@ def order(request):
                     consumption.save()
                     ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
                     ch.save()
-                    if(user.profile.balance >= Decimal(product.amount*quantity)):
-                        user.profile.debit += Decimal(product.amount*quantity)
-                    else:
-                        error_message = "Solde insuffisant"
-                        raise Exception(error_message)
+                    if(paymentMethod.affect_balance):
+                        if(user.profile.balance >= Decimal(product.amount*quantity)):
+                            user.profile.debit += Decimal(product.amount*quantity)
+                        else:
+                            error_message = "Solde insuffisant"
+                            raise Exception(error_message)
                 for m in menus:
                     menu = get_object_or_404(Menu, pk=m["pk"])
                     quantity = int(m["quantity"])
                     mh = MenuHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, menu=menu, amount=int(quantity*menu.amount), coopeman=request.user)
                     mh.save()
-                    if(user.profile.balance >= Decimal(menu.amount*quantity)):
-                        user.profile.debit += Decimal(menu.amount*quantity)
-                    else:
-                        error_message = "Solde insuffisant"
-                        raise Exception(error_message)
+                    if(paymentMethod.affect_balance):
+                        if(user.profile.balance >= Decimal(product.amount*quantity)):
+                            user.profile.debit += Decimal(product.amount*quantity)
+                        else:
+                            error_message = "Solde insuffisant"
+                            raise Exception(error_message)
                     for article in menu.articles.all():
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
