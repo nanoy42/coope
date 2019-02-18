@@ -45,3 +45,27 @@ def logout_time():
     gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
     logout_time = gp.automatic_logout_time
     return logout_time
+
+@register.simple_tag
+def statutes():
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    try:
+        return '<a target="_blank" href="' + gp.statutes.url + '">' + str(gp.statutes) + '</a>'
+    except:
+        return "Pas de document"
+
+@register.simple_tag
+def rules():
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    try:
+        return '<a target="_blank" href="' + gp.rules.url + '">' + str(gp.rules) + '</a>'
+    except:
+        return "Pas de document"
+
+@register.simple_tag
+def menu():
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    try:
+        return '<a target="_blank" href="' + gp.menu.url + '">' + str(gp.menu) + '</a>'
+    except:
+        return "Pas de document"
