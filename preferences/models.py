@@ -36,6 +36,9 @@ class GeneralPreferences(models.Model):
     floating_buttons = models.BooleanField(default=False)
     home_text = models.TextField(blank=True)
     automatic_logout_time = models.PositiveIntegerField(null=True)
+    statutes = models.FileField(blank=True, null=True)
+    rules = models.FileField(blank=True, null=True)
+    menu = models.FileField(blank=True, null=True)
     history = HistoricalRecords()
 
 class Cotisation(models.Model):

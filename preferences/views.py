@@ -30,7 +30,7 @@ def generalPreferences(request):
     :template:`preferences/general_preferences.html`
     """
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    form = GeneralPreferencesForm(request.POST or None, instance=gp)
+    form = GeneralPreferencesForm(request.POST or None, request.FILES or None, instance=gp)
     if(form.is_valid()):
         form.save()
         messages.success(request, "Les préférences générales ont bien été mises à jour")

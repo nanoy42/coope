@@ -6,12 +6,13 @@
 	<li><a href="#second">Site actif</a></li>
 	<li><a href="#third">Bureau</a></li>
 	<li><a href="#fourth">Suivi de pintes</a></li>
-	<li><a href="fifth">Autre</a></li>
+	<li><a href="#fifth">Documents</a></li>
+	<li><a href="#sixth">Autre</a></li>
 </ul>
 {% endblock %}
 
 {% block content %}
-<form class="main" method="post" action="">
+<form class="main" method="post" action="" enctype="multipart/form-data">
 	{% csrf_token %}
 	<section id="first" class="main">
 		<div class="spotlight">
@@ -122,6 +123,38 @@
 		</div>
 	</section>
 	<section id="fifth" class="main">
+		<div class="spotlight">
+			<div class="content">
+				<header class="major">
+					<h2>Documents</h2>
+				</header>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.statutes}}
+						<label for="{{form.statutes.id_for_label}}">Statuts</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.rules}}
+						<label for="{{form.rules.id_for_label}}">Règlement intérieur</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						{{form.menu}}
+						<label for="{{form.menu.id_for_label}}">Menu / Carte</label>
+					</div>
+				</div>
+				<div class="row uniform">
+					<div class="12u">
+						<button type="submit"><i class="fa fa-save"></i> Enregistrer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="sixth" class="main">
 		<div class="spotlight">
 			<div class="content">
 				<header class="major">
