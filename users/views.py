@@ -20,6 +20,10 @@ from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
 from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 
+
+from django.contrib.auth.forms import SetPasswordForm
+
+
 @active_required
 def loginView(request):
     """
@@ -177,8 +181,6 @@ def profile(request, pk):
         if quantities_pre[k]/totQ >= 0.01:
             products.append(products_pre[k])
             quantities.append(quantities_pre[k])
-    print(products)
-    print(quantities)
     lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
     lastMenus = MenuHistory.objects.filter(customer=user).order_by('-date')[:10]
     return render(request, "users/profile.html", 
@@ -219,7 +221,6 @@ def createUser(request):
     form = CreateUserForm(request.POST or None)
     if(form.is_valid()):
         user = form.save(commit=False)
-        user.set_password(user.username)
         user.save()
         user.profile.school = form.cleaned_data['school']
         user.save()
@@ -512,6 +513,21 @@ def switch_activate_user(request, pk):
     user.save()
     messages.success(request, "Le statut de l'utilisateur a bien été changé")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+@active_required
+def verify(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if(user.profile.is_verified):
+        messages.error(request, "L'utilisateur est déjà vérifié")
+        return redirect(reverse('users:login'))
+    form = SetPasswordForm(user, request.POST or None)
+    if(form.is_valid()):
+        form.save()
+        user.profile.date_verified = datetime.now()
+        user.save()
+        messages.success(request, "Le compte a bien été vérifié")
+        return redirect(reverse('users:login'))
+    return render(request, "users/verify.html", {"user": user, "form": form})
     
 ########## Groups ##########
 

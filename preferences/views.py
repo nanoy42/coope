@@ -263,7 +263,7 @@ def get_config(request):
     """
     Load the config and return it in a json format
     """
-    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1).defer("statutes", "rules", "menu")
     data = json.dumps(model_to_dict(gp))
     return HttpResponse(data, content_type='application/json')
     
