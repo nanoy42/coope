@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block entete %}Vérification du compte{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Vérification du compte de {{user}}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Vérification du compte de {{user}}</h2>
+	</header>
+	<section>
+		<form action="" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			<strong>
+			En cliquant sur le bouton "Modifier mon mot de passe et accepter", vous :
+			<ul>
+				<li>attestez sur l'honneur que les informations fournies à l'association Coopé Technopôle Metz sont correctes et que vous n'avez jamais été enregistré dans l'association sous un autre nom / pseudonyme</li>
+				<li>joignez l'association de votre plein gré</li>
+				<li>vous engagez à respecter les statuts et le reglèment intérieur de l'association (envoyés par mail)</li>
+				<li>reconnaissez le but de l'assocation Coopé Technopôle Metz et vous attestez avoir pris conaissances des droits et des devoirs des membres de l'association</li>
+				<li>consentez à ce que les données fournies à l'association, ainsi que vos autres données de compte (débit, crédit, solde et historique des transactions) soient stockées dans le logiciel de gestion et accessibles par tout les membres actifs de l'association, en particulier par le comité de direction</li>
+			</ul>
+			</strong>
+			<button type="submit"><i class="fa fa-check-circle"></i> Modifier mon mot de passe et accepter</button>
+		</form>
+	</section>
+</section>
+{{form.media}}
+{% endblock %}
