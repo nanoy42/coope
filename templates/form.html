@@ -16,6 +16,7 @@
 			{% csrf_token %}
 			{{ form }}
 			<br>
+			{{ extra_html | safe }}
 			<button type="submit"><i class="fa fa-{{form_button_icon}}"></i> {{form_button}}</button>
 		</form>
 	</section>

@@ -20,10 +20,6 @@ from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
 from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 
-
-from django.contrib.auth.forms import SetPasswordForm
-
-
 @active_required
 def loginView(request):
     """
@@ -226,7 +222,7 @@ def createUser(request):
         user.save()
         messages.success(request, "L'utilisateur a bien été créé")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer l'utilisateur", "form_button_icon": "user-plus"})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer mon compte", "form_button_icon": "user-plus", 'extra_html': '<strong>En cliquant sur le bouton "Créer mon compte", vous :<ul><li>attestez sur l\'honneur que les informations fournies à l\'association Coopé Technopôle Metz sont correctes et que vous n\'avez jamais été enregistré dans l\'association sous un autre nom / pseudonyme</li><li>joignez l\'association de votre plein gré</li><li>vous engagez à respecter les statuts et le réglement intérieur de l\'association (envoyés par mail)</li><li>reconnaissez le but de l\'assocation Coopé Technopôle Metz et vous attestez avoir pris conaissances des droits et des devoirs des membres de l\'association</li><li>consentez à ce que les données fournies à l\'association, ainsi que vos autres données de compte (débit, crédit, solde et historique des transactions) soient stockées dans le logiciel de gestion et accessibles par tous les membres actifs de l\'association, en particulier par le comité de direction</li></ul></strong>'})
 
 @active_required
 @login_required
@@ -513,21 +509,6 @@ def switch_activate_user(request, pk):
     user.save()
     messages.success(request, "Le statut de l'utilisateur a bien été changé")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
-@active_required
-def verify(request, pk):
-    user = get_object_or_404(User, pk=pk)
-    if(user.profile.is_verified):
-        messages.error(request, "L'utilisateur est déjà vérifié")
-        return redirect(reverse('users:login'))
-    form = SetPasswordForm(user, request.POST or None)
-    if(form.is_valid()):
-        form.save()
-        user.profile.date_verified = datetime.now()
-        user.save()
-        messages.success(request, "Le compte a bien été vérifié")
-        return redirect(reverse('users:login'))
-    return render(request, "users/verify.html", {"user": user, "form": form})
     
 ########## Groups ##########
 

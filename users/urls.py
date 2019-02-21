@@ -45,5 +45,4 @@ urlpatterns = [
     path('allMenus/<int:pk>/<int:page>', views.all_menus, name="allMenus"),
     path('exportCSV', views.export_csv, name="exportCSV"),
     path('switchActivateUser/<int:pk>', views.switch_activate_user, name="switchActivateUser"),
-    path('verify/<int:pk>', views.verify, name="verify")
 ]

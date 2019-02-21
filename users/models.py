@@ -75,22 +75,14 @@ class Profile(models.Model):
     debit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True)
     cotisationEnd = models.DateTimeField(blank=True, null=True)
-    date_verified = models.DateTimeField(blank=True, null=True)
     history = HistoricalRecords()
-
-    @property
-    def is_verified(self):
-        """
-        Test if a user is verified
-        """
-        return self.date_verified is not None
 
     @property
     def is_adherent(self):
         """
         Test if a user is adherent
         """
-        if(self.is_verified and self.cotisationEnd and self.cotisationEnd > timezone.now()):
+        if(self.cotisationEnd and self.cotisationEnd > timezone.now()):
             return True
         else:
             return False
