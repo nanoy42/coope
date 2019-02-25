@@ -47,12 +47,11 @@ class Product(models.Model):
 
     def user_ranking(self, pk):
         user = User.objects.get(pk=pk)
-        consumptions = ConsumptionHistory.objects.filter(customer=user).filter(product=self)
-        # add menu
-        nb = 0
-        for consumption in consumptions:
-            nb += consumption.quantity
-        return (user, nb)
+        consumptions = Consumption.objects.filter(customer=user).filter(product=self)
+        if consumptions:
+            return (user, consumptions[0].quantity)
+        else:
+            return (user, 0)
 
     @property
     def ranking(self):
