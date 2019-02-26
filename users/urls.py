@@ -33,8 +33,7 @@ urlpatterns = [
     path('non-admin-users-autocomplete', views.NonAdminUserAutocomplete.as_view(), name="non-admin-users-autocomplete"),
     path('getUser/<int:pk>', views.getUser, name="getUser"),
     path('addCotisationHistory/<int:pk>', views.addCotisationHistory, name="addCotisationHistory"),
-    path('validateCotisationHistory/<int:pk>', views.validateCotisationHistory, name="validateCotisationHistory"),
-    path('invalidateCotisationHistory/<int:pk>', views.invalidateCotisationHistory, name="invalidateCotisationHistory"),
+    path('deleteCotisationHistory/<int:pk>', views.deleteCotisationHistory, name="deleteCotisationHistory"),
     path('addWhiteListHistory/<int:pk>', views.addWhiteListHistory, name="addWhiteListHistory"),
     path('schoolsIndex', views.schoolsIndex, name="schoolsIndex"),
     path('createSchool', views.createSchool, name="createSchool"),
@@ -45,4 +44,5 @@ urlpatterns = [
     path('allMenus/<int:pk>/<int:page>', views.all_menus, name="allMenus"),
     path('exportCSV', views.export_csv, name="exportCSV"),
     path('switchActivateUser/<int:pk>', views.switch_activate_user, name="switchActivateUser"),
+    path('genUserInfos/<int:pk>', views.gen_user_infos, name="genUserInfos"),
 ]

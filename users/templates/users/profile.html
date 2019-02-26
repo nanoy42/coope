@@ -51,7 +51,7 @@
 			<div class="12u">
 				<ul class="alt">
 					<li>
-						{% if self or perms.users.can_change_user %}
+						{% if self or perms.users.change_user %}
 						<span><a href="{% url 'users:editUser' user.pk %}"><i class="fa fa-pencil-alt"></i> Modifier {{self | yesno:"mes,les"}} informations</a></span>
 						{% endif %}
 						{% if self %}
@@ -65,6 +65,9 @@
 						{% endif %}
 						{% if perms.auth.change_user %}
 						<span class="tabulation"><a href="{% url 'users:switchActivateUser' user.pk %}"><i class="fa fa-check-circle"></i> {{ user.is_active | yesno:"Désa,A"}}ctiver</a></span>
+						{% endif %}
+						{% if perms.users.view_user %}
+						<span class="tabulation"><a href="{% url 'users:genUserInfos' user.pk %}"><i class="fa fa-id-card"></i> Générer les informations</a></span>
 						{% endif %}
 					</li>
 				</ul>
@@ -227,7 +230,6 @@
 						<th>Date de paiement</th>
 						<th>Moyen de paiement</th>
 						<th>Date de fin</th>
-						<th>État</th>
 						<th>Modération</th>
 					</tr>
 				</thead>
@@ -239,8 +241,7 @@
 						<td>{{cotisation.paymentDate}}</td>
 						<td>{{cotisation.paymentMethod}}</td>
 						<td>{{cotisation.endDate}}</td>
-						<td>{{cotisation.valid}}</td>
-						<td>{% if perms.users.validate_cotisationHistory %}<a class="button small" href="{% url 'users:validateCotisationHistory' cotisation.pk %}"><i class="fa fa-check-circle"></i> Valider</a> <a class="button small" href="{% url 'users:invalidateCotisationHistory' cotisation.pk %}"><i class="fa fa-times-circle"></i> Invalider</a>{% endif %}</td>
+						<td>{% if perms.users.delete_cotisationhistory %}<a class="button small" href="{% url 'users:deleteCotisationHistory' cotisation.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 					</tr>
 					{% endfor %}
 				</tbody>
