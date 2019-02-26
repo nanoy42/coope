@@ -9,12 +9,16 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.forms.models import model_to_dict
 from django.utils import timezone
+from django.conf import settings
 
 import simplejson as json
 from datetime import datetime, timedelta
 from dal import autocomplete
 import csv
+import os
 
+
+from django_tex.views import render_to_pdf
 from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, active_required
 from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
@@ -156,7 +160,7 @@ def profile(request, pk):
     """
     user = get_object_or_404(User, pk=pk)
     self = request.user == user
-    cotisations = CotisationHistory.objects.filter(user=user)
+    cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
     whitelists = WhiteListHistory.objects.filter(user=user)
     reloads = Reload.objects.filter(customer=user).order_by('-date')[:5]
     consumptionsChart = Consumption.objects.filter(customer=user)
@@ -177,8 +181,6 @@ def profile(request, pk):
         if quantities_pre[k]/totQ >= 0.01:
             products.append(products_pre[k])
             quantities.append(quantities_pre[k])
-    print(products)
-    print(quantities)
     lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
     lastMenus = MenuHistory.objects.filter(customer=user).order_by('-date')[:10]
     return render(request, "users/profile.html", 
@@ -219,13 +221,12 @@ def createUser(request):
     form = CreateUserForm(request.POST or None)
     if(form.is_valid()):
         user = form.save(commit=False)
-        user.set_password(user.username)
         user.save()
         user.profile.school = form.cleaned_data['school']
         user.save()
         messages.success(request, "L'utilisateur a bien été créé")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
-    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer l'utilisateur", "form_button_icon": "user-plus"})
+    return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer mon compte", "form_button_icon": "user-plus", 'extra_html': '<strong>En cliquant sur le bouton "Créer mon compte", vous :<ul><li>attestez sur l\'honneur que les informations fournies à l\'association Coopé Technopôle Metz sont correctes et que vous n\'avez jamais été enregistré dans l\'association sous un autre nom / pseudonyme</li><li>joignez l\'association de votre plein gré</li><li>vous engagez à respecter les statuts et le réglement intérieur de l\'association (envoyés par mail)</li><li>reconnaissez le but de l\'assocation Coopé Technopôle Metz et vous attestez avoir pris conaissances des droits et des devoirs des membres de l\'association</li><li>consentez à ce que les données fournies à l\'association, ainsi que vos autres données de compte (débit, crédit, solde et historique des transactions) soient stockées dans le logiciel de gestion et accessibles par tous les membres actifs de l\'association, en particulier par le comité de direction</li></ul></strong>'})
 
 @active_required
 @login_required
@@ -512,7 +513,17 @@ def switch_activate_user(request, pk):
     user.save()
     messages.success(request, "Le statut de l'utilisateur a bien été changé")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-    
+
+@active_required
+@login_required
+@permission_required('auth.view_user')
+def gen_user_infos(request, pk):
+    user= get_object_or_404(User, pk=pk)
+    cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
+    now = datetime.now()
+    path = os.path.join(settings.BASE_DIR, "users/templates/users/coope.png")
+    return render_to_pdf(request, 'users/bulletin.tex', {"user": user, "now": now, "cotisations": cotisations, "path":path}, filename="bulletin_" + user.first_name + "_" + user.last_name + ".pdf")
+
 ########## Groups ##########
 
 @active_required
@@ -892,39 +903,22 @@ def addCotisationHistory(request, pk):
 
 @active_required
 @login_required
-@permission_required('users.validate_cotisationhistory')
-def validateCotisationHistory(request, pk):
+@permission_required('users.delete_cotisationhistory')
+def deleteCotisationHistory(request, pk):
     """
-    Validate the requested :model:`users.CotisationHistory`
+    Delete the requested :model:`users.CotisationHistory`
 
     ``pk``
         The primary key of the :model:`users.CotisationHistory`
     """
     cotisationHistory = get_object_or_404(CotisationHistory, pk=pk)
-    cotisationHistory.valid = CotisationHistory.VALID
-    cotisationHistory.save()
-    messages.success(request, "La cotisation a bien été validée")
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))   
-
-@active_required
-@login_required
-@permission_required('users.validate_cotisationhistory')
-def invalidateCotisationHistory(request, pk):
-    """
-    Invalidate the requested :model:`users.CotisationHistory`
-
-    ``pk``
-        The primary key of the :model:`users.CotisationHistory`
-    """
-    cotisationHistory = get_object_or_404(CotisationHistory, pk=pk)
-    cotisationHistory.valid = CotisationHistory.INVALID
-    cotisationHistory.save()
     user = cotisationHistory.user
     user.profile.cotisationEnd = user.profile.cotisationEnd - timedelta(days=cotisationHistory.duration)
     if(cotisationHistory.paymentMethod.affect_balance):
         user.profile.debit -= cotisationHistory.cotisation.amount
     user.save()
-    messages.success(request, "La cotisation a bien été invalidée")
+    cotisationHistory.delete()
+    messages.success(request, "La cotisation a bien été supprimée")
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 ########## Whitelist ##########

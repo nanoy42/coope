@@ -26,18 +26,6 @@ class CotisationHistory(models.Model):
     """
     class Meta:
         verbose_name = "Historique cotisation"
-        permissions = (
-            ("validate_cotisationhistory", "Peut (in)valider les cotisations"),
-        )
-
-    WAITING = 0
-    VALID = 1
-    INVALID = 2
-    VALIDATION_CHOICES = (
-        (WAITING, 'En attente de validation'),
-        (VALID, 'Validée'),
-        (INVALID, 'Invalidée'),
-    )
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Client")
     amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant")
     duration = models.PositiveIntegerField(verbose_name="Durée")
@@ -46,7 +34,6 @@ class CotisationHistory(models.Model):
     paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT, verbose_name="Moyen de paiement")
     cotisation = models.ForeignKey(Cotisation, on_delete=models.PROTECT, verbose_name="Type de cotisation")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="cotisation_made")
-    valid = models.IntegerField(choices=VALIDATION_CHOICES, default=WAITING)
     history = HistoricalRecords()
 
 class WhiteListHistory(models.Model):

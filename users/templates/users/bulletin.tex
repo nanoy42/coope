@@ -1,0 +1,70 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{eurosym}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{tabu}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\setlength{\parindent}{0pt}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{\includegraphics[scale=0.3]{ {{- path -}} }}
+
+\begin{document}
+\vspace*{0.3\baselineskip}
+\begin{center}
+\huge{Bulletin d'adhésion à l'association Coopé Technopôle Metz}
+\end{center}
+\vspace*{\baselineskip}
+Je soussigné(e), {{user.first_name}} {{user.last_name}},
+\begin{itemize}
+\item atteste sur l'honneur que les informations fournies à l'association Coopé Technopôle Metz sont correctes et que je n'ai jamais été enregistré dans l'association sous un autre nom / pseudonyme
+\item joins l'association de mon plein gré
+\item m'engage à respecter les statuts et le réglement intérieur de l'association
+\item reconnais le but de l'assocation Coopé Technopôle Metz et atteste avoir pris conaissances des droits et des devoirs des membres de l'association
+\item consent à ce que les données fournies à l'association, ainsi que mes autres données de compte (débit, crédit, solde et historique des transactions) soient stockées dans le logiciel de gestion et accessibles par tous les membres actifs de l'association, en particulier par le comité de direction
+\end{itemize}
+
+\begin{flushright}
+Fait à Metz, le {{user.date_joined.strftime('%d/%m/%Y')}}
+\end{flushright}
+Ce bulletin a été validé électroniquement par {{user.first_name}} {{user.last_name}} le {{user.date_joined.strftime('%d/%m/%Y %H:%M:%S')}}, heure de Paris.
+
+\newpage
+
+\begin{center}
+\huge{Historique des cotisations à l'association}
+\end{center}
+\vspace*{\baselineskip}
+\begin{longtabu}{|c|X|X|X|X|X|}
+\hline 
+\# & Date & Montant & Durée & Moyen de paiement & Date de fin\\ 
+\hline
+{% for cotisation in cotisations %}
+{{cotisation.pk}} & {{cotisation.paymentDate.strftime('%d/%M/%Y %H:%M')}} & {{cotisation.amount}} \euro{} & {{cotisation.duration}} jour(s)& {{cotisation.paymentMethod}} & {{cotisation.endDate.strftime('%d/%M/%Y %H:%M')}} \\ 
+\hline
+{% endfor %}
+\end{longtabu}
+
+\newpage
+\begin{center}
+\huge{Attestation d'adhésion}
+\end{center}
+\vspace*{\baselineskip}
+Le comité de direction de la Coopé Technopôle Metz atteste avoir reçu les cotisations de la part de {{user.first_name}} {{user.last_name}}. {% if user.profile.is_adherent %}Le comité atteste aussi que {{user.first_name}} {{user.last_name}} est membre adhérent de l'association au {{now.strftime('%d/%m/%Y')}}.{% endif %}
+
+{% if user.is_staff %}
+\vspace*{\baselineskip}
+Le membre est jugé comme membre actif par le comité de direction.
+{% endif %}
+
+\vspace*{\baselineskip}
+
+Cette attestation est délivrée pour jouir des droits qui lui sont dus.
+\end{document}

@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
+from django.http import Http404
 
 from coopeV3.acl import active_required
 
@@ -263,7 +264,11 @@ def get_config(request):
     """
     Load the config and return it in a json format
     """
-    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    data = json.dumps(model_to_dict(gp))
+    gp, _ = GeneralPreferences.objects.defer("statutes", "rules", "menu").get_or_create(pk=1)
+    gp_dict = model_to_dict(gp)
+    del gp_dict["statutes"]
+    del gp_dict["rules"]
+    del gp_dict["menu"]
+    data = json.dumps(gp_dict)
     return HttpResponse(data, content_type='application/json')
     
