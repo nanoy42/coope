@@ -23,8 +23,8 @@ class Product(models.Model):
         (G_PRESSION, "Galopin pression"),
         (BOTTLE, "Bouteille"),
         (SOFT, "Soft"),
-        (FOOD, "Bouffe autre que panini"),
-        (PANINI, "Bouffe pour panini"),
+        (FOOD, "En-cas"),
+        (PANINI, "Ingredients panini"),
     )
     class Meta:
         verbose_name = "Produit"
@@ -118,12 +118,12 @@ class KegHistory(models.Model):
     class Meta:
         verbose_name = "Historique de fût"
 
-    keg = models.ForeignKey(Keg, on_delete=models.PROTECT)
-    openingDate = models.DateTimeField(auto_now_add=True)
-    quantitySold = models.DecimalField(decimal_places=2, max_digits=5, default=0)
-    amountSold = models.DecimalField(decimal_places=2, max_digits=5, default=0)
-    closingDate = models.DateTimeField(null=True, blank=True)
-    isCurrentKegHistory = models.BooleanField(default=True)
+    keg = models.ForeignKey(Keg, on_delete=models.PROTECT, verbose_name="Fût")
+    openingDate = models.DateTimeField(auto_now_add=True, verbose_name="Date ouverture")
+    quantitySold = models.DecimalField(decimal_places=2, max_digits=5, default=0, verbose_name="Quantité vendue")
+    amountSold = models.DecimalField(decimal_places=2, max_digits=5, default=0, verbose_name="Somme vendue")
+    closingDate = models.DateTimeField(null=True, blank=True, verbose_name="Date fermeture")
+    isCurrentKegHistory = models.BooleanField(default=True, verbose_name="Actuel")
     history = HistoricalRecords()
 
     def __str__(self):
@@ -196,12 +196,12 @@ class MenuHistory(models.Model):
     class Meta:
         verbose_name = "Historique de menu"
 
-    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_taken")
-    quantity = models.PositiveIntegerField(default=0)
-    paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_taken", verbose_name="Client")
+    quantity = models.PositiveIntegerField(default=0, verbose_name="Quantité")
+    paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT, verbose_name="Moyen de paiement")
     date = models.DateTimeField(auto_now_add=True)
     menu = models.ForeignKey(Menu, on_delete=models.PROTECT)
-    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Montant")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="menu_selled")
     history = HistoricalRecords()
 
@@ -215,12 +215,12 @@ class ConsumptionHistory(models.Model):
     class Meta:
         verbose_name = "Consommation"
 
-    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_taken")
-    quantity = models.PositiveIntegerField(default=0)
-    paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT)
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_taken", verbose_name="Client")
+    quantity = models.PositiveIntegerField(default=0, verbose_name="Quantité")
+    paymentMethod = models.ForeignKey(PaymentMethod, on_delete=models.PROTECT, verbose_name="Moyen de paiement")
     date = models.DateTimeField(auto_now_add=True)
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Produit")
+    amount = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Montant")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_selled")
     history = HistoricalRecords()
 
@@ -234,9 +234,9 @@ class Consumption(models.Model):
     class Meta:
         verbose_name = "Consommation totale"
 
-    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_global_taken")
-    product = models.ForeignKey(Product, on_delete=models.PROTECT)
-    quantity = models.PositiveIntegerField(default=0)
+    customer = models.ForeignKey(User, on_delete=models.PROTECT, related_name="consumption_global_taken", verbose_name="Client")
+    product = models.ForeignKey(Product, on_delete=models.PROTECT, verbose_name="Produit")
+    quantity = models.PositiveIntegerField(default=0, verbose_name="Quantité")
     history = HistoricalRecords()
 
     def __str__(self):

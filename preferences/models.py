@@ -7,6 +7,10 @@ class PaymentMethod(models.Model):
     """
     Stores payment methods
     """
+    class Meta:
+        verbose_name="Moyen de paiement"
+        verbose_name_plural = "Moyens de paiement"
+
     name = models.CharField(max_length=255, verbose_name="Nom")
     is_active = models.BooleanField(default=True, verbose_name="Actif")
     is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Cotisations ?")
@@ -22,23 +26,27 @@ class GeneralPreferences(models.Model):
     """
     Stores a unique line of general preferences
     """
-    is_active = models.BooleanField(default=True)
-    active_message = models.TextField(blank=True)
-    global_message = models.TextField(blank=True)
-    president = models.CharField(max_length=255, blank=True)
-    vice_president = models.CharField(max_length=255, blank=True)
-    treasurer = models.CharField(max_length=255, blank=True)
-    secretary = models.CharField(max_length=255, blank=True)
-    brewer = models.CharField(max_length=255, blank=True)
-    grocer = models.CharField(max_length=255, blank=True)
-    use_pinte_monitoring = models.BooleanField(default=False)
-    lost_pintes_allowed = models.PositiveIntegerField(default=0)
-    floating_buttons = models.BooleanField(default=False)
-    home_text = models.TextField(blank=True)
-    automatic_logout_time = models.PositiveIntegerField(null=True)
-    statutes = models.FileField(blank=True, null=True)
-    rules = models.FileField(blank=True, null=True)
-    menu = models.FileField(blank=True, null=True)
+    class Meta:
+        verbose_name="Préférences générales"
+        verbose_name_plural = "Préférences générales"
+
+    is_active = models.BooleanField(default=True, verbose_name="Site actif")
+    active_message = models.TextField(blank=True, verbose_name="Message non actif")
+    global_message = models.TextField(blank=True, verbose_name="Message global")
+    president = models.CharField(max_length=255, blank=True, verbose_name="Président")
+    vice_president = models.CharField(max_length=255, blank=True, verbose_name="Vice Président")
+    treasurer = models.CharField(max_length=255, blank=True, verbose_name="Trésorier")
+    secretary = models.CharField(max_length=255, blank=True, verbose_name="Secrétaire")
+    brewer = models.CharField(max_length=255, blank=True, verbose_name="Maître Brasseur")
+    grocer = models.CharField(max_length=255, blank=True, verbose_name="Épic Épicier")
+    use_pinte_monitoring = models.BooleanField(default=False, verbose_name="Suivi de pintes")
+    lost_pintes_allowed = models.PositiveIntegerField(default=0, verbose_name="Nombre de pintes perdus admises")
+    floating_buttons = models.BooleanField(default=False, verbose_name="Boutons flottants")
+    home_text = models.TextField(blank=True, verbose_name="Message d'accueil")
+    automatic_logout_time = models.PositiveIntegerField(null=True, verbose_name="Temps de déconnexion automatique")
+    statutes = models.FileField(blank=True, null=True, verbose_name="Statuts")
+    rules = models.FileField(blank=True, null=True, verbose_name="Règlement intérieur")
+    menu = models.FileField(blank=True, null=True, verbose_name="Menu")
     history = HistoricalRecords()
 
 class Cotisation(models.Model):

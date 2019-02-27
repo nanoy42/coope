@@ -42,10 +42,11 @@ class WhiteListHistory(models.Model):
     """
     class Meta:
         verbose_name = "Historique accès gracieux"
+        verbose_name_plural = "Historique accès gracieux"
 
-    user = models.ForeignKey(User, on_delete=models.PROTECT)
-    paymentDate = models.DateTimeField(auto_now_add=True)
-    endDate = models.DateTimeField()
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Client")
+    paymentDate = models.DateTimeField(auto_now_add=True, verbose_name="Date de début")
+    endDate = models.DateTimeField(verbose_name="Date de fin")
     duration = models.PositiveIntegerField(verbose_name="Durée", help_text="Durée de l'accès gracieux en jour")
     coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="whitelist_made")
     history = HistoricalRecords()
@@ -57,11 +58,11 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Profil"
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    credit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-    debit = models.DecimalField(max_digits=7, decimal_places=2, default=0)
-    school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True)
-    cotisationEnd = models.DateTimeField(blank=True, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Utilisateur")
+    credit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Crédit")
+    debit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Débit")
+    school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True, verbose_name="École")
+    cotisationEnd = models.DateTimeField(blank=True, null=True, verbose_name="Fin de cotisation")
     history = HistoricalRecords()
 
     @property
