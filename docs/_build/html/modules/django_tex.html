@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Django_tex documentation &mdash; CoopeV3 3.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Utils documentation" href="utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CoopeV3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Django_tex documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.core">Core</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.engine">Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.environment">Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.filters">Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-django_tex.views">Views</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoopeV3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Django_tex documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/django_tex.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="django-tex-documentation">
+<h1>Django_tex documentation<a class="headerlink" href="#django-tex-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-django_tex.core">
+<span id="core"></span><h2>Core<a class="headerlink" href="#module-django_tex.core" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.core.compile_template_to_pdf">
+<code class="descclassname">django_tex.core.</code><code class="descname">compile_template_to_pdf</code><span class="sig-paren">(</span><em>template_name</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.compile_template_to_pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compile the source with <a class="reference internal" href="#django_tex.core.render_template_with_context" title="django_tex.core.render_template_with_context"><code class="xref py py-func docutils literal notranslate"><span class="pre">render_template_with_context()</span></code></a> and <a class="reference internal" href="#django_tex.core.run_tex" title="django_tex.core.run_tex"><code class="xref py py-func docutils literal notranslate"><span class="pre">run_tex()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.core.render_template_with_context">
+<code class="descclassname">django_tex.core.</code><code class="descname">render_template_with_context</code><span class="sig-paren">(</span><em>template_name</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.render_template_with_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Render the template</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.core.run_tex">
+<code class="descclassname">django_tex.core.</code><code class="descname">run_tex</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.run_tex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the source to temp dict and run latex.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.engine">
+<span id="engine"></span><h2>Engine<a class="headerlink" href="#module-django_tex.engine" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.engine.TeXEngine">
+<em class="property">class </em><code class="descclassname">django_tex.engine.</code><code class="descname">TeXEngine</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.engine.TeXEngine" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="django_tex.engine.TeXEngine.app_dirname">
+<code class="descname">app_dirname</code><em class="property"> = 'templates'</em><a class="headerlink" href="#django_tex.engine.TeXEngine.app_dirname" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.environment">
+<span id="environment"></span><h2>Environment<a class="headerlink" href="#module-django_tex.environment" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.environment.environment">
+<code class="descclassname">django_tex.environment.</code><code class="descname">environment</code><span class="sig-paren">(</span><em>**options</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.environment.environment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.exceptions">
+<span id="exceptions"></span><h2>Exceptions<a class="headerlink" href="#module-django_tex.exceptions" title="Permalink to this headline">¶</a></h2>
+<dl class="exception">
+<dt id="django_tex.exceptions.TexError">
+<em class="property">exception </em><code class="descclassname">django_tex.exceptions.</code><code class="descname">TexError</code><span class="sig-paren">(</span><em>log</em>, <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.TexError" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="django_tex.exceptions.TexError.get_message">
+<code class="descname">get_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.TexError.get_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.exceptions.prettify_message">
+<code class="descclassname">django_tex.exceptions.</code><code class="descname">prettify_message</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.prettify_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper methods that removes consecutive whitespaces and newline characters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.exceptions.tokenizer">
+<code class="descclassname">django_tex.exceptions.</code><code class="descname">tokenizer</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.tokenizer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.filters">
+<span id="filters"></span><h2>Filters<a class="headerlink" href="#module-django_tex.filters" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.filters.do_linebreaks">
+<code class="descclassname">django_tex.filters.</code><code class="descname">do_linebreaks</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.filters.do_linebreaks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.models">
+<span id="models"></span><h2>Models<a class="headerlink" href="#module-django_tex.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.models.TeXTemplateFile">
+<em class="property">class </em><code class="descclassname">django_tex.models.</code><code class="descname">TeXTemplateFile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.models.TeXTemplateFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="class">
+<dt id="django_tex.models.TeXTemplateFile.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.Meta.abstract">
+<code class="descname">abstract</code><em class="property"> = False</em><a class="headerlink" href="#django_tex.models.TeXTemplateFile.Meta.abstract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.name">
+<code class="descname">name</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.title">
+<code class="descname">title</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.models.validate_template_path">
+<code class="descclassname">django_tex.models.</code><code class="descname">validate_template_path</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.models.validate_template_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.views">
+<span id="views"></span><h2>Views<a class="headerlink" href="#module-django_tex.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.views.PDFResponse">
+<em class="property">class </em><code class="descclassname">django_tex.views.</code><code class="descname">PDFResponse</code><span class="sig-paren">(</span><em>content</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.views.PDFResponse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="django_tex.views.render_to_pdf">
+<code class="descclassname">django_tex.views.</code><code class="descname">render_to_pdf</code><span class="sig-paren">(</span><em>request</em>, <em>template_name</em>, <em>context=None</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.views.render_to_pdf" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="utils.html" class="btn btn-neutral float-left" title="Utils documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yoann Pietri
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

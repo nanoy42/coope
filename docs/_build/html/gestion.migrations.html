@@ -1,0 +1,230 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>gestion.migrations package &#8212; Documentation CoopeV3 3.4.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="gestion-migrations-package">
+<h1>gestion.migrations package<a class="headerlink" href="#gestion-migrations-package" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-gestion.migrations.0001_initial">
+<span id="gestion-migrations-0001-initial-module"></span><h2>gestion.migrations.0001_initial module<a class="headerlink" href="#module-gestion.migrations.0001_initial" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0001_initial.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0001_initial.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0001_initial.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0001_initial'), ('auth', '__first__')]</em><a class="headerlink" href="#gestion.migrations.0001_initial.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0001_initial.Migration.initial">
+<code class="descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#gestion.migrations.0001_initial.Migration.initial" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0001_initial.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Consumption', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Consommation totale'}&gt;, &lt;CreateModel  name='ConsumptionHistory', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('paymentMethod', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Consommation'}&gt;, &lt;CreateModel  name='HistoricalConsumption', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Consommation totale', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalConsumptionHistory', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;), ('paymentMethod', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Consommation', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalKeg', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('stockHold', &lt;django.db.models.fields.IntegerField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('capacity', &lt;django.db.models.fields.IntegerField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;)], options={'verbose_name': 'historical Fût', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalKegHistory', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('openingDate', &lt;django.db.models.fields.DateTimeField&gt;), ('quantitySold', &lt;django.db.models.fields.DecimalField&gt;), ('amountSold', &lt;django.db.models.fields.DecimalField&gt;), ('closingDate', &lt;django.db.models.fields.DateTimeField&gt;), ('isCurrentKegHistory', &lt;django.db.models.fields.BooleanField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Historique de fût', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalMenu', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical menu', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalMenuHistory', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Historique de menu', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalProduct', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('stockHold', &lt;django.db.models.fields.IntegerField&gt;), ('stockBar', &lt;django.db.models.fields.IntegerField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('category', &lt;django.db.models.fields.CharField&gt;), ('needQuantityButton', &lt;django.db.models.fields.BooleanField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('volume', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('deg', &lt;django.db.models.fields.DecimalField&gt;), ('adherentRequired', &lt;django.db.models.fields.BooleanField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Produit', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalRefund', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Remboursement', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalReload', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('PaymentMethod', &lt;django.db.models.fields.related.ForeignKey&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical Rechargement', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='Keg', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('stockHold', &lt;django.db.models.fields.IntegerField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('capacity', &lt;django.db.models.fields.IntegerField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;)], options={'verbose_name': 'Fût', 'permissions': (('open_keg', 'Peut percuter les fûts'), ('close_keg', 'Peut fermer les fûts'))}&gt;, &lt;CreateModel  name='KegHistory', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('openingDate', &lt;django.db.models.fields.DateTimeField&gt;), ('quantitySold', &lt;django.db.models.fields.DecimalField&gt;), ('amountSold', &lt;django.db.models.fields.DecimalField&gt;), ('closingDate', &lt;django.db.models.fields.DateTimeField&gt;), ('isCurrentKegHistory', &lt;django.db.models.fields.BooleanField&gt;), ('keg', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Historique de fût'}&gt;, &lt;CreateModel  name='Menu', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;)]&gt;, &lt;CreateModel  name='MenuHistory', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('quantity', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;), ('menu', &lt;django.db.models.fields.related.ForeignKey&gt;), ('paymentMethod', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Historique de menu'}&gt;, &lt;CreateModel  name='Product', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('stockHold', &lt;django.db.models.fields.IntegerField&gt;), ('stockBar', &lt;django.db.models.fields.IntegerField&gt;), ('barcode', &lt;django.db.models.fields.CharField&gt;), ('category', &lt;django.db.models.fields.CharField&gt;), ('needQuantityButton', &lt;django.db.models.fields.BooleanField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('volume', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('deg', &lt;django.db.models.fields.DecimalField&gt;), ('adherentRequired', &lt;django.db.models.fields.BooleanField&gt;)], options={'verbose_name': 'Produit'}&gt;, &lt;CreateModel  name='Refund', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Remboursement'}&gt;, &lt;CreateModel  name='Reload', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('date', &lt;django.db.models.fields.DateTimeField&gt;), ('PaymentMethod', &lt;django.db.models.fields.related.ForeignKey&gt;), ('coopeman', &lt;django.db.models.fields.related.ForeignKey&gt;), ('customer', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'Rechargement'}&gt;, &lt;AddField  model_name='menu', name='articles', field=&lt;django.db.models.fields.related.ManyToManyField&gt;&gt;, &lt;AddField  model_name='keg', name='demi', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='keg', name='galopin', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='keg', name='pinte', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalmenuhistory', name='menu', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalmenuhistory', name='paymentMethod', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalkeghistory', name='keg', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalkeg', name='demi', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalkeg', name='galopin', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalkeg', name='history_user', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalkeg', name='pinte', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalconsumptionhistory', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='historicalconsumption', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='consumptionhistory', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AddField  model_name='consumption', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gestion.migrations.0001_initial.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations.0002_pinte">
+<span id="gestion-migrations-0002-pinte-module"></span><h2>gestion.migrations.0002_pinte module<a class="headerlink" href="#module-gestion.migrations.0002_pinte" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0002_pinte.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0002_pinte.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0002_pinte.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0002_pinte.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('auth', '__first__'), ('gestion', '0001_initial')]</em><a class="headerlink" href="#gestion.migrations.0002_pinte.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0002_pinte.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Pinte', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('last_update_date', &lt;django.db.models.fields.DateTimeField&gt;), ('current_owner', &lt;django.db.models.fields.related.ForeignKey&gt;), ('previous_owner', &lt;django.db.models.fields.related.ForeignKey&gt;)]&gt;]</em><a class="headerlink" href="#gestion.migrations.0002_pinte.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations.0003_historicalpinte">
+<span id="gestion-migrations-0003-historicalpinte-module"></span><h2>gestion.migrations.0003_historicalpinte module<a class="headerlink" href="#module-gestion.migrations.0003_historicalpinte" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0003_historicalpinte.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0003_historicalpinte.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0003_historicalpinte.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0003_historicalpinte.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('auth', '__first__'), ('gestion', '0002_pinte')]</em><a class="headerlink" href="#gestion.migrations.0003_historicalpinte.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0003_historicalpinte.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='HistoricalPinte', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('last_update_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('current_owner', &lt;django.db.models.fields.related.ForeignKey&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;), ('previous_owner', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical pinte', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;]</em><a class="headerlink" href="#gestion.migrations.0003_historicalpinte.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations.0004_auto_20181223_1830">
+<span id="gestion-migrations-0004-auto-20181223-1830-module"></span><h2>gestion.migrations.0004_auto_20181223_1830 module<a class="headerlink" href="#module-gestion.migrations.0004_auto_20181223_1830" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0004_auto_20181223_1830.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0004_auto_20181223_1830.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0004_auto_20181223_1830.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0004_auto_20181223_1830.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gestion', '0003_historicalpinte')]</em><a class="headerlink" href="#gestion.migrations.0004_auto_20181223_1830.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0004_auto_20181223_1830.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='pinte', name='current_owner', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='pinte', name='previous_owner', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;]</em><a class="headerlink" href="#gestion.migrations.0004_auto_20181223_1830.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations.0005_auto_20190106_0018">
+<span id="gestion-migrations-0005-auto-20190106-0018-module"></span><h2>gestion.migrations.0005_auto_20190106_0018 module<a class="headerlink" href="#module-gestion.migrations.0005_auto_20190106_0018" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0005_auto_20190106_0018.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0005_auto_20190106_0018.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0005_auto_20190106_0018.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0005_auto_20190106_0018.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gestion', '0004_auto_20181223_1830')]</em><a class="headerlink" href="#gestion.migrations.0005_auto_20190106_0018.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0005_auto_20190106_0018.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='historicalproduct', name='showingMultiplier', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AddField  model_name='product', name='showingMultiplier', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;]</em><a class="headerlink" href="#gestion.migrations.0005_auto_20190106_0018.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations.0006_auto_20190227_0859">
+<span id="gestion-migrations-0006-auto-20190227-0859-module"></span><h2>gestion.migrations.0006_auto_20190227_0859 module<a class="headerlink" href="#module-gestion.migrations.0006_auto_20190227_0859" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="gestion.migrations.0006_auto_20190227_0859.Migration">
+<em class="property">class </em><code class="descclassname">gestion.migrations.0006_auto_20190227_0859.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.migrations.0006_auto_20190227_0859.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="gestion.migrations.0006_auto_20190227_0859.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('gestion', '0005_auto_20190106_0018')]</em><a class="headerlink" href="#gestion.migrations.0006_auto_20190227_0859.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.migrations.0006_auto_20190227_0859.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterField  model_name='consumption', name='customer', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='consumption', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='consumption', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='consumptionhistory', name='amount', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='consumptionhistory', name='customer', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='consumptionhistory', name='paymentMethod', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='consumptionhistory', name='product', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='consumptionhistory', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalconsumption', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalconsumptionhistory', name='amount', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='historicalconsumptionhistory', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalkeghistory', name='amountSold', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='historicalkeghistory', name='closingDate', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AlterField  model_name='historicalkeghistory', name='isCurrentKegHistory', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='historicalkeghistory', name='openingDate', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AlterField  model_name='historicalkeghistory', name='quantitySold', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='historicalmenuhistory', name='amount', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='historicalmenuhistory', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalproduct', name='category', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='keghistory', name='amountSold', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='keghistory', name='closingDate', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AlterField  model_name='keghistory', name='isCurrentKegHistory', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='keghistory', name='keg', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='keghistory', name='openingDate', field=&lt;django.db.models.fields.DateTimeField&gt;&gt;, &lt;AlterField  model_name='keghistory', name='quantitySold', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='menuhistory', name='amount', field=&lt;django.db.models.fields.DecimalField&gt;&gt;, &lt;AlterField  model_name='menuhistory', name='customer', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='menuhistory', name='paymentMethod', field=&lt;django.db.models.fields.related.ForeignKey&gt;&gt;, &lt;AlterField  model_name='menuhistory', name='quantity', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='product', name='category', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#gestion.migrations.0006_auto_20190227_0859.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-gestion.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gestion.migrations" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CoopeV3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yoann Pietri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/gestion.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

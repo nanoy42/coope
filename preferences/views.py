@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
+from django.http import Http404
 
 from coopeV3.acl import active_required
 
@@ -18,19 +19,10 @@ from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm
 @permission_required('preferences.change_generalpreferences')
 def generalPreferences(request):
     """
-    Display form to edit the general preferences
-
-    **Context**
-
-    ``form``
-        The GeneralPreferences form instance
-
-    **Template**
-
-    :template:`preferences/general_preferences.html`
+    View which displays a :class:`~preferences.forms.GeneralPreferencesForm` to edit the :class:`~preferences.models.GeneralPreferences`.
     """
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    form = GeneralPreferencesForm(request.POST or None, instance=gp)
+    form = GeneralPreferencesForm(request.POST or None, request.FILES or None, instance=gp)
     if(form.is_valid()):
         form.save()
         messages.success(request, "Les préférences générales ont bien été mises à jour")
@@ -43,16 +35,7 @@ def generalPreferences(request):
 @permission_required('preferences.view_cotisation')
 def cotisationsIndex(request):
     """
-    Lists the cotisations
-
-    **Context**
-
-    ``cotisations``
-        List of cotisations
-
-    **Template**
-
-    :template:`preferences/cotisations_index.html`
+    View which lists all the :class:`~preferences.models.Cotisation`.
     """
     cotisations = Cotisation.objects.all()
     return render(request, "preferences/cotisations_index.html", {"cotisations": cotisations})
@@ -62,22 +45,7 @@ def cotisationsIndex(request):
 @permission_required('preferences.add_cotisation')
 def addCotisation(request):
     """
-    Form to add a cotisation
-
-    **Context**
-
-    ``form``
-        The CotisationForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the form button
-
-    **Template**
-
-    :template:`form.html`
+    View which displays a :class:`~preferences.forms.CotisationForm` to create a :class:`~preferences.models.Cotisation`.
     """
     form = CotisationForm(request.POST or None)
     if(form.is_valid()):
@@ -91,25 +59,10 @@ def addCotisation(request):
 @permission_required('preferences.change_cotisation')
 def editCotisation(request, pk):
     """
-    Form to edit a cotisation
+    View which displays a :class:`~preferences.forms.CotisationForm` to edit a :class:`~preferences.models.Cotisation`.
 
-    ``pk``
-        The primary key of the cotisation
-
-    **Context**
-
-    ``form``
-        The CotisationForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the form button
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the :class:`~preferences.models.Cotisation` to edit.
     """
     cotisation = get_object_or_404(Cotisation, pk=pk)
     form = CotisationForm(request.POST or None, instance=cotisation)
@@ -122,12 +75,12 @@ def editCotisation(request, pk):
 @active_required
 @login_required
 @permission_required('preferences.delete_cotisation')
-def deleteCotisation(request,pk):
+def deleteCotisation(request, pk):
     """
-    Delete a cotisation
+    Delete a :class:`~preferences.models.Cotisation`.
 
-    ``pk``
-        The primary key of the cotisation to delete
+    pk
+        The primary key of the :class:`~preferences.models.Cotisation` to delete.
     """
     cotisation = get_object_or_404(Cotisation, pk=pk)
     message = "La cotisation (" + str(cotisation.duration) + " jours, " + str(cotisation.amount) + "€) a bien été supprimée"
@@ -140,10 +93,10 @@ def deleteCotisation(request,pk):
 @permission_required('preferences.view_cotisation')
 def get_cotisation(request, pk):
     """
-    Get a cotisation by pk
+    Return the requested :class:`~preferences.models.Cotisation` in json format.
 
-    ``pk``
-        The primary key of the cotisation
+    pk
+        The primary key of the requested :class:`~preferences.models.Cotisation`.    
     """
     cotisation = get_object_or_404(Cotisation, pk=pk)
     data = json.dumps({"pk": cotisation.pk, "duration": cotisation.duration, "amount" : cotisation.amount, "needQuantityButton": False})
@@ -156,16 +109,7 @@ def get_cotisation(request, pk):
 @permission_required('preferences.view_paymentmethod')
 def paymentMethodsIndex(request):
     """
-    Lists the paymentMethods
-
-    **Context**
-
-    ``paymentMethods``
-        List of paymentMethods
-
-    **Template**
-
-    :template:`preferences/payment_methods_index.html`
+    View which lists all the :class:`~preferences.models.PaymentMethod`.
     """
     paymentMethods =  PaymentMethod.objects.all()
     return render(request, "preferences/payment_methods_index.html", {"paymentMethods": paymentMethods})
@@ -175,22 +119,7 @@ def paymentMethodsIndex(request):
 @permission_required('preferences.add_paymentmethod')
 def addPaymentMethod(request):
     """
-    Form to add a paymentMethod
-
-    **Context**
-
-    ``form``
-        The CotisationForm form paymentMethod
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the form button
-
-    **Template**
-
-    :template:`form.html`
+    View which displays a :class:`~preferences.forms.PaymentMethodForm` to create a :class:`~preferences.models.PaymentMethod`.
     """
     form = PaymentMethodForm(request.POST or None)
     if(form.is_valid()):
@@ -204,25 +133,10 @@ def addPaymentMethod(request):
 @permission_required('preferences.change_paymentmethod')
 def editPaymentMethod(request, pk):
     """
-    Form to edit a paymentMethod
+    View which displays a :class:`~preferences.forms.PaymentMethodForm` to edit a :class:`~preferences.models.PaymentMethod`.
 
-    ``pk``
-        The primary key of the paymentMethod
-
-    **Context**
-
-    ``form``
-        The PaymentMethodForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the form button
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the :class:`~preferences.models.PaymentMethod` to edit.
     """
     paymentMethod = get_object_or_404(PaymentMethod, pk=pk)
     form = PaymentMethodForm(request.POST or None, instance=paymentMethod)
@@ -237,10 +151,10 @@ def editPaymentMethod(request, pk):
 @permission_required('preferences.delete_paymentmethod')
 def deletePaymentMethod(request,pk):
     """
-    Delete a paymentMethod
+    Delete a :class:`~preferences.models.PaymentMethod`.
 
-    ``pk``
-        The primary key of the paymentMethod to delete
+    pk
+        The primary key of the :class:`~preferences.models.PaymentMethod` to delete.
     """
     paymentMethod = get_object_or_404(PaymentMethod, pk=pk)
     message = "Le moyen de paiement " + paymentMethod.name + " a bien été supprimé"
@@ -252,7 +166,7 @@ def deletePaymentMethod(request,pk):
 
 def inactive(request):
     """
-    Displays inactive view
+    View which displays the inactive message (if the site is inactive).
     """
     gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
     return render(request, 'preferences/inactive.html', {"message": gp.active_message})
@@ -261,9 +175,13 @@ def inactive(request):
 
 def get_config(request):
     """
-    Load the config and return it in a json format
+    Load the :class:`~preferences.models.GeneralPreferences` and return it in json format (except for :attr:`~preferences.models.GeneralPreferences.statutes`, :attr:`~preferences.models.GeneralPreferences.rules` and :attr:`~preferences.models.GeneralPreferences.menu`)
     """
-    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    data = json.dumps(model_to_dict(gp))
+    gp, _ = GeneralPreferences.objects.defer("statutes", "rules", "menu").get_or_create(pk=1)
+    gp_dict = model_to_dict(gp)
+    del gp_dict["statutes"]
+    del gp_dict["rules"]
+    del gp_dict["menu"]
+    data = json.dumps(gp_dict)
     return HttpResponse(data, content_type='application/json')
     

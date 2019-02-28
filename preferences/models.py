@@ -5,14 +5,36 @@ from django.core.validators import MinValueValidator
 
 class PaymentMethod(models.Model):
     """
-    Stores payment methods
+    Stores payment methods.
     """
+    class Meta:
+        verbose_name="Moyen de paiement"
+        verbose_name_plural = "Moyens de paiement"
+
     name = models.CharField(max_length=255, verbose_name="Nom")
+    """
+    The name of the PaymentMethod.
+    """
     is_active = models.BooleanField(default=True, verbose_name="Actif")
+    """
+    If False, the PaymentMethod can't be use anywhere.
+    """
     is_usable_in_cotisation = models.BooleanField(default=True, verbose_name="Cotisations ?")
+    """
+    If true, the PaymentMethod can be used to pay cotisation.
+    """
     is_usable_in_reload = models.BooleanField(default=True, verbose_name="Rechargements ?")
+    """
+    If true, the PaymentMethod can be used to reload an user account.
+    """
     affect_balance = models.BooleanField(default=False, verbose_name="Affecte le solde")
+    """
+    If true, the PaymentMethod will decrease the user's balance when used.
+    """   
     icon = models.CharField(max_length=255, verbose_name="Icône", blank=True)
+    """
+    A font awesome icon (without the fa)
+    """
     history = HistoricalRecords()
 
     def __str__(self):
@@ -22,28 +44,92 @@ class GeneralPreferences(models.Model):
     """
     Stores a unique line of general preferences
     """
-    is_active = models.BooleanField(default=True)
-    active_message = models.TextField(blank=True)
-    global_message = models.TextField(blank=True)
-    president = models.CharField(max_length=255, blank=True)
-    vice_president = models.CharField(max_length=255, blank=True)
-    treasurer = models.CharField(max_length=255, blank=True)
-    secretary = models.CharField(max_length=255, blank=True)
-    brewer = models.CharField(max_length=255, blank=True)
-    grocer = models.CharField(max_length=255, blank=True)
-    use_pinte_monitoring = models.BooleanField(default=False)
-    lost_pintes_allowed = models.PositiveIntegerField(default=0)
-    floating_buttons = models.BooleanField(default=False)
-    home_text = models.TextField(blank=True)
-    automatic_logout_time = models.PositiveIntegerField(null=True)
+    class Meta:
+        verbose_name="Préférences générales"
+        verbose_name_plural = "Préférences générales"
+
+    is_active = models.BooleanField(default=True, verbose_name="Site actif")
+    """
+    If True, the site will be accessible. If False, all the requests are redirect to :func:`~preferences.views.inactive`.
+    """
+    active_message = models.TextField(blank=True, verbose_name="Message non actif")
+    """
+    Message displayed on the :func:`~preferences.views.inactive`
+    """
+    global_message = models.TextField(blank=True, verbose_name="Message global")
+    """
+    List of messages, separated by a carriage return. One will be chosen randomly at each request on displayed in the header
+    """
+    president = models.CharField(max_length=255, blank=True, verbose_name="Président")
+    """
+    The name of the president
+    """
+    vice_president = models.CharField(max_length=255, blank=True, verbose_name="Vice Président")
+    """
+    The name of the vice-president
+    """
+    treasurer = models.CharField(max_length=255, blank=True, verbose_name="Trésorier")
+    """
+    The name of the treasurer
+    """
+    secretary = models.CharField(max_length=255, blank=True, verbose_name="Secrétaire")
+    """
+    The name of the secretary
+    """
+    brewer = models.CharField(max_length=255, blank=True, verbose_name="Maître Brasseur")
+    """
+    The name of the brewer
+    """
+    grocer = models.CharField(max_length=255, blank=True, verbose_name="Épic Épicier")
+    """
+    The name of the grocer
+    """
+    use_pinte_monitoring = models.BooleanField(default=False, verbose_name="Suivi de pintes")
+    """
+    If True, alert will be displayed to allocate pints during order
+    """
+    lost_pintes_allowed = models.PositiveIntegerField(default=0, verbose_name="Nombre de pintes perdus admises")
+    """
+    If > 0, a user will be blocked if he has losted more pints than the value
+    """
+    floating_buttons = models.BooleanField(default=False, verbose_name="Boutons flottants")
+    """
+    If True, displays floating paymentButtons on the :func:`~gestion.views.manage` view.
+    """
+    home_text = models.TextField(blank=True, verbose_name="Message d'accueil")
+    """
+    Text display on the home page
+    """
+    automatic_logout_time = models.PositiveIntegerField(null=True, verbose_name="Temps de déconnexion automatique")
+    """
+    Duration after which the user is automatically disconnected if inactive
+    """
+    statutes = models.FileField(blank=True, null=True, verbose_name="Statuts")
+    """
+    The file of the statutes
+    """
+    rules = models.FileField(blank=True, null=True, verbose_name="Règlement intérieur")
+    """
+    The file of the internal rules
+    """
+    menu = models.FileField(blank=True, null=True, verbose_name="Menu")
+    """
+    The file of the menu
+    """
     history = HistoricalRecords()
 
 class Cotisation(models.Model):
     """
-    Stores cotisations
+    Stores cotisations.
     """
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant", validators=[MinValueValidator(0)])
+    """
+    Price of the cotisation.
+    """
     duration = models.PositiveIntegerField(verbose_name="Durée de la cotisation (jours)")
+    """
+    Duration (in days) of the cotisation
+    """
     history = HistoricalRecords()
 
     def __str__(self):

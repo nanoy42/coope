@@ -28,43 +28,7 @@ from users.models import CotisationHistory
 @acl_or('gestion.add_consumptionhistory', 'gestion.add_reload', 'gestion.add_refund')
 def manage(request):
     """
-    Display the manage page
-
-    **Context**
-
-    ``gestion_form``
-        The manage form
-
-    ``reload_form``
-        The :model:`gestion.Reload` form
-
-    ``refund_form``
-        The :model:`gestion.Refund` form
-
-    ``bieresPression``
-        A list of active :model:`gestion.Product` corresponding to draft beers
-
-    ``bieresBouteille``
-        A list of active :model:`gestion.Product` corresponding to bottle beers
-
-    ``panini``
-        A list of active :model:`gestion.Product` corresponding to panini items
-
-    ``food``
-        A list of active :model:`gestion.Product` corresponding to non-panini items
-
-    ``soft``
-        A list of active :model:`gestion.Product` correspond to non alcoholic beverage
-
-    ``menus``
-        The list of active :model:`gestion.Menu`
-
-    ``pay_buttons``
-        List of :model:`paymentMethod`
-
-    **Template**
-
-    :template:`gestion/manage.html`
+    Displays the manage view.
     """
     pay_buttons = PaymentMethod.objects.filter(is_active=True)
     gestion_form = GestionForm(request.POST or None)
@@ -108,7 +72,7 @@ def manage(request):
 @permission_required('gestion.add_consumptionhistory')
 def order(request):
     """
-    Process the given order. Called by a js/JQuery script.
+    Processes the given order. The order is passed through POST.
     """
     error_message = "Impossible d'effectuer la transaction. Toute opération abandonnée. Veuillez contacter le président ou le trésorier"
     try:
@@ -241,7 +205,7 @@ def order(request):
 @permission_required('gestion.add_reload')
 def reload(request):
     """
-    Process a reload request
+    Displays a :class:`Reload form <gestion.forms.reloadForm>`.
     """
     reload_form = ReloadForm(request.POST or None)
     if reload_form.is_valid():
@@ -262,7 +226,10 @@ def reload(request):
 @permission_required('gestion.delete_reload')
 def cancel_reload(request, pk):
     """
-    Cancel a reload
+    Delete a :class:`gestion.models.Reload`.
+
+    pk
+        The primary key of the reload to delete.
     """
     reload_entry = get_object_or_404(Reload, pk=pk)
     if reload_entry.customer.profile.balance >= reload_entry.amount:
@@ -280,7 +247,7 @@ def cancel_reload(request, pk):
 @permission_required('gestion.add_refund')
 def refund(request):
     """
-    Process a refund request
+    Displays a :class:`Refund form <gestion.forms.RefundForm>`.
     """
     refund_form = RefundForm(request.POST or None)
     if refund_form.is_valid():
@@ -304,10 +271,10 @@ def refund(request):
 @permission_required('gestion.delete_consumptionhistory')
 def cancel_consumption(request, pk):
     """
-    Cancel a :model:`gestion.ConsumptionHistory`
+    Delete a :class:`consumption history <gestion.models.ConsumptionHistory>`.
 
-    ``pk``
-        The primary key of the :model:`gestion.ConsumptionHistory` that have to be cancelled
+    pk
+        The primary key of the consumption history to delete. 
     """
     consumption = get_object_or_404(ConsumptionHistory, pk=pk)
     user = consumption.customer
@@ -326,10 +293,10 @@ def cancel_consumption(request, pk):
 @permission_required('gestion.delete_menuhistory')
 def cancel_menu(request, pk):
     """
-    Cancel a :model:`gestion.MenuHistory`
+    Delete a :class:`menu history <gestion.models.MenuHistory>`.
 
-    ``pk``
-        The primary key of the :model:`gestion.MenuHistory` that have to be cancelled
+    pk
+        The primary key of the menu history to delete. 
     """
     menu_history = get_object_or_404(MenuHistory, pk=pk)
     user = menu_history.customer
@@ -350,11 +317,7 @@ def cancel_menu(request, pk):
 @acl_or('gestion.add_product', 'gestion.view_product', 'gestion.add_keg', 'gestion.view_keg', 'gestion.change_keg', 'gestion.view_menu', 'gestion.add_menu')
 def productsIndex(request):
     """
-    Display the products manage static page
-
-    **Template**
-
-    :template:`gestion/products_index.html`
+    Displays the products manage static page.
     """
     return render(request, "gestion/products_index.html")
 
@@ -363,22 +326,7 @@ def productsIndex(request):
 @permission_required('gestion.add_product')
 def addProduct(request):
     """
-    Form to add a :model:`gestion.Product`
-
-    **Context**
-
-    ``form``
-        The ProductForm instance
-
-    ``form_title``
-        The title for the form template
-
-    ``form_button``
-        The text of the button for the form template
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.ProductForm` to add a product.
     """
     form = ProductForm(request.POST or None)
     if(form.is_valid()):
@@ -392,25 +340,10 @@ def addProduct(request):
 @permission_required('gestion.change_product')
 def editProduct(request, pk):
     """
-    Form to edit a :model:`gestion.Product`
+    Displays a :class:`gestion.forms.ProductForm` to edit a product.
 
-    ``pk``
-        The primary key of the requested :model:`gestion.Product`
-
-    **Context**
-
-    ``form``
-        The ProductForm instance
-
-    ``form_title``
-        The title for the form template
-
-    ``form_button``
-        The text of the button for the form template
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the the :class:`gestion.models.Product` to edit.
     """
     product = get_object_or_404(Product, pk=pk)
     form = ProductForm(request.POST or None, instance=product)
@@ -425,16 +358,7 @@ def editProduct(request, pk):
 @permission_required('gestion.view_product')
 def productsList(request):
     """
-    Display the list of :model:`gestion.Product`
-
-    **Context**
-
-    ``products``
-        The list of :model:`gestion.Product`
-
-    **Template**
-
-    :template:`gestion/products_list.html`
+    Display the list of :class:`products <gestion.models.Product>`.
     """
     products = Product.objects.all()
     return render(request, "gestion/products_list.html", {"products": products})
@@ -444,22 +368,7 @@ def productsList(request):
 @permission_required('gestion.view_product')
 def searchProduct(request):
     """
-    Form to search a :model:`gestion.Product`
-
-    **Context**
-
-    ``form``
-        The SearchProductForm instance
-
-    ``form_title``
-        The title for the form template
-
-    ``form_button``
-        The text of the button for the form template
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.SearchProduct` to search a :class:`gestion.models.Product`.
     """
     form = SearchProductForm(request.POST or None)
     if(form.is_valid()):
@@ -471,19 +380,10 @@ def searchProduct(request):
 @permission_required('gestion.view_product')
 def productProfile(request, pk):
     """
-    Display the profile of a :model:`gestion.Product`
+    Displays the profile of a :class:`gestion.models.Product`.
 
-    ``pk``
-        The primary key of the requested :model:`gestion.Product`
-
-    **Context**
-
-    ``product``
-        The :model:`gestion.Product` instance
-
-    **Template**
-
-    :model:`gestion/product_profile.html`
+    pk
+        The primary key of the :class:`gestion.models.Product` to display profile.
     """
     product = get_object_or_404(Product, pk=pk)
     return render(request, "gestion/product_profile.html", {"product": product})
@@ -492,10 +392,10 @@ def productProfile(request, pk):
 @login_required
 def getProduct(request, pk):
     """
-    Get :model:`gestion.Product` by barcode. Called by a js/JQuery script
+    Get a :class:`gestion.models.Product` by barcode and return it in JSON format.
 
-    ``pk``
-        The requested pk
+    pk
+        The primary key of the :class:`gestion.models.Product` to get infos.
     """
     product = Product.objects.get(pk=pk)
     if product.category == Product.P_PRESSION:
@@ -510,10 +410,10 @@ def getProduct(request, pk):
 @permission_required('gestion.change_product')
 def switch_activate(request, pk):
     """
-    Switch the active status of the requested :model:`gestion.Product`
+    Switch the active status of the requested :class:`gestion.models.Product`.
 
-    ``pk``
-        The primary key of the :model:`gestion.Product`
+    pk
+        The primary key of the :class:`gestion.models.Product` to display profile.
     """
     product = get_object_or_404(Product, pk=pk)
     product.is_active = 1 - product.is_active
@@ -523,7 +423,7 @@ def switch_activate(request, pk):
 
 class ProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete view for all :model:`gestion.Product`
+    Autocomplete view for all :class:`products <gestion.models.Product>`.
     """
     def get_queryset(self):
         qs = Product.objects.all()
@@ -533,7 +433,7 @@ class ProductsAutocomplete(autocomplete.Select2QuerySetView):
 
 class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete view for active :model:`gestion.Product`
+    Autocomplete view for active :class:`products <gestion.models.Product>`.
     """
     def get_queryset(self):
         qs = Product.objects.filter(is_active=True)
@@ -548,22 +448,7 @@ class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
 @permission_required('gestion.add_keg')
 def addKeg(request):
     """
-    Display a form to add a :model:`gestion.Keg`
-
-    **Context**
-
-    ``form``
-        The KegForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.KegForm` to add a :class:`gestion.models.Keg`.
     """
     form = KegForm(request.POST or None)
     if(form.is_valid()):
@@ -577,25 +462,10 @@ def addKeg(request):
 @permission_required('gestion.change_keg')
 def editKeg(request, pk):
     """
-    Display a form to edit a :model:`gestion.Keg`
+    Displays a :class:`gestion.forms.KegForm` to edit a :class:`gestion.models.Keg`.
 
-    ``pk``
-        The primary key of the requested :model:`gestion.Keg`
-
-    **Context**
-
-    ``form``
-        The KegForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the :class:`gestion.models.Keg` to edit.
     """
     keg = get_object_or_404(Keg, pk=pk)
     form = KegForm(request.POST or None, instance=keg)
@@ -610,22 +480,7 @@ def editKeg(request, pk):
 @permission_required('gestion.open_keg')
 def openKeg(request):
     """
-    Display a form to open a :model:`gestion.Keg`
-
-    **Context**
-
-    ``form``
-        The SelectPositiveKegForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.SelectPositiveKegForm` to open a :class:`gestion.models.Keg`.
     """
     form = SelectPositiveKegForm(request.POST or None)
     if(form.is_valid()):
@@ -649,10 +504,10 @@ def openKeg(request):
 @permission_required('gestion.open_keg')
 def openDirectKeg(request, pk):
     """
-    Open the requested :model:`gestion.Keg`
+    Opens a class:`gestion.models.Keg`.
 
-    ``pk``
-        The primary key of the :model:`gestion.Keg`
+    pk
+        The primary key of the class:`gestion.models.Keg` to open.
     """
     keg = get_object_or_404(Keg, pk=pk)
     if(keg.stockHold > 0):
@@ -676,22 +531,7 @@ def openDirectKeg(request, pk):
 @permission_required('gestion.close_keg')
 def closeKeg(request):
     """
-    Display a form to close a :model:`gestion.Keg`
-
-    **Context**
-
-    ``form``
-        The SelectActiveKegForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.SelectPositiveKegForm` to open a :class:`gestion.models.Keg`.
     """
     form = SelectActiveKegForm(request.POST or None)
     if(form.is_valid()):
@@ -711,10 +551,10 @@ def closeKeg(request):
 @permission_required('gestion.close_keg')
 def closeDirectKeg(request, pk):
     """
-    Close the requested :model:`gestion.Keg`
+    Closes a class:`gestion.models.Keg`.
 
-    ``pk``
-        The pk of the active :model:`gestion.Keg`
+    pk
+        The primary key of the class:`gestion.models.Keg` to open.
     """
     keg = get_object_or_404(Keg, pk=pk)
     if keg.is_active:
@@ -734,19 +574,7 @@ def closeDirectKeg(request, pk):
 @permission_required('gestion.view_keg')
 def kegsList(request):
     """
-    Display the list of :model:`gestion.Keg`
-
-    **Context**
-
-    ``kegs_active``
-        List of active :model:`gestion.Keg`
-
-    ``kegs_inactive``
-        List of inactive :model:`gestion.Keg`
-
-    **Template**
-
-    :template:`gestion/kegs_list.html`
+    Display the list of :class:`kegs <gestion.models.Keg>`.
     """
     kegs_active = KegHistory.objects.filter(isCurrentKegHistory=True)
     ids_actives = kegs_active.values('keg__id')
@@ -758,22 +586,7 @@ def kegsList(request):
 @permission_required('gestion.view_keghistory')
 def kegH(request, pk):
     """
-    Display the history of requested :model:`gestion.Keg`
-
-    ``pk``
-        The primary key of the requested :model:`gestion.Keg`
-
-    **Context**
-
-    ``keg``
-        The :model:`gestion.Keg` instance
-
-    ``kegHistory``
-        List of :model:`gestion.KegHistory` attached to keg
-
-    **Template**
-
-    :template:`gestion/kegh.html`
+    Display the :class:`history <gestion.models.KegHistory>` of requested :class:`gestion.models.Keg`.
     """
     keg = get_object_or_404(Keg, pk=pk)
     kegHistory = KegHistory.objects.filter(keg=keg).order_by('-openingDate')
@@ -781,7 +594,7 @@ def kegH(request, pk):
 
 class KegActiveAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete view for active :model:`gestion.Keg`
+    Autocomplete view for active :class:`kegs <gestion.models.Keg>`.
     """
     def get_queryset(self):
         qs = Keg.objects.filter(is_active = True)
@@ -791,7 +604,7 @@ class KegActiveAutocomplete(autocomplete.Select2QuerySetView):
 
 class KegPositiveAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete view for :model:`gestion.Keg` with positive stockHold
+    Autocomplete view for :class:`kegs <gestion.models.Keg>` with positive stockHold.
     """
     def get_queryset(self):
         qs = Keg.objects.filter(stockHold__gt = 0)
@@ -806,22 +619,7 @@ class KegPositiveAutocomplete(autocomplete.Select2QuerySetView):
 @permission_required('gestion.add_menu')
 def addMenu(request):
     """
-    Display a form to add a :model:`gestion.Menu`
-
-    **Context**
-
-    ``form``
-        The MenuForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    Display a :class:`gestion.forms.MenuForm` to add a :class:`gestion.models.Menu`.
     """
     form = MenuForm(request.POST or None)
     extra_css = "#id_articles{height:200px;}"
@@ -836,25 +634,10 @@ def addMenu(request):
 @permission_required('gestion.change_menu')
 def edit_menu(request, pk):
     """
-    Display a form to edit a :model:`gestion.Menu`
+    Displays a :class:`gestion.forms.MenuForm` to edit a :class:`gestion.models.Menu`.
 
-    ``pk``
-        The primary key of requested :model:`gestion.Menu`
-
-    **Context**
-
-    ``form``
-        The MenuForm instance
-
-    ``form_title``
-        The title for the :template:`form.html` template
-
-    ``form_button``
-        The text for the button in :template:`form.html` template
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the :class:`gestion.models.Menu` to edit.
     """
     menu = get_object_or_404(Menu, pk=pk)
     form = MenuForm(request.POST or None, instance=menu)
@@ -870,22 +653,7 @@ def edit_menu(request, pk):
 @permission_required('gestion.view_menu')
 def searchMenu(request):
     """
-    Search a :model:`gestion.Menu` via SearchMenuForm instance
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The SearchMenuForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`gestion.forms.SearchMenuForm` to search a :class:`gestion.models.Menu`.
     """
     form = SearchMenuForm(request.POST or None)
     if(form.is_valid()):
@@ -898,16 +666,7 @@ def searchMenu(request):
 @permission_required('gestion.view_menu')
 def menus_list(request):
     """
-    Display the :model:`gestion.Menu` list
-
-    **Context**
-
-    ``menus``
-        The list of :model:`gestion.Menu` instances
-
-    **Template**
-
-    :template:`gestion/menus_list.html`
+    Display the list of :class:`menus <gestion.models.Menu>`.
     """
     menus = Menu.objects.all()
     return render(request, "gestion/menus_list.html", {"menus": menus})
@@ -917,10 +676,7 @@ def menus_list(request):
 @permission_required('gestion.change_menu')
 def switch_activate_menu(request, pk):
     """
-    Switch active status of a :model:`gestion.Menu`
-
-    ``pk``
-        The pk of the :model:`gestion.Menu`
+    Switch active status of a :class:`gestion.models.Menu`.
     """
     menu = get_object_or_404(Menu, pk=pk)
     menu.is_active = 1 - menu.is_active
@@ -933,10 +689,10 @@ def switch_activate_menu(request, pk):
 @permission_required('gestion.view_menu')
 def get_menu(request, pk):
     """
-    Search :model:`gestion.Menu` by barcode
+    Get a :class:`gestion.models.Menu` by pk and return it in JSON format.
 
-    ``pk``
-        The requested pk
+    pk
+        The primary key of the :class:`gestion.models.Menu`.
     """
     menu = get_object_or_404(Menu, pk=pk)
     nb_pintes = 0
@@ -948,7 +704,7 @@ def get_menu(request, pk):
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Used as autcomplete for all :model:`gestion.Menu`
+    Autocomplete view for active :class:`menus <gestion.models.Menu>`.
     """
     def get_queryset(self):
         qs = Menu.objects.all()
@@ -962,19 +718,7 @@ class MenusAutocomplete(autocomplete.Select2QuerySetView):
 @login_required
 def ranking(request):
     """
-    Display the ranking page
-
-    **Context**
-
-    ``bestBuyers``
-        List of the 25 best buyers
-
-    ``bestDrinkers``
-        List of the 25 best drinkers
-
-    **Template**
-
-    :template: `gestion/ranking.html`
+    Displays the ranking page.
     """
     bestBuyers = User.objects.order_by('-profile__debit')[:25]
     customers = User.objects.all()
@@ -994,7 +738,7 @@ def ranking(request):
 
 def allocate(pinte_pk, user):
     """
-    Allocate a pinte to a user or release the pinte if user is None
+    Allocate a :class:`gestion.models.Pinte` to a user (:class:`django.contrib.auth.models.User`) or release the pinte if user is None
     """
     try:
         pinte = Pinte.objects.get(pk=pinte_pk)
@@ -1011,7 +755,10 @@ def allocate(pinte_pk, user):
 @permission_required('gestion.change_pinte')
 def release(request, pinte_pk):
     """
-    View to release a pinte
+    View to release a :class:`gestion.models.Pinte`.
+
+    pinte_pk
+        The primary key of the :class:`gestion.models.Pinte` to release.
     """
     if allocate(pinte_pk, None):
         messages.success(request, "La pinte a bien été libérée")
@@ -1023,6 +770,9 @@ def release(request, pinte_pk):
 @login_required
 @permission_required('gestion.add_pinte')
 def add_pintes(request):
+    """
+    Displays a :class:`gestion.forms.PinteForm` to add one or more :class:`gestion.models.Pinte`.
+    """
     form = PinteForm(request.POST or None)
     if form.is_valid():
         ids = form.cleaned_data['ids']
@@ -1044,6 +794,9 @@ def add_pintes(request):
 @login_required
 @permission_required('gestion.change_pinte')
 def release_pintes(request):
+    """
+    Displays a :class:`gestion.forms.PinteForm` to release one or more :class:`gestion.models.Pinte`.
+    """
     form = PinteForm(request.POST or None)
     if form.is_valid():
         ids = form.cleaned_data['ids']
@@ -1063,6 +816,9 @@ def release_pintes(request):
 @login_required
 @permission_required('gestion.view_pinte')
 def pintes_list(request):
+    """
+    Displays the list of :class:`gestion.models.Pinte`
+    """
     free_pintes = Pinte.objects.filter(current_owner=None)
     taken_pintes = Pinte.objects.exclude(current_owner=None)
     return render(request, "gestion/pintes_list.html", {"free_pintes": free_pintes, "taken_pintes": taken_pintes})
@@ -1071,6 +827,9 @@ def pintes_list(request):
 @login_required
 @permission_required('auth.view_user')
 def pintes_user_list(request):
+    """
+    Displays the list of user, who have unreturned :class:`Pinte(s) <gestion.models.Pinte>`.
+    """
     pks = [x.pk for x in User.objects.all() if x.profile.nb_pintes > 0]
     users = User.objects.filter(pk__in=pks)
     return render(request, "gestion/pintes_user_list.html", {"users": users})
@@ -1079,6 +838,9 @@ def pintes_user_list(request):
 @login_required
 @admin_required
 def gen_releve(request):
+    """
+    Displays a :class:`forms.gestion.GenerateReleveForm` to generate a releve.
+    """
     form = GenerateReleveForm(request.POST or None)
     if form.is_valid():
         begin, end = form.cleaned_data['begin'], form.cleaned_data['end']

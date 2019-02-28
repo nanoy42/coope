@@ -6,9 +6,11 @@ from dal import autocomplete
 
 from .models import Reload, Refund, Product, Keg, Menu
 from preferences.models import PaymentMethod
-from coopeV3.widgets import SearchField
 
 class ReloadForm(forms.ModelForm):
+    """
+    A form to create a :class:`~gestion.models.Reload`.
+    """
     def __init__(self, *args, **kwargs):
         super(ReloadForm, self).__init__(*args, **kwargs)
         self.fields['PaymentMethod'].queryset = PaymentMethod.objects.filter(is_usable_in_reload=True).filter(is_active=True)
@@ -20,6 +22,9 @@ class ReloadForm(forms.ModelForm):
 
 
 class RefundForm(forms.ModelForm):
+    """
+    A form to create a :class:`~gestion.models.Refund`.
+    """
     class Meta:
         model = Refund
         fields = ("customer", "amount")
@@ -27,12 +32,18 @@ class RefundForm(forms.ModelForm):
 
 
 class ProductForm(forms.ModelForm):
+    """
+    A form to create and edit a :class:`~gestion.models.Product`.
+    """
     class Meta:
         model = Product
         fields = "__all__"
         widgets = {'amount': forms.TextInput}
 
 class KegForm(forms.ModelForm):
+    """
+    A form to create and edit a :class:`~gestion.models.Keg`.
+    """
     def __init__(self, *args, **kwargs):
         super(KegForm, self).__init__(*args, **kwargs)
         self.fields['pinte'].queryset = Product.objects.filter(category=Product.P_PRESSION)
@@ -45,32 +56,56 @@ class KegForm(forms.ModelForm):
         widgets = {'amount': forms.TextInput}
 
 class MenuForm(forms.ModelForm):
+    """
+    A form to create and edit a :class:`~gestion.models.Menu`.
+    """
     class Meta:
         model = Menu
         fields = "__all__"
         widgets = {'amount': forms.TextInput}
 
 class SearchProductForm(forms.Form):
+    """
+    A form to search a :class:`~gestion.models.Product`.
+    """
     product = forms.ModelChoiceField(queryset=Product.objects.all(), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:products-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SearchMenuForm(forms.Form):
+    """
+    A form to search a :class:`~gestion.models.Menu`.
+    """
     menu = forms.ModelChoiceField(queryset=Menu.objects.all(), required=True, label="Menu", widget=autocomplete.ModelSelect2(url='gestion:menus-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class GestionForm(forms.Form):
+    """
+    A form for the :func:`~gestion.views.manage` view.
+    """
     client = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Client", widget=autocomplete.ModelSelect2(url='users:active-users-autocomplete', attrs={'data-minimum-input-length':2}))
     product = forms.ModelChoiceField(queryset=Product.objects.filter(is_active=True), required=True, label="Produit", widget=autocomplete.ModelSelect2(url='gestion:active-products-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectPositiveKegForm(forms.Form):
+    """
+    A form to search a :class:`~gestion.models.Keg` with a positive stockhold.
+    """
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(stockHold__gt = 0), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-positive-autocomplete'))
 
 class SelectActiveKegForm(forms.Form):
+    """
+    A form to search an active :class:`~gestion.models.Keg`.
+    """
     keg = forms.ModelChoiceField(queryset=Keg.objects.filter(is_active = True), required=True, label="Fût", widget=autocomplete.ModelSelect2(url='gestion:kegs-active-autocomplete'))
 
 class PinteForm(forms.Form):
+    """
+    A form to free :class:`Pints <gestion.models.Pinte>`.
+    """
     ids = forms.CharField(widget=forms.Textarea, label="Numéros", help_text="Numéros séparés par un espace. Laissez vide pour utiliser le range.", required=False)
     begin = forms.IntegerField(label="Début", help_text="Début du range", required=False)
     end = forms.IntegerField(label="Fin", help_text="Fin du range", required=False)
 
 class GenerateReleveForm(forms.Form):
+    """
+    A form to generate a releve.
+    """
     begin = forms.DateTimeField(label="Date de début")
     end = forms.DateTimeField(label="Date de fin")

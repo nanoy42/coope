@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admindocs', 
     'gestion',
     'users',
     'preferences',
@@ -124,3 +123,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_URL = '/users/login'
+
+MEDIA_ROOT = 'mediafiles/'
+MEDIA_URL = '/media/'
+

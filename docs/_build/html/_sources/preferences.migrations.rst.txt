@@ -1,0 +1,86 @@
+preferences.migrations package
+==============================
+
+Submodules
+----------
+
+preferences.migrations.0001\_initial module
+-------------------------------------------
+
+.. automodule:: preferences.migrations.0001_initial
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0002\_auto\_20181221\_2151 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0002_auto_20181221_2151
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0003\_auto\_20181223\_1440 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0003_auto_20181223_1440
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0004\_auto\_20190106\_0452 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0004_auto_20190106_0452
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0005\_auto\_20190106\_0513 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0005_auto_20190106_0513
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0006\_auto\_20190119\_2326 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0006_auto_20190119_2326
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0007\_auto\_20190120\_1208 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0007_auto_20190120_1208
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0008\_auto\_20190218\_1802 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0008_auto_20190218_1802
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+preferences.migrations.0009\_auto\_20190227\_0859 module
+--------------------------------------------------------
+
+.. automodule:: preferences.migrations.0009_auto_20190227_0859
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: preferences.migrations
+    :members:
+    :undoc-members:
+    :show-inheritance:

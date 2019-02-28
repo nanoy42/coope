@@ -1,6 +1,9 @@
 from django_tex.environment import environment
 
 def latex_safe(value):
+    """
+    Filter that replace latex forbidden character by safe character
+    """
     return str(value).replace('_', '\_').replace('$', '\$').replace('&', '\&').replace('#', '\#').replace('{', '\{').replace('}','\}')
 
 

@@ -1,0 +1,1736 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter A
+  \item \spxentry{abstract}\spxextra{django\_tex.models.TeXTemplateFile.Meta attribute}, 
+		\hyperpage{76}
+  \item \spxentry{acl\_and()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{acl\_or()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{active\_message}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{active\_message}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{active\_required()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{ActiveProductsAutocomplete}\spxextra{class in gestion.views}, \hyperpage{1}
+  \item \spxentry{ActiveUsersAutocomplete}\spxextra{class in users.views}, \hyperpage{4}
+  \item \spxentry{add\_pintes()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{addAdmin()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{addCotisation()}\spxextra{in module preferences.views}, \hyperpage{6}
+  \item \spxentry{addCotisationHistory()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{addCotisationHistoryForm}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{addCotisationHistoryForm.Meta}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{addKeg()}\spxextra{in module gestion.views}, \hyperpage{1}
+  \item \spxentry{addMenu()}\spxextra{in module gestion.views}, \hyperpage{1}
+  \item \spxentry{addPaymentMethod()}\spxextra{in module preferences.views}, \hyperpage{6}
+  \item \spxentry{addProduct()}\spxextra{in module gestion.views}, \hyperpage{1}
+  \item \spxentry{addSuperuser()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{addWhiteListHistory()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{addWhiteListHistoryForm}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{addWhiteListHistoryForm.Meta}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{adherent\_required}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{AdherentAutocomplete}\spxextra{class in users.views}, \hyperpage{4}
+  \item \spxentry{adherentRequired}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{24}
+  \item \spxentry{adherentRequired}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{admin\_required()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{adminsIndex()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{affect\_balance}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{affect\_balance}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{alcohol}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{all\_consumptions()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{all\_menus()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{allocate()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{allReloads()}\spxextra{in module users.views}, \hyperpage{4}
+  \item \spxentry{AllUsersAutocomplete}\spxextra{class in users.views}, \hyperpage{4}
+  \item \spxentry{amount}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{12}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalMenuHistory attribute}, \hyperpage{20}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{24}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{26}
+  \item \spxentry{amount}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{28}
+  \item \spxentry{amount}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{amount}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{amount}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{32}
+  \item \spxentry{amount}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{amount}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{amount}\spxextra{gestion.models.Reload attribute}, \hyperpage{37}
+  \item \spxentry{amount}\spxextra{preferences.models.Cotisation attribute}, \hyperpage{49}
+  \item \spxentry{amount}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{51}
+  \item \spxentry{amount}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{38}
+  \item \spxentry{amount}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{39}
+  \item \spxentry{amountSold}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{amountSold}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{app\_dirname}\spxextra{django\_tex.engine.TeXEngine attribute}, \hyperpage{75}
+  \item \spxentry{articles}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{automatic\_logout\_time}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{automatic\_logout\_time}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{balance}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{BalanceFilter}\spxextra{class in users.admin}, \hyperpage{61}
+  \item \spxentry{barcode}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{barcode}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{barcode}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{24}
+  \item \spxentry{barcode}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{barcode}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{barcode}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.GenerateReleveForm attribute}, 
+		\hyperpage{63}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.GestionForm attribute}, \hyperpage{63}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.KegForm attribute}, \hyperpage{64}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.MenuForm attribute}, \hyperpage{64}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.PinteForm attribute}, \hyperpage{64}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.ProductForm attribute}, \hyperpage{64}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.RefundForm attribute}, \hyperpage{65}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.ReloadForm attribute}, \hyperpage{65}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.SearchMenuForm attribute}, \hyperpage{65}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.SearchProductForm attribute}, \hyperpage{65}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.SelectActiveKegForm attribute}, 
+		\hyperpage{66}
+  \item \spxentry{base\_fields}\spxextra{gestion.forms.SelectPositiveKegForm attribute}, 
+		\hyperpage{66}
+  \item \spxentry{base\_fields}\spxextra{preferences.forms.CotisationForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{base\_fields}\spxextra{preferences.forms.GeneralPreferencesForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{base\_fields}\spxextra{preferences.forms.PaymentMethodForm attribute}, 
+		\hyperpage{71}
+  \item \spxentry{base\_fields}\spxextra{users.forms.addCotisationHistoryForm attribute}, 
+		\hyperpage{69}
+  \item \spxentry{base\_fields}\spxextra{users.forms.addWhiteListHistoryForm attribute}, 
+		\hyperpage{69}
+  \item \spxentry{base\_fields}\spxextra{users.forms.CreateGroupForm attribute}, \hyperpage{66}
+  \item \spxentry{base\_fields}\spxextra{users.forms.CreateUserForm attribute}, \hyperpage{67}
+  \item \spxentry{base\_fields}\spxextra{users.forms.EditGroupForm attribute}, \hyperpage{67}
+  \item \spxentry{base\_fields}\spxextra{users.forms.EditPasswordForm attribute}, \hyperpage{67}
+  \item \spxentry{base\_fields}\spxextra{users.forms.ExportForm attribute}, \hyperpage{67}
+  \item \spxentry{base\_fields}\spxextra{users.forms.GroupsEditForm attribute}, \hyperpage{68}
+  \item \spxentry{base\_fields}\spxextra{users.forms.LoginForm attribute}, \hyperpage{68}
+  \item \spxentry{base\_fields}\spxextra{users.forms.SchoolForm attribute}, \hyperpage{68}
+  \item \spxentry{base\_fields}\spxextra{users.forms.SelectNonAdminUserForm attribute}, 
+		\hyperpage{68}
+  \item \spxentry{base\_fields}\spxextra{users.forms.SelectNonSuperUserForm attribute}, 
+		\hyperpage{69}
+  \item \spxentry{base\_fields}\spxextra{users.forms.SelectUserForm attribute}, \hyperpage{69}
+  \item \spxentry{BOTTLE}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{brewer}\spxextra{preferences.models.GeneralPreferences attribute}, \hyperpage{50}
+  \item \spxentry{brewer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{brewer()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{73}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{cancel\_consumption()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{cancel\_menu()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{cancel\_reload()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{capacity}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{capacity}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{category}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{24}
+  \item \spxentry{category}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{clean\_password2()}\spxextra{users.forms.EditPasswordForm method}, \hyperpage{67}
+  \item \spxentry{closeDirectKeg()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{closeKeg()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{closingDate}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{closingDate}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{compile\_template\_to\_pdf()}\spxextra{in module django\_tex.core}, 
+		\hyperpage{75}
+  \item \spxentry{Consumption}\spxextra{class in gestion.models}, \hyperpage{9}
+  \item \spxentry{Consumption.DoesNotExist}, \hyperpage{9}
+  \item \spxentry{Consumption.MultipleObjectsReturned}, \hyperpage{9}
+  \item \spxentry{consumption\_set}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{ConsumptionAdmin}\spxextra{class in gestion.admin}, \hyperpage{59}
+  \item \spxentry{ConsumptionHistory}\spxextra{class in gestion.models}, \hyperpage{10}
+  \item \spxentry{ConsumptionHistory.DoesNotExist}, \hyperpage{10}
+  \item \spxentry{ConsumptionHistory.MultipleObjectsReturned}, \hyperpage{10}
+  \item \spxentry{consumptionhistory\_set}\spxextra{gestion.models.Product attribute}, 
+		\hyperpage{35}
+  \item \spxentry{consumptionhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{ConsumptionHistoryAdmin}\spxextra{class in gestion.admin}, \hyperpage{59}
+  \item \spxentry{coope\_runner()}\spxextra{in module coopeV3.views}, \hyperpage{7}
+  \item \spxentry{coopeman}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{coopeman}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{12}
+  \item \spxentry{coopeman}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{20}
+  \item \spxentry{coopeman}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{26}
+  \item \spxentry{coopeman}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{28}
+  \item \spxentry{coopeman}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{32}
+  \item \spxentry{coopeman}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{coopeman}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{coopeman}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{38}
+  \item \spxentry{coopeman}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{coopeman}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{45}
+  \item \spxentry{coopeman}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{48}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.ConsumptionHistory attribute}, 
+		\hyperpage{10}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{20}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{26}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{28}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{coopeman\_id}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{coopeman\_id}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{38}
+  \item \spxentry{coopeman\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{coopeman\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{45}
+  \item \spxentry{coopeman\_id}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{48}
+  \item \spxentry{coopeV3.acl}\spxextra{module}, \hyperpage{73}
+  \item \spxentry{coopeV3.templatetags.vip}\spxextra{module}, \hyperpage{73}
+  \item \spxentry{coopeV3.views}\spxextra{module}, \hyperpage{7}
+  \item \spxentry{Cotisation}\spxextra{class in preferences.models}, \hyperpage{49}
+  \item \spxentry{cotisation}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{38}
+  \item \spxentry{cotisation}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{Cotisation.DoesNotExist}, \hyperpage{49}
+  \item \spxentry{Cotisation.MultipleObjectsReturned}, \hyperpage{49}
+  \item \spxentry{cotisation\_id}\spxextra{users.models.CotisationHistory attribute}, 
+		\hyperpage{39}
+  \item \spxentry{cotisation\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{CotisationAdmin}\spxextra{class in preferences.admin}, \hyperpage{61}
+  \item \spxentry{cotisationEnd}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{42}
+  \item \spxentry{cotisationEnd}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{CotisationForm}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{CotisationForm.Meta}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{CotisationHistory}\spxextra{class in users.models}, \hyperpage{38}
+  \item \spxentry{CotisationHistory.DoesNotExist}, \hyperpage{38}
+  \item \spxentry{CotisationHistory.MultipleObjectsReturned}, \hyperpage{38}
+  \item \spxentry{cotisationhistory\_set}\spxextra{preferences.models.Cotisation attribute}, 
+		\hyperpage{49}
+  \item \spxentry{cotisationhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{57}
+  \item \spxentry{CotisationHistoryAdmin}\spxextra{class in users.admin}, \hyperpage{61}
+  \item \spxentry{cotisationsIndex()}\spxextra{in module preferences.views}, \hyperpage{6}
+  \item \spxentry{create\_user\_profile()}\spxextra{in module users.models}, \hyperpage{49}
+  \item \spxentry{createGroup()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{CreateGroupForm}\spxextra{class in users.forms}, \hyperpage{66}
+  \item \spxentry{CreateGroupForm.Meta}\spxextra{class in users.forms}, \hyperpage{66}
+  \item \spxentry{createSchool()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{createUser()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{CreateUserForm}\spxextra{class in users.forms}, \hyperpage{66}
+  \item \spxentry{CreateUserForm.Meta}\spxextra{class in users.forms}, \hyperpage{66}
+  \item \spxentry{credit}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{42}
+  \item \spxentry{credit}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{current\_owner}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{22}
+  \item \spxentry{current\_owner}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{current\_owner\_id}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{current\_owner\_id}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{customer}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{customer}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{customer}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{customer}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{customer}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{20}
+  \item \spxentry{customer}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{26}
+  \item \spxentry{customer}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{28}
+  \item \spxentry{customer}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{customer}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{customer}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.ConsumptionHistory attribute}, 
+		\hyperpage{10}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{20}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{26}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{29}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{customer\_id}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{D\_PRESSION}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{date}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{date}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{date}\spxextra{gestion.models.HistoricalMenuHistory attribute}, \hyperpage{21}
+  \item \spxentry{date}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{27}
+  \item \spxentry{date}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{29}
+  \item \spxentry{date}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{date}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{date}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{debit}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{42}
+  \item \spxentry{debit}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.GenerateReleveForm attribute}, 
+		\hyperpage{63}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.GestionForm attribute}, \hyperpage{63}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.KegForm attribute}, \hyperpage{64}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.MenuForm attribute}, \hyperpage{64}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.PinteForm attribute}, \hyperpage{64}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.ProductForm attribute}, \hyperpage{64}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.RefundForm attribute}, \hyperpage{65}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.ReloadForm attribute}, \hyperpage{65}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.SearchMenuForm attribute}, 
+		\hyperpage{65}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.SearchProductForm attribute}, 
+		\hyperpage{65}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.SelectActiveKegForm attribute}, 
+		\hyperpage{66}
+  \item \spxentry{declared\_fields}\spxextra{gestion.forms.SelectPositiveKegForm attribute}, 
+		\hyperpage{66}
+  \item \spxentry{declared\_fields}\spxextra{preferences.forms.CotisationForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{declared\_fields}\spxextra{preferences.forms.GeneralPreferencesForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{declared\_fields}\spxextra{preferences.forms.PaymentMethodForm attribute}, 
+		\hyperpage{71}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.addCotisationHistoryForm attribute}, 
+		\hyperpage{69}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.addWhiteListHistoryForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.CreateGroupForm attribute}, \hyperpage{66}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.CreateUserForm attribute}, \hyperpage{67}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.EditGroupForm attribute}, \hyperpage{67}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.EditPasswordForm attribute}, 
+		\hyperpage{67}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.ExportForm attribute}, \hyperpage{67}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.GroupsEditForm attribute}, \hyperpage{68}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.LoginForm attribute}, \hyperpage{68}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.SchoolForm attribute}, \hyperpage{68}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.SelectNonAdminUserForm attribute}, 
+		\hyperpage{68}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.SelectNonSuperUserForm attribute}, 
+		\hyperpage{69}
+  \item \spxentry{declared\_fields}\spxextra{users.forms.SelectUserForm attribute}, \hyperpage{69}
+  \item \spxentry{deg}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{24}
+  \item \spxentry{deg}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{deleteCotisation()}\spxextra{in module preferences.views}, \hyperpage{6}
+  \item \spxentry{deleteCotisationHistory()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{deleteGroup()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{deletePaymentMethod()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{deleteSchool()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{demi}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{demi}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{demi\_id}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{demi\_id}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{django\_tex.core}\spxextra{module}, \hyperpage{75}
+  \item \spxentry{django\_tex.engine}\spxextra{module}, \hyperpage{75}
+  \item \spxentry{django\_tex.environment}\spxextra{module}, \hyperpage{75}
+  \item \spxentry{django\_tex.exceptions}\spxextra{module}, \hyperpage{75}
+  \item \spxentry{django\_tex.filters}\spxextra{module}, \hyperpage{76}
+  \item \spxentry{django\_tex.models}\spxextra{module}, \hyperpage{76}
+  \item \spxentry{django\_tex.views}\spxextra{module}, \hyperpage{76}
+  \item \spxentry{do\_linebreaks()}\spxextra{in module django\_tex.filters}, \hyperpage{76}
+  \item \spxentry{duration}\spxextra{preferences.models.Cotisation attribute}, \hyperpage{50}
+  \item \spxentry{duration}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{51}
+  \item \spxentry{duration}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{duration}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{duration}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{45}
+  \item \spxentry{duration}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{48}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{edit\_menu()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{editCotisation()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{editGroup()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{EditGroupForm}\spxextra{class in users.forms}, \hyperpage{67}
+  \item \spxentry{EditGroupForm.Meta}\spxextra{class in users.forms}, \hyperpage{67}
+  \item \spxentry{editGroups()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{editKeg()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{editPassword()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{EditPasswordForm}\spxextra{class in users.forms}, \hyperpage{67}
+  \item \spxentry{editPaymentMethod()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{editProduct()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{editSchool()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{editUser()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{endDate}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{endDate}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{endDate}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{45}
+  \item \spxentry{endDate}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{environment()}\spxextra{in module django\_tex.environment}, \hyperpage{75}
+  \item \spxentry{exclude}\spxextra{gestion.forms.KegForm.Meta attribute}, \hyperpage{63}
+  \item \spxentry{export\_csv()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{ExportForm}\spxextra{class in users.forms}, \hyperpage{67}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{fields}\spxextra{gestion.forms.MenuForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{fields}\spxextra{gestion.forms.ProductForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{fields}\spxextra{gestion.forms.RefundForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{fields}\spxextra{gestion.forms.ReloadForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{fields}\spxextra{preferences.forms.CotisationForm.Meta attribute}, \hyperpage{70}
+  \item \spxentry{fields}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}, 
+		\hyperpage{70}
+  \item \spxentry{fields}\spxextra{preferences.forms.PaymentMethodForm.Meta attribute}, 
+		\hyperpage{71}
+  \item \spxentry{fields}\spxextra{users.forms.addCotisationHistoryForm.Meta attribute}, 
+		\hyperpage{69}
+  \item \spxentry{fields}\spxextra{users.forms.addWhiteListHistoryForm.Meta attribute}, 
+		\hyperpage{69}
+  \item \spxentry{fields}\spxextra{users.forms.CreateGroupForm.Meta attribute}, \hyperpage{66}
+  \item \spxentry{fields}\spxextra{users.forms.CreateUserForm.Meta attribute}, \hyperpage{67}
+  \item \spxentry{fields}\spxextra{users.forms.EditGroupForm.Meta attribute}, \hyperpage{67}
+  \item \spxentry{fields}\spxextra{users.forms.GroupsEditForm.Meta attribute}, \hyperpage{68}
+  \item \spxentry{fields}\spxextra{users.forms.SchoolForm.Meta attribute}, \hyperpage{68}
+  \item \spxentry{FIELDS\_CHOICES}\spxextra{users.forms.ExportForm attribute}, \hyperpage{67}
+  \item \spxentry{floating\_buttons}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{floating\_buttons}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{FOOD}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{futd}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{futg}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+  \item \spxentry{futp}\spxextra{gestion.models.Product attribute}, \hyperpage{35}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{G\_PRESSION}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{galopin}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{galopin}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{galopin\_id}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{galopin\_id}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{gen\_releve()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{gen\_user\_infos()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{GeneralPreferences}\spxextra{class in preferences.models}, \hyperpage{50}
+  \item \spxentry{generalPreferences()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{GeneralPreferences.DoesNotExist}, \hyperpage{50}
+  \item \spxentry{GeneralPreferences.MultipleObjectsReturned}, \hyperpage{50}
+  \item \spxentry{GeneralPreferencesAdmin}\spxextra{class in preferences.admin}, \hyperpage{62}
+  \item \spxentry{GeneralPreferencesForm}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{GeneralPreferencesForm.Meta}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{GenerateReleveForm}\spxextra{class in gestion.forms}, \hyperpage{63}
+  \item \spxentry{gestion.admin}\spxextra{module}, \hyperpage{59}
+  \item \spxentry{gestion.forms}\spxextra{module}, \hyperpage{63}
+  \item \spxentry{gestion.models}\spxextra{module}, \hyperpage{9}
+  \item \spxentry{gestion.views}\spxextra{module}, \hyperpage{1}
+  \item \spxentry{GestionForm}\spxextra{class in gestion.forms}, \hyperpage{63}
+  \item \spxentry{get\_category\_display()}\spxextra{gestion.models.HistoricalProduct method}, 
+		\hyperpage{24}
+  \item \spxentry{get\_category\_display()}\spxextra{gestion.models.Product method}, \hyperpage{36}
+  \item \spxentry{get\_config()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{get\_cotisation()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalConsumption method}, 
+		\hyperpage{11}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{13}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalKeg method}, 
+		\hyperpage{15}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{17}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalMenu method}, 
+		\hyperpage{19}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalPinte method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalProduct method}, 
+		\hyperpage{24}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalRefund method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalReload method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalCotisation method}, 
+		\hyperpage{51}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalGeneralPreferences method}, 
+		\hyperpage{53}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalPaymentMethod method}, 
+		\hyperpage{55}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalProfile method}, 
+		\hyperpage{42}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalSchool method}, 
+		\hyperpage{44}
+  \item \spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{45}
+  \item \spxentry{get\_menu()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{get\_message()}\spxextra{django\_tex.exceptions.TexError method}, \hyperpage{75}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.ConsumptionHistory method}, 
+		\hyperpage{10}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{13}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalRefund method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalReload method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.MenuHistory method}, 
+		\hyperpage{33}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.Refund method}, \hyperpage{37}
+  \item \spxentry{get\_next\_by\_date()}\spxextra{gestion.models.Reload method}, \hyperpage{38}
+  \item \spxentry{get\_next\_by\_endDate()}\spxextra{users.models.CotisationHistory method}, 
+		\hyperpage{39}
+  \item \spxentry{get\_next\_by\_endDate()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_next\_by\_endDate()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{45}
+  \item \spxentry{get\_next\_by\_endDate()}\spxextra{users.models.WhiteListHistory method}, 
+		\hyperpage{49}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumption method}, 
+		\hyperpage{11}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{13}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalKeg method}, 
+		\hyperpage{15}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{17}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenu method}, 
+		\hyperpage{19}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalPinte method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalProduct method}, 
+		\hyperpage{25}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalRefund method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalReload method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalCotisation method}, 
+		\hyperpage{51}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalGeneralPreferences method}, 
+		\hyperpage{53}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalPaymentMethod method}, 
+		\hyperpage{55}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalProfile method}, 
+		\hyperpage{42}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalSchool method}, 
+		\hyperpage{44}
+  \item \spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{45}
+  \item \spxentry{get\_next\_by\_last\_update\_date()}\spxextra{gestion.models.HistoricalPinte method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_next\_by\_last\_update\_date()}\spxextra{gestion.models.Pinte method}, 
+		\hyperpage{34}
+  \item \spxentry{get\_next\_by\_openingDate()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{17}
+  \item \spxentry{get\_next\_by\_openingDate()}\spxextra{gestion.models.KegHistory method}, 
+		\hyperpage{31}
+  \item \spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.CotisationHistory method}, 
+		\hyperpage{39}
+  \item \spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{45}
+  \item \spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.WhiteListHistory method}, 
+		\hyperpage{49}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.ConsumptionHistory method}, 
+		\hyperpage{10}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{13}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalRefund method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalReload method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.MenuHistory method}, 
+		\hyperpage{33}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.Refund method}, \hyperpage{37}
+  \item \spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.Reload method}, \hyperpage{38}
+  \item \spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.CotisationHistory method}, 
+		\hyperpage{39}
+  \item \spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{45}
+  \item \spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.WhiteListHistory method}, 
+		\hyperpage{49}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumption method}, 
+		\hyperpage{11}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{13}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalKeg method}, 
+		\hyperpage{15}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{17}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenu method}, 
+		\hyperpage{19}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{21}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalPinte method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalProduct method}, 
+		\hyperpage{25}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalRefund method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalReload method}, 
+		\hyperpage{29}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalCotisation method}, 
+		\hyperpage{51}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalGeneralPreferences method}, 
+		\hyperpage{53}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalPaymentMethod method}, 
+		\hyperpage{55}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalProfile method}, 
+		\hyperpage{42}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalSchool method}, 
+		\hyperpage{44}
+  \item \spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{46}
+  \item \spxentry{get\_previous\_by\_last\_update\_date()}\spxextra{gestion.models.HistoricalPinte method}, 
+		\hyperpage{23}
+  \item \spxentry{get\_previous\_by\_last\_update\_date()}\spxextra{gestion.models.Pinte method}, 
+		\hyperpage{34}
+  \item \spxentry{get\_previous\_by\_openingDate()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{17}
+  \item \spxentry{get\_previous\_by\_openingDate()}\spxextra{gestion.models.KegHistory method}, 
+		\hyperpage{31}
+  \item \spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.CotisationHistory method}, 
+		\hyperpage{39}
+  \item \spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{40}
+  \item \spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{46}
+  \item \spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.WhiteListHistory method}, 
+		\hyperpage{49}
+  \item \spxentry{get\_queryset()}\spxextra{gestion.views.ActiveProductsAutocomplete method}, 
+		\hyperpage{1}
+  \item \spxentry{get\_queryset()}\spxextra{gestion.views.KegActiveAutocomplete method}, 
+		\hyperpage{1}
+  \item \spxentry{get\_queryset()}\spxextra{gestion.views.KegPositiveAutocomplete method}, 
+		\hyperpage{1}
+  \item \spxentry{get\_queryset()}\spxextra{gestion.views.MenusAutocomplete method}, \hyperpage{1}
+  \item \spxentry{get\_queryset()}\spxextra{gestion.views.ProductsAutocomplete method}, 
+		\hyperpage{1}
+  \item \spxentry{get\_queryset()}\spxextra{users.views.ActiveUsersAutocomplete method}, 
+		\hyperpage{4}
+  \item \spxentry{get\_queryset()}\spxextra{users.views.AdherentAutocomplete method}, \hyperpage{4}
+  \item \spxentry{get\_queryset()}\spxextra{users.views.AllUsersAutocomplete method}, \hyperpage{4}
+  \item \spxentry{get\_queryset()}\spxextra{users.views.NonAdminUserAutocomplete method}, 
+		\hyperpage{4}
+  \item \spxentry{get\_queryset()}\spxextra{users.views.NonSuperUserAutocomplete method}, 
+		\hyperpage{4}
+  \item \spxentry{getProduct()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{getUser()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{global\_message}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{global\_message}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{global\_message()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{73}
+  \item \spxentry{grocer}\spxextra{preferences.models.GeneralPreferences attribute}, \hyperpage{50}
+  \item \spxentry{grocer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{grocer()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{73}
+  \item \spxentry{groupProfile()}\spxextra{in module users.views}, \hyperpage{5}
+  \item \spxentry{GroupsEditForm}\spxextra{class in users.forms}, \hyperpage{67}
+  \item \spxentry{GroupsEditForm.Meta}\spxextra{class in users.forms}, \hyperpage{68}
+  \item \spxentry{groupsIndex()}\spxextra{in module users.views}, \hyperpage{5}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry{HistoricalConsumption}\spxextra{class in gestion.models}, \hyperpage{10}
+  \item \spxentry{HistoricalConsumption.DoesNotExist}, \hyperpage{11}
+  \item \spxentry{HistoricalConsumption.MultipleObjectsReturned}, \hyperpage{11}
+  \item \spxentry{HistoricalConsumptionHistory}\spxextra{class in gestion.models}, \hyperpage{12}
+  \item \spxentry{HistoricalConsumptionHistory.DoesNotExist}, \hyperpage{12}
+  \item \spxentry{HistoricalConsumptionHistory.MultipleObjectsReturned}, \hyperpage{12}
+  \item \spxentry{HistoricalCotisation}\spxextra{class in preferences.models}, \hyperpage{51}
+  \item \spxentry{HistoricalCotisation.DoesNotExist}, \hyperpage{51}
+  \item \spxentry{HistoricalCotisation.MultipleObjectsReturned}, \hyperpage{51}
+  \item \spxentry{HistoricalCotisationHistory}\spxextra{class in users.models}, \hyperpage{39}
+  \item \spxentry{HistoricalCotisationHistory.DoesNotExist}, \hyperpage{39}
+  \item \spxentry{HistoricalCotisationHistory.MultipleObjectsReturned}, \hyperpage{39}
+  \item \spxentry{HistoricalGeneralPreferences}\spxextra{class in preferences.models}, 
+		\hyperpage{52}
+  \item \spxentry{HistoricalGeneralPreferences.DoesNotExist}, \hyperpage{52}
+  \item \spxentry{HistoricalGeneralPreferences.MultipleObjectsReturned}, \hyperpage{53}
+  \item \spxentry{HistoricalKeg}\spxextra{class in gestion.models}, \hyperpage{14}
+  \item \spxentry{HistoricalKeg.DoesNotExist}, \hyperpage{15}
+  \item \spxentry{HistoricalKeg.MultipleObjectsReturned}, \hyperpage{15}
+  \item \spxentry{HistoricalKegHistory}\spxextra{class in gestion.models}, \hyperpage{17}
+  \item \spxentry{HistoricalKegHistory.DoesNotExist}, \hyperpage{17}
+  \item \spxentry{HistoricalKegHistory.MultipleObjectsReturned}, \hyperpage{17}
+  \item \spxentry{HistoricalMenu}\spxextra{class in gestion.models}, \hyperpage{18}
+  \item \spxentry{HistoricalMenu.DoesNotExist}, \hyperpage{19}
+  \item \spxentry{HistoricalMenu.MultipleObjectsReturned}, \hyperpage{19}
+  \item \spxentry{HistoricalMenuHistory}\spxextra{class in gestion.models}, \hyperpage{20}
+  \item \spxentry{HistoricalMenuHistory.DoesNotExist}, \hyperpage{20}
+  \item \spxentry{HistoricalMenuHistory.MultipleObjectsReturned}, \hyperpage{20}
+  \item \spxentry{HistoricalPaymentMethod}\spxextra{class in preferences.models}, \hyperpage{55}
+  \item \spxentry{HistoricalPaymentMethod.DoesNotExist}, \hyperpage{55}
+  \item \spxentry{HistoricalPaymentMethod.MultipleObjectsReturned}, \hyperpage{55}
+  \item \spxentry{HistoricalPinte}\spxextra{class in gestion.models}, \hyperpage{22}
+  \item \spxentry{HistoricalPinte.DoesNotExist}, \hyperpage{22}
+  \item \spxentry{HistoricalPinte.MultipleObjectsReturned}, \hyperpage{22}
+  \item \spxentry{HistoricalProduct}\spxextra{class in gestion.models}, \hyperpage{24}
+  \item \spxentry{HistoricalProduct.DoesNotExist}, \hyperpage{24}
+  \item \spxentry{HistoricalProduct.MultipleObjectsReturned}, \hyperpage{24}
+  \item \spxentry{HistoricalProfile}\spxextra{class in users.models}, \hyperpage{42}
+  \item \spxentry{HistoricalProfile.DoesNotExist}, \hyperpage{42}
+  \item \spxentry{HistoricalProfile.MultipleObjectsReturned}, \hyperpage{42}
+  \item \spxentry{HistoricalRefund}\spxextra{class in gestion.models}, \hyperpage{26}
+  \item \spxentry{HistoricalRefund.DoesNotExist}, \hyperpage{26}
+  \item \spxentry{HistoricalRefund.MultipleObjectsReturned}, \hyperpage{26}
+  \item \spxentry{HistoricalReload}\spxextra{class in gestion.models}, \hyperpage{28}
+  \item \spxentry{HistoricalReload.DoesNotExist}, \hyperpage{28}
+  \item \spxentry{HistoricalReload.MultipleObjectsReturned}, \hyperpage{28}
+  \item \spxentry{HistoricalSchool}\spxextra{class in users.models}, \hyperpage{44}
+  \item \spxentry{HistoricalSchool.DoesNotExist}, \hyperpage{44}
+  \item \spxentry{HistoricalSchool.MultipleObjectsReturned}, \hyperpage{44}
+  \item \spxentry{HistoricalWhiteListHistory}\spxextra{class in users.models}, \hyperpage{45}
+  \item \spxentry{HistoricalWhiteListHistory.DoesNotExist}, \hyperpage{45}
+  \item \spxentry{HistoricalWhiteListHistory.MultipleObjectsReturned}, \hyperpage{45}
+  \item \spxentry{history}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{history}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{history}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{history}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{history}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{history}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{history}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{history}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{history}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{history}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{history}\spxextra{preferences.models.Cotisation attribute}, \hyperpage{50}
+  \item \spxentry{history}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{history}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{history}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{history}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{history}\spxextra{users.models.School attribute}, \hyperpage{48}
+  \item \spxentry{history}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalKeg attribute}, 
+		\hyperpage{15}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalMenu attribute}, 
+		\hyperpage{19}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{51}
+  \item \spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_change\_reason}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{40}
+  \item \spxentry{history\_change\_reason}\spxextra{users.models.HistoricalProfile attribute}, 
+		\hyperpage{42}
+  \item \spxentry{history\_change\_reason}\spxextra{users.models.HistoricalSchool attribute}, 
+		\hyperpage{44}
+  \item \spxentry{history\_change\_reason}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{15}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_date}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_date}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{51}
+  \item \spxentry{history\_date}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_date}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_date}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_date}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{42}
+  \item \spxentry{history\_date}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{history\_date}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{27}
+  \item \spxentry{history\_id}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{29}
+  \item \spxentry{history\_id}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{history\_id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_id}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{42}
+  \item \spxentry{history\_id}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{history\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalMenu attribute}, 
+		\hyperpage{19}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_object}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_object}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{history\_object}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_object}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_object}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_object}\spxextra{users.models.HistoricalProfile attribute}, 
+		\hyperpage{43}
+  \item \spxentry{history\_object}\spxextra{users.models.HistoricalSchool attribute}, 
+		\hyperpage{44}
+  \item \spxentry{history\_object}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_type}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_type}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{history\_type}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_type}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_type}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_type}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{history\_type}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{history\_type}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{13}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{17}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_user}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_user}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{history\_user}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{53}
+  \item \spxentry{history\_user}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_user}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_user}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{history\_user}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{history\_user}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{11}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalKeg attribute}, 
+		\hyperpage{16}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalMenu attribute}, 
+		\hyperpage{19}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{55}
+  \item \spxentry{history\_user\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{history\_user\_id}\spxextra{users.models.HistoricalProfile attribute}, 
+		\hyperpage{43}
+  \item \spxentry{history\_user\_id}\spxextra{users.models.HistoricalSchool attribute}, 
+		\hyperpage{44}
+  \item \spxentry{history\_user\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{home()}\spxextra{in module coopeV3.views}, \hyperpage{7}
+  \item \spxentry{home\_text}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{home\_text}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{homepage()}\spxextra{in module coopeV3.views}, \hyperpage{7}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{icon}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{icon}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{id}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{id}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalConsumption attribute}, \hyperpage{11}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalKegHistory attribute}, \hyperpage{18}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, \hyperpage{21}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{27}
+  \item \spxentry{id}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{29}
+  \item \spxentry{id}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{id}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{id}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{id}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{id}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{id}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{id}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{id}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{id}\spxextra{preferences.models.Cotisation attribute}, \hyperpage{50}
+  \item \spxentry{id}\spxextra{preferences.models.GeneralPreferences attribute}, \hyperpage{50}
+  \item \spxentry{id}\spxextra{preferences.models.HistoricalCotisation attribute}, \hyperpage{52}
+  \item \spxentry{id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{id}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{id}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{id}\spxextra{users.models.HistoricalCotisationHistory attribute}, \hyperpage{41}
+  \item \spxentry{id}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{id}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{id}\spxextra{users.models.HistoricalWhiteListHistory attribute}, \hyperpage{46}
+  \item \spxentry{id}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{id}\spxextra{users.models.School attribute}, \hyperpage{48}
+  \item \spxentry{id}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{inactive()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{index()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalKegHistory attribute}, \hyperpage{18}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{23}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{27}
+  \item \spxentry{instance}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{29}
+  \item \spxentry{instance}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{instance}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{instance}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{instance}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{instance}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{instance}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{44}
+  \item \spxentry{instance}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{19}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{21}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalRefund attribute}, 
+		\hyperpage{27}
+  \item \spxentry{instance\_type}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{29}
+  \item \spxentry{instance\_type}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{instance\_type}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{instance\_type}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{instance\_type}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{instance\_type}\spxextra{users.models.HistoricalProfile attribute}, 
+		\hyperpage{43}
+  \item \spxentry{instance\_type}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{45}
+  \item \spxentry{instance\_type}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{is\_active}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{is\_active}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{20}
+  \item \spxentry{is\_active}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{is\_active}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{is\_active}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{is\_active}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{is\_active}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{50}
+  \item \spxentry{is\_active}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{is\_active}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{is\_active}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{is\_adherent}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{is\_usable\_in\_cotisation}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{is\_usable\_in\_cotisation}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{57}
+  \item \spxentry{is\_usable\_in\_reload}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{is\_usable\_in\_reload}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{57}
+  \item \spxentry{isCurrentKegHistory}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{isCurrentKegHistory}\spxextra{gestion.models.KegHistory attribute}, 
+		\hyperpage{31}
+  \item \spxentry{isDemi()}\spxextra{in module gestion.models}, \hyperpage{38}
+  \item \spxentry{isGalopin()}\spxextra{in module gestion.models}, \hyperpage{38}
+  \item \spxentry{isPinte()}\spxextra{in module gestion.models}, \hyperpage{38}
+
+  \indexspace
+  \bigletter K
+  \item \spxentry{Keg}\spxextra{class in gestion.models}, \hyperpage{30}
+  \item \spxentry{keg}\spxextra{gestion.models.HistoricalKegHistory attribute}, \hyperpage{18}
+  \item \spxentry{keg}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{Keg.DoesNotExist}, \hyperpage{30}
+  \item \spxentry{Keg.MultipleObjectsReturned}, \hyperpage{30}
+  \item \spxentry{keg\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}, \hyperpage{18}
+  \item \spxentry{keg\_id}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{KegActiveAutocomplete}\spxextra{class in gestion.views}, \hyperpage{1}
+  \item \spxentry{KegAdmin}\spxextra{class in gestion.admin}, \hyperpage{59}
+  \item \spxentry{KegForm}\spxextra{class in gestion.forms}, \hyperpage{63}
+  \item \spxentry{KegForm.Meta}\spxextra{class in gestion.forms}, \hyperpage{63}
+  \item \spxentry{kegH()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{KegHistory}\spxextra{class in gestion.models}, \hyperpage{31}
+  \item \spxentry{KegHistory.DoesNotExist}, \hyperpage{31}
+  \item \spxentry{KegHistory.MultipleObjectsReturned}, \hyperpage{31}
+  \item \spxentry{keghistory\_set}\spxextra{gestion.models.Keg attribute}, \hyperpage{30}
+  \item \spxentry{KegHistoryAdmin}\spxextra{class in gestion.admin}, \hyperpage{59}
+  \item \spxentry{KegPositiveAutocomplete}\spxextra{class in gestion.views}, \hyperpage{1}
+  \item \spxentry{kegsList()}\spxextra{in module gestion.views}, \hyperpage{2}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{last\_update\_date}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{23}
+  \item \spxentry{last\_update\_date}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.ConsumptionAdmin attribute}, \hyperpage{59}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}, 
+		\hyperpage{59}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.KegAdmin attribute}, \hyperpage{59}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.KegHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.MenuAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.MenuHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.ProductAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.RefundAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{gestion.admin.ReloadAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_display}\spxextra{preferences.admin.CotisationAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{list\_display}\spxextra{preferences.admin.GeneralPreferencesAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{list\_display}\spxextra{preferences.admin.PaymentMethodAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{list\_display}\spxextra{users.admin.CotisationHistoryAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{list\_display}\spxextra{users.admin.ProfileAdmin attribute}, \hyperpage{61}
+  \item \spxentry{list\_display}\spxextra{users.admin.WhiteListHistoryAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}, 
+		\hyperpage{59}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.KegAdmin attribute}, \hyperpage{59}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.KegHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.MenuAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.ProductAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_filter}\spxextra{gestion.admin.ReloadAdmin attribute}, \hyperpage{60}
+  \item \spxentry{list\_filter}\spxextra{preferences.admin.PaymentMethodAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{list\_filter}\spxextra{users.admin.CotisationHistoryAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{list\_filter}\spxextra{users.admin.ProfileAdmin attribute}, \hyperpage{61}
+  \item \spxentry{LoginForm}\spxextra{class in users.forms}, \hyperpage{68}
+  \item \spxentry{loginView()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{logout\_time()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{73}
+  \item \spxentry{logoutView()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{lookups()}\spxextra{users.admin.BalanceFilter method}, \hyperpage{61}
+  \item \spxentry{lost\_pintes\_allowed}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{lost\_pintes\_allowed}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{manage()}\spxextra{in module gestion.views}, \hyperpage{2}
+  \item \spxentry{media}\spxextra{gestion.admin.ConsumptionAdmin attribute}, \hyperpage{59}
+  \item \spxentry{media}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}, \hyperpage{59}
+  \item \spxentry{media}\spxextra{gestion.admin.KegAdmin attribute}, \hyperpage{59}
+  \item \spxentry{media}\spxextra{gestion.admin.KegHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.admin.MenuAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.admin.MenuHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.admin.ProductAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.admin.RefundAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.admin.ReloadAdmin attribute}, \hyperpage{60}
+  \item \spxentry{media}\spxextra{gestion.forms.GenerateReleveForm attribute}, \hyperpage{63}
+  \item \spxentry{media}\spxextra{gestion.forms.GestionForm attribute}, \hyperpage{63}
+  \item \spxentry{media}\spxextra{gestion.forms.KegForm attribute}, \hyperpage{64}
+  \item \spxentry{media}\spxextra{gestion.forms.MenuForm attribute}, \hyperpage{64}
+  \item \spxentry{media}\spxextra{gestion.forms.PinteForm attribute}, \hyperpage{64}
+  \item \spxentry{media}\spxextra{gestion.forms.ProductForm attribute}, \hyperpage{64}
+  \item \spxentry{media}\spxextra{gestion.forms.RefundForm attribute}, \hyperpage{65}
+  \item \spxentry{media}\spxextra{gestion.forms.ReloadForm attribute}, \hyperpage{65}
+  \item \spxentry{media}\spxextra{gestion.forms.SearchMenuForm attribute}, \hyperpage{65}
+  \item \spxentry{media}\spxextra{gestion.forms.SearchProductForm attribute}, \hyperpage{65}
+  \item \spxentry{media}\spxextra{gestion.forms.SelectActiveKegForm attribute}, \hyperpage{66}
+  \item \spxentry{media}\spxextra{gestion.forms.SelectPositiveKegForm attribute}, \hyperpage{66}
+  \item \spxentry{media}\spxextra{preferences.admin.CotisationAdmin attribute}, \hyperpage{61}
+  \item \spxentry{media}\spxextra{preferences.admin.GeneralPreferencesAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{media}\spxextra{preferences.admin.PaymentMethodAdmin attribute}, \hyperpage{62}
+  \item \spxentry{media}\spxextra{preferences.forms.CotisationForm attribute}, \hyperpage{70}
+  \item \spxentry{media}\spxextra{preferences.forms.GeneralPreferencesForm attribute}, 
+		\hyperpage{70}
+  \item \spxentry{media}\spxextra{preferences.forms.PaymentMethodForm attribute}, \hyperpage{71}
+  \item \spxentry{media}\spxextra{users.admin.CotisationHistoryAdmin attribute}, \hyperpage{61}
+  \item \spxentry{media}\spxextra{users.admin.ProfileAdmin attribute}, \hyperpage{61}
+  \item \spxentry{media}\spxextra{users.admin.WhiteListHistoryAdmin attribute}, \hyperpage{61}
+  \item \spxentry{media}\spxextra{users.forms.addCotisationHistoryForm attribute}, \hyperpage{69}
+  \item \spxentry{media}\spxextra{users.forms.addWhiteListHistoryForm attribute}, \hyperpage{70}
+  \item \spxentry{media}\spxextra{users.forms.CreateGroupForm attribute}, \hyperpage{66}
+  \item \spxentry{media}\spxextra{users.forms.CreateUserForm attribute}, \hyperpage{67}
+  \item \spxentry{media}\spxextra{users.forms.EditGroupForm attribute}, \hyperpage{67}
+  \item \spxentry{media}\spxextra{users.forms.EditPasswordForm attribute}, \hyperpage{67}
+  \item \spxentry{media}\spxextra{users.forms.ExportForm attribute}, \hyperpage{67}
+  \item \spxentry{media}\spxextra{users.forms.GroupsEditForm attribute}, \hyperpage{68}
+  \item \spxentry{media}\spxextra{users.forms.LoginForm attribute}, \hyperpage{68}
+  \item \spxentry{media}\spxextra{users.forms.SchoolForm attribute}, \hyperpage{68}
+  \item \spxentry{media}\spxextra{users.forms.SelectNonAdminUserForm attribute}, \hyperpage{68}
+  \item \spxentry{media}\spxextra{users.forms.SelectNonSuperUserForm attribute}, \hyperpage{69}
+  \item \spxentry{media}\spxextra{users.forms.SelectUserForm attribute}, \hyperpage{69}
+  \item \spxentry{Menu}\spxextra{class in gestion.models}, \hyperpage{32}
+  \item \spxentry{menu}\spxextra{gestion.models.HistoricalMenuHistory attribute}, \hyperpage{21}
+  \item \spxentry{menu}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{menu}\spxextra{preferences.models.GeneralPreferences attribute}, \hyperpage{51}
+  \item \spxentry{menu}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{menu()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{73}
+  \item \spxentry{Menu.DoesNotExist}, \hyperpage{32}
+  \item \spxentry{Menu.MultipleObjectsReturned}, \hyperpage{32}
+  \item \spxentry{menu\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{menu\_id}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{menu\_set}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{MenuAdmin}\spxextra{class in gestion.admin}, \hyperpage{60}
+  \item \spxentry{MenuForm}\spxextra{class in gestion.forms}, \hyperpage{64}
+  \item \spxentry{MenuForm.Meta}\spxextra{class in gestion.forms}, \hyperpage{64}
+  \item \spxentry{MenuHistory}\spxextra{class in gestion.models}, \hyperpage{32}
+  \item \spxentry{MenuHistory.DoesNotExist}, \hyperpage{32}
+  \item \spxentry{MenuHistory.MultipleObjectsReturned}, \hyperpage{32}
+  \item \spxentry{menuhistory\_set}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{menuhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}, 
+		\hyperpage{57}
+  \item \spxentry{MenuHistoryAdmin}\spxextra{class in gestion.admin}, \hyperpage{60}
+  \item \spxentry{menus\_list()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{MenusAutocomplete}\spxextra{class in gestion.views}, \hyperpage{1}
+  \item \spxentry{model}\spxextra{gestion.forms.KegForm.Meta attribute}, \hyperpage{63}
+  \item \spxentry{model}\spxextra{gestion.forms.MenuForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{model}\spxextra{gestion.forms.ProductForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{model}\spxextra{gestion.forms.RefundForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{model}\spxextra{gestion.forms.ReloadForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{model}\spxextra{preferences.forms.CotisationForm.Meta attribute}, \hyperpage{70}
+  \item \spxentry{model}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}, 
+		\hyperpage{70}
+  \item \spxentry{model}\spxextra{preferences.forms.PaymentMethodForm.Meta attribute}, 
+		\hyperpage{71}
+  \item \spxentry{model}\spxextra{users.forms.addCotisationHistoryForm.Meta attribute}, 
+		\hyperpage{69}
+  \item \spxentry{model}\spxextra{users.forms.addWhiteListHistoryForm.Meta attribute}, 
+		\hyperpage{69}
+  \item \spxentry{model}\spxextra{users.forms.CreateGroupForm.Meta attribute}, \hyperpage{66}
+  \item \spxentry{model}\spxextra{users.forms.CreateUserForm.Meta attribute}, \hyperpage{67}
+  \item \spxentry{model}\spxextra{users.forms.EditGroupForm.Meta attribute}, \hyperpage{67}
+  \item \spxentry{model}\spxextra{users.forms.GroupsEditForm.Meta attribute}, \hyperpage{68}
+  \item \spxentry{model}\spxextra{users.forms.SchoolForm.Meta attribute}, \hyperpage{68}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{name}\spxextra{django\_tex.models.TeXTemplateFile attribute}, \hyperpage{76}
+  \item \spxentry{name}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{name}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{20}
+  \item \spxentry{name}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{name}\spxextra{gestion.models.Keg attribute}, \hyperpage{31}
+  \item \spxentry{name}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{name}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{name}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{name}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{name}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{45}
+  \item \spxentry{name}\spxextra{users.models.School attribute}, \hyperpage{48}
+  \item \spxentry{nb\_pintes}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{needQuantityButton}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{needQuantityButton}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{20}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{24}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{25}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{27}
+  \item \spxentry{next\_record}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{30}
+  \item \spxentry{next\_record}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{next\_record}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{next\_record}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{next\_record}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{next\_record}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{next\_record}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{45}
+  \item \spxentry{next\_record}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{NonAdminUserAutocomplete}\spxextra{class in users.views}, \hyperpage{4}
+  \item \spxentry{NonSuperUserAutocomplete}\spxextra{class in users.views}, \hyperpage{4}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{objects}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{objects}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalConsumption attribute}, \hyperpage{12}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalKegHistory attribute}, \hyperpage{18}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{20}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalMenuHistory attribute}, \hyperpage{22}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{24}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{25}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{28}
+  \item \spxentry{objects}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{30}
+  \item \spxentry{objects}\spxextra{gestion.models.Keg attribute}, \hyperpage{31}
+  \item \spxentry{objects}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{objects}\spxextra{gestion.models.Menu attribute}, \hyperpage{32}
+  \item \spxentry{objects}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{objects}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{objects}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{objects}\spxextra{gestion.models.Refund attribute}, \hyperpage{37}
+  \item \spxentry{objects}\spxextra{gestion.models.Reload attribute}, \hyperpage{38}
+  \item \spxentry{objects}\spxextra{preferences.models.Cotisation attribute}, \hyperpage{50}
+  \item \spxentry{objects}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{objects}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{objects}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{objects}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{objects}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{objects}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{objects}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{objects}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{objects}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{45}
+  \item \spxentry{objects}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{objects}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{objects}\spxextra{users.models.School attribute}, \hyperpage{48}
+  \item \spxentry{objects}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{openDirectKeg()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{openingDate}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{openingDate}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{openKeg()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{order()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{ordering}\spxextra{gestion.admin.ConsumptionAdmin attribute}, \hyperpage{59}
+  \item \spxentry{ordering}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}, 
+		\hyperpage{59}
+  \item \spxentry{ordering}\spxextra{gestion.admin.KegAdmin attribute}, \hyperpage{59}
+  \item \spxentry{ordering}\spxextra{gestion.admin.KegHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{gestion.admin.MenuAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{gestion.admin.MenuHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{gestion.admin.ProductAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{gestion.admin.RefundAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{gestion.admin.ReloadAdmin attribute}, \hyperpage{60}
+  \item \spxentry{ordering}\spxextra{preferences.admin.CotisationAdmin attribute}, \hyperpage{62}
+  \item \spxentry{ordering}\spxextra{preferences.admin.PaymentMethodAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{ordering}\spxextra{users.admin.CotisationHistoryAdmin attribute}, \hyperpage{61}
+  \item \spxentry{ordering}\spxextra{users.admin.ProfileAdmin attribute}, \hyperpage{61}
+  \item \spxentry{ordering}\spxextra{users.admin.WhiteListHistoryAdmin attribute}, \hyperpage{61}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{P\_PRESSION}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{PANINI}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{parameter\_name}\spxextra{users.admin.BalanceFilter attribute}, \hyperpage{61}
+  \item \spxentry{paymentDate}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{paymentDate}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{paymentDate}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{paymentDate}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{PaymentMethod}\spxextra{class in preferences.models}, \hyperpage{56}
+  \item \spxentry{paymentMethod}\spxextra{gestion.models.ConsumptionHistory attribute}, 
+		\hyperpage{10}
+  \item \spxentry{paymentMethod}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{paymentMethod}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{PaymentMethod}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{28}
+  \item \spxentry{paymentMethod}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{PaymentMethod}\spxextra{gestion.models.Reload attribute}, \hyperpage{37}
+  \item \spxentry{paymentMethod}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{paymentMethod}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{PaymentMethod.DoesNotExist}, \hyperpage{56}
+  \item \spxentry{PaymentMethod.MultipleObjectsReturned}, \hyperpage{56}
+  \item \spxentry{paymentMethod\_id}\spxextra{gestion.models.ConsumptionHistory attribute}, 
+		\hyperpage{10}
+  \item \spxentry{paymentMethod\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{paymentMethod\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{PaymentMethod\_id}\spxextra{gestion.models.HistoricalReload attribute}, 
+		\hyperpage{28}
+  \item \spxentry{paymentMethod\_id}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{PaymentMethod\_id}\spxextra{gestion.models.Reload attribute}, \hyperpage{37}
+  \item \spxentry{paymentMethod\_id}\spxextra{users.models.CotisationHistory attribute}, 
+		\hyperpage{39}
+  \item \spxentry{paymentMethod\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{41}
+  \item \spxentry{PaymentMethodAdmin}\spxextra{class in preferences.admin}, \hyperpage{62}
+  \item \spxentry{PaymentMethodForm}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{PaymentMethodForm.Meta}\spxextra{class in preferences.forms}, \hyperpage{70}
+  \item \spxentry{paymentMethodsIndex()}\spxextra{in module preferences.views}, \hyperpage{7}
+  \item \spxentry{PDFResponse}\spxextra{class in django\_tex.views}, \hyperpage{76}
+  \item \spxentry{Pinte}\spxextra{class in gestion.models}, \hyperpage{33}
+  \item \spxentry{pinte}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{pinte}\spxextra{gestion.models.Keg attribute}, \hyperpage{31}
+  \item \spxentry{Pinte.DoesNotExist}, \hyperpage{33}
+  \item \spxentry{Pinte.MultipleObjectsReturned}, \hyperpage{34}
+  \item \spxentry{pinte\_id}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{16}
+  \item \spxentry{pinte\_id}\spxextra{gestion.models.Keg attribute}, \hyperpage{31}
+  \item \spxentry{PinteForm}\spxextra{class in gestion.forms}, \hyperpage{64}
+  \item \spxentry{pintes\_list()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{pintes\_user\_list()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{positiveBalance()}\spxextra{users.models.Profile method}, \hyperpage{47}
+  \item \spxentry{preferences.admin}\spxextra{module}, \hyperpage{61}
+  \item \spxentry{preferences.forms}\spxextra{module}, \hyperpage{70}
+  \item \spxentry{preferences.models}\spxextra{module}, \hyperpage{49}
+  \item \spxentry{preferences.views}\spxextra{module}, \hyperpage{6}
+  \item \spxentry{president}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{president}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{president()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{prettify\_message()}\spxextra{in module django\_tex.exceptions}, \hyperpage{75}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{17}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalMenu attribute}, \hyperpage{20}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalPinte attribute}, \hyperpage{24}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{26}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalRefund attribute}, \hyperpage{28}
+  \item \spxentry{prev\_record}\spxextra{gestion.models.HistoricalReload attribute}, \hyperpage{30}
+  \item \spxentry{prev\_record}\spxextra{preferences.models.HistoricalCotisation attribute}, 
+		\hyperpage{52}
+  \item \spxentry{prev\_record}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{prev\_record}\spxextra{preferences.models.HistoricalPaymentMethod attribute}, 
+		\hyperpage{56}
+  \item \spxentry{prev\_record}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{42}
+  \item \spxentry{prev\_record}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{prev\_record}\spxextra{users.models.HistoricalSchool attribute}, \hyperpage{45}
+  \item \spxentry{prev\_record}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{46}
+  \item \spxentry{previous\_owner}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{24}
+  \item \spxentry{previous\_owner}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{previous\_owner\_id}\spxextra{gestion.models.HistoricalPinte attribute}, 
+		\hyperpage{24}
+  \item \spxentry{previous\_owner\_id}\spxextra{gestion.models.Pinte attribute}, \hyperpage{34}
+  \item \spxentry{Product}\spxextra{class in gestion.models}, \hyperpage{34}
+  \item \spxentry{product}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{product}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{product}\spxextra{gestion.models.HistoricalConsumption attribute}, \hyperpage{12}
+  \item \spxentry{product}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{Product.DoesNotExist}, \hyperpage{34}
+  \item \spxentry{Product.MultipleObjectsReturned}, \hyperpage{34}
+  \item \spxentry{product\_id}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{product\_id}\spxextra{gestion.models.ConsumptionHistory attribute}, 
+		\hyperpage{10}
+  \item \spxentry{product\_id}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{product\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{ProductAdmin}\spxextra{class in gestion.admin}, \hyperpage{60}
+  \item \spxentry{ProductForm}\spxextra{class in gestion.forms}, \hyperpage{64}
+  \item \spxentry{ProductForm.Meta}\spxextra{class in gestion.forms}, \hyperpage{64}
+  \item \spxentry{productProfile()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{ProductsAutocomplete}\spxextra{class in gestion.views}, \hyperpage{1}
+  \item \spxentry{productsIndex()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{productsList()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{Profile}\spxextra{class in users.models}, \hyperpage{47}
+  \item \spxentry{profile()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{Profile.DoesNotExist}, \hyperpage{47}
+  \item \spxentry{Profile.MultipleObjectsReturned}, \hyperpage{47}
+  \item \spxentry{profile\_set}\spxextra{users.models.School attribute}, \hyperpage{48}
+  \item \spxentry{ProfileAdmin}\spxextra{class in users.admin}, \hyperpage{61}
+
+  \indexspace
+  \bigletter Q
+  \item \spxentry{quantity}\spxextra{gestion.models.Consumption attribute}, \hyperpage{9}
+  \item \spxentry{quantity}\spxextra{gestion.models.ConsumptionHistory attribute}, \hyperpage{10}
+  \item \spxentry{quantity}\spxextra{gestion.models.HistoricalConsumption attribute}, 
+		\hyperpage{12}
+  \item \spxentry{quantity}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}, 
+		\hyperpage{14}
+  \item \spxentry{quantity}\spxextra{gestion.models.HistoricalMenuHistory attribute}, 
+		\hyperpage{22}
+  \item \spxentry{quantity}\spxextra{gestion.models.MenuHistory attribute}, \hyperpage{33}
+  \item \spxentry{quantitySold}\spxextra{gestion.models.HistoricalKegHistory attribute}, 
+		\hyperpage{18}
+  \item \spxentry{quantitySold}\spxextra{gestion.models.KegHistory attribute}, \hyperpage{31}
+  \item \spxentry{QUERY\_TYPE\_CHOICES}\spxextra{users.forms.ExportForm attribute}, \hyperpage{67}
+  \item \spxentry{queryset()}\spxextra{users.admin.BalanceFilter method}, \hyperpage{61}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{random\_filter()}\spxextra{in module users.templatetags.users\_extra}, 
+		\hyperpage{74}
+  \item \spxentry{rank}\spxextra{users.models.Profile attribute}, \hyperpage{47}
+  \item \spxentry{ranking}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{ranking()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{Refund}\spxextra{class in gestion.models}, \hyperpage{37}
+  \item \spxentry{refund()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{Refund.DoesNotExist}, \hyperpage{37}
+  \item \spxentry{Refund.MultipleObjectsReturned}, \hyperpage{37}
+  \item \spxentry{RefundAdmin}\spxextra{class in gestion.admin}, \hyperpage{60}
+  \item \spxentry{RefundForm}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{RefundForm.Meta}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{release()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{release\_pintes()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{Reload}\spxextra{class in gestion.models}, \hyperpage{37}
+  \item \spxentry{reload()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{Reload.DoesNotExist}, \hyperpage{37}
+  \item \spxentry{Reload.MultipleObjectsReturned}, \hyperpage{37}
+  \item \spxentry{reload\_set}\spxextra{preferences.models.PaymentMethod attribute}, \hyperpage{57}
+  \item \spxentry{ReloadAdmin}\spxextra{class in gestion.admin}, \hyperpage{60}
+  \item \spxentry{ReloadForm}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{ReloadForm.Meta}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{removeAdmin()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{removeRight()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{removeSuperuser()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{removeUser()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{render\_template\_with\_context()}\spxextra{in module django\_tex.core}, 
+		\hyperpage{75}
+  \item \spxentry{render\_to\_pdf()}\spxextra{in module django\_tex.views}, \hyperpage{76}
+  \item \spxentry{resetPassword()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalConsumption method}, 
+		\hyperpage{12}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalConsumptionHistory method}, 
+		\hyperpage{14}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalKeg method}, \hyperpage{17}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalKegHistory method}, 
+		\hyperpage{18}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalMenu method}, \hyperpage{20}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalMenuHistory method}, 
+		\hyperpage{22}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalPinte method}, \hyperpage{24}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalProduct method}, \hyperpage{26}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalRefund method}, \hyperpage{28}
+  \item \spxentry{revert\_url()}\spxextra{gestion.models.HistoricalReload method}, \hyperpage{30}
+  \item \spxentry{revert\_url()}\spxextra{preferences.models.HistoricalCotisation method}, 
+		\hyperpage{52}
+  \item \spxentry{revert\_url()}\spxextra{preferences.models.HistoricalGeneralPreferences method}, 
+		\hyperpage{54}
+  \item \spxentry{revert\_url()}\spxextra{preferences.models.HistoricalPaymentMethod method}, 
+		\hyperpage{56}
+  \item \spxentry{revert\_url()}\spxextra{users.models.HistoricalCotisationHistory method}, 
+		\hyperpage{42}
+  \item \spxentry{revert\_url()}\spxextra{users.models.HistoricalProfile method}, \hyperpage{43}
+  \item \spxentry{revert\_url()}\spxextra{users.models.HistoricalSchool method}, \hyperpage{45}
+  \item \spxentry{revert\_url()}\spxextra{users.models.HistoricalWhiteListHistory method}, 
+		\hyperpage{46}
+  \item \spxentry{rules}\spxextra{preferences.models.GeneralPreferences attribute}, \hyperpage{51}
+  \item \spxentry{rules}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{rules()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{run\_tex()}\spxextra{in module django\_tex.core}, \hyperpage{75}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{save\_user\_profile()}\spxextra{in module users.models}, \hyperpage{49}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Consumption method}, 
+		\hyperpage{9}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.ConsumptionHistory method}, 
+		\hyperpage{10}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Keg method}, 
+		\hyperpage{31}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.KegHistory method}, 
+		\hyperpage{31}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Menu method}, 
+		\hyperpage{32}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.MenuHistory method}, 
+		\hyperpage{33}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Pinte method}, 
+		\hyperpage{34}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Product method}, 
+		\hyperpage{36}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Refund method}, 
+		\hyperpage{37}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Reload method}, 
+		\hyperpage{38}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.Cotisation method}, 
+		\hyperpage{50}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.GeneralPreferences method}, 
+		\hyperpage{51}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.PaymentMethod method}, 
+		\hyperpage{58}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{users.models.CotisationHistory method}, 
+		\hyperpage{39}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{users.models.Profile method}, 
+		\hyperpage{47}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{users.models.School method}, 
+		\hyperpage{48}
+  \item \spxentry{save\_without\_historical\_record()}\spxextra{users.models.WhiteListHistory method}, 
+		\hyperpage{49}
+  \item \spxentry{School}\spxextra{class in users.models}, \hyperpage{48}
+  \item \spxentry{school}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{school}\spxextra{users.models.Profile attribute}, \hyperpage{48}
+  \item \spxentry{School.DoesNotExist}, \hyperpage{48}
+  \item \spxentry{School.MultipleObjectsReturned}, \hyperpage{48}
+  \item \spxentry{school\_id}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{school\_id}\spxextra{users.models.Profile attribute}, \hyperpage{48}
+  \item \spxentry{SchoolForm}\spxextra{class in users.forms}, \hyperpage{68}
+  \item \spxentry{SchoolForm.Meta}\spxextra{class in users.forms}, \hyperpage{68}
+  \item \spxentry{schoolsIndex()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.ConsumptionAdmin attribute}, 
+		\hyperpage{59}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}, 
+		\hyperpage{59}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.KegAdmin attribute}, \hyperpage{59}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.KegHistoryAdmin attribute}, \hyperpage{60}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.MenuAdmin attribute}, \hyperpage{60}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.MenuHistoryAdmin attribute}, 
+		\hyperpage{60}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.ProductAdmin attribute}, \hyperpage{60}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.RefundAdmin attribute}, \hyperpage{60}
+  \item \spxentry{search\_fields}\spxextra{gestion.admin.ReloadAdmin attribute}, \hyperpage{61}
+  \item \spxentry{search\_fields}\spxextra{preferences.admin.PaymentMethodAdmin attribute}, 
+		\hyperpage{62}
+  \item \spxentry{search\_fields}\spxextra{users.admin.CotisationHistoryAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{search\_fields}\spxextra{users.admin.ProfileAdmin attribute}, \hyperpage{61}
+  \item \spxentry{search\_fields}\spxextra{users.admin.WhiteListHistoryAdmin attribute}, 
+		\hyperpage{61}
+  \item \spxentry{searchMenu()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{SearchMenuForm}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{searchProduct()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{SearchProductForm}\spxextra{class in gestion.forms}, \hyperpage{65}
+  \item \spxentry{searchUser()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{secretary}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{secretary}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{secretary()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{SelectActiveKegForm}\spxextra{class in gestion.forms}, \hyperpage{66}
+  \item \spxentry{SelectNonAdminUserForm}\spxextra{class in users.forms}, \hyperpage{68}
+  \item \spxentry{SelectNonSuperUserForm}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{SelectPositiveKegForm}\spxextra{class in gestion.forms}, \hyperpage{66}
+  \item \spxentry{SelectUserForm}\spxextra{class in users.forms}, \hyperpage{69}
+  \item \spxentry{self\_or\_has\_perm()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{showingMultiplier}\spxextra{gestion.models.HistoricalProduct attribute}, 
+		\hyperpage{26}
+  \item \spxentry{showingMultiplier}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{SOFT}\spxextra{gestion.models.Product attribute}, \hyperpage{34}
+  \item \spxentry{statutes}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{statutes}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{statutes()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{stockBar}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{26}
+  \item \spxentry{stockBar}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{stockHold}\spxextra{gestion.models.HistoricalKeg attribute}, \hyperpage{17}
+  \item \spxentry{stockHold}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{26}
+  \item \spxentry{stockHold}\spxextra{gestion.models.Keg attribute}, \hyperpage{31}
+  \item \spxentry{stockHold}\spxextra{gestion.models.Product attribute}, \hyperpage{36}
+  \item \spxentry{str\_user()}\spxextra{in module users.models}, \hyperpage{49}
+  \item \spxentry{superuser\_required()}\spxextra{in module coopeV3.acl}, \hyperpage{73}
+  \item \spxentry{superusersIndex()}\spxextra{in module users.views}, \hyperpage{6}
+  \item \spxentry{switch\_activate()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{switch\_activate\_menu()}\spxextra{in module gestion.views}, \hyperpage{3}
+  \item \spxentry{switch\_activate\_user()}\spxextra{in module users.views}, \hyperpage{6}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{TeXEngine}\spxextra{class in django\_tex.engine}, \hyperpage{75}
+  \item \spxentry{TexError}, \hyperpage{75}
+  \item \spxentry{TeXTemplateFile}\spxextra{class in django\_tex.models}, \hyperpage{76}
+  \item \spxentry{TeXTemplateFile.Meta}\spxextra{class in django\_tex.models}, \hyperpage{76}
+  \item \spxentry{title}\spxextra{django\_tex.models.TeXTemplateFile attribute}, \hyperpage{76}
+  \item \spxentry{title}\spxextra{users.admin.BalanceFilter attribute}, \hyperpage{61}
+  \item \spxentry{tokenizer()}\spxextra{in module django\_tex.exceptions}, \hyperpage{76}
+  \item \spxentry{treasurer}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{treasurer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{treasurer()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{TYPEINPUT\_CHOICES\_CATEGORIE}\spxextra{gestion.models.Product attribute}, 
+		\hyperpage{34}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{use\_pinte\_monitoring}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{use\_pinte\_monitoring}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{54}
+  \item \spxentry{user}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{user}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{42}
+  \item \spxentry{user}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{43}
+  \item \spxentry{user}\spxextra{users.models.HistoricalWhiteListHistory attribute}, \hyperpage{47}
+  \item \spxentry{user}\spxextra{users.models.Profile attribute}, \hyperpage{48}
+  \item \spxentry{user}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{user\_id}\spxextra{users.models.CotisationHistory attribute}, \hyperpage{39}
+  \item \spxentry{user\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}, 
+		\hyperpage{42}
+  \item \spxentry{user\_id}\spxextra{users.models.HistoricalProfile attribute}, \hyperpage{44}
+  \item \spxentry{user\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}, 
+		\hyperpage{47}
+  \item \spxentry{user\_id}\spxextra{users.models.Profile attribute}, \hyperpage{48}
+  \item \spxentry{user\_id}\spxextra{users.models.WhiteListHistory attribute}, \hyperpage{49}
+  \item \spxentry{user\_ranking()}\spxextra{gestion.models.Product method}, \hyperpage{36}
+  \item \spxentry{users.admin}\spxextra{module}, \hyperpage{61}
+  \item \spxentry{users.forms}\spxextra{module}, \hyperpage{66}
+  \item \spxentry{users.models}\spxextra{module}, \hyperpage{38}
+  \item \spxentry{users.templatetags.users\_extra}\spxextra{module}, \hyperpage{74}
+  \item \spxentry{users.views}\spxextra{module}, \hyperpage{4}
+  \item \spxentry{usersIndex()}\spxextra{in module users.views}, \hyperpage{6}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{validate\_template\_path()}\spxextra{in module django\_tex.models}, 
+		\hyperpage{76}
+  \item \spxentry{vice\_president}\spxextra{preferences.models.GeneralPreferences attribute}, 
+		\hyperpage{51}
+  \item \spxentry{vice\_president}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}, 
+		\hyperpage{55}
+  \item \spxentry{vice\_president()}\spxextra{in module coopeV3.templatetags.vip}, \hyperpage{74}
+  \item \spxentry{volume}\spxextra{gestion.models.HistoricalProduct attribute}, \hyperpage{26}
+  \item \spxentry{volume}\spxextra{gestion.models.Product attribute}, \hyperpage{37}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry{WhiteListHistory}\spxextra{class in users.models}, \hyperpage{48}
+  \item \spxentry{WhiteListHistory.DoesNotExist}, \hyperpage{48}
+  \item \spxentry{WhiteListHistory.MultipleObjectsReturned}, \hyperpage{48}
+  \item \spxentry{WhiteListHistoryAdmin}\spxextra{class in users.admin}, \hyperpage{61}
+  \item \spxentry{widgets}\spxextra{gestion.forms.KegForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{widgets}\spxextra{gestion.forms.MenuForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{widgets}\spxextra{gestion.forms.ProductForm.Meta attribute}, \hyperpage{64}
+  \item \spxentry{widgets}\spxextra{gestion.forms.RefundForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{widgets}\spxextra{gestion.forms.ReloadForm.Meta attribute}, \hyperpage{65}
+  \item \spxentry{widgets}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}, 
+		\hyperpage{70}
+
+\end{sphinxtheindex}

@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Forms documentation &mdash; CoopeV3 3.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Utils documentation" href="utils.html" />
+    <link rel="prev" title="Admin documentation" href="admin.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CoopeV3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="views.html">Views documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Forms documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-gestion.forms">Gestion app forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-users.forms">Users app forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-preferences.forms">Preferences app forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django_tex.html">Django_tex documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoopeV3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Forms documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/forms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="forms-documentation">
+<h1>Forms documentation<a class="headerlink" href="#forms-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-gestion.forms">
+<span id="gestion-app-forms"></span><h2>Gestion app forms<a class="headerlink" href="#module-gestion.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gestion.forms.GenerateReleveForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">GenerateReleveForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.GenerateReleveForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to generate a releve.</p>
+<dl class="attribute">
+<dt id="gestion.forms.GenerateReleveForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'begin': &lt;django.forms.fields.DateTimeField object&gt;, 'end': &lt;django.forms.fields.DateTimeField object&gt;}</em><a class="headerlink" href="#gestion.forms.GenerateReleveForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.GenerateReleveForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'begin': &lt;django.forms.fields.DateTimeField object&gt;, 'end': &lt;django.forms.fields.DateTimeField object&gt;}</em><a class="headerlink" href="#gestion.forms.GenerateReleveForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.GenerateReleveForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.GenerateReleveForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.GestionForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">GestionForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.GestionForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form for the <a class="reference internal" href="views.html#gestion.views.manage" title="gestion.views.manage"><code class="xref py py-func docutils literal notranslate"><span class="pre">manage()</span></code></a> view.</p>
+<dl class="attribute">
+<dt id="gestion.forms.GestionForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'client': &lt;django.forms.models.ModelChoiceField object&gt;, 'product': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.GestionForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.GestionForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'client': &lt;django.forms.models.ModelChoiceField object&gt;, 'product': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.GestionForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.GestionForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.GestionForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.KegForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">KegForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.KegForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to create and edit a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Keg</span></code></a>.</p>
+<dl class="class">
+<dt id="gestion.forms.KegForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#gestion.forms.KegForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="gestion.forms.KegForm.Meta.exclude">
+<code class="descname">exclude</code><em class="property"> = ('is_active',)</em><a class="headerlink" href="#gestion.forms.KegForm.Meta.exclude" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.KegForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#gestion.forms.KegForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.KegForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'amount': &lt;class 'django.forms.widgets.TextInput'&gt;}</em><a class="headerlink" href="#gestion.forms.KegForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.KegForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'barcode': &lt;django.forms.fields.CharField object&gt;, 'capacity': &lt;django.forms.fields.IntegerField object&gt;, 'demi': &lt;django.forms.models.ModelChoiceField object&gt;, 'galopin': &lt;django.forms.models.ModelChoiceField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'pinte': &lt;django.forms.models.ModelChoiceField object&gt;, 'stockHold': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#gestion.forms.KegForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.KegForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#gestion.forms.KegForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.KegForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.KegForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.MenuForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">MenuForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.MenuForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to create and edit a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></a>.</p>
+<dl class="class">
+<dt id="gestion.forms.MenuForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#gestion.forms.MenuForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="gestion.forms.MenuForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#gestion.forms.MenuForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.MenuForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#gestion.forms.MenuForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.MenuForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'amount': &lt;class 'django.forms.widgets.TextInput'&gt;}</em><a class="headerlink" href="#gestion.forms.MenuForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.MenuForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'articles': &lt;django.forms.models.ModelMultipleChoiceField object&gt;, 'barcode': &lt;django.forms.fields.CharField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#gestion.forms.MenuForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.MenuForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#gestion.forms.MenuForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.MenuForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.MenuForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.PinteForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">PinteForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.PinteForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to free <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pints</span></code></a>.</p>
+<dl class="attribute">
+<dt id="gestion.forms.PinteForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'begin': &lt;django.forms.fields.IntegerField object&gt;, 'end': &lt;django.forms.fields.IntegerField object&gt;, 'ids': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#gestion.forms.PinteForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.PinteForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'begin': &lt;django.forms.fields.IntegerField object&gt;, 'end': &lt;django.forms.fields.IntegerField object&gt;, 'ids': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#gestion.forms.PinteForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.PinteForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.PinteForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.ProductForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">ProductForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.ProductForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to create and edit a <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a>.</p>
+<dl class="class">
+<dt id="gestion.forms.ProductForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#gestion.forms.ProductForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="gestion.forms.ProductForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#gestion.forms.ProductForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ProductForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#gestion.forms.ProductForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ProductForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'amount': &lt;class 'django.forms.widgets.TextInput'&gt;}</em><a class="headerlink" href="#gestion.forms.ProductForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ProductForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'adherentRequired': &lt;django.forms.fields.BooleanField object&gt;, 'amount': &lt;django.forms.fields.DecimalField object&gt;, 'barcode': &lt;django.forms.fields.CharField object&gt;, 'category': &lt;django.forms.fields.TypedChoiceField object&gt;, 'deg': &lt;django.forms.fields.DecimalField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'needQuantityButton': &lt;django.forms.fields.BooleanField object&gt;, 'showingMultiplier': &lt;django.forms.fields.IntegerField object&gt;, 'stockBar': &lt;django.forms.fields.IntegerField object&gt;, 'stockHold': &lt;django.forms.fields.IntegerField object&gt;, 'volume': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#gestion.forms.ProductForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ProductForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#gestion.forms.ProductForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ProductForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.ProductForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.RefundForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">RefundForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.RefundForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to create a <a class="reference internal" href="models.html#gestion.models.Refund" title="gestion.models.Refund"><code class="xref py py-class docutils literal notranslate"><span class="pre">Refund</span></code></a>.</p>
+<dl class="class">
+<dt id="gestion.forms.RefundForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#gestion.forms.RefundForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="gestion.forms.RefundForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('customer', 'amount')</em><a class="headerlink" href="#gestion.forms.RefundForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.RefundForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#gestion.forms.RefundForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#gestion.models.Refund" title="gestion.models.Refund"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Refund</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.RefundForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'amount': &lt;class 'django.forms.widgets.TextInput'&gt;, 'customer': &lt;dal_select2.widgets.ModelSelect2 object&gt;}</em><a class="headerlink" href="#gestion.forms.RefundForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.RefundForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'customer': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.RefundForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.RefundForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#gestion.forms.RefundForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.RefundForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.RefundForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.ReloadForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">ReloadForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.ReloadForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to create a <a class="reference internal" href="models.html#gestion.models.Reload" title="gestion.models.Reload"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reload</span></code></a>.</p>
+<dl class="class">
+<dt id="gestion.forms.ReloadForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#gestion.forms.ReloadForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="gestion.forms.ReloadForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('customer', 'amount', 'PaymentMethod')</em><a class="headerlink" href="#gestion.forms.ReloadForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ReloadForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#gestion.forms.ReloadForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#gestion.models.Reload" title="gestion.models.Reload"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Reload</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ReloadForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'amount': &lt;class 'django.forms.widgets.TextInput'&gt;, 'customer': &lt;dal_select2.widgets.ModelSelect2 object&gt;}</em><a class="headerlink" href="#gestion.forms.ReloadForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ReloadForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'PaymentMethod': &lt;django.forms.models.ModelChoiceField object&gt;, 'amount': &lt;django.forms.fields.DecimalField object&gt;, 'customer': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.ReloadForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ReloadForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#gestion.forms.ReloadForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.ReloadForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.ReloadForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.SearchMenuForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">SearchMenuForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.SearchMenuForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to search a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></a>.</p>
+<dl class="attribute">
+<dt id="gestion.forms.SearchMenuForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'menu': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SearchMenuForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SearchMenuForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'menu': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SearchMenuForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SearchMenuForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.SearchMenuForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.SearchProductForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">SearchProductForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.SearchProductForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to search a <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">Product</span></code></a>.</p>
+<dl class="attribute">
+<dt id="gestion.forms.SearchProductForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'product': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SearchProductForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SearchProductForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'product': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SearchProductForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SearchProductForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.SearchProductForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.SelectActiveKegForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">SelectActiveKegForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.SelectActiveKegForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to search an active <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Keg</span></code></a>.</p>
+<dl class="attribute">
+<dt id="gestion.forms.SelectActiveKegForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'keg': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SelectActiveKegForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SelectActiveKegForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'keg': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SelectActiveKegForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SelectActiveKegForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.SelectActiveKegForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.forms.SelectPositiveKegForm">
+<em class="property">class </em><code class="descclassname">gestion.forms.</code><code class="descname">SelectPositiveKegForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.forms.SelectPositiveKegForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>A form to search a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Keg</span></code></a> with a positive stockhold.</p>
+<dl class="attribute">
+<dt id="gestion.forms.SelectPositiveKegForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'keg': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SelectPositiveKegForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SelectPositiveKegForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'keg': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#gestion.forms.SelectPositiveKegForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="gestion.forms.SelectPositiveKegForm.media">
+<code class="descname">media</code><a class="headerlink" href="#gestion.forms.SelectPositiveKegForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-users.forms">
+<span id="users-app-forms"></span><h2>Users app forms<a class="headerlink" href="#module-users.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="users.forms.CreateGroupForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">CreateGroupForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.CreateGroupForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to create a new group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.CreateGroupForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.CreateGroupForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.CreateGroupForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('name',)</em><a class="headerlink" href="#users.forms.CreateGroupForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateGroupForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.CreateGroupForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateGroupForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.CreateGroupForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateGroupForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.CreateGroupForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateGroupForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.CreateGroupForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.CreateUserForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">CreateUserForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.CreateUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to create a new user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.CreateUserForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.CreateUserForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.CreateUserForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('username', 'last_name', 'first_name', 'email')</em><a class="headerlink" href="#users.forms.CreateUserForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateUserForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.CreateUserForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateUserForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'first_name': &lt;django.forms.fields.CharField object&gt;, 'last_name': &lt;django.forms.fields.CharField object&gt;, 'school': &lt;django.forms.models.ModelChoiceField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.CreateUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateUserForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'school': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.CreateUserForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.CreateUserForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.CreateUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.EditGroupForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">EditGroupForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.EditGroupForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to edit a group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.EditGroupForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.EditGroupForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.EditGroupForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#users.forms.EditGroupForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditGroupForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.EditGroupForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditGroupForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'name': &lt;django.forms.fields.CharField object&gt;, 'permissions': &lt;django.forms.models.ModelMultipleChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.EditGroupForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditGroupForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.EditGroupForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditGroupForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.EditGroupForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.EditPasswordForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">EditPasswordForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.EditPasswordForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to change the password of a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="attribute">
+<dt id="users.forms.EditPasswordForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'password': &lt;django.forms.fields.CharField object&gt;, 'password1': &lt;django.forms.fields.CharField object&gt;, 'password2': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.EditPasswordForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="users.forms.EditPasswordForm.clean_password2">
+<code class="descname">clean_password2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.EditPasswordForm.clean_password2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Verify if the two new passwords are identical</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditPasswordForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'password': &lt;django.forms.fields.CharField object&gt;, 'password1': &lt;django.forms.fields.CharField object&gt;, 'password2': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.EditPasswordForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.EditPasswordForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.EditPasswordForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.ExportForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">ExportForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.ExportForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to export list of users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) to csv file</p>
+<dl class="attribute">
+<dt id="users.forms.ExportForm.FIELDS_CHOICES">
+<code class="descname">FIELDS_CHOICES</code><em class="property"> = (('username', &quot;Nom d'utilisateur&quot;), ('last_name', 'Nom'), ('first_name', 'Prénom'), ('email', 'Adresse mail'), ('school', 'École'), ('balance', 'Solde'), ('credit', 'Crédit'), ('debit', 'Débit'))</em><a class="headerlink" href="#users.forms.ExportForm.FIELDS_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.ExportForm.QUERY_TYPE_CHOICES">
+<code class="descname">QUERY_TYPE_CHOICES</code><em class="property"> = (('all', 'Tous les comptes'), ('all_active', 'Tous les comptes actifs'), ('adherent', 'Tous les adhérents'), ('adherent_active', 'Tous les adhérents actifs'))</em><a class="headerlink" href="#users.forms.ExportForm.QUERY_TYPE_CHOICES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.ExportForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'fields': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'group': &lt;django.forms.models.ModelChoiceField object&gt;, 'query_type': &lt;django.forms.fields.ChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.ExportForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.ExportForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'fields': &lt;django.forms.fields.MultipleChoiceField object&gt;, 'group': &lt;django.forms.models.ModelChoiceField object&gt;, 'query_type': &lt;django.forms.fields.ChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.ExportForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.ExportForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.ExportForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.GroupsEditForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">GroupsEditForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.GroupsEditForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to edit a user’s list of groups (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.GroupsEditForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.GroupsEditForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.GroupsEditForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('groups',)</em><a class="headerlink" href="#users.forms.GroupsEditForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.GroupsEditForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.GroupsEditForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.GroupsEditForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'groups': &lt;django.forms.models.ModelMultipleChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.GroupsEditForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.GroupsEditForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.GroupsEditForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.GroupsEditForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.GroupsEditForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.LoginForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">LoginForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.LoginForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to log in.</p>
+<dl class="attribute">
+<dt id="users.forms.LoginForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'password': &lt;django.forms.fields.CharField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.LoginForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.LoginForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'password': &lt;django.forms.fields.CharField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.LoginForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.LoginForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.LoginForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.SchoolForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">SchoolForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.SchoolForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to add and edit a <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.School</span></code></a>.</p>
+<dl class="class">
+<dt id="users.forms.SchoolForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.SchoolForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.SchoolForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#users.forms.SchoolForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SchoolForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.SchoolForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.School</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SchoolForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#users.forms.SchoolForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SchoolForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.SchoolForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SchoolForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.SchoolForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.SelectNonAdminUserForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">SelectNonAdminUserForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.SelectNonAdminUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to select a user from all non-staff users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="attribute">
+<dt id="users.forms.SelectNonAdminUserForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectNonAdminUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectNonAdminUserForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectNonAdminUserForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectNonAdminUserForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.SelectNonAdminUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.SelectNonSuperUserForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">SelectNonSuperUserForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.SelectNonSuperUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to select a user from all non-superuser users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="attribute">
+<dt id="users.forms.SelectNonSuperUserForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectNonSuperUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectNonSuperUserForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectNonSuperUserForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectNonSuperUserForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.SelectNonSuperUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.SelectUserForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">SelectUserForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>field_order=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.SelectUserForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to select a user from all users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="attribute">
+<dt id="users.forms.SelectUserForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectUserForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectUserForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {'user': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.SelectUserForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.SelectUserForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.SelectUserForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.addCotisationHistoryForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">addCotisationHistoryForm</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.addCotisationHistoryForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to add a <a class="reference internal" href="models.html#users.models.CotisationHistory" title="users.models.CotisationHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.CotisationHistory</span></code></a> to user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.addCotisationHistoryForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.addCotisationHistoryForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.addCotisationHistoryForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('cotisation', 'paymentMethod')</em><a class="headerlink" href="#users.forms.addCotisationHistoryForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addCotisationHistoryForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.addCotisationHistoryForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#users.models.CotisationHistory" title="users.models.CotisationHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.CotisationHistory</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addCotisationHistoryForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'cotisation': &lt;django.forms.models.ModelChoiceField object&gt;, 'paymentMethod': &lt;django.forms.models.ModelChoiceField object&gt;}</em><a class="headerlink" href="#users.forms.addCotisationHistoryForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addCotisationHistoryForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.addCotisationHistoryForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addCotisationHistoryForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.addCotisationHistoryForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.forms.addWhiteListHistoryForm">
+<em class="property">class </em><code class="descclassname">users.forms.</code><code class="descname">addWhiteListHistoryForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#users.forms.addWhiteListHistoryForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to add a <a class="reference internal" href="models.html#users.models.WhiteListHistory" title="users.models.WhiteListHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.WhiteListHistory</span></code></a> to user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="class">
+<dt id="users.forms.addWhiteListHistoryForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="users.forms.addWhiteListHistoryForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = ('duration',)</em><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addWhiteListHistoryForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#users.models.WhiteListHistory" title="users.models.WhiteListHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.WhiteListHistory</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addWhiteListHistoryForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'duration': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addWhiteListHistoryForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="users.forms.addWhiteListHistoryForm.media">
+<code class="descname">media</code><a class="headerlink" href="#users.forms.addWhiteListHistoryForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.forms">
+<span id="preferences-app-forms"></span><h2>Preferences app forms<a class="headerlink" href="#module-preferences.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="preferences.forms.CotisationForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">CotisationForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.CotisationForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to add and edit <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</p>
+<dl class="class">
+<dt id="preferences.forms.CotisationForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.CotisationForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="preferences.forms.CotisationForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.CotisationForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.CotisationForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.Cotisation</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'duration': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#preferences.forms.CotisationForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.CotisationForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.CotisationForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.forms.GeneralPreferencesForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">GeneralPreferencesForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to edit the <a class="reference internal" href="models.html#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralPreferences</span></code></a>.</p>
+<dl class="class">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.GeneralPreferences</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'active_message': &lt;django.forms.widgets.Textarea object&gt;, 'brewer': &lt;django.forms.widgets.TextInput object&gt;, 'global_message': &lt;django.forms.widgets.Textarea object&gt;, 'grocer': &lt;django.forms.widgets.TextInput object&gt;, 'home_text': &lt;django.forms.widgets.Textarea object&gt;, 'president': &lt;django.forms.widgets.TextInput object&gt;, 'secretary': &lt;django.forms.widgets.TextInput object&gt;, 'treasurer': &lt;django.forms.widgets.TextInput object&gt;, 'vice_president': &lt;django.forms.widgets.TextInput object&gt;}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.widgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'active_message': &lt;django.forms.fields.CharField object&gt;, 'automatic_logout_time': &lt;django.forms.fields.IntegerField object&gt;, 'brewer': &lt;django.forms.fields.CharField object&gt;, 'floating_buttons': &lt;django.forms.fields.BooleanField object&gt;, 'global_message': &lt;django.forms.fields.CharField object&gt;, 'grocer': &lt;django.forms.fields.CharField object&gt;, 'home_text': &lt;django.forms.fields.CharField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'lost_pintes_allowed': &lt;django.forms.fields.IntegerField object&gt;, 'menu': &lt;django.forms.fields.FileField object&gt;, 'president': &lt;django.forms.fields.CharField object&gt;, 'rules': &lt;django.forms.fields.FileField object&gt;, 'secretary': &lt;django.forms.fields.CharField object&gt;, 'statutes': &lt;django.forms.fields.FileField object&gt;, 'treasurer': &lt;django.forms.fields.CharField object&gt;, 'use_pinte_monitoring': &lt;django.forms.fields.BooleanField object&gt;, 'vice_president': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.forms.PaymentMethodForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">PaymentMethodForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.PaymentMethodForm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Form to add and edit <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a>.</p>
+<dl class="class">
+<dt id="preferences.forms.PaymentMethodForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta.fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta.model" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.PaymentMethod</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'affect_balance': &lt;django.forms.fields.BooleanField object&gt;, 'icon': &lt;django.forms.fields.CharField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'is_usable_in_cotisation': &lt;django.forms.fields.BooleanField object&gt;, 'is_usable_in_reload': &lt;django.forms.fields.BooleanField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.base_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.declared_fields" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.media" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="Utils documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="admin.html" class="btn btn-neutral float-left" title="Admin documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yoann Pietri
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

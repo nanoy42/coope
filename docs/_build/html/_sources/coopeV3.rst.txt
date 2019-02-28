@@ -1,0 +1,85 @@
+coopeV3 package
+===============
+
+Subpackages
+-----------
+
+.. toctree::
+
+    coopeV3.templatetags
+
+Submodules
+----------
+
+coopeV3.acl module
+------------------
+
+.. automodule:: coopeV3.acl
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.local\_settings.example module
+--------------------------------------
+
+.. automodule:: coopeV3.local_settings.example
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.local\_settings module
+------------------------------
+
+.. automodule:: coopeV3.local_settings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.settings module
+-----------------------
+
+.. automodule:: coopeV3.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.urls module
+-------------------
+
+.. automodule:: coopeV3.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.views module
+--------------------
+
+.. automodule:: coopeV3.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.widgets module
+----------------------
+
+.. automodule:: coopeV3.widgets
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+coopeV3.wsgi module
+-------------------
+
+.. automodule:: coopeV3.wsgi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: coopeV3
+    :members:
+    :undoc-members:
+    :show-inheritance:
