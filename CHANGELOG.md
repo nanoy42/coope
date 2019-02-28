@@ -1,3 +1,11 @@
+## v3.4.0
+* Fix bugs et améliorations
+* Réparation de la génération de documents en latex
+* Ajout des bulletions d'adhésion et certificats d'adhésion générés en latex
+* Ajout des documents sur le site (statuts, règlement intérieur et menu)
+* Changement de validation, invalidation des cotisations en supression simple
+* Amélioration de l'admin
+* Amélioration du classement par produit
 ## v3.3.3
 * fix commande (moyen de paiment n'affectant pas le solde)
 ## v3.3.2
