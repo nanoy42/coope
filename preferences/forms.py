@@ -5,7 +5,7 @@ from .models import Cotisation, PaymentMethod, GeneralPreferences
 
 class CotisationForm(forms.ModelForm):
     """
-    Form to add and edit cotisations
+    Form to add and edit :class:`~preferences.models.Cotisation`.
     """
     class Meta:
         model = Cotisation
@@ -13,7 +13,7 @@ class CotisationForm(forms.ModelForm):
 
 class PaymentMethodForm(forms.ModelForm):
     """
-    Form to add and edit payment methods
+    Form to add and edit :class:`~preferences.models.PaymentMethod`.
     """
     class Meta:
         model = PaymentMethod
@@ -22,7 +22,7 @@ class PaymentMethodForm(forms.ModelForm):
 
 class GeneralPreferencesForm(forms.ModelForm):
     """
-    Form to edit the general preferences
+    Form to edit the :class:`~preferences.models.GeneralPreferences`.
     """
     class Meta:
         model = GeneralPreferences

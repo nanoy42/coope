@@ -1,0 +1,22 @@
+coopeV3.templatetags package
+============================
+
+Submodules
+----------
+
+coopeV3.templatetags.vip module
+-------------------------------
+
+.. automodule:: coopeV3.templatetags.vip
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: coopeV3.templatetags
+    :members:
+    :undoc-members:
+    :show-inheritance:

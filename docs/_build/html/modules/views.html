@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Views documentation &mdash; CoopeV3 3.4.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Models documentation" href="models.html" />
+    <link rel="prev" title="CoopeV3 documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> CoopeV3
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Views documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-gestion.views">Gestion app views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-users.views">Users app views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-preferences.views">Preferences app views</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-coopeV3.views">coopeV3 app views</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="admin.html">Admin documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forms.html">Forms documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django_tex.html">Django_tex documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">CoopeV3</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Views documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/views.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="views-documentation">
+<h1>Views documentation<a class="headerlink" href="#views-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-gestion.views">
+<span id="gestion-app-views"></span><h2>Gestion app views<a class="headerlink" href="#module-gestion.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="gestion.views.ActiveProductsAutocomplete">
+<em class="property">class </em><code class="descclassname">gestion.views.</code><code class="descname">ActiveProductsAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.ActiveProductsAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete view for active <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">products</span></code></a>.</p>
+<dl class="method">
+<dt id="gestion.views.ActiveProductsAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.ActiveProductsAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.views.KegActiveAutocomplete">
+<em class="property">class </em><code class="descclassname">gestion.views.</code><code class="descname">KegActiveAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.KegActiveAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete view for active <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">kegs</span></code></a>.</p>
+<dl class="method">
+<dt id="gestion.views.KegActiveAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.KegActiveAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.views.KegPositiveAutocomplete">
+<em class="property">class </em><code class="descclassname">gestion.views.</code><code class="descname">KegPositiveAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.KegPositiveAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete view for <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">kegs</span></code></a> with positive stockHold.</p>
+<dl class="method">
+<dt id="gestion.views.KegPositiveAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.KegPositiveAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.views.MenusAutocomplete">
+<em class="property">class </em><code class="descclassname">gestion.views.</code><code class="descname">MenusAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.MenusAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete view for active <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">menus</span></code></a>.</p>
+<dl class="method">
+<dt id="gestion.views.MenusAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.MenusAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="gestion.views.ProductsAutocomplete">
+<em class="property">class </em><code class="descclassname">gestion.views.</code><code class="descname">ProductsAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.ProductsAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete view for all <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">products</span></code></a>.</p>
+<dl class="method">
+<dt id="gestion.views.ProductsAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.ProductsAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.addKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">addKeg</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.addKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.KegForm" title="gestion.forms.KegForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.KegForm</span></code></a> to add a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.addMenu">
+<code class="descclassname">gestion.views.</code><code class="descname">addMenu</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.addMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a <a class="reference internal" href="forms.html#gestion.forms.MenuForm" title="gestion.forms.MenuForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.MenuForm</span></code></a> to add a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.addProduct">
+<code class="descclassname">gestion.views.</code><code class="descname">addProduct</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.addProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.ProductForm" title="gestion.forms.ProductForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.ProductForm</span></code></a> to add a product.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.add_pintes">
+<code class="descclassname">gestion.views.</code><code class="descname">add_pintes</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.add_pintes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.PinteForm" title="gestion.forms.PinteForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.PinteForm</span></code></a> to add one or more <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.allocate">
+<code class="descclassname">gestion.views.</code><code class="descname">allocate</code><span class="sig-paren">(</span><em>pinte_pk</em>, <em>user</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.allocate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Allocate a <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a> to a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) or release the pinte if user is None</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.cancel_consumption">
+<code class="descclassname">gestion.views.</code><code class="descname">cancel_consumption</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.cancel_consumption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="models.html#gestion.models.ConsumptionHistory" title="gestion.models.ConsumptionHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">consumption</span> <span class="pre">history</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the consumption history to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.cancel_menu">
+<code class="descclassname">gestion.views.</code><code class="descname">cancel_menu</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.cancel_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="models.html#gestion.models.MenuHistory" title="gestion.models.MenuHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">menu</span> <span class="pre">history</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the menu history to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.cancel_reload">
+<code class="descclassname">gestion.views.</code><code class="descname">cancel_reload</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.cancel_reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="models.html#gestion.models.Reload" title="gestion.models.Reload"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Reload</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the reload to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.closeDirectKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">closeDirectKeg</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.closeDirectKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes a class:<cite>gestion.models.Keg</cite>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the class:<cite>gestion.models.Keg</cite> to open.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.closeKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">closeKeg</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.closeKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.SelectPositiveKegForm" title="gestion.forms.SelectPositiveKegForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.SelectPositiveKegForm</span></code></a> to open a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.editKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">editKeg</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.editKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.KegForm" title="gestion.forms.KegForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.KegForm</span></code></a> to edit a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a> to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.editProduct">
+<code class="descclassname">gestion.views.</code><code class="descname">editProduct</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.editProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.ProductForm" title="gestion.forms.ProductForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.ProductForm</span></code></a> to edit a product.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the the <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a> to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.edit_menu">
+<code class="descclassname">gestion.views.</code><code class="descname">edit_menu</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.edit_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.MenuForm" title="gestion.forms.MenuForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.MenuForm</span></code></a> to edit a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a> to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.gen_releve">
+<code class="descclassname">gestion.views.</code><code class="descname">gen_releve</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.gen_releve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <code class="xref py py-class docutils literal notranslate"><span class="pre">forms.gestion.GenerateReleveForm</span></code> to generate a releve.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.getProduct">
+<code class="descclassname">gestion.views.</code><code class="descname">getProduct</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.getProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a> by barcode and return it in JSON format.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a> to get infos.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.get_menu">
+<code class="descclassname">gestion.views.</code><code class="descname">get_menu</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.get_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a> by pk and return it in JSON format.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.kegH">
+<code class="descclassname">gestion.views.</code><code class="descname">kegH</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.kegH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the <a class="reference internal" href="models.html#gestion.models.KegHistory" title="gestion.models.KegHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">history</span></code></a> of requested <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.kegsList">
+<code class="descclassname">gestion.views.</code><code class="descname">kegsList</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.kegsList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">kegs</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.manage">
+<code class="descclassname">gestion.views.</code><code class="descname">manage</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.manage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the manage view.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.menus_list">
+<code class="descclassname">gestion.views.</code><code class="descname">menus_list</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.menus_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">menus</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.openDirectKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">openDirectKeg</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.openDirectKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a class:<cite>gestion.models.Keg</cite>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the class:<cite>gestion.models.Keg</cite> to open.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.openKeg">
+<code class="descclassname">gestion.views.</code><code class="descname">openKeg</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.openKeg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.SelectPositiveKegForm" title="gestion.forms.SelectPositiveKegForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.SelectPositiveKegForm</span></code></a> to open a <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Keg</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.order">
+<code class="descclassname">gestion.views.</code><code class="descname">order</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the given order. The order is passed through POST.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.pintes_list">
+<code class="descclassname">gestion.views.</code><code class="descname">pintes_list</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.pintes_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the list of <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.pintes_user_list">
+<code class="descclassname">gestion.views.</code><code class="descname">pintes_user_list</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.pintes_user_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the list of user, who have unreturned <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pinte(s)</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.productProfile">
+<code class="descclassname">gestion.views.</code><code class="descname">productProfile</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.productProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the profile of a <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a> to display profile.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.productsIndex">
+<code class="descclassname">gestion.views.</code><code class="descname">productsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.productsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the products manage static page.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.productsList">
+<code class="descclassname">gestion.views.</code><code class="descname">productsList</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.productsList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">products</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.ranking">
+<code class="descclassname">gestion.views.</code><code class="descname">ranking</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.ranking" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the ranking page.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.refund">
+<code class="descclassname">gestion.views.</code><code class="descname">refund</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.refund" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.RefundForm" title="gestion.forms.RefundForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Refund</span> <span class="pre">form</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.release">
+<code class="descclassname">gestion.views.</code><code class="descname">release</code><span class="sig-paren">(</span><em>request</em>, <em>pinte_pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>View to release a <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a>.</p>
+<dl class="docutils">
+<dt>pinte_pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a> to release.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.release_pintes">
+<code class="descclassname">gestion.views.</code><code class="descname">release_pintes</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.release_pintes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.PinteForm" title="gestion.forms.PinteForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.PinteForm</span></code></a> to release one or more <a class="reference internal" href="models.html#gestion.models.Pinte" title="gestion.models.Pinte"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Pinte</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.reload">
+<code class="descclassname">gestion.views.</code><code class="descname">reload</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <code class="xref py py-class docutils literal notranslate"><span class="pre">Reload</span> <span class="pre">form</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.searchMenu">
+<code class="descclassname">gestion.views.</code><code class="descname">searchMenu</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.searchMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#gestion.forms.SearchMenuForm" title="gestion.forms.SearchMenuForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.SearchMenuForm</span></code></a> to search a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.searchProduct">
+<code class="descclassname">gestion.views.</code><code class="descname">searchProduct</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.searchProduct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.forms.SearchProduct</span></code> to search a <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.switch_activate">
+<code class="descclassname">gestion.views.</code><code class="descname">switch_activate</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.switch_activate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Switch the active status of the requested <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#gestion.models.Product" title="gestion.models.Product"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Product</span></code></a> to display profile.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="gestion.views.switch_activate_menu">
+<code class="descclassname">gestion.views.</code><code class="descname">switch_activate_menu</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#gestion.views.switch_activate_menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Switch active status of a <a class="reference internal" href="models.html#gestion.models.Menu" title="gestion.models.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">gestion.models.Menu</span></code></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-users.views">
+<span id="users-app-views"></span><h2>Users app views<a class="headerlink" href="#module-users.views" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="users.views.ActiveUsersAutocomplete">
+<em class="property">class </em><code class="descclassname">users.views.</code><code class="descname">ActiveUsersAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ActiveUsersAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete for active users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="method">
+<dt id="users.views.ActiveUsersAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.ActiveUsersAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.views.AdherentAutocomplete">
+<em class="property">class </em><code class="descclassname">users.views.</code><code class="descname">AdherentAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AdherentAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete for adherents (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="method">
+<dt id="users.views.AdherentAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AdherentAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.views.AllUsersAutocomplete">
+<em class="property">class </em><code class="descclassname">users.views.</code><code class="descname">AllUsersAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AllUsersAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autcomplete for all users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="method">
+<dt id="users.views.AllUsersAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.AllUsersAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.views.NonAdminUserAutocomplete">
+<em class="property">class </em><code class="descclassname">users.views.</code><code class="descname">NonAdminUserAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.NonAdminUserAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete for non-admin users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="method">
+<dt id="users.views.NonAdminUserAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.NonAdminUserAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="users.views.NonSuperUserAutocomplete">
+<em class="property">class </em><code class="descclassname">users.views.</code><code class="descname">NonSuperUserAutocomplete</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.NonSuperUserAutocomplete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Autocomplete for non-superuser users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="method">
+<dt id="users.views.NonSuperUserAutocomplete.get_queryset">
+<code class="descname">get_queryset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#users.views.NonSuperUserAutocomplete.get_queryset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter the queryset with GET[‘q’].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.addAdmin">
+<code class="descclassname">users.views.</code><code class="descname">addAdmin</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.addAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.SelectNonAdminUserForm" title="users.forms.SelectNonAdminUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.SelectNonAdminUserForm</span></code></a> to select a non admin user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) and add it to the admins.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.addCotisationHistory">
+<code class="descclassname">users.views.</code><code class="descname">addCotisationHistory</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.addCotisationHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.addCotisationHistoryForm" title="users.forms.addCotisationHistoryForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.addCotisationHistoryForm</span></code></a> to add a <code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span> <span class="pre">History</span> <span class="pre">&lt;users.models.CotisationHistory</span></code> to the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the user to add a cotisation history</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.addSuperuser">
+<code class="descclassname">users.views.</code><code class="descname">addSuperuser</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.addSuperuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.SelectNonAdminUserForm" title="users.forms.SelectNonAdminUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.SelectNonAdminUserForm</span></code></a> to select a non superuser user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) and add it to the superusers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.addWhiteListHistory">
+<code class="descclassname">users.views.</code><code class="descname">addWhiteListHistory</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.addWhiteListHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.addWhiteListHistoryForm" title="users.forms.addWhiteListHistoryForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.addWhiteListHistoryForm</span></code></a> to add a <a class="reference internal" href="models.html#users.models.WhiteListHistory" title="users.models.WhiteListHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">WhiteListHistory</span></code></a> to the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.adminsIndex">
+<code class="descclassname">users.views.</code><code class="descname">adminsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.adminsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the staff (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code> with is_staff True)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.allReloads">
+<code class="descclassname">users.views.</code><code class="descname">allReloads</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em>, <em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.allReloads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display all the <a class="reference internal" href="models.html#gestion.models.Reload" title="gestion.models.Reload"><code class="xref py py-class docutils literal notranslate"><span class="pre">reloads</span></code></a> of the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.all_consumptions">
+<code class="descclassname">users.views.</code><code class="descname">all_consumptions</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em>, <em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.all_consumptions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display all the <cite>consumptions &lt;gestion.models.ConsumptionHistory&gt;</cite> of the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.all_menus">
+<code class="descclassname">users.views.</code><code class="descname">all_menus</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em>, <em>page</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.all_menus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display all the <cite>menus &lt;gestion.models.MenuHistory&gt;</cite> of the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.createGroup">
+<code class="descclassname">users.views.</code><code class="descname">createGroup</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.createGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.CreateGroupForm" title="users.forms.CreateGroupForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateGroupForm</span></code></a> to create a group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.createSchool">
+<code class="descclassname">users.views.</code><code class="descname">createSchool</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.createSchool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays <a class="reference internal" href="forms.html#users.forms.SchoolForm" title="users.forms.SchoolForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SchoolForm</span></code></a> to add a <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">School</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.createUser">
+<code class="descclassname">users.views.</code><code class="descname">createUser</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.createUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.CreateUserForm" title="users.forms.CreateUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateUserForm</span></code></a> to create a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.deleteCotisationHistory">
+<code class="descclassname">users.views.</code><code class="descname">deleteCotisationHistory</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.deleteCotisationHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the requested <a class="reference internal" href="models.html#users.models.CotisationHistory" title="users.models.CotisationHistory"><code class="xref py py-class docutils literal notranslate"><span class="pre">CotisationHistory</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of tthe CotisationHistory to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.deleteGroup">
+<code class="descclassname">users.views.</code><code class="descname">deleteGroup</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.deleteGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes the requested group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the group to delete</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.deleteSchool">
+<code class="descclassname">users.views.</code><code class="descname">deleteSchool</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.deleteSchool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.models.School</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the School to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.editGroup">
+<code class="descclassname">users.views.</code><code class="descname">editGroup</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.editGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.EditGroupForm" title="users.forms.EditGroupForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditGroupForm</span></code></a> to edit a group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the group to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.editGroups">
+<code class="descclassname">users.views.</code><code class="descname">editGroups</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.editGroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <code class="xref py py-class docutils literal notranslate"><span class="pre">users.form.GroupsEditForm</span></code> to edit the groups of a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.editPassword">
+<code class="descclassname">users.views.</code><code class="descname">editPassword</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.editPassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <code class="xref py py-class docutils literal notranslate"><span class="pre">users.form.EditPasswordForm</span></code> to edit the password of a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.editSchool">
+<code class="descclassname">users.views.</code><code class="descname">editSchool</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.editSchool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays <a class="reference internal" href="forms.html#users.forms.SchoolForm" title="users.forms.SchoolForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SchoolForm</span></code></a> to edit a <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">School</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the school to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.editUser">
+<code class="descclassname">users.views.</code><code class="descname">editUser</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.editUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.CreateUserForm" title="users.forms.CreateUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CreateUserForm</span></code></a> to edit a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.export_csv">
+<code class="descclassname">users.views.</code><code class="descname">export_csv</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.export_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.ExportForm" title="users.forms.ExportForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.ExportForm</span></code></a> to export csv files of users.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.gen_user_infos">
+<code class="descclassname">users.views.</code><code class="descname">gen_user_infos</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.gen_user_infos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a latex document include adhesion certificate and list of <cite>cotisations &lt;users.models.CotisationHistory&gt;</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.getUser">
+<code class="descclassname">users.views.</code><code class="descname">getUser</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.getUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) and return username, balance and is_adherent in JSON format.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the user to get infos.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.groupProfile">
+<code class="descclassname">users.views.</code><code class="descname">groupProfile</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.groupProfile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the profile of a group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.groupsIndex">
+<code class="descclassname">users.views.</code><code class="descname">groupsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.groupsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays all the groups (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.index">
+<code class="descclassname">users.views.</code><code class="descname">index</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the index for user related actions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.loginView">
+<code class="descclassname">users.views.</code><code class="descname">loginView</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.loginView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the <a class="reference internal" href="forms.html#users.forms.LoginForm" title="users.forms.LoginForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">users.forms.LoginForm</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.logoutView">
+<code class="descclassname">users.views.</code><code class="descname">logoutView</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.logoutView" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logout the logged user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.profile">
+<code class="descclassname">users.views.</code><code class="descname">profile</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.profile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays the profile for the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) to display profile</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.removeAdmin">
+<code class="descclassname">users.views.</code><code class="descname">removeAdmin</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.removeAdmin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes an user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) from staff.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) to remove from staff</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.removeRight">
+<code class="descclassname">users.views.</code><code class="descname">removeRight</code><span class="sig-paren">(</span><em>request</em>, <em>groupPk</em>, <em>permissionPk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.removeRight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a right from a given group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.removeSuperuser">
+<code class="descclassname">users.views.</code><code class="descname">removeSuperuser</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.removeSuperuser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) from superusers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.removeUser">
+<code class="descclassname">users.views.</code><code class="descname">removeUser</code><span class="sig-paren">(</span><em>request</em>, <em>groupPk</em>, <em>userPk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.removeUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>) from a given group (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.Group</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.resetPassword">
+<code class="descclassname">users.views.</code><code class="descname">resetPassword</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.resetPassword" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the password of a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.schoolsIndex">
+<code class="descclassname">users.views.</code><code class="descname">schoolsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.schoolsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the <a class="reference internal" href="models.html#users.models.School" title="users.models.School"><code class="xref py py-class docutils literal notranslate"><span class="pre">Schools</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.searchUser">
+<code class="descclassname">users.views.</code><code class="descname">searchUser</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.searchUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Displays a <a class="reference internal" href="forms.html#users.forms.SelectUserForm" title="users.forms.SelectUserForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectUserForm</span></code></a> to search a user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.superusersIndex">
+<code class="descclassname">users.views.</code><code class="descname">superusersIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.superusersIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the superusers (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code> with is_superuser True).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.switch_activate_user">
+<code class="descclassname">users.views.</code><code class="descname">switch_activate_user</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.switch_activate_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Switch the active status of the requested user (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the user to switch status</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="users.views.usersIndex">
+<code class="descclassname">users.views.</code><code class="descname">usersIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#users.views.usersIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the list of all users (<code class="xref py py-class docutils literal notranslate"><span class="pre">django.contrib.auth.models.User</span></code>).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.views">
+<span id="preferences-app-views"></span><h2>Preferences app views<a class="headerlink" href="#module-preferences.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="preferences.views.addCotisation">
+<code class="descclassname">preferences.views.</code><code class="descname">addCotisation</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.addCotisation" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays a <a class="reference internal" href="forms.html#preferences.forms.CotisationForm" title="preferences.forms.CotisationForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CotisationForm</span></code></a> to create a <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.addPaymentMethod">
+<code class="descclassname">preferences.views.</code><code class="descname">addPaymentMethod</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.addPaymentMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays a <a class="reference internal" href="forms.html#preferences.forms.PaymentMethodForm" title="preferences.forms.PaymentMethodForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethodForm</span></code></a> to create a <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.cotisationsIndex">
+<code class="descclassname">preferences.views.</code><code class="descname">cotisationsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.cotisationsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which lists all the <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.deleteCotisation">
+<code class="descclassname">preferences.views.</code><code class="descname">deleteCotisation</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.deleteCotisation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a> to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.deletePaymentMethod">
+<code class="descclassname">preferences.views.</code><code class="descname">deletePaymentMethod</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.deletePaymentMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a> to delete.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.editCotisation">
+<code class="descclassname">preferences.views.</code><code class="descname">editCotisation</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.editCotisation" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays a <a class="reference internal" href="forms.html#preferences.forms.CotisationForm" title="preferences.forms.CotisationForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">CotisationForm</span></code></a> to edit a <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a> to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.editPaymentMethod">
+<code class="descclassname">preferences.views.</code><code class="descname">editPaymentMethod</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.editPaymentMethod" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays a <a class="reference internal" href="forms.html#preferences.forms.PaymentMethodForm" title="preferences.forms.PaymentMethodForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethodForm</span></code></a> to edit a <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a>.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a> to edit.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.generalPreferences">
+<code class="descclassname">preferences.views.</code><code class="descname">generalPreferences</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.generalPreferences" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays a <a class="reference internal" href="forms.html#preferences.forms.GeneralPreferencesForm" title="preferences.forms.GeneralPreferencesForm"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralPreferencesForm</span></code></a> to edit the <a class="reference internal" href="models.html#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralPreferences</span></code></a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.get_config">
+<code class="descclassname">preferences.views.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the <a class="reference internal" href="models.html#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralPreferences</span></code></a> and return it in json format (except for <a class="reference internal" href="models.html#preferences.models.GeneralPreferences.statutes" title="preferences.models.GeneralPreferences.statutes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">statutes</span></code></a>, <a class="reference internal" href="models.html#preferences.models.GeneralPreferences.rules" title="preferences.models.GeneralPreferences.rules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">rules</span></code></a> and <a class="reference internal" href="models.html#preferences.models.GeneralPreferences.menu" title="preferences.models.GeneralPreferences.menu"><code class="xref py py-attr docutils literal notranslate"><span class="pre">menu</span></code></a>)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.get_cotisation">
+<code class="descclassname">preferences.views.</code><code class="descname">get_cotisation</code><span class="sig-paren">(</span><em>request</em>, <em>pk</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.get_cotisation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the requested <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a> in json format.</p>
+<dl class="docutils">
+<dt>pk</dt>
+<dd>The primary key of the requested <a class="reference internal" href="models.html#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.inactive">
+<code class="descclassname">preferences.views.</code><code class="descname">inactive</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.inactive" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays the inactive message (if the site is inactive).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.paymentMethodsIndex">
+<code class="descclassname">preferences.views.</code><code class="descname">paymentMethodsIndex</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.paymentMethodsIndex" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which lists all the <a class="reference internal" href="models.html#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-coopeV3.views">
+<span id="coopev3-app-views"></span><h2>coopeV3 app views<a class="headerlink" href="#module-coopeV3.views" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="coopeV3.views.coope_runner">
+<code class="descclassname">coopeV3.views.</code><code class="descname">coope_runner</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.coope_runner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Just an easter egg</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.views.home">
+<code class="descclassname">coopeV3.views.</code><code class="descname">home</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.home" title="Permalink to this definition">¶</a></dt>
+<dd><p>Redirect the user either to <a class="reference internal" href="#gestion.views.manage" title="gestion.views.manage"><code class="xref py py-func docutils literal notranslate"><span class="pre">manage()</span></code></a> view (if connected and staff) or <a class="reference internal" href="#coopeV3.views.homepage" title="coopeV3.views.homepage"><code class="xref py py-func docutils literal notranslate"><span class="pre">homepage()</span></code></a> view (if connected and not staff) or <a class="reference internal" href="#users.views.loginView" title="users.views.loginView"><code class="xref py py-func docutils literal notranslate"><span class="pre">loginView()</span></code></a> view (if not connected).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.views.homepage">
+<code class="descclassname">coopeV3.views.</code><code class="descname">homepage</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.homepage" title="Permalink to this definition">¶</a></dt>
+<dd><p>View which displays the <a class="reference internal" href="models.html#preferences.models.GeneralPreferences.home_text" title="preferences.models.GeneralPreferences.home_text"><code class="xref py py-attr docutils literal notranslate"><span class="pre">home_text</span></code></a> and active <a class="reference internal" href="models.html#gestion.models.Keg" title="gestion.models.Keg"><code class="xref py py-class docutils literal notranslate"><span class="pre">Kegs</span></code></a>.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="models.html" class="btn btn-neutral float-right" title="Models documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="CoopeV3 documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Yoann Pietri
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

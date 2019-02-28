@@ -1,0 +1,12 @@
+coopeV3
+=======
+
+.. toctree::
+   :maxdepth: 4
+
+   coopeV3
+   django_tex
+   gestion
+   manage
+   preferences
+   users

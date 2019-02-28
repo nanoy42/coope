@@ -1,0 +1,287 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>preferences.migrations package &#8212; Documentation CoopeV3 3.4.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="preferences-migrations-package">
+<h1>preferences.migrations package<a class="headerlink" href="#preferences-migrations-package" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-preferences.migrations.0001_initial">
+<span id="preferences-migrations-0001-initial-module"></span><h2>preferences.migrations.0001_initial module<a class="headerlink" href="#module-preferences.migrations.0001_initial" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0001_initial.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0001_initial.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0001_initial.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0001_initial.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('auth', '__first__')]</em><a class="headerlink" href="#preferences.migrations.0001_initial.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0001_initial.Migration.initial">
+<code class="descname">initial</code><em class="property"> = True</em><a class="headerlink" href="#preferences.migrations.0001_initial.Migration.initial" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0001_initial.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;CreateModel  name='Cotisation', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('duration', &lt;django.db.models.fields.PositiveIntegerField&gt;)]&gt;, &lt;CreateModel  name='GeneralPreferences', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('active_message', &lt;django.db.models.fields.TextField&gt;), ('global_message', &lt;django.db.models.fields.TextField&gt;), ('president', &lt;django.db.models.fields.CharField&gt;), ('vice_president', &lt;django.db.models.fields.CharField&gt;), ('treasurer', &lt;django.db.models.fields.CharField&gt;), ('secretary', &lt;django.db.models.fields.CharField&gt;), ('brewer', &lt;django.db.models.fields.CharField&gt;), ('grocer', &lt;django.db.models.fields.CharField&gt;)]&gt;, &lt;CreateModel  name='HistoricalCotisation', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('amount', &lt;django.db.models.fields.DecimalField&gt;), ('duration', &lt;django.db.models.fields.PositiveIntegerField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical cotisation', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalGeneralPreferences', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('active_message', &lt;django.db.models.fields.TextField&gt;), ('global_message', &lt;django.db.models.fields.TextField&gt;), ('president', &lt;django.db.models.fields.CharField&gt;), ('vice_president', &lt;django.db.models.fields.CharField&gt;), ('treasurer', &lt;django.db.models.fields.CharField&gt;), ('secretary', &lt;django.db.models.fields.CharField&gt;), ('brewer', &lt;django.db.models.fields.CharField&gt;), ('grocer', &lt;django.db.models.fields.CharField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical general preferences', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='HistoricalPaymentMethod', fields=[('id', &lt;django.db.models.fields.IntegerField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('is_usable_in_cotisation', &lt;django.db.models.fields.BooleanField&gt;), ('is_usable_in_reload', &lt;django.db.models.fields.BooleanField&gt;), ('affect_balance', &lt;django.db.models.fields.BooleanField&gt;), ('history_id', &lt;django.db.models.fields.AutoField&gt;), ('history_change_reason', &lt;django.db.models.fields.CharField&gt;), ('history_date', &lt;django.db.models.fields.DateTimeField&gt;), ('history_type', &lt;django.db.models.fields.CharField&gt;), ('history_user', &lt;django.db.models.fields.related.ForeignKey&gt;)], options={'verbose_name': 'historical payment method', 'ordering': ('-history_date', '-history_id'), 'get_latest_by': 'history_date'}, bases=(&lt;class 'simple_history.models.HistoricalChanges'&gt;, &lt;class 'django.db.models.base.Model'&gt;)&gt;, &lt;CreateModel  name='PaymentMethod', fields=[('id', &lt;django.db.models.fields.AutoField&gt;), ('name', &lt;django.db.models.fields.CharField&gt;), ('is_active', &lt;django.db.models.fields.BooleanField&gt;), ('is_usable_in_cotisation', &lt;django.db.models.fields.BooleanField&gt;), ('is_usable_in_reload', &lt;django.db.models.fields.BooleanField&gt;), ('affect_balance', &lt;django.db.models.fields.BooleanField&gt;)]&gt;]</em><a class="headerlink" href="#preferences.migrations.0001_initial.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0002_auto_20181221_2151">
+<span id="preferences-migrations-0002-auto-20181221-2151-module"></span><h2>preferences.migrations.0002_auto_20181221_2151 module<a class="headerlink" href="#module-preferences.migrations.0002_auto_20181221_2151" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0002_auto_20181221_2151.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0002_auto_20181221_2151.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0002_auto_20181221_2151.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0002_auto_20181221_2151.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0001_initial')]</em><a class="headerlink" href="#preferences.migrations.0002_auto_20181221_2151.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0002_auto_20181221_2151.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='use_pinte_monitoring', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='use_pinte_monitoring', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0002_auto_20181221_2151.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0003_auto_20181223_1440">
+<span id="preferences-migrations-0003-auto-20181223-1440-module"></span><h2>preferences.migrations.0003_auto_20181223_1440 module<a class="headerlink" href="#module-preferences.migrations.0003_auto_20181223_1440" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0003_auto_20181223_1440.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0003_auto_20181223_1440.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0003_auto_20181223_1440.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0003_auto_20181223_1440.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0002_auto_20181221_2151')]</em><a class="headerlink" href="#preferences.migrations.0003_auto_20181223_1440.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0003_auto_20181223_1440.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='lost_pintes_allowed', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='lost_pintes_allowed', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0003_auto_20181223_1440.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0004_auto_20190106_0452">
+<span id="preferences-migrations-0004-auto-20190106-0452-module"></span><h2>preferences.migrations.0004_auto_20190106_0452 module<a class="headerlink" href="#module-preferences.migrations.0004_auto_20190106_0452" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0004_auto_20190106_0452.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0004_auto_20190106_0452.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0004_auto_20190106_0452.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0004_auto_20190106_0452.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0003_auto_20181223_1440')]</em><a class="headerlink" href="#preferences.migrations.0004_auto_20190106_0452.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0004_auto_20190106_0452.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='historicalpaymentmethod', name='icon', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AddField  model_name='paymentmethod', name='icon', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0004_auto_20190106_0452.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0005_auto_20190106_0513">
+<span id="preferences-migrations-0005-auto-20190106-0513-module"></span><h2>preferences.migrations.0005_auto_20190106_0513 module<a class="headerlink" href="#module-preferences.migrations.0005_auto_20190106_0513" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0005_auto_20190106_0513.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0005_auto_20190106_0513.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0005_auto_20190106_0513.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0005_auto_20190106_0513.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0004_auto_20190106_0452')]</em><a class="headerlink" href="#preferences.migrations.0005_auto_20190106_0513.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0005_auto_20190106_0513.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='floating_buttons', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='floating_buttons', field=&lt;django.db.models.fields.BooleanField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0005_auto_20190106_0513.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0006_auto_20190119_2326">
+<span id="preferences-migrations-0006-auto-20190119-2326-module"></span><h2>preferences.migrations.0006_auto_20190119_2326 module<a class="headerlink" href="#module-preferences.migrations.0006_auto_20190119_2326" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0006_auto_20190119_2326.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0006_auto_20190119_2326.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0006_auto_20190119_2326.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0006_auto_20190119_2326.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0005_auto_20190106_0513')]</em><a class="headerlink" href="#preferences.migrations.0006_auto_20190119_2326.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0006_auto_20190119_2326.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='home_text', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='home_text', field=&lt;django.db.models.fields.TextField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0006_auto_20190119_2326.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0007_auto_20190120_1208">
+<span id="preferences-migrations-0007-auto-20190120-1208-module"></span><h2>preferences.migrations.0007_auto_20190120_1208 module<a class="headerlink" href="#module-preferences.migrations.0007_auto_20190120_1208" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0007_auto_20190120_1208.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0007_auto_20190120_1208.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0007_auto_20190120_1208.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0007_auto_20190120_1208.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0006_auto_20190119_2326')]</em><a class="headerlink" href="#preferences.migrations.0007_auto_20190120_1208.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0007_auto_20190120_1208.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='automatic_logout_time', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='automatic_logout_time', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0007_auto_20190120_1208.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0008_auto_20190218_1802">
+<span id="preferences-migrations-0008-auto-20190218-1802-module"></span><h2>preferences.migrations.0008_auto_20190218_1802 module<a class="headerlink" href="#module-preferences.migrations.0008_auto_20190218_1802" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0008_auto_20190218_1802.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0008_auto_20190218_1802.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0008_auto_20190218_1802.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0008_auto_20190218_1802.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0007_auto_20190120_1208')]</em><a class="headerlink" href="#preferences.migrations.0008_auto_20190218_1802.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0008_auto_20190218_1802.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AddField  model_name='generalpreferences', name='menu', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AddField  model_name='generalpreferences', name='rules', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AddField  model_name='generalpreferences', name='statutes', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='menu', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='rules', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AddField  model_name='historicalgeneralpreferences', name='statutes', field=&lt;django.db.models.fields.TextField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0008_auto_20190218_1802.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations.0009_auto_20190227_0859">
+<span id="preferences-migrations-0009-auto-20190227-0859-module"></span><h2>preferences.migrations.0009_auto_20190227_0859 module<a class="headerlink" href="#module-preferences.migrations.0009_auto_20190227_0859" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.migrations.0009_auto_20190227_0859.Migration">
+<em class="property">class </em><code class="descclassname">preferences.migrations.0009_auto_20190227_0859.</code><code class="descname">Migration</code><span class="sig-paren">(</span><em>name</em>, <em>app_label</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.migrations.0009_auto_20190227_0859.Migration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.migrations.migration.Migration</span></code></p>
+<dl class="attribute">
+<dt id="preferences.migrations.0009_auto_20190227_0859.Migration.dependencies">
+<code class="descname">dependencies</code><em class="property"> = [('preferences', '0008_auto_20190218_1802')]</em><a class="headerlink" href="#preferences.migrations.0009_auto_20190227_0859.Migration.dependencies" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.migrations.0009_auto_20190227_0859.Migration.operations">
+<code class="descname">operations</code><em class="property"> = [&lt;AlterModelOptions  name='generalpreferences', options={'verbose_name': 'Préférences générales', 'verbose_name_plural': 'Préférences générales'}&gt;, &lt;AlterModelOptions  name='historicalgeneralpreferences', options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Préférences générales'}&gt;, &lt;AlterModelOptions  name='historicalpaymentmethod', options={'get_latest_by': 'history_date', 'ordering': ('-history_date', '-history_id'), 'verbose_name': 'historical Moyen de paiement'}&gt;, &lt;AlterModelOptions  name='paymentmethod', options={'verbose_name': 'Moyen de paiement', 'verbose_name_plural': 'Moyens de paiement'}&gt;, &lt;AlterField  model_name='generalpreferences', name='active_message', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='automatic_logout_time', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='brewer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='floating_buttons', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='global_message', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='grocer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='home_text', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='is_active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='lost_pintes_allowed', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='menu', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='president', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='rules', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='secretary', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='statutes', field=&lt;django.db.models.fields.files.FileField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='treasurer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='use_pinte_monitoring', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='generalpreferences', name='vice_president', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='active_message', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='automatic_logout_time', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='brewer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='floating_buttons', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='global_message', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='grocer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='home_text', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='is_active', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='lost_pintes_allowed', field=&lt;django.db.models.fields.PositiveIntegerField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='menu', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='president', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='rules', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='secretary', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='statutes', field=&lt;django.db.models.fields.TextField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='treasurer', field=&lt;django.db.models.fields.CharField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='use_pinte_monitoring', field=&lt;django.db.models.fields.BooleanField&gt;&gt;, &lt;AlterField  model_name='historicalgeneralpreferences', name='vice_president', field=&lt;django.db.models.fields.CharField&gt;&gt;]</em><a class="headerlink" href="#preferences.migrations.0009_auto_20190227_0859.Migration.operations" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.migrations">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-preferences.migrations" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CoopeV3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yoann Pietri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/preferences.migrations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -27,22 +27,7 @@ from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 @active_required
 def loginView(request):
     """
-    Display the login form for :model:`User`.
-
-    **Context**
-
-    ``form_entete``
-        Title of the form.
-
-    ``form``
-        The login form.
-
-    ``form_button``
-        Content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays the :class:`users.forms.LoginForm`.
     """
     form = LoginForm(request.POST or None)
     if(form.is_valid()):
@@ -62,7 +47,7 @@ def loginView(request):
 @login_required
 def logoutView(request):
     """
-    Logout the logged user
+    Logout the logged user (:class:`django.contrib.auth.models.User`).
     """
     logout(request)
     messages.success(request, "Vous êtes à présent déconnecté")
@@ -73,16 +58,15 @@ def logoutView(request):
 @permission_required('auth.view_user')
 def index(request):
     """
-    Display the index for user related actions
-
-    **Template**
-
-    :template:`users/index.html`
+    Display the index for user related actions.
     """
     export_form = ExportForm(request.POST or None)
     return render(request, "users/index.html", {"export_form": export_form})
 
 def export_csv(request):
+    """
+    Displays a :class:`users.forms.ExportForm` to export csv files of users.
+    """
     export_form = ExportForm(request.POST or None)
     if export_form.is_valid():
         users = User.objects
@@ -132,31 +116,10 @@ def export_csv(request):
 @self_or_has_perm('pk', 'auth.view_user')
 def profile(request, pk):
     """
-    Display the profile for the requested user
+    Displays the profile for the requested user (:class:`django.contrib.auth.models.User`).
 
-    ``pk``
-        The primary key for user
-
-    **Context**
-
-    ``user``
-        The instance of User
-    
-    ``self``
-        Boolean value wich indicates if the current logged user and the request user are the same
-
-    ``cotisations``
-        List of the user's cotisations
-
-    ``whitelists``
-        List of the user's whitelists
-    
-    ``reloads``
-        List of the last 5 reloads of the user
-
-    **Template**
-
-    :template:`users/profile.html`
+    pk
+        The primary key of the user (:class:`django.contrib.auth.models.User`) to display profile
     """
     user = get_object_or_404(User, pk=pk)
     self = request.user == user
@@ -201,22 +164,7 @@ def profile(request, pk):
 @permission_required('auth.add_user')
 def createUser(request):
     """
-    Display a CreateUserForm instance.
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The CreateUserForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`~users.forms.CreateUserForm` to create a user (:class:`django.contrib.auth.models.User`).
     """
     form = CreateUserForm(request.POST or None)
     if(form.is_valid()):
@@ -233,22 +181,7 @@ def createUser(request):
 @permission_required('auth.view_user')
 def searchUser(request):
     """
-    Display a simple searchForm for User.
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The searchForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`~users.forms.SelectUserForm` to search a user (:class:`django.contrib.auth.models.User`).
     """
     form = SelectUserForm(request.POST or None)
     if(form.is_valid()):
@@ -260,16 +193,7 @@ def searchUser(request):
 @permission_required('auth.view_user')
 def usersIndex(request):
     """
-    Display the list of all users.
-
-    **Context**
-
-    ``users``
-        The list of all users
-    
-    **Template**
-
-    :template:`users/users_index.html`
+    Display the list of all users (:class:`django.contrib.auth.models.User`).
     """
     users = User.objects.all()
     return render(request, "users/users_index.html", {"users":users})
@@ -279,25 +203,7 @@ def usersIndex(request):
 @permission_required('auth.change_user')
 def editGroups(request, pk):
     """
-    Edit the groups of a user.
-
-    ``pk``
-        The pk of the user.
-
-    **Context**
-    
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The GroupsEditForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`users.form.GroupsEditForm` to edit the groups of a user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     form = GroupsEditForm(request.POST or None, instance=user)
@@ -313,24 +219,7 @@ def editGroups(request, pk):
 @permission_required('auth.change_user')
 def editPassword(request, pk):
     """
-    Change the password of a user.
-
-    ``pk``
-        The pk of the user.
-
-    **Context**
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The EditPasswordForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`users.form.EditPasswordForm` to edit the password of a user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     if user != request.user:
@@ -353,25 +242,7 @@ def editPassword(request, pk):
 @permission_required('auth.change_user')
 def editUser(request, pk):
     """
-    Edit a user and user profile
-
-    ``pk``
-        The pk of the user.
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The CreateUserForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`~users.forms.CreateUserForm` to edit a user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     form = CreateUserForm(request.POST or None, instance=user, initial = {'school': user.profile.school})
@@ -387,11 +258,7 @@ def editUser(request, pk):
 @permission_required('auth.change_user')
 def resetPassword(request, pk):
     """
-    Reset the password of a user.
-
-    ``pk``
-        The pk of the user
-
+    Reset the password of a user (:class:`django.contrib.auth.models.User`).
     """ 
     user = get_object_or_404(User, pk=pk)
     if user.is_superuser:
@@ -408,10 +275,10 @@ def resetPassword(request, pk):
 @permission_required('auth.view_user')
 def getUser(request, pk):
     """
-    Return username and balance of the requested user (pk)
+    Get requested user (:class:`django.contrib.auth.models.User`) and return username, balance and is_adherent in JSON format.
 
-    ``pk``
-        The pk of the user
+    pk
+        The primary key of the user to get infos.
     """
     user = get_object_or_404(User, pk=pk)
     data = json.dumps({"username": user.username, "balance": user.profile.balance, "is_adherent": user.profile.is_adherent})
@@ -422,23 +289,7 @@ def getUser(request, pk):
 @self_or_has_perm('pk', 'auth.view_user')
 def allReloads(request, pk, page):
     """
-    Display all the reloads of the requested user.
-
-    ``pk``
-        The pk of the user.
-    ``page``
-        The page number.
-
-    **Context**
-    
-    ``reloads``
-        The reloads of the page.
-    ``user``
-        The requested user
-
-    **Template**
-
-    :template:`users/allReloads.html`
+    Display all the :class:`reloads <gestion.models.Reload>` of the requested user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     allReloads = Reload.objects.filter(customer=user).order_by('-date')
@@ -451,23 +302,7 @@ def allReloads(request, pk, page):
 @self_or_has_perm('pk', 'auth.view_user')
 def all_consumptions(request, pk, page):
     """
-    Display all the consumptions of the requested user.
-
-    ``pk``
-        The pk of the user.
-    ``page``
-        The page number.
-
-    **Context**
-    
-    ``reloads``
-        The reloads of the page.
-    ``user``
-        The requested user
-
-    **Template**
-
-    :template:`users/all_consumptions.html`
+    Display all the `consumptions <gestion.models.ConsumptionHistory>` of the requested user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     all_consumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')
@@ -480,23 +315,7 @@ def all_consumptions(request, pk, page):
 @self_or_has_perm('pk', 'auth.view_user')
 def all_menus(request, pk, page):
     """
-    Display all the menus of the requested user.
-
-    ``pk``
-        The pk of the user.
-    ``page``
-        The page number.
-
-    **Context**
-    
-    ``reloads``
-        The reloads of the page.
-    ``user``
-        The requested user
-
-    **Template**
-
-    :template:`users/all_menus.html`
+    Display all the `menus <gestion.models.MenuHistory>` of the requested user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     all_menus = MenuHistory.objects.filter(customer=user).order_by('-date')
@@ -508,6 +327,12 @@ def all_menus(request, pk, page):
 @login_required
 @permission_required('auth.change_user')
 def switch_activate_user(request, pk):
+    """
+    Switch the active status of the requested user (:class:`django.contrib.auth.models.User`).
+
+    pk
+        The primary key of the user to switch status
+    """
     user = get_object_or_404(User, pk=pk)
     user.is_active = 1 - user.is_active
     user.save()
@@ -518,6 +343,9 @@ def switch_activate_user(request, pk):
 @login_required
 @permission_required('auth.view_user')
 def gen_user_infos(request, pk):
+    """
+    Generates a latex document include adhesion certificate and list of `cotisations <users.models.CotisationHistory>`.
+    """
     user= get_object_or_404(User, pk=pk)
     cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
     now = datetime.now()
@@ -531,16 +359,7 @@ def gen_user_infos(request, pk):
 @permission_required('auth.view_group')
 def groupsIndex(request):
     """
-    Display all the groups.
-
-    **Context**
-
-    ``groups``
-        List of all groups.
-
-    **Template**
-
-    :template:`users/groups_index.html`
+    Displays all the groups (:class:`django.contrib.auth.models.Group`).
     """
     groups = Group.objects.all()
     return render(request, "users/groups_index.html", {"groups": groups})
@@ -550,19 +369,7 @@ def groupsIndex(request):
 @permission_required('auth.view_group')
 def groupProfile(request, pk):
     """
-    Display the profile of a group.
-
-    ``pk``
-        The pk of the group.
-
-    **Context**
-
-    ``group``
-        The requested group.
-
-    **Template**
-
-    :template:`users/group_profile.html`
+    Displays the profile of a group (:class:`django.contrib.auth.models.Group`).
     """
     group = get_object_or_404(Group, pk=pk)
     return render(request, "users/group_profile.html", {"group": group})
@@ -572,22 +379,7 @@ def groupProfile(request, pk):
 @permission_required('auth.add_group')
 def createGroup(request):
     """
-    Create a group with a CreateGroupForm instance.
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The CreateGroupForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`~users.forms.CreateGroupForm` to create a group (:class:`django.contrib.auth.models.Group`).
     """
     form = CreateGroupForm(request.POST or None)
     if(form.is_valid()):
@@ -601,25 +393,10 @@ def createGroup(request):
 @permission_required('auth.change_group')
 def editGroup(request, pk):
     """
-    Edit a group with a EditGroupForm instance.
+    Displays a :class:`~users.forms.EditGroupForm` to edit a group (:class:`django.contrib.auth.models.Group`).
 
-    ``pk``
-        The pk of the group.
-
-    **Context**
-
-    ``form_entete``
-        The form title.
-
-    ``form``
-        The EditGroupForm instance.
-
-    ``form_button``
-        The content of the form button.
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the group to edit.
     """
     group = get_object_or_404(Group, pk=pk)
     form = EditGroupForm(request.POST or None, instance=group)
@@ -635,11 +412,10 @@ def editGroup(request, pk):
 @permission_required('auth.delete_group')
 def deleteGroup(request, pk):
     """
-    Delete the requested group.
+    Deletes the requested group (:class:`django.contrib.auth.models.Group`).
 
-    ``pk``
-        The pk of the group
-    
+    pk
+        The primary key of the group to delete
     """
     group = get_object_or_404(Group, pk=pk)
     if group.user_set.count() == 0:
@@ -656,14 +432,7 @@ def deleteGroup(request, pk):
 @permission_required('auth.change_group')
 def removeRight(request, groupPk, permissionPk):
     """
-    Remove a right from a given group.
-
-    ``groupPk``
-        The pk of the group.
-
-    ``permissionPk``
-        The pk of the right.
-
+    Removes a right from a given group (:class:`django.contrib.auth.models.Group`).
     """
     group = get_object_or_404(Group, pk=groupPk)
     perm = get_object_or_404(Permission, pk=permissionPk)
@@ -679,14 +448,7 @@ def removeRight(request, groupPk, permissionPk):
 @permission_required('auth.change_user')
 def removeUser(request, groupPk, userPk):
     """
-    Remove a user from a given group.
-
-    ``groupPk``
-        The pk of the group.
-
-    ``userPk``
-        The pk of the user.
-
+    Removes a user (:class:`django.contrib.auth.models.User`) from a given group (:class:`django.contrib.auth.models.Group`).
     """
     group = get_object_or_404(Group, pk=groupPk)
     user = get_object_or_404(User, pk=userPk)
@@ -704,16 +466,7 @@ def removeUser(request, groupPk, userPk):
 @admin_required
 def adminsIndex(request):
     """
-    Lists the staff
-
-    **Context**
-
-    ``admins``
-        List of staff
-
-    **Template**
-
-    :template:`users/admins_index.html`
+    Lists the staff (:class:`django.contrib.auth.models.User` with is_staff True)
     """
     admins = User.objects.filter(is_staff=True)
     return render(request, "users/admins_index.html", {"admins": admins})
@@ -723,22 +476,7 @@ def adminsIndex(request):
 @admin_required
 def addAdmin(request):
     """
-    Form to add a member to staff
-
-    **Context**
-
-    ``form``
-        The SelectNonAdminUserForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`users.forms.SelectNonAdminUserForm` to select a non admin user (:class:`django.contrib.auth.models.User`) and add it to the admins.
     """
     form = SelectNonAdminUserForm(request.POST or None)
     if(form.is_valid()):
@@ -754,10 +492,10 @@ def addAdmin(request):
 @admin_required
 def removeAdmin(request, pk):
     """
-    Remove an user form staff
+    Removes an user (:class:`django.contrib.auth.models.User`) from staff.
 
-    ``pk``
-        The primary key of the user
+    pk
+        The primary key of the user (:class:`django.contrib.auth.models.User`) to remove from staff
     """
     user = get_object_or_404(User, pk=pk)
     if user.is_staff:
@@ -781,16 +519,7 @@ def removeAdmin(request, pk):
 @superuser_required
 def superusersIndex(request):
     """
-    Lists the superusers
-
-    **Context**
-
-    ``superusers``
-        List of superusers
-
-    **Template**
-
-    :template:`users/superusers_index.html`
+    Lists the superusers (:class:`django.contrib.auth.models.User` with is_superuser True).
     """
     superusers = User.objects.filter(is_superuser=True)
     return render(request, "users/superusers_index.html", {"superusers": superusers})
@@ -800,22 +529,7 @@ def superusersIndex(request):
 @superuser_required
 def addSuperuser(request):
     """
-    Displays a form to add a superuser
-
-    **Context**
-
-    ``form``
-        The SelectNonSuperUserForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`users.forms.SelectNonAdminUserForm` to select a non superuser user (:class:`django.contrib.auth.models.User`) and add it to the superusers.
     """
     form = SelectNonSuperUserForm(request.POST or None)
     if form.is_valid():
@@ -832,10 +546,7 @@ def addSuperuser(request):
 @superuser_required
 def removeSuperuser(request, pk):
     """
-    Removes a user from superusers
-
-    ``pk``
-        The primary key of the user
+    Removes a user (:class:`django.contrib.auth.models.User`) from superusers.
     """
     user = get_object_or_404(User, pk=pk)
     if user.is_superuser:
@@ -856,25 +567,10 @@ def removeSuperuser(request, pk):
 @permission_required('users.add_cotisationhistory')
 def addCotisationHistory(request, pk):
     """
-    Add a cotisation to the requested user
+    Displays a :class:`users.forms.addCotisationHistoryForm` to add a :class:`Cotisation History <users.models.CotisationHistory` to the requested user (:class:`django.contrib.auth.models.User`).
 
-    ``pk``
-        The primary key of the user
-
-     **Context**
-
-    ``form``
-        The addCotisationHistoryForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the user to add a cotisation history
     """
     user = get_object_or_404(User, pk=pk)
     form = addCotisationHistoryForm(request.POST or None)
@@ -906,10 +602,10 @@ def addCotisationHistory(request, pk):
 @permission_required('users.delete_cotisationhistory')
 def deleteCotisationHistory(request, pk):
     """
-    Delete the requested :model:`users.CotisationHistory`
+    Delete the requested :class:`~users.models.CotisationHistory`.
 
-    ``pk``
-        The primary key of the :model:`users.CotisationHistory`
+    pk
+        The primary key of tthe CotisationHistory to delete.
     """
     cotisationHistory = get_object_or_404(CotisationHistory, pk=pk)
     user = cotisationHistory.user
@@ -928,25 +624,7 @@ def deleteCotisationHistory(request, pk):
 @permission_required('users.add_whitelisthistory')
 def addWhiteListHistory(request, pk):
     """
-    Add a :model:`users.WhitelistHistory` to the requested user
-
-    ``pk``
-        The primary key of the user
-
-     **Context**
-
-    ``form``
-        The addWhiteListHistoryForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    Displays a :class:`users.forms.addWhiteListHistoryForm` to add a :class:`~users.models.WhiteListHistory` to the requested user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
     form = addWhiteListHistoryForm(request.POST or None)
@@ -972,16 +650,7 @@ def addWhiteListHistory(request, pk):
 @permission_required('users.view_school')
 def schoolsIndex(request):
     """
-    Lists the :model:`users.School`
-
-    **Context**
-
-    ``schools``
-        List of the :model:`users.School`
-
-    **Template**
-    
-    :template:`users/schools_index.html`
+    Lists the :class:`Schools <users.models.School>`.
     """
     schools = School.objects.all()
     return render(request, "users/schools_index.html", {"schools": schools})
@@ -991,22 +660,7 @@ def schoolsIndex(request):
 @permission_required('users.add_school')
 def createSchool(request):
     """
-    Displays form to create :model:`users.School`
-
-    **Context**
-
-    ``form``
-        The SchoolForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    Displays :class:`~users.forms.SchoolForm` to add a :class:`~users.models.School`.
     """
     form = SchoolForm(request.POST or None)
     if form.is_valid():
@@ -1020,25 +674,10 @@ def createSchool(request):
 @permission_required('users.change_school')
 def editSchool(request, pk):
     """
-    Displays form to create :model:`users.School`
+    Displays :class:`~users.forms.SchoolForm` to edit a :class:`~users.models.School`.
 
-    ``pk``
-        The primary key of :model:`users.School`
-
-    **Context**
-
-    ``form``
-        The SchoolForm form instance
-
-    ``form_title``
-        The title of the form
-
-    ``form_button``
-        The text of the button
-
-    **Template**
-
-    :template:`form.html`
+    pk
+        The primary key of the school to edit.
     """
     school = get_object_or_404(School, pk=pk)
     form = SchoolForm(request.POST or None, instance=school)
@@ -1053,10 +692,10 @@ def editSchool(request, pk):
 @permission_required('users.delete_school')
 def deleteSchool(request, pk):
     """
-    Delete a :model:`users.School`
+    Deletes a :class:`users.models.School`.
 
-    ``pk``
-        The primary key of the school to delete
+    pk
+        The primary key of the School to delete.
     """
     school = get_object_or_404(School, pk=pk)
     message = "L'école " + str(school) + " a bien été supprimée"
@@ -1068,7 +707,7 @@ def deleteSchool(request, pk):
 
 class AllUsersAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autcomplete for all users
+    Autcomplete for all users (:class:`django.contrib.auth.models.User`).
     """
     def get_queryset(self):
         qs = User.objects.all()
@@ -1078,7 +717,7 @@ class AllUsersAutocomplete(autocomplete.Select2QuerySetView):
 
 class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete for active users
+    Autocomplete for active users (:class:`django.contrib.auth.models.User`).
     """
     def get_queryset(self):
         qs = User.objects.filter(is_active=True)
@@ -1088,7 +727,7 @@ class ActiveUsersAutocomplete(autocomplete.Select2QuerySetView):
 
 class AdherentAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete for adherents
+    Autocomplete for adherents (:class:`django.contrib.auth.models.User`).
     """
     def get_queryset(self):
         qs = User.objects.all()
@@ -1101,7 +740,7 @@ class AdherentAutocomplete(autocomplete.Select2QuerySetView):
 
 class NonSuperUserAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete for non-superuser users
+    Autocomplete for non-superuser users (:class:`django.contrib.auth.models.User`).
     """
     def get_queryset(self):
         qs = User.objects.filter(is_superuser=False)
@@ -1111,7 +750,7 @@ class NonSuperUserAutocomplete(autocomplete.Select2QuerySetView):
 
 class NonAdminUserAutocomplete(autocomplete.Select2QuerySetView):
     """
-    Autocomplete for non-admin users
+    Autocomplete for non-admin users (:class:`django.contrib.auth.models.User`).
     """
     def get_queryset(self):
         qs = User.objects.filter(is_staff=False)

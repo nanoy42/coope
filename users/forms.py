@@ -6,14 +6,14 @@ from preferences.models import PaymentMethod
 
 class LoginForm(forms.Form):
     """
-    Form to log in
+    Form to log in.
     """
     username = forms.CharField(max_length=255, label="Nom d'utitisateur")
     password = forms.CharField(max_length=255, widget=forms.PasswordInput, label="Mot de passe")
 
 class CreateUserForm(forms.ModelForm):
     """
-    Form to create a new user
+    Form to create a new user (:class:`django.contrib.auth.models.User`).
     """
     class Meta:
         model = User
@@ -23,7 +23,7 @@ class CreateUserForm(forms.ModelForm):
 
 class CreateGroupForm(forms.ModelForm):
     """
-    Form to create a new group
+    Form to create a new group (:class:`django.contrib.auth.models.Group`).
     """
     class Meta:
         model = Group
@@ -31,7 +31,7 @@ class CreateGroupForm(forms.ModelForm):
 
 class EditGroupForm(forms.ModelForm):
     """
-    Form to edit a group
+    Form to edit a group (:class:`django.contrib.auth.models.Group`).
     """
     class Meta:
         model = Group
@@ -39,25 +39,25 @@ class EditGroupForm(forms.ModelForm):
 
 class SelectUserForm(forms.Form):
     """
-    Form to select a user from all users
+    Form to select a user from all users (:class:`django.contrib.auth.models.User`).
     """
     user = forms.ModelChoiceField(queryset=User.objects.all(), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:all-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectNonSuperUserForm(forms.Form):
     """
-    Form to select a user from all non-superuser users
+    Form to select a user from all non-superuser users (:class:`django.contrib.auth.models.User`).
     """ 
     user = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:non-super-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class SelectNonAdminUserForm(forms.Form):
     """
-    Form to select a user from all non-staff users
+    Form to select a user from all non-staff users (:class:`django.contrib.auth.models.User`).
     """
     user = forms.ModelChoiceField(queryset=User.objects.filter(is_active=True), required=True, label="Utilisateur", widget=autocomplete.ModelSelect2(url='users:non-admin-users-autocomplete', attrs={'data-minimum-input-length':2}))
 
 class GroupsEditForm(forms.ModelForm):
     """
-    Form to edit a user's list of groups
+    Form to edit a user's list of groups (:class:`django.contrib.auth.models.User` and :class:`django.contrib.auth.models.Group`).
     """
     class Meta:
         model = User
@@ -65,7 +65,7 @@ class GroupsEditForm(forms.ModelForm):
 
 class EditPasswordForm(forms.Form):
     """
-    Form to change the password of a user
+    Form to change the password of a user (:class:`django.contrib.auth.models.User`).
     """
     password = forms.CharField(max_length=255, widget=forms.PasswordInput, label="Mot de passe actuel")
     password1 = forms.CharField(max_length=255, widget=forms.PasswordInput, label="Nouveau mot de passe")
@@ -83,7 +83,7 @@ class EditPasswordForm(forms.Form):
 
 class addCotisationHistoryForm(forms.ModelForm):
     """
-    Form to add a cotisation to user
+    Form to add a :class:`users.models.CotisationHistory` to user (:class:`django.contrib.auth.models.User`).
     """
     def __init__(self, *args, **kwargs):
         super(addCotisationHistoryForm, self).__init__(*args, **kwargs)
@@ -95,7 +95,7 @@ class addCotisationHistoryForm(forms.ModelForm):
 
 class addWhiteListHistoryForm(forms.ModelForm):
     """
-    Form to add a whitelist to user
+    Form to add a :class:`users.models.WhiteListHistory` to user (:class:`django.contrib.auth.models.User`).
     """
     class Meta:
         model = WhiteListHistory
@@ -103,13 +103,16 @@ class addWhiteListHistoryForm(forms.ModelForm):
 
 class SchoolForm(forms.ModelForm):
     """
-    Form to add and edit a school
+    Form to add and edit a :class:`users.models.School`.
     """
     class Meta:
         model = School
         fields = "__all__"
 
 class ExportForm(forms.Form):
+    """
+    Form to export list of users (:class:`django.contrib.auth.models.User`) to csv file
+    """
     QUERY_TYPE_CHOICES = (
         ('all', 'Tous les comptes'),
         ('all_active', 'Tous les comptes actifs'),

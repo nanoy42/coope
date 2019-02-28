@@ -1,0 +1,237 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>django_tex package &#8212; Documentation CoopeV3 3.4.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="django-tex-package">
+<h1>django_tex package<a class="headerlink" href="#django-tex-package" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-django_tex.core">
+<span id="django-tex-core-module"></span><h2>django_tex.core module<a class="headerlink" href="#module-django_tex.core" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.core.compile_template_to_pdf">
+<code class="descclassname">django_tex.core.</code><code class="descname">compile_template_to_pdf</code><span class="sig-paren">(</span><em>template_name</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.compile_template_to_pdf" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="django_tex.core.render_template_with_context">
+<code class="descclassname">django_tex.core.</code><code class="descname">render_template_with_context</code><span class="sig-paren">(</span><em>template_name</em>, <em>context</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.render_template_with_context" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="django_tex.core.run_tex">
+<code class="descclassname">django_tex.core.</code><code class="descname">run_tex</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.core.run_tex" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.engine">
+<span id="django-tex-engine-module"></span><h2>django_tex.engine module<a class="headerlink" href="#module-django_tex.engine" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.engine.TeXEngine">
+<em class="property">class </em><code class="descclassname">django_tex.engine.</code><code class="descname">TeXEngine</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.engine.TeXEngine" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.template.backends.jinja2.Jinja2</span></code></p>
+<dl class="attribute">
+<dt id="django_tex.engine.TeXEngine.app_dirname">
+<code class="descname">app_dirname</code><em class="property"> = 'templates'</em><a class="headerlink" href="#django_tex.engine.TeXEngine.app_dirname" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.environment">
+<span id="django-tex-environment-module"></span><h2>django_tex.environment module<a class="headerlink" href="#module-django_tex.environment" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.environment.environment">
+<code class="descclassname">django_tex.environment.</code><code class="descname">environment</code><span class="sig-paren">(</span><em>**options</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.environment.environment" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.exceptions">
+<span id="django-tex-exceptions-module"></span><h2>django_tex.exceptions module<a class="headerlink" href="#module-django_tex.exceptions" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="exception">
+<dt id="django_tex.exceptions.TexError">
+<em class="property">exception </em><code class="descclassname">django_tex.exceptions.</code><code class="descname">TexError</code><span class="sig-paren">(</span><em>log</em>, <em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.TexError" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<dl class="method">
+<dt id="django_tex.exceptions.TexError.get_message">
+<code class="descname">get_message</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.TexError.get_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.exceptions.prettify_message">
+<code class="descclassname">django_tex.exceptions.</code><code class="descname">prettify_message</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.prettify_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Helper methods that removes consecutive whitespaces and newline characters</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.exceptions.tokenizer">
+<code class="descclassname">django_tex.exceptions.</code><code class="descname">tokenizer</code><span class="sig-paren">(</span><em>code</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.exceptions.tokenizer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.filters">
+<span id="django-tex-filters-module"></span><h2>django_tex.filters module<a class="headerlink" href="#module-django_tex.filters" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="django_tex.filters.do_linebreaks">
+<code class="descclassname">django_tex.filters.</code><code class="descname">do_linebreaks</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.filters.do_linebreaks" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.models">
+<span id="django-tex-models-module"></span><h2>django_tex.models module<a class="headerlink" href="#module-django_tex.models" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.models.TeXTemplateFile">
+<em class="property">class </em><code class="descclassname">django_tex.models.</code><code class="descname">TeXTemplateFile</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.models.TeXTemplateFile" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="class">
+<dt id="django_tex.models.TeXTemplateFile.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.Meta" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.Meta.abstract">
+<code class="descname">abstract</code><em class="property"> = False</em><a class="headerlink" href="#django_tex.models.TeXTemplateFile.Meta.abstract" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.name">
+<code class="descname">name</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.name" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="django_tex.models.TeXTemplateFile.title">
+<code class="descname">title</code><a class="headerlink" href="#django_tex.models.TeXTemplateFile.title" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.models.validate_template_path">
+<code class="descclassname">django_tex.models.</code><code class="descname">validate_template_path</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.models.validate_template_path" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex.views">
+<span id="django-tex-views-module"></span><h2>django_tex.views module<a class="headerlink" href="#module-django_tex.views" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="django_tex.views.PDFResponse">
+<em class="property">class </em><code class="descclassname">django_tex.views.</code><code class="descname">PDFResponse</code><span class="sig-paren">(</span><em>content</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.views.PDFResponse" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.http.response.HttpResponse</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="django_tex.views.render_to_pdf">
+<code class="descclassname">django_tex.views.</code><code class="descname">render_to_pdf</code><span class="sig-paren">(</span><em>request</em>, <em>template_name</em>, <em>context=None</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#django_tex.views.render_to_pdf" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-django_tex">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-django_tex" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CoopeV3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yoann Pietri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/django_tex.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

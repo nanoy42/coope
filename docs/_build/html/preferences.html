@@ -1,0 +1,1320 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>preferences package &#8212; Documentation CoopeV3 3.4.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="preferences-package">
+<h1>preferences package<a class="headerlink" href="#preferences-package" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-preferences.admin">
+<span id="preferences-admin-module"></span><h2>preferences.admin module<a class="headerlink" href="#module-preferences.admin" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.admin.CotisationAdmin">
+<em class="property">class </em><code class="descclassname">preferences.admin.</code><code class="descname">CotisationAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.admin.CotisationAdmin" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.admin.SimpleHistoryAdmin</span></code></p>
+<dl class="attribute">
+<dt id="preferences.admin.CotisationAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ('__str__', 'amount', 'duration')</em><a class="headerlink" href="#preferences.admin.CotisationAdmin.list_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.CotisationAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.admin.CotisationAdmin.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.CotisationAdmin.ordering">
+<code class="descname">ordering</code><em class="property"> = ('-duration', '-amount')</em><a class="headerlink" href="#preferences.admin.CotisationAdmin.ordering" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.admin.GeneralPreferencesAdmin">
+<em class="property">class </em><code class="descclassname">preferences.admin.</code><code class="descname">GeneralPreferencesAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.admin.GeneralPreferencesAdmin" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.admin.SimpleHistoryAdmin</span></code></p>
+<dl class="attribute">
+<dt id="preferences.admin.GeneralPreferencesAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ('is_active', 'president', 'vice_president', 'treasurer', 'secretary', 'brewer', 'grocer', 'use_pinte_monitoring', 'lost_pintes_allowed', 'floating_buttons', 'automatic_logout_time')</em><a class="headerlink" href="#preferences.admin.GeneralPreferencesAdmin.list_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.GeneralPreferencesAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.admin.GeneralPreferencesAdmin.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.admin.PaymentMethodAdmin">
+<em class="property">class </em><code class="descclassname">preferences.admin.</code><code class="descname">PaymentMethodAdmin</code><span class="sig-paren">(</span><em>model</em>, <em>admin_site</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.admin.SimpleHistoryAdmin</span></code></p>
+<dl class="attribute">
+<dt id="preferences.admin.PaymentMethodAdmin.list_display">
+<code class="descname">list_display</code><em class="property"> = ('name', 'is_active', 'is_usable_in_cotisation', 'is_usable_in_reload', 'affect_balance')</em><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin.list_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.PaymentMethodAdmin.list_filter">
+<code class="descname">list_filter</code><em class="property"> = ('is_active', 'is_usable_in_cotisation', 'is_usable_in_reload', 'affect_balance')</em><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin.list_filter" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.PaymentMethodAdmin.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.PaymentMethodAdmin.ordering">
+<code class="descname">ordering</code><em class="property"> = ('name',)</em><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin.ordering" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.admin.PaymentMethodAdmin.search_fields">
+<code class="descname">search_fields</code><em class="property"> = ('name',)</em><a class="headerlink" href="#preferences.admin.PaymentMethodAdmin.search_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.apps">
+<span id="preferences-apps-module"></span><h2>preferences.apps module<a class="headerlink" href="#module-preferences.apps" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.apps.PreferencesConfig">
+<em class="property">class </em><code class="descclassname">preferences.apps.</code><code class="descname">PreferencesConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.apps.PreferencesConfig" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="attribute">
+<dt id="preferences.apps.PreferencesConfig.name">
+<code class="descname">name</code><em class="property"> = 'preferences'</em><a class="headerlink" href="#preferences.apps.PreferencesConfig.name" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.forms">
+<span id="preferences-forms-module"></span><h2>preferences.forms module<a class="headerlink" href="#module-preferences.forms" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.forms.CotisationForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">CotisationForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.CotisationForm" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>Form to add and edit cotisations</p>
+<dl class="class">
+<dt id="preferences.forms.CotisationForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.CotisationForm.Meta" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.CotisationForm.Meta.fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.CotisationForm.Meta.model" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.Cotisation</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'amount': &lt;django.forms.fields.DecimalField object&gt;, 'duration': &lt;django.forms.fields.IntegerField object&gt;}</em><a class="headerlink" href="#preferences.forms.CotisationForm.base_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.CotisationForm.declared_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.CotisationForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.CotisationForm.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.forms.GeneralPreferencesForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">GeneralPreferencesForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>Form to edit the general preferences</p>
+<dl class="class">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.model" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.GeneralPreferences</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.Meta.widgets">
+<code class="descname">widgets</code><em class="property"> = {'active_message': &lt;django.forms.widgets.Textarea object&gt;, 'brewer': &lt;django.forms.widgets.TextInput object&gt;, 'global_message': &lt;django.forms.widgets.Textarea object&gt;, 'grocer': &lt;django.forms.widgets.TextInput object&gt;, 'home_text': &lt;django.forms.widgets.Textarea object&gt;, 'president': &lt;django.forms.widgets.TextInput object&gt;, 'secretary': &lt;django.forms.widgets.TextInput object&gt;, 'treasurer': &lt;django.forms.widgets.TextInput object&gt;, 'vice_president': &lt;django.forms.widgets.TextInput object&gt;}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.Meta.widgets" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'active_message': &lt;django.forms.fields.CharField object&gt;, 'automatic_logout_time': &lt;django.forms.fields.IntegerField object&gt;, 'brewer': &lt;django.forms.fields.CharField object&gt;, 'floating_buttons': &lt;django.forms.fields.BooleanField object&gt;, 'global_message': &lt;django.forms.fields.CharField object&gt;, 'grocer': &lt;django.forms.fields.CharField object&gt;, 'home_text': &lt;django.forms.fields.CharField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'lost_pintes_allowed': &lt;django.forms.fields.IntegerField object&gt;, 'menu': &lt;django.forms.fields.FileField object&gt;, 'president': &lt;django.forms.fields.CharField object&gt;, 'rules': &lt;django.forms.fields.FileField object&gt;, 'secretary': &lt;django.forms.fields.CharField object&gt;, 'statutes': &lt;django.forms.fields.FileField object&gt;, 'treasurer': &lt;django.forms.fields.CharField object&gt;, 'use_pinte_monitoring': &lt;django.forms.fields.BooleanField object&gt;, 'vice_president': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.base_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.declared_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.GeneralPreferencesForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.GeneralPreferencesForm.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.forms.PaymentMethodForm">
+<em class="property">class </em><code class="descclassname">preferences.forms.</code><code class="descname">PaymentMethodForm</code><span class="sig-paren">(</span><em>data=None</em>, <em>files=None</em>, <em>auto_id='id_%s'</em>, <em>prefix=None</em>, <em>initial=None</em>, <em>error_class=&lt;class 'django.forms.utils.ErrorList'&gt;</em>, <em>label_suffix=None</em>, <em>empty_permitted=False</em>, <em>instance=None</em>, <em>use_required_attribute=None</em>, <em>renderer=None</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.forms.PaymentMethodForm" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.models.ModelForm</span></code></p>
+<p>Form to add and edit payment methods</p>
+<dl class="class">
+<dt id="preferences.forms.PaymentMethodForm.Meta">
+<em class="property">class </em><code class="descname">Meta</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.Meta.fields">
+<code class="descname">fields</code><em class="property"> = '__all__'</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta.fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.Meta.model">
+<code class="descname">model</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.Meta.model" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">preferences.models.PaymentMethod</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.base_fields">
+<code class="descname">base_fields</code><em class="property"> = {'affect_balance': &lt;django.forms.fields.BooleanField object&gt;, 'icon': &lt;django.forms.fields.CharField object&gt;, 'is_active': &lt;django.forms.fields.BooleanField object&gt;, 'is_usable_in_cotisation': &lt;django.forms.fields.BooleanField object&gt;, 'is_usable_in_reload': &lt;django.forms.fields.BooleanField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.base_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.declared_fields">
+<code class="descname">declared_fields</code><em class="property"> = {}</em><a class="headerlink" href="#preferences.forms.PaymentMethodForm.declared_fields" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.forms.PaymentMethodForm.media">
+<code class="descname">media</code><a class="headerlink" href="#preferences.forms.PaymentMethodForm.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.models">
+<span id="preferences-models-module"></span><h2>preferences.models module<a class="headerlink" href="#module-preferences.models" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="preferences.models.Cotisation">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">Cotisation</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.Cotisation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Stores cotisations</p>
+<dl class="exception">
+<dt id="preferences.models.Cotisation.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.Cotisation.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.Cotisation.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.Cotisation.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.amount">
+<code class="descname">amount</code><a class="headerlink" href="#preferences.models.Cotisation.amount" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.cotisationhistory_set">
+<code class="descname">cotisationhistory_set</code><a class="headerlink" href="#preferences.models.Cotisation.cotisationhistory_set" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.duration">
+<code class="descname">duration</code><a class="headerlink" href="#preferences.models.Cotisation.duration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.history">
+<code class="descname">history</code><em class="property"> = &lt;simple_history.manager.HistoryManager object&gt;</em><a class="headerlink" href="#preferences.models.Cotisation.history" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.Cotisation.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.Cotisation.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.Cotisation.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.Cotisation.save_without_historical_record">
+<code class="descname">save_without_historical_record</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.Cotisation.save_without_historical_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Save model without saving a historical record</p>
+<p>Make sure you know what you’re doing before you use this method.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.models.GeneralPreferences">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">GeneralPreferences</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.GeneralPreferences" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Stores a unique line of general preferences</p>
+<dl class="exception">
+<dt id="preferences.models.GeneralPreferences.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.GeneralPreferences.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.GeneralPreferences.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.GeneralPreferences.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.active_message">
+<code class="descname">active_message</code><a class="headerlink" href="#preferences.models.GeneralPreferences.active_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.automatic_logout_time">
+<code class="descname">automatic_logout_time</code><a class="headerlink" href="#preferences.models.GeneralPreferences.automatic_logout_time" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.brewer">
+<code class="descname">brewer</code><a class="headerlink" href="#preferences.models.GeneralPreferences.brewer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.floating_buttons">
+<code class="descname">floating_buttons</code><a class="headerlink" href="#preferences.models.GeneralPreferences.floating_buttons" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.global_message">
+<code class="descname">global_message</code><a class="headerlink" href="#preferences.models.GeneralPreferences.global_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.grocer">
+<code class="descname">grocer</code><a class="headerlink" href="#preferences.models.GeneralPreferences.grocer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.history">
+<code class="descname">history</code><em class="property"> = &lt;simple_history.manager.HistoryManager object&gt;</em><a class="headerlink" href="#preferences.models.GeneralPreferences.history" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.home_text">
+<code class="descname">home_text</code><a class="headerlink" href="#preferences.models.GeneralPreferences.home_text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.GeneralPreferences.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.is_active">
+<code class="descname">is_active</code><a class="headerlink" href="#preferences.models.GeneralPreferences.is_active" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.lost_pintes_allowed">
+<code class="descname">lost_pintes_allowed</code><a class="headerlink" href="#preferences.models.GeneralPreferences.lost_pintes_allowed" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.menu">
+<code class="descname">menu</code><a class="headerlink" href="#preferences.models.GeneralPreferences.menu" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="k">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.GeneralPreferences.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.president">
+<code class="descname">president</code><a class="headerlink" href="#preferences.models.GeneralPreferences.president" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.rules">
+<code class="descname">rules</code><a class="headerlink" href="#preferences.models.GeneralPreferences.rules" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="k">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.GeneralPreferences.save_without_historical_record">
+<code class="descname">save_without_historical_record</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.GeneralPreferences.save_without_historical_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Save model without saving a historical record</p>
+<p>Make sure you know what you’re doing before you use this method.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.secretary">
+<code class="descname">secretary</code><a class="headerlink" href="#preferences.models.GeneralPreferences.secretary" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.statutes">
+<code class="descname">statutes</code><a class="headerlink" href="#preferences.models.GeneralPreferences.statutes" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>The descriptor for the file attribute on the model instance. Return a
+FieldFile when accessed so you can write code like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">myapp.models</span> <span class="k">import</span> <span class="n">MyModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span> <span class="o">=</span> <span class="n">MyModel</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pk</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">instance</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">size</span>
+</pre></div>
+</div>
+<p>Assign a file object on assignment so you can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/hello.world&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">instance</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.treasurer">
+<code class="descname">treasurer</code><a class="headerlink" href="#preferences.models.GeneralPreferences.treasurer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.use_pinte_monitoring">
+<code class="descname">use_pinte_monitoring</code><a class="headerlink" href="#preferences.models.GeneralPreferences.use_pinte_monitoring" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.GeneralPreferences.vice_president">
+<code class="descname">vice_president</code><a class="headerlink" href="#preferences.models.GeneralPreferences.vice_president" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.models.HistoricalCotisation">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">HistoricalCotisation</code><span class="sig-paren">(</span><em>id</em>, <em>amount</em>, <em>duration</em>, <em>history_id</em>, <em>history_change_reason</em>, <em>history_date</em>, <em>history_user</em>, <em>history_type</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalCotisation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.models.HistoricalChanges</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="preferences.models.HistoricalCotisation.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.HistoricalCotisation.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.amount">
+<code class="descname">amount</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.amount" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.duration">
+<code class="descname">duration</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.duration" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalCotisation.get_history_type_display">
+<code class="descname">get_history_type_display</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.CharField: history_type&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalCotisation.get_history_type_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalCotisation.get_next_by_history_date">
+<code class="descname">get_next_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalCotisation.get_next_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalCotisation.get_previous_by_history_date">
+<code class="descname">get_previous_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalCotisation.get_previous_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_change_reason">
+<code class="descname">history_change_reason</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_change_reason" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_date">
+<code class="descname">history_date</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_id">
+<code class="descname">history_id</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_object">
+<code class="descname">history_object</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_object" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_type">
+<code class="descname">history_type</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_user">
+<code class="descname">history_user</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_user" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.history_user_id">
+<code class="descname">history_user_id</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.history_user_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.instance">
+<code class="descname">instance</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.instance" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.instance_type">
+<code class="descname">instance_type</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.instance_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.Cotisation" title="preferences.models.Cotisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cotisation</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.next_record">
+<code class="descname">next_record</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.next_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the next history record for the instance. <cite>None</cite> if last.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.HistoricalCotisation.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalCotisation.prev_record">
+<code class="descname">prev_record</code><a class="headerlink" href="#preferences.models.HistoricalCotisation.prev_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the previous history record for the instance. <cite>None</cite> if first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalCotisation.revert_url">
+<code class="descname">revert_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalCotisation.revert_url" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>URL for this change in the default admin site.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.models.HistoricalGeneralPreferences">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">HistoricalGeneralPreferences</code><span class="sig-paren">(</span><em>id</em>, <em>is_active</em>, <em>active_message</em>, <em>global_message</em>, <em>president</em>, <em>vice_president</em>, <em>treasurer</em>, <em>secretary</em>, <em>brewer</em>, <em>grocer</em>, <em>use_pinte_monitoring</em>, <em>lost_pintes_allowed</em>, <em>floating_buttons</em>, <em>home_text</em>, <em>automatic_logout_time</em>, <em>statutes</em>, <em>rules</em>, <em>menu</em>, <em>history_id</em>, <em>history_change_reason</em>, <em>history_date</em>, <em>history_user</em>, <em>history_type</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.models.HistoricalChanges</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="preferences.models.HistoricalGeneralPreferences.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.HistoricalGeneralPreferences.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.active_message">
+<code class="descname">active_message</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.active_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.automatic_logout_time">
+<code class="descname">automatic_logout_time</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.automatic_logout_time" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.brewer">
+<code class="descname">brewer</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.brewer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.floating_buttons">
+<code class="descname">floating_buttons</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.floating_buttons" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalGeneralPreferences.get_history_type_display">
+<code class="descname">get_history_type_display</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.CharField: history_type&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.get_history_type_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalGeneralPreferences.get_next_by_history_date">
+<code class="descname">get_next_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.get_next_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalGeneralPreferences.get_previous_by_history_date">
+<code class="descname">get_previous_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.get_previous_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.global_message">
+<code class="descname">global_message</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.global_message" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.grocer">
+<code class="descname">grocer</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.grocer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_change_reason">
+<code class="descname">history_change_reason</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_change_reason" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_date">
+<code class="descname">history_date</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_id">
+<code class="descname">history_id</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_object">
+<code class="descname">history_object</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_object" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_type">
+<code class="descname">history_type</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_user">
+<code class="descname">history_user</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_user" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.history_user_id">
+<code class="descname">history_user_id</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.history_user_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.home_text">
+<code class="descname">home_text</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.home_text" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.instance">
+<code class="descname">instance</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.instance" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.instance_type">
+<code class="descname">instance_type</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.instance_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.GeneralPreferences" title="preferences.models.GeneralPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeneralPreferences</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.is_active">
+<code class="descname">is_active</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.is_active" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.lost_pintes_allowed">
+<code class="descname">lost_pintes_allowed</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.lost_pintes_allowed" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.menu">
+<code class="descname">menu</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.menu" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.next_record">
+<code class="descname">next_record</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.next_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the next history record for the instance. <cite>None</cite> if last.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.president">
+<code class="descname">president</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.president" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.prev_record">
+<code class="descname">prev_record</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.prev_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the previous history record for the instance. <cite>None</cite> if first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalGeneralPreferences.revert_url">
+<code class="descname">revert_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.revert_url" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>URL for this change in the default admin site.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.rules">
+<code class="descname">rules</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.rules" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.secretary">
+<code class="descname">secretary</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.secretary" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.statutes">
+<code class="descname">statutes</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.statutes" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.treasurer">
+<code class="descname">treasurer</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.treasurer" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.use_pinte_monitoring">
+<code class="descname">use_pinte_monitoring</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.use_pinte_monitoring" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalGeneralPreferences.vice_president">
+<code class="descname">vice_president</code><a class="headerlink" href="#preferences.models.HistoricalGeneralPreferences.vice_president" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.models.HistoricalPaymentMethod">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">HistoricalPaymentMethod</code><span class="sig-paren">(</span><em>id</em>, <em>name</em>, <em>is_active</em>, <em>is_usable_in_cotisation</em>, <em>is_usable_in_reload</em>, <em>affect_balance</em>, <em>icon</em>, <em>history_id</em>, <em>history_change_reason</em>, <em>history_date</em>, <em>history_user</em>, <em>history_type</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">simple_history.models.HistoricalChanges</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="preferences.models.HistoricalPaymentMethod.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.HistoricalPaymentMethod.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.affect_balance">
+<code class="descname">affect_balance</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.affect_balance" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalPaymentMethod.get_history_type_display">
+<code class="descname">get_history_type_display</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.CharField: history_type&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.get_history_type_display" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalPaymentMethod.get_next_by_history_date">
+<code class="descname">get_next_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.get_next_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalPaymentMethod.get_previous_by_history_date">
+<code class="descname">get_previous_by_history_date</code><span class="sig-paren">(</span><em>*</em>, <em>field=&lt;django.db.models.fields.DateTimeField: history_date&gt;</em>, <em>is_next=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.get_previous_by_history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_change_reason">
+<code class="descname">history_change_reason</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_change_reason" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_date">
+<code class="descname">history_date</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_date" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_id">
+<code class="descname">history_id</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_object">
+<code class="descname">history_object</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_object" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_type">
+<code class="descname">history_type</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_user">
+<code class="descname">history_user</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_user" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Child.parent</span></code> is a <code class="docutils literal notranslate"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.history_user_id">
+<code class="descname">history_user_id</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.history_user_id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.icon">
+<code class="descname">icon</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.icon" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.instance">
+<code class="descname">instance</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.instance" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.instance_type">
+<code class="descname">instance_type</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.instance_type" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>alias de <a class="reference internal" href="#preferences.models.PaymentMethod" title="preferences.models.PaymentMethod"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaymentMethod</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.is_active">
+<code class="descname">is_active</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.is_active" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.is_usable_in_cotisation">
+<code class="descname">is_usable_in_cotisation</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.is_usable_in_cotisation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.is_usable_in_reload">
+<code class="descname">is_usable_in_reload</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.is_usable_in_reload" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.name">
+<code class="descname">name</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.name" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.next_record">
+<code class="descname">next_record</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.next_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the next history record for the instance. <cite>None</cite> if last.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.HistoricalPaymentMethod.prev_record">
+<code class="descname">prev_record</code><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.prev_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Get the previous history record for the instance. <cite>None</cite> if first.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.HistoricalPaymentMethod.revert_url">
+<code class="descname">revert_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.HistoricalPaymentMethod.revert_url" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>URL for this change in the default admin site.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="preferences.models.PaymentMethod">
+<em class="property">class </em><code class="descclassname">preferences.models.</code><code class="descname">PaymentMethod</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.PaymentMethod" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Stores payment methods</p>
+<dl class="exception">
+<dt id="preferences.models.PaymentMethod.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#preferences.models.PaymentMethod.DoesNotExist" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="preferences.models.PaymentMethod.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#preferences.models.PaymentMethod.MultipleObjectsReturned" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.affect_balance">
+<code class="descname">affect_balance</code><a class="headerlink" href="#preferences.models.PaymentMethod.affect_balance" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.consumptionhistory_set">
+<code class="descname">consumptionhistory_set</code><a class="headerlink" href="#preferences.models.PaymentMethod.consumptionhistory_set" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.cotisationhistory_set">
+<code class="descname">cotisationhistory_set</code><a class="headerlink" href="#preferences.models.PaymentMethod.cotisationhistory_set" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.history">
+<code class="descname">history</code><em class="property"> = &lt;simple_history.manager.HistoryManager object&gt;</em><a class="headerlink" href="#preferences.models.PaymentMethod.history" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.icon">
+<code class="descname">icon</code><a class="headerlink" href="#preferences.models.PaymentMethod.icon" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.id">
+<code class="descname">id</code><a class="headerlink" href="#preferences.models.PaymentMethod.id" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.is_active">
+<code class="descname">is_active</code><a class="headerlink" href="#preferences.models.PaymentMethod.is_active" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.is_usable_in_cotisation">
+<code class="descname">is_usable_in_cotisation</code><a class="headerlink" href="#preferences.models.PaymentMethod.is_usable_in_cotisation" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.is_usable_in_reload">
+<code class="descname">is_usable_in_reload</code><a class="headerlink" href="#preferences.models.PaymentMethod.is_usable_in_reload" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.menuhistory_set">
+<code class="descname">menuhistory_set</code><a class="headerlink" href="#preferences.models.PaymentMethod.menuhistory_set" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.name">
+<code class="descname">name</code><a class="headerlink" href="#preferences.models.PaymentMethod.name" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#preferences.models.PaymentMethod.objects" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="preferences.models.PaymentMethod.reload_set">
+<code class="descname">reload_set</code><a class="headerlink" href="#preferences.models.PaymentMethod.reload_set" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Parent.children</span></code> is a <code class="docutils literal notranslate"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal notranslate"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="preferences.models.PaymentMethod.save_without_historical_record">
+<code class="descname">save_without_historical_record</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.models.PaymentMethod.save_without_historical_record" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Save model without saving a historical record</p>
+<p>Make sure you know what you’re doing before you use this method.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences.tests">
+<span id="preferences-tests-module"></span><h2>preferences.tests module<a class="headerlink" href="#module-preferences.tests" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-preferences.urls">
+<span id="preferences-urls-module"></span><h2>preferences.urls module<a class="headerlink" href="#module-preferences.urls" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="preferences.urls.path">
+<code class="descclassname">preferences.urls.</code><code class="descname">path</code><span class="sig-paren">(</span><em>route</em>, <em>view</em>, <em>kwargs=None</em>, <em>name=None</em>, <em>*</em>, <em>Pattern=&lt;class 'django.urls.resolvers.RoutePattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.urls.path" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-preferences.views">
+<span id="preferences-views-module"></span><h2>preferences.views module<a class="headerlink" href="#module-preferences.views" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="preferences.views.get_config">
+<code class="descclassname">preferences.views.</code><code class="descname">get_config</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.get_config" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Load the config and return it in a json format</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="preferences.views.inactive">
+<code class="descclassname">preferences.views.</code><code class="descname">inactive</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#preferences.views.inactive" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Displays inactive view</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-preferences">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-preferences" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CoopeV3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yoann Pietri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/preferences.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

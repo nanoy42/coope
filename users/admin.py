@@ -6,12 +6,18 @@ from django.db.models import F
 from .models import School, Profile, CotisationHistory, WhiteListHistory
 
 class CotisationHistoryAdmin(SimpleHistoryAdmin):
+    """
+    The admin class for :class:`Consumptions <users.models.CotisationHistory>`.
+    """
     list_display = ('user', 'amount', 'duration', 'paymentDate', 'endDate', 'paymentMethod')
     ordering = ('user', 'amount', 'duration', 'paymentDate', 'endDate')
     search_fields = ('user',)
     list_filter = ('paymentMethod', )
 
 class BalanceFilter(admin.SimpleListFilter):
+    """
+    A filter which filters according to the sign of the balance
+    """
     title = 'Solde'
     parameter_name = 'solde'
 
@@ -32,12 +38,18 @@ class BalanceFilter(admin.SimpleListFilter):
 
 
 class ProfileAdmin(SimpleHistoryAdmin):
+    """
+    The admin class for :class:`Consumptions <users.models.Profile>`.
+    """
     list_display = ('user', 'credit', 'debit', 'balance', 'school', 'cotisationEnd', 'is_adherent')
     ordering = ('user', '-credit', '-debit')
     search_fields = ('user',)
     list_filter = ('school', BalanceFilter)
 
 class WhiteListHistoryAdmin(SimpleHistoryAdmin):
+    """
+    The admin class for :class:`Consumptions <users.models.WhiteListHistory>`.
+    """
     list_display = ('user', 'paymentDate', 'endDate', 'duration')
     ordering = ('user', 'duration', 'paymentDate', 'endDate')
     search_fields = ('user',)

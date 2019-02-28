@@ -1,0 +1,1227 @@
+\indexentry{gestion.views (module)@\spxentry{gestion.views}\spxextra{module}|hyperpage}{1}
+\indexentry{ActiveProductsAutocomplete (class in gestion.views)@\spxentry{ActiveProductsAutocomplete}\spxextra{class in gestion.views}|hyperpage}{1}
+\indexentry{get\_queryset() (gestion.views.ActiveProductsAutocomplete method)@\spxentry{get\_queryset()}\spxextra{gestion.views.ActiveProductsAutocomplete method}|hyperpage}{1}
+\indexentry{KegActiveAutocomplete (class in gestion.views)@\spxentry{KegActiveAutocomplete}\spxextra{class in gestion.views}|hyperpage}{1}
+\indexentry{get\_queryset() (gestion.views.KegActiveAutocomplete method)@\spxentry{get\_queryset()}\spxextra{gestion.views.KegActiveAutocomplete method}|hyperpage}{1}
+\indexentry{KegPositiveAutocomplete (class in gestion.views)@\spxentry{KegPositiveAutocomplete}\spxextra{class in gestion.views}|hyperpage}{1}
+\indexentry{get\_queryset() (gestion.views.KegPositiveAutocomplete method)@\spxentry{get\_queryset()}\spxextra{gestion.views.KegPositiveAutocomplete method}|hyperpage}{1}
+\indexentry{MenusAutocomplete (class in gestion.views)@\spxentry{MenusAutocomplete}\spxextra{class in gestion.views}|hyperpage}{1}
+\indexentry{get\_queryset() (gestion.views.MenusAutocomplete method)@\spxentry{get\_queryset()}\spxextra{gestion.views.MenusAutocomplete method}|hyperpage}{1}
+\indexentry{ProductsAutocomplete (class in gestion.views)@\spxentry{ProductsAutocomplete}\spxextra{class in gestion.views}|hyperpage}{1}
+\indexentry{get\_queryset() (gestion.views.ProductsAutocomplete method)@\spxentry{get\_queryset()}\spxextra{gestion.views.ProductsAutocomplete method}|hyperpage}{1}
+\indexentry{addKeg() (in module gestion.views)@\spxentry{addKeg()}\spxextra{in module gestion.views}|hyperpage}{1}
+\indexentry{addMenu() (in module gestion.views)@\spxentry{addMenu()}\spxextra{in module gestion.views}|hyperpage}{1}
+\indexentry{addProduct() (in module gestion.views)@\spxentry{addProduct()}\spxextra{in module gestion.views}|hyperpage}{1}
+\indexentry{add\_pintes() (in module gestion.views)@\spxentry{add\_pintes()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{allocate() (in module gestion.views)@\spxentry{allocate()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{cancel\_consumption() (in module gestion.views)@\spxentry{cancel\_consumption()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{cancel\_menu() (in module gestion.views)@\spxentry{cancel\_menu()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{cancel\_reload() (in module gestion.views)@\spxentry{cancel\_reload()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{closeDirectKeg() (in module gestion.views)@\spxentry{closeDirectKeg()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{closeKeg() (in module gestion.views)@\spxentry{closeKeg()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{editKeg() (in module gestion.views)@\spxentry{editKeg()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{editProduct() (in module gestion.views)@\spxentry{editProduct()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{edit\_menu() (in module gestion.views)@\spxentry{edit\_menu()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{gen\_releve() (in module gestion.views)@\spxentry{gen\_releve()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{getProduct() (in module gestion.views)@\spxentry{getProduct()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{get\_menu() (in module gestion.views)@\spxentry{get\_menu()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{kegH() (in module gestion.views)@\spxentry{kegH()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{kegsList() (in module gestion.views)@\spxentry{kegsList()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{manage() (in module gestion.views)@\spxentry{manage()}\spxextra{in module gestion.views}|hyperpage}{2}
+\indexentry{menus\_list() (in module gestion.views)@\spxentry{menus\_list()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{openDirectKeg() (in module gestion.views)@\spxentry{openDirectKeg()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{openKeg() (in module gestion.views)@\spxentry{openKeg()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{order() (in module gestion.views)@\spxentry{order()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{pintes\_list() (in module gestion.views)@\spxentry{pintes\_list()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{pintes\_user\_list() (in module gestion.views)@\spxentry{pintes\_user\_list()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{productProfile() (in module gestion.views)@\spxentry{productProfile()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{productsIndex() (in module gestion.views)@\spxentry{productsIndex()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{productsList() (in module gestion.views)@\spxentry{productsList()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{ranking() (in module gestion.views)@\spxentry{ranking()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{refund() (in module gestion.views)@\spxentry{refund()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{release() (in module gestion.views)@\spxentry{release()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{release\_pintes() (in module gestion.views)@\spxentry{release\_pintes()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{reload() (in module gestion.views)@\spxentry{reload()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{searchMenu() (in module gestion.views)@\spxentry{searchMenu()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{searchProduct() (in module gestion.views)@\spxentry{searchProduct()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{switch\_activate() (in module gestion.views)@\spxentry{switch\_activate()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{switch\_activate\_menu() (in module gestion.views)@\spxentry{switch\_activate\_menu()}\spxextra{in module gestion.views}|hyperpage}{3}
+\indexentry{users.views (module)@\spxentry{users.views}\spxextra{module}|hyperpage}{4}
+\indexentry{ActiveUsersAutocomplete (class in users.views)@\spxentry{ActiveUsersAutocomplete}\spxextra{class in users.views}|hyperpage}{4}
+\indexentry{get\_queryset() (users.views.ActiveUsersAutocomplete method)@\spxentry{get\_queryset()}\spxextra{users.views.ActiveUsersAutocomplete method}|hyperpage}{4}
+\indexentry{AdherentAutocomplete (class in users.views)@\spxentry{AdherentAutocomplete}\spxextra{class in users.views}|hyperpage}{4}
+\indexentry{get\_queryset() (users.views.AdherentAutocomplete method)@\spxentry{get\_queryset()}\spxextra{users.views.AdherentAutocomplete method}|hyperpage}{4}
+\indexentry{AllUsersAutocomplete (class in users.views)@\spxentry{AllUsersAutocomplete}\spxextra{class in users.views}|hyperpage}{4}
+\indexentry{get\_queryset() (users.views.AllUsersAutocomplete method)@\spxentry{get\_queryset()}\spxextra{users.views.AllUsersAutocomplete method}|hyperpage}{4}
+\indexentry{NonAdminUserAutocomplete (class in users.views)@\spxentry{NonAdminUserAutocomplete}\spxextra{class in users.views}|hyperpage}{4}
+\indexentry{get\_queryset() (users.views.NonAdminUserAutocomplete method)@\spxentry{get\_queryset()}\spxextra{users.views.NonAdminUserAutocomplete method}|hyperpage}{4}
+\indexentry{NonSuperUserAutocomplete (class in users.views)@\spxentry{NonSuperUserAutocomplete}\spxextra{class in users.views}|hyperpage}{4}
+\indexentry{get\_queryset() (users.views.NonSuperUserAutocomplete method)@\spxentry{get\_queryset()}\spxextra{users.views.NonSuperUserAutocomplete method}|hyperpage}{4}
+\indexentry{addAdmin() (in module users.views)@\spxentry{addAdmin()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{addCotisationHistory() (in module users.views)@\spxentry{addCotisationHistory()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{addSuperuser() (in module users.views)@\spxentry{addSuperuser()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{addWhiteListHistory() (in module users.views)@\spxentry{addWhiteListHistory()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{adminsIndex() (in module users.views)@\spxentry{adminsIndex()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{allReloads() (in module users.views)@\spxentry{allReloads()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{all\_consumptions() (in module users.views)@\spxentry{all\_consumptions()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{all\_menus() (in module users.views)@\spxentry{all\_menus()}\spxextra{in module users.views}|hyperpage}{4}
+\indexentry{createGroup() (in module users.views)@\spxentry{createGroup()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{createSchool() (in module users.views)@\spxentry{createSchool()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{createUser() (in module users.views)@\spxentry{createUser()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{deleteCotisationHistory() (in module users.views)@\spxentry{deleteCotisationHistory()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{deleteGroup() (in module users.views)@\spxentry{deleteGroup()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{deleteSchool() (in module users.views)@\spxentry{deleteSchool()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{editGroup() (in module users.views)@\spxentry{editGroup()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{editGroups() (in module users.views)@\spxentry{editGroups()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{editPassword() (in module users.views)@\spxentry{editPassword()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{editSchool() (in module users.views)@\spxentry{editSchool()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{editUser() (in module users.views)@\spxentry{editUser()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{export\_csv() (in module users.views)@\spxentry{export\_csv()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{gen\_user\_infos() (in module users.views)@\spxentry{gen\_user\_infos()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{getUser() (in module users.views)@\spxentry{getUser()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{groupProfile() (in module users.views)@\spxentry{groupProfile()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{groupsIndex() (in module users.views)@\spxentry{groupsIndex()}\spxextra{in module users.views}|hyperpage}{5}
+\indexentry{index() (in module users.views)@\spxentry{index()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{loginView() (in module users.views)@\spxentry{loginView()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{logoutView() (in module users.views)@\spxentry{logoutView()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{profile() (in module users.views)@\spxentry{profile()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{removeAdmin() (in module users.views)@\spxentry{removeAdmin()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{removeRight() (in module users.views)@\spxentry{removeRight()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{removeSuperuser() (in module users.views)@\spxentry{removeSuperuser()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{removeUser() (in module users.views)@\spxentry{removeUser()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{resetPassword() (in module users.views)@\spxentry{resetPassword()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{schoolsIndex() (in module users.views)@\spxentry{schoolsIndex()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{searchUser() (in module users.views)@\spxentry{searchUser()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{superusersIndex() (in module users.views)@\spxentry{superusersIndex()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{switch\_activate\_user() (in module users.views)@\spxentry{switch\_activate\_user()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{usersIndex() (in module users.views)@\spxentry{usersIndex()}\spxextra{in module users.views}|hyperpage}{6}
+\indexentry{preferences.views (module)@\spxentry{preferences.views}\spxextra{module}|hyperpage}{6}
+\indexentry{addCotisation() (in module preferences.views)@\spxentry{addCotisation()}\spxextra{in module preferences.views}|hyperpage}{6}
+\indexentry{addPaymentMethod() (in module preferences.views)@\spxentry{addPaymentMethod()}\spxextra{in module preferences.views}|hyperpage}{6}
+\indexentry{cotisationsIndex() (in module preferences.views)@\spxentry{cotisationsIndex()}\spxextra{in module preferences.views}|hyperpage}{6}
+\indexentry{deleteCotisation() (in module preferences.views)@\spxentry{deleteCotisation()}\spxextra{in module preferences.views}|hyperpage}{6}
+\indexentry{deletePaymentMethod() (in module preferences.views)@\spxentry{deletePaymentMethod()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{editCotisation() (in module preferences.views)@\spxentry{editCotisation()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{editPaymentMethod() (in module preferences.views)@\spxentry{editPaymentMethod()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{generalPreferences() (in module preferences.views)@\spxentry{generalPreferences()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{get\_config() (in module preferences.views)@\spxentry{get\_config()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{get\_cotisation() (in module preferences.views)@\spxentry{get\_cotisation()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{inactive() (in module preferences.views)@\spxentry{inactive()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{paymentMethodsIndex() (in module preferences.views)@\spxentry{paymentMethodsIndex()}\spxextra{in module preferences.views}|hyperpage}{7}
+\indexentry{coopeV3.views (module)@\spxentry{coopeV3.views}\spxextra{module}|hyperpage}{7}
+\indexentry{coope\_runner() (in module coopeV3.views)@\spxentry{coope\_runner()}\spxextra{in module coopeV3.views}|hyperpage}{7}
+\indexentry{home() (in module coopeV3.views)@\spxentry{home()}\spxextra{in module coopeV3.views}|hyperpage}{7}
+\indexentry{homepage() (in module coopeV3.views)@\spxentry{homepage()}\spxextra{in module coopeV3.views}|hyperpage}{7}
+\indexentry{gestion.models (module)@\spxentry{gestion.models}\spxextra{module}|hyperpage}{9}
+\indexentry{Consumption (class in gestion.models)@\spxentry{Consumption}\spxextra{class in gestion.models}|hyperpage}{9}
+\indexentry{Consumption.DoesNotExist@\spxentry{Consumption.DoesNotExist}|hyperpage}{9}
+\indexentry{Consumption.MultipleObjectsReturned@\spxentry{Consumption.MultipleObjectsReturned}|hyperpage}{9}
+\indexentry{customer (gestion.models.Consumption attribute)@\spxentry{customer}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{customer\_id (gestion.models.Consumption attribute)@\spxentry{customer\_id}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{history (gestion.models.Consumption attribute)@\spxentry{history}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{id (gestion.models.Consumption attribute)@\spxentry{id}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{objects (gestion.models.Consumption attribute)@\spxentry{objects}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{product (gestion.models.Consumption attribute)@\spxentry{product}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{product\_id (gestion.models.Consumption attribute)@\spxentry{product\_id}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{quantity (gestion.models.Consumption attribute)@\spxentry{quantity}\spxextra{gestion.models.Consumption attribute}|hyperpage}{9}
+\indexentry{save\_without\_historical\_record() (gestion.models.Consumption method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Consumption method}|hyperpage}{9}
+\indexentry{ConsumptionHistory (class in gestion.models)@\spxentry{ConsumptionHistory}\spxextra{class in gestion.models}|hyperpage}{10}
+\indexentry{ConsumptionHistory.DoesNotExist@\spxentry{ConsumptionHistory.DoesNotExist}|hyperpage}{10}
+\indexentry{ConsumptionHistory.MultipleObjectsReturned@\spxentry{ConsumptionHistory.MultipleObjectsReturned}|hyperpage}{10}
+\indexentry{amount (gestion.models.ConsumptionHistory attribute)@\spxentry{amount}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{coopeman (gestion.models.ConsumptionHistory attribute)@\spxentry{coopeman}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{coopeman\_id (gestion.models.ConsumptionHistory attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{customer (gestion.models.ConsumptionHistory attribute)@\spxentry{customer}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{customer\_id (gestion.models.ConsumptionHistory attribute)@\spxentry{customer\_id}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{date (gestion.models.ConsumptionHistory attribute)@\spxentry{date}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{get\_next\_by\_date() (gestion.models.ConsumptionHistory method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.ConsumptionHistory method}|hyperpage}{10}
+\indexentry{get\_previous\_by\_date() (gestion.models.ConsumptionHistory method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.ConsumptionHistory method}|hyperpage}{10}
+\indexentry{history (gestion.models.ConsumptionHistory attribute)@\spxentry{history}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{id (gestion.models.ConsumptionHistory attribute)@\spxentry{id}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{objects (gestion.models.ConsumptionHistory attribute)@\spxentry{objects}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{paymentMethod (gestion.models.ConsumptionHistory attribute)@\spxentry{paymentMethod}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{paymentMethod\_id (gestion.models.ConsumptionHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{product (gestion.models.ConsumptionHistory attribute)@\spxentry{product}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{product\_id (gestion.models.ConsumptionHistory attribute)@\spxentry{product\_id}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{quantity (gestion.models.ConsumptionHistory attribute)@\spxentry{quantity}\spxextra{gestion.models.ConsumptionHistory attribute}|hyperpage}{10}
+\indexentry{save\_without\_historical\_record() (gestion.models.ConsumptionHistory method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.ConsumptionHistory method}|hyperpage}{10}
+\indexentry{HistoricalConsumption (class in gestion.models)@\spxentry{HistoricalConsumption}\spxextra{class in gestion.models}|hyperpage}{10}
+\indexentry{HistoricalConsumption.DoesNotExist@\spxentry{HistoricalConsumption.DoesNotExist}|hyperpage}{11}
+\indexentry{HistoricalConsumption.MultipleObjectsReturned@\spxentry{HistoricalConsumption.MultipleObjectsReturned}|hyperpage}{11}
+\indexentry{customer (gestion.models.HistoricalConsumption attribute)@\spxentry{customer}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{customer\_id (gestion.models.HistoricalConsumption attribute)@\spxentry{customer\_id}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalConsumption method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalConsumption method}|hyperpage}{11}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalConsumption method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumption method}|hyperpage}{11}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalConsumption method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumption method}|hyperpage}{11}
+\indexentry{history\_change\_reason (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_date (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_id (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_object (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_type (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_user (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{history\_user\_id (gestion.models.HistoricalConsumption attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{id (gestion.models.HistoricalConsumption attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{11}
+\indexentry{instance (gestion.models.HistoricalConsumption attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{instance\_type (gestion.models.HistoricalConsumption attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{next\_record (gestion.models.HistoricalConsumption attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{objects (gestion.models.HistoricalConsumption attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{prev\_record (gestion.models.HistoricalConsumption attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{product (gestion.models.HistoricalConsumption attribute)@\spxentry{product}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{product\_id (gestion.models.HistoricalConsumption attribute)@\spxentry{product\_id}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{quantity (gestion.models.HistoricalConsumption attribute)@\spxentry{quantity}\spxextra{gestion.models.HistoricalConsumption attribute}|hyperpage}{12}
+\indexentry{revert\_url() (gestion.models.HistoricalConsumption method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalConsumption method}|hyperpage}{12}
+\indexentry{HistoricalConsumptionHistory (class in gestion.models)@\spxentry{HistoricalConsumptionHistory}\spxextra{class in gestion.models}|hyperpage}{12}
+\indexentry{HistoricalConsumptionHistory.DoesNotExist@\spxentry{HistoricalConsumptionHistory.DoesNotExist}|hyperpage}{12}
+\indexentry{HistoricalConsumptionHistory.MultipleObjectsReturned@\spxentry{HistoricalConsumptionHistory.MultipleObjectsReturned}|hyperpage}{12}
+\indexentry{amount (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{12}
+\indexentry{coopeman (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{coopeman}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{12}
+\indexentry{coopeman\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{customer (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{customer}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{customer\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{customer\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{date (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{date}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{13}
+\indexentry{get\_next\_by\_date() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{13}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{13}
+\indexentry{get\_previous\_by\_date() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{13}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{13}
+\indexentry{history\_change\_reason (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_date (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_object (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_type (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_user (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{13}
+\indexentry{history\_user\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{instance (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{instance\_type (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{next\_record (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{objects (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{paymentMethod (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{paymentMethod}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{paymentMethod\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{prev\_record (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{product (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{product}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{product\_id (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{product\_id}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{quantity (gestion.models.HistoricalConsumptionHistory attribute)@\spxentry{quantity}\spxextra{gestion.models.HistoricalConsumptionHistory attribute}|hyperpage}{14}
+\indexentry{revert\_url() (gestion.models.HistoricalConsumptionHistory method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalConsumptionHistory method}|hyperpage}{14}
+\indexentry{HistoricalKeg (class in gestion.models)@\spxentry{HistoricalKeg}\spxextra{class in gestion.models}|hyperpage}{14}
+\indexentry{HistoricalKeg.DoesNotExist@\spxentry{HistoricalKeg.DoesNotExist}|hyperpage}{15}
+\indexentry{HistoricalKeg.MultipleObjectsReturned@\spxentry{HistoricalKeg.MultipleObjectsReturned}|hyperpage}{15}
+\indexentry{amount (gestion.models.HistoricalKeg attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{barcode (gestion.models.HistoricalKeg attribute)@\spxentry{barcode}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{capacity (gestion.models.HistoricalKeg attribute)@\spxentry{capacity}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{demi (gestion.models.HistoricalKeg attribute)@\spxentry{demi}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{demi\_id (gestion.models.HistoricalKeg attribute)@\spxentry{demi\_id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{galopin (gestion.models.HistoricalKeg attribute)@\spxentry{galopin}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{galopin\_id (gestion.models.HistoricalKeg attribute)@\spxentry{galopin\_id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalKeg method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalKeg method}|hyperpage}{15}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalKeg method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalKeg method}|hyperpage}{15}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalKeg method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalKeg method}|hyperpage}{15}
+\indexentry{history\_change\_reason (gestion.models.HistoricalKeg attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{history\_date (gestion.models.HistoricalKeg attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{15}
+\indexentry{history\_id (gestion.models.HistoricalKeg attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{history\_object (gestion.models.HistoricalKeg attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{history\_type (gestion.models.HistoricalKeg attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{history\_user (gestion.models.HistoricalKeg attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{history\_user\_id (gestion.models.HistoricalKeg attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{id (gestion.models.HistoricalKeg attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{instance (gestion.models.HistoricalKeg attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{instance\_type (gestion.models.HistoricalKeg attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{is\_active (gestion.models.HistoricalKeg attribute)@\spxentry{is\_active}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{name (gestion.models.HistoricalKeg attribute)@\spxentry{name}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{next\_record (gestion.models.HistoricalKeg attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{objects (gestion.models.HistoricalKeg attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{pinte (gestion.models.HistoricalKeg attribute)@\spxentry{pinte}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{pinte\_id (gestion.models.HistoricalKeg attribute)@\spxentry{pinte\_id}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{16}
+\indexentry{prev\_record (gestion.models.HistoricalKeg attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{17}
+\indexentry{revert\_url() (gestion.models.HistoricalKeg method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalKeg method}|hyperpage}{17}
+\indexentry{stockHold (gestion.models.HistoricalKeg attribute)@\spxentry{stockHold}\spxextra{gestion.models.HistoricalKeg attribute}|hyperpage}{17}
+\indexentry{HistoricalKegHistory (class in gestion.models)@\spxentry{HistoricalKegHistory}\spxextra{class in gestion.models}|hyperpage}{17}
+\indexentry{HistoricalKegHistory.DoesNotExist@\spxentry{HistoricalKegHistory.DoesNotExist}|hyperpage}{17}
+\indexentry{HistoricalKegHistory.MultipleObjectsReturned@\spxentry{HistoricalKegHistory.MultipleObjectsReturned}|hyperpage}{17}
+\indexentry{amountSold (gestion.models.HistoricalKegHistory attribute)@\spxentry{amountSold}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{closingDate (gestion.models.HistoricalKegHistory attribute)@\spxentry{closingDate}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalKegHistory method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{17}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalKegHistory method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{17}
+\indexentry{get\_next\_by\_openingDate() (gestion.models.HistoricalKegHistory method)@\spxentry{get\_next\_by\_openingDate()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{17}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalKegHistory method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{17}
+\indexentry{get\_previous\_by\_openingDate() (gestion.models.HistoricalKegHistory method)@\spxentry{get\_previous\_by\_openingDate()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{17}
+\indexentry{history\_change\_reason (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_date (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_id (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_object (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_type (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_user (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{17}
+\indexentry{history\_user\_id (gestion.models.HistoricalKegHistory attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{id (gestion.models.HistoricalKegHistory attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{instance (gestion.models.HistoricalKegHistory attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{instance\_type (gestion.models.HistoricalKegHistory attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{isCurrentKegHistory (gestion.models.HistoricalKegHistory attribute)@\spxentry{isCurrentKegHistory}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{keg (gestion.models.HistoricalKegHistory attribute)@\spxentry{keg}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{keg\_id (gestion.models.HistoricalKegHistory attribute)@\spxentry{keg\_id}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{next\_record (gestion.models.HistoricalKegHistory attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{objects (gestion.models.HistoricalKegHistory attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{openingDate (gestion.models.HistoricalKegHistory attribute)@\spxentry{openingDate}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{prev\_record (gestion.models.HistoricalKegHistory attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{quantitySold (gestion.models.HistoricalKegHistory attribute)@\spxentry{quantitySold}\spxextra{gestion.models.HistoricalKegHistory attribute}|hyperpage}{18}
+\indexentry{revert\_url() (gestion.models.HistoricalKegHistory method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalKegHistory method}|hyperpage}{18}
+\indexentry{HistoricalMenu (class in gestion.models)@\spxentry{HistoricalMenu}\spxextra{class in gestion.models}|hyperpage}{18}
+\indexentry{HistoricalMenu.DoesNotExist@\spxentry{HistoricalMenu.DoesNotExist}|hyperpage}{19}
+\indexentry{HistoricalMenu.MultipleObjectsReturned@\spxentry{HistoricalMenu.MultipleObjectsReturned}|hyperpage}{19}
+\indexentry{amount (gestion.models.HistoricalMenu attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{barcode (gestion.models.HistoricalMenu attribute)@\spxentry{barcode}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalMenu method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalMenu method}|hyperpage}{19}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalMenu method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenu method}|hyperpage}{19}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalMenu method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenu method}|hyperpage}{19}
+\indexentry{history\_change\_reason (gestion.models.HistoricalMenu attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_date (gestion.models.HistoricalMenu attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_id (gestion.models.HistoricalMenu attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_object (gestion.models.HistoricalMenu attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_type (gestion.models.HistoricalMenu attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_user (gestion.models.HistoricalMenu attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{history\_user\_id (gestion.models.HistoricalMenu attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{id (gestion.models.HistoricalMenu attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{instance (gestion.models.HistoricalMenu attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{instance\_type (gestion.models.HistoricalMenu attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{19}
+\indexentry{is\_active (gestion.models.HistoricalMenu attribute)@\spxentry{is\_active}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{20}
+\indexentry{name (gestion.models.HistoricalMenu attribute)@\spxentry{name}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{20}
+\indexentry{next\_record (gestion.models.HistoricalMenu attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{20}
+\indexentry{objects (gestion.models.HistoricalMenu attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{20}
+\indexentry{prev\_record (gestion.models.HistoricalMenu attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalMenu attribute}|hyperpage}{20}
+\indexentry{revert\_url() (gestion.models.HistoricalMenu method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalMenu method}|hyperpage}{20}
+\indexentry{HistoricalMenuHistory (class in gestion.models)@\spxentry{HistoricalMenuHistory}\spxextra{class in gestion.models}|hyperpage}{20}
+\indexentry{HistoricalMenuHistory.DoesNotExist@\spxentry{HistoricalMenuHistory.DoesNotExist}|hyperpage}{20}
+\indexentry{HistoricalMenuHistory.MultipleObjectsReturned@\spxentry{HistoricalMenuHistory.MultipleObjectsReturned}|hyperpage}{20}
+\indexentry{amount (gestion.models.HistoricalMenuHistory attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{20}
+\indexentry{coopeman (gestion.models.HistoricalMenuHistory attribute)@\spxentry{coopeman}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{20}
+\indexentry{coopeman\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{20}
+\indexentry{customer (gestion.models.HistoricalMenuHistory attribute)@\spxentry{customer}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{20}
+\indexentry{customer\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{customer\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{20}
+\indexentry{date (gestion.models.HistoricalMenuHistory attribute)@\spxentry{date}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalMenuHistory method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{21}
+\indexentry{get\_next\_by\_date() (gestion.models.HistoricalMenuHistory method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{21}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalMenuHistory method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{21}
+\indexentry{get\_previous\_by\_date() (gestion.models.HistoricalMenuHistory method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{21}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalMenuHistory method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{21}
+\indexentry{history\_change\_reason (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_date (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_object (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_type (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_user (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{history\_user\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{instance (gestion.models.HistoricalMenuHistory attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{instance\_type (gestion.models.HistoricalMenuHistory attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{menu (gestion.models.HistoricalMenuHistory attribute)@\spxentry{menu}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{21}
+\indexentry{menu\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{menu\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{next\_record (gestion.models.HistoricalMenuHistory attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{objects (gestion.models.HistoricalMenuHistory attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{paymentMethod (gestion.models.HistoricalMenuHistory attribute)@\spxentry{paymentMethod}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{paymentMethod\_id (gestion.models.HistoricalMenuHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{prev\_record (gestion.models.HistoricalMenuHistory attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{quantity (gestion.models.HistoricalMenuHistory attribute)@\spxentry{quantity}\spxextra{gestion.models.HistoricalMenuHistory attribute}|hyperpage}{22}
+\indexentry{revert\_url() (gestion.models.HistoricalMenuHistory method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalMenuHistory method}|hyperpage}{22}
+\indexentry{HistoricalPinte (class in gestion.models)@\spxentry{HistoricalPinte}\spxextra{class in gestion.models}|hyperpage}{22}
+\indexentry{HistoricalPinte.DoesNotExist@\spxentry{HistoricalPinte.DoesNotExist}|hyperpage}{22}
+\indexentry{HistoricalPinte.MultipleObjectsReturned@\spxentry{HistoricalPinte.MultipleObjectsReturned}|hyperpage}{22}
+\indexentry{current\_owner (gestion.models.HistoricalPinte attribute)@\spxentry{current\_owner}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{22}
+\indexentry{current\_owner\_id (gestion.models.HistoricalPinte attribute)@\spxentry{current\_owner\_id}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalPinte method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{23}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalPinte method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{23}
+\indexentry{get\_next\_by\_last\_update\_date() (gestion.models.HistoricalPinte method)@\spxentry{get\_next\_by\_last\_update\_date()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{23}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalPinte method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{23}
+\indexentry{get\_previous\_by\_last\_update\_date() (gestion.models.HistoricalPinte method)@\spxentry{get\_previous\_by\_last\_update\_date()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{23}
+\indexentry{history\_change\_reason (gestion.models.HistoricalPinte attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_date (gestion.models.HistoricalPinte attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_id (gestion.models.HistoricalPinte attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_object (gestion.models.HistoricalPinte attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_type (gestion.models.HistoricalPinte attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_user (gestion.models.HistoricalPinte attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{history\_user\_id (gestion.models.HistoricalPinte attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{id (gestion.models.HistoricalPinte attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{instance (gestion.models.HistoricalPinte attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{instance\_type (gestion.models.HistoricalPinte attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{last\_update\_date (gestion.models.HistoricalPinte attribute)@\spxentry{last\_update\_date}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{23}
+\indexentry{next\_record (gestion.models.HistoricalPinte attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{24}
+\indexentry{objects (gestion.models.HistoricalPinte attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{24}
+\indexentry{prev\_record (gestion.models.HistoricalPinte attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{24}
+\indexentry{previous\_owner (gestion.models.HistoricalPinte attribute)@\spxentry{previous\_owner}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{24}
+\indexentry{previous\_owner\_id (gestion.models.HistoricalPinte attribute)@\spxentry{previous\_owner\_id}\spxextra{gestion.models.HistoricalPinte attribute}|hyperpage}{24}
+\indexentry{revert\_url() (gestion.models.HistoricalPinte method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalPinte method}|hyperpage}{24}
+\indexentry{HistoricalProduct (class in gestion.models)@\spxentry{HistoricalProduct}\spxextra{class in gestion.models}|hyperpage}{24}
+\indexentry{HistoricalProduct.DoesNotExist@\spxentry{HistoricalProduct.DoesNotExist}|hyperpage}{24}
+\indexentry{HistoricalProduct.MultipleObjectsReturned@\spxentry{HistoricalProduct.MultipleObjectsReturned}|hyperpage}{24}
+\indexentry{adherentRequired (gestion.models.HistoricalProduct attribute)@\spxentry{adherentRequired}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{24}
+\indexentry{amount (gestion.models.HistoricalProduct attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{24}
+\indexentry{barcode (gestion.models.HistoricalProduct attribute)@\spxentry{barcode}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{24}
+\indexentry{category (gestion.models.HistoricalProduct attribute)@\spxentry{category}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{24}
+\indexentry{deg (gestion.models.HistoricalProduct attribute)@\spxentry{deg}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{24}
+\indexentry{get\_category\_display() (gestion.models.HistoricalProduct method)@\spxentry{get\_category\_display()}\spxextra{gestion.models.HistoricalProduct method}|hyperpage}{24}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalProduct method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalProduct method}|hyperpage}{24}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalProduct method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalProduct method}|hyperpage}{25}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalProduct method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalProduct method}|hyperpage}{25}
+\indexentry{history\_change\_reason (gestion.models.HistoricalProduct attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_date (gestion.models.HistoricalProduct attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_id (gestion.models.HistoricalProduct attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_object (gestion.models.HistoricalProduct attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_type (gestion.models.HistoricalProduct attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_user (gestion.models.HistoricalProduct attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{history\_user\_id (gestion.models.HistoricalProduct attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{id (gestion.models.HistoricalProduct attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{instance (gestion.models.HistoricalProduct attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{instance\_type (gestion.models.HistoricalProduct attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{is\_active (gestion.models.HistoricalProduct attribute)@\spxentry{is\_active}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{name (gestion.models.HistoricalProduct attribute)@\spxentry{name}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{needQuantityButton (gestion.models.HistoricalProduct attribute)@\spxentry{needQuantityButton}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{next\_record (gestion.models.HistoricalProduct attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{objects (gestion.models.HistoricalProduct attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{25}
+\indexentry{prev\_record (gestion.models.HistoricalProduct attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{26}
+\indexentry{revert\_url() (gestion.models.HistoricalProduct method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalProduct method}|hyperpage}{26}
+\indexentry{showingMultiplier (gestion.models.HistoricalProduct attribute)@\spxentry{showingMultiplier}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{26}
+\indexentry{stockBar (gestion.models.HistoricalProduct attribute)@\spxentry{stockBar}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{26}
+\indexentry{stockHold (gestion.models.HistoricalProduct attribute)@\spxentry{stockHold}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{26}
+\indexentry{volume (gestion.models.HistoricalProduct attribute)@\spxentry{volume}\spxextra{gestion.models.HistoricalProduct attribute}|hyperpage}{26}
+\indexentry{HistoricalRefund (class in gestion.models)@\spxentry{HistoricalRefund}\spxextra{class in gestion.models}|hyperpage}{26}
+\indexentry{HistoricalRefund.DoesNotExist@\spxentry{HistoricalRefund.DoesNotExist}|hyperpage}{26}
+\indexentry{HistoricalRefund.MultipleObjectsReturned@\spxentry{HistoricalRefund.MultipleObjectsReturned}|hyperpage}{26}
+\indexentry{amount (gestion.models.HistoricalRefund attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{26}
+\indexentry{coopeman (gestion.models.HistoricalRefund attribute)@\spxentry{coopeman}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{26}
+\indexentry{coopeman\_id (gestion.models.HistoricalRefund attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{26}
+\indexentry{customer (gestion.models.HistoricalRefund attribute)@\spxentry{customer}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{26}
+\indexentry{customer\_id (gestion.models.HistoricalRefund attribute)@\spxentry{customer\_id}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{26}
+\indexentry{date (gestion.models.HistoricalRefund attribute)@\spxentry{date}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalRefund method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{27}
+\indexentry{get\_next\_by\_date() (gestion.models.HistoricalRefund method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{27}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalRefund method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{27}
+\indexentry{get\_previous\_by\_date() (gestion.models.HistoricalRefund method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{27}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalRefund method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{27}
+\indexentry{history\_change\_reason (gestion.models.HistoricalRefund attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_date (gestion.models.HistoricalRefund attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_id (gestion.models.HistoricalRefund attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_object (gestion.models.HistoricalRefund attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_type (gestion.models.HistoricalRefund attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_user (gestion.models.HistoricalRefund attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{history\_user\_id (gestion.models.HistoricalRefund attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{id (gestion.models.HistoricalRefund attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{instance (gestion.models.HistoricalRefund attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{instance\_type (gestion.models.HistoricalRefund attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{next\_record (gestion.models.HistoricalRefund attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{27}
+\indexentry{objects (gestion.models.HistoricalRefund attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{28}
+\indexentry{prev\_record (gestion.models.HistoricalRefund attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalRefund attribute}|hyperpage}{28}
+\indexentry{revert\_url() (gestion.models.HistoricalRefund method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalRefund method}|hyperpage}{28}
+\indexentry{HistoricalReload (class in gestion.models)@\spxentry{HistoricalReload}\spxextra{class in gestion.models}|hyperpage}{28}
+\indexentry{HistoricalReload.DoesNotExist@\spxentry{HistoricalReload.DoesNotExist}|hyperpage}{28}
+\indexentry{HistoricalReload.MultipleObjectsReturned@\spxentry{HistoricalReload.MultipleObjectsReturned}|hyperpage}{28}
+\indexentry{PaymentMethod (gestion.models.HistoricalReload attribute)@\spxentry{PaymentMethod}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{PaymentMethod\_id (gestion.models.HistoricalReload attribute)@\spxentry{PaymentMethod\_id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{amount (gestion.models.HistoricalReload attribute)@\spxentry{amount}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{coopeman (gestion.models.HistoricalReload attribute)@\spxentry{coopeman}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{coopeman\_id (gestion.models.HistoricalReload attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{customer (gestion.models.HistoricalReload attribute)@\spxentry{customer}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{28}
+\indexentry{customer\_id (gestion.models.HistoricalReload attribute)@\spxentry{customer\_id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{date (gestion.models.HistoricalReload attribute)@\spxentry{date}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{get\_history\_type\_display() (gestion.models.HistoricalReload method)@\spxentry{get\_history\_type\_display()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{29}
+\indexentry{get\_next\_by\_date() (gestion.models.HistoricalReload method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{29}
+\indexentry{get\_next\_by\_history\_date() (gestion.models.HistoricalReload method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{29}
+\indexentry{get\_previous\_by\_date() (gestion.models.HistoricalReload method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{29}
+\indexentry{get\_previous\_by\_history\_date() (gestion.models.HistoricalReload method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{29}
+\indexentry{history\_change\_reason (gestion.models.HistoricalReload attribute)@\spxentry{history\_change\_reason}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_date (gestion.models.HistoricalReload attribute)@\spxentry{history\_date}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_id (gestion.models.HistoricalReload attribute)@\spxentry{history\_id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_object (gestion.models.HistoricalReload attribute)@\spxentry{history\_object}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_type (gestion.models.HistoricalReload attribute)@\spxentry{history\_type}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_user (gestion.models.HistoricalReload attribute)@\spxentry{history\_user}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{history\_user\_id (gestion.models.HistoricalReload attribute)@\spxentry{history\_user\_id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{id (gestion.models.HistoricalReload attribute)@\spxentry{id}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{instance (gestion.models.HistoricalReload attribute)@\spxentry{instance}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{instance\_type (gestion.models.HistoricalReload attribute)@\spxentry{instance\_type}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{29}
+\indexentry{next\_record (gestion.models.HistoricalReload attribute)@\spxentry{next\_record}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{30}
+\indexentry{objects (gestion.models.HistoricalReload attribute)@\spxentry{objects}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{30}
+\indexentry{prev\_record (gestion.models.HistoricalReload attribute)@\spxentry{prev\_record}\spxextra{gestion.models.HistoricalReload attribute}|hyperpage}{30}
+\indexentry{revert\_url() (gestion.models.HistoricalReload method)@\spxentry{revert\_url()}\spxextra{gestion.models.HistoricalReload method}|hyperpage}{30}
+\indexentry{Keg (class in gestion.models)@\spxentry{Keg}\spxextra{class in gestion.models}|hyperpage}{30}
+\indexentry{Keg.DoesNotExist@\spxentry{Keg.DoesNotExist}|hyperpage}{30}
+\indexentry{Keg.MultipleObjectsReturned@\spxentry{Keg.MultipleObjectsReturned}|hyperpage}{30}
+\indexentry{amount (gestion.models.Keg attribute)@\spxentry{amount}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{barcode (gestion.models.Keg attribute)@\spxentry{barcode}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{capacity (gestion.models.Keg attribute)@\spxentry{capacity}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{demi (gestion.models.Keg attribute)@\spxentry{demi}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{demi\_id (gestion.models.Keg attribute)@\spxentry{demi\_id}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{galopin (gestion.models.Keg attribute)@\spxentry{galopin}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{galopin\_id (gestion.models.Keg attribute)@\spxentry{galopin\_id}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{history (gestion.models.Keg attribute)@\spxentry{history}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{id (gestion.models.Keg attribute)@\spxentry{id}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{is\_active (gestion.models.Keg attribute)@\spxentry{is\_active}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{keghistory\_set (gestion.models.Keg attribute)@\spxentry{keghistory\_set}\spxextra{gestion.models.Keg attribute}|hyperpage}{30}
+\indexentry{name (gestion.models.Keg attribute)@\spxentry{name}\spxextra{gestion.models.Keg attribute}|hyperpage}{31}
+\indexentry{objects (gestion.models.Keg attribute)@\spxentry{objects}\spxextra{gestion.models.Keg attribute}|hyperpage}{31}
+\indexentry{pinte (gestion.models.Keg attribute)@\spxentry{pinte}\spxextra{gestion.models.Keg attribute}|hyperpage}{31}
+\indexentry{pinte\_id (gestion.models.Keg attribute)@\spxentry{pinte\_id}\spxextra{gestion.models.Keg attribute}|hyperpage}{31}
+\indexentry{save\_without\_historical\_record() (gestion.models.Keg method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Keg method}|hyperpage}{31}
+\indexentry{stockHold (gestion.models.Keg attribute)@\spxentry{stockHold}\spxextra{gestion.models.Keg attribute}|hyperpage}{31}
+\indexentry{KegHistory (class in gestion.models)@\spxentry{KegHistory}\spxextra{class in gestion.models}|hyperpage}{31}
+\indexentry{KegHistory.DoesNotExist@\spxentry{KegHistory.DoesNotExist}|hyperpage}{31}
+\indexentry{KegHistory.MultipleObjectsReturned@\spxentry{KegHistory.MultipleObjectsReturned}|hyperpage}{31}
+\indexentry{amountSold (gestion.models.KegHistory attribute)@\spxentry{amountSold}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{closingDate (gestion.models.KegHistory attribute)@\spxentry{closingDate}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{get\_next\_by\_openingDate() (gestion.models.KegHistory method)@\spxentry{get\_next\_by\_openingDate()}\spxextra{gestion.models.KegHistory method}|hyperpage}{31}
+\indexentry{get\_previous\_by\_openingDate() (gestion.models.KegHistory method)@\spxentry{get\_previous\_by\_openingDate()}\spxextra{gestion.models.KegHistory method}|hyperpage}{31}
+\indexentry{history (gestion.models.KegHistory attribute)@\spxentry{history}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{id (gestion.models.KegHistory attribute)@\spxentry{id}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{isCurrentKegHistory (gestion.models.KegHistory attribute)@\spxentry{isCurrentKegHistory}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{keg (gestion.models.KegHistory attribute)@\spxentry{keg}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{keg\_id (gestion.models.KegHistory attribute)@\spxentry{keg\_id}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{objects (gestion.models.KegHistory attribute)@\spxentry{objects}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{openingDate (gestion.models.KegHistory attribute)@\spxentry{openingDate}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{quantitySold (gestion.models.KegHistory attribute)@\spxentry{quantitySold}\spxextra{gestion.models.KegHistory attribute}|hyperpage}{31}
+\indexentry{save\_without\_historical\_record() (gestion.models.KegHistory method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.KegHistory method}|hyperpage}{31}
+\indexentry{Menu (class in gestion.models)@\spxentry{Menu}\spxextra{class in gestion.models}|hyperpage}{32}
+\indexentry{Menu.DoesNotExist@\spxentry{Menu.DoesNotExist}|hyperpage}{32}
+\indexentry{Menu.MultipleObjectsReturned@\spxentry{Menu.MultipleObjectsReturned}|hyperpage}{32}
+\indexentry{adherent\_required (gestion.models.Menu attribute)@\spxentry{adherent\_required}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{amount (gestion.models.Menu attribute)@\spxentry{amount}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{articles (gestion.models.Menu attribute)@\spxentry{articles}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{barcode (gestion.models.Menu attribute)@\spxentry{barcode}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{history (gestion.models.Menu attribute)@\spxentry{history}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{id (gestion.models.Menu attribute)@\spxentry{id}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{is\_active (gestion.models.Menu attribute)@\spxentry{is\_active}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{menuhistory\_set (gestion.models.Menu attribute)@\spxentry{menuhistory\_set}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{name (gestion.models.Menu attribute)@\spxentry{name}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{objects (gestion.models.Menu attribute)@\spxentry{objects}\spxextra{gestion.models.Menu attribute}|hyperpage}{32}
+\indexentry{save\_without\_historical\_record() (gestion.models.Menu method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Menu method}|hyperpage}{32}
+\indexentry{MenuHistory (class in gestion.models)@\spxentry{MenuHistory}\spxextra{class in gestion.models}|hyperpage}{32}
+\indexentry{MenuHistory.DoesNotExist@\spxentry{MenuHistory.DoesNotExist}|hyperpage}{32}
+\indexentry{MenuHistory.MultipleObjectsReturned@\spxentry{MenuHistory.MultipleObjectsReturned}|hyperpage}{32}
+\indexentry{amount (gestion.models.MenuHistory attribute)@\spxentry{amount}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{32}
+\indexentry{coopeman (gestion.models.MenuHistory attribute)@\spxentry{coopeman}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{32}
+\indexentry{coopeman\_id (gestion.models.MenuHistory attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{customer (gestion.models.MenuHistory attribute)@\spxentry{customer}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{customer\_id (gestion.models.MenuHistory attribute)@\spxentry{customer\_id}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{date (gestion.models.MenuHistory attribute)@\spxentry{date}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{get\_next\_by\_date() (gestion.models.MenuHistory method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.MenuHistory method}|hyperpage}{33}
+\indexentry{get\_previous\_by\_date() (gestion.models.MenuHistory method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.MenuHistory method}|hyperpage}{33}
+\indexentry{history (gestion.models.MenuHistory attribute)@\spxentry{history}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{id (gestion.models.MenuHistory attribute)@\spxentry{id}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{menu (gestion.models.MenuHistory attribute)@\spxentry{menu}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{menu\_id (gestion.models.MenuHistory attribute)@\spxentry{menu\_id}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{objects (gestion.models.MenuHistory attribute)@\spxentry{objects}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{paymentMethod (gestion.models.MenuHistory attribute)@\spxentry{paymentMethod}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{paymentMethod\_id (gestion.models.MenuHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{quantity (gestion.models.MenuHistory attribute)@\spxentry{quantity}\spxextra{gestion.models.MenuHistory attribute}|hyperpage}{33}
+\indexentry{save\_without\_historical\_record() (gestion.models.MenuHistory method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.MenuHistory method}|hyperpage}{33}
+\indexentry{Pinte (class in gestion.models)@\spxentry{Pinte}\spxextra{class in gestion.models}|hyperpage}{33}
+\indexentry{Pinte.DoesNotExist@\spxentry{Pinte.DoesNotExist}|hyperpage}{33}
+\indexentry{Pinte.MultipleObjectsReturned@\spxentry{Pinte.MultipleObjectsReturned}|hyperpage}{34}
+\indexentry{current\_owner (gestion.models.Pinte attribute)@\spxentry{current\_owner}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{current\_owner\_id (gestion.models.Pinte attribute)@\spxentry{current\_owner\_id}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{get\_next\_by\_last\_update\_date() (gestion.models.Pinte method)@\spxentry{get\_next\_by\_last\_update\_date()}\spxextra{gestion.models.Pinte method}|hyperpage}{34}
+\indexentry{get\_previous\_by\_last\_update\_date() (gestion.models.Pinte method)@\spxentry{get\_previous\_by\_last\_update\_date()}\spxextra{gestion.models.Pinte method}|hyperpage}{34}
+\indexentry{history (gestion.models.Pinte attribute)@\spxentry{history}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{id (gestion.models.Pinte attribute)@\spxentry{id}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{last\_update\_date (gestion.models.Pinte attribute)@\spxentry{last\_update\_date}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{objects (gestion.models.Pinte attribute)@\spxentry{objects}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{previous\_owner (gestion.models.Pinte attribute)@\spxentry{previous\_owner}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{previous\_owner\_id (gestion.models.Pinte attribute)@\spxentry{previous\_owner\_id}\spxextra{gestion.models.Pinte attribute}|hyperpage}{34}
+\indexentry{save\_without\_historical\_record() (gestion.models.Pinte method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Pinte method}|hyperpage}{34}
+\indexentry{Product (class in gestion.models)@\spxentry{Product}\spxextra{class in gestion.models}|hyperpage}{34}
+\indexentry{BOTTLE (gestion.models.Product attribute)@\spxentry{BOTTLE}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{D\_PRESSION (gestion.models.Product attribute)@\spxentry{D\_PRESSION}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{Product.DoesNotExist@\spxentry{Product.DoesNotExist}|hyperpage}{34}
+\indexentry{FOOD (gestion.models.Product attribute)@\spxentry{FOOD}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{G\_PRESSION (gestion.models.Product attribute)@\spxentry{G\_PRESSION}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{Product.MultipleObjectsReturned@\spxentry{Product.MultipleObjectsReturned}|hyperpage}{34}
+\indexentry{PANINI (gestion.models.Product attribute)@\spxentry{PANINI}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{P\_PRESSION (gestion.models.Product attribute)@\spxentry{P\_PRESSION}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{SOFT (gestion.models.Product attribute)@\spxentry{SOFT}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{TYPEINPUT\_CHOICES\_CATEGORIE (gestion.models.Product attribute)@\spxentry{TYPEINPUT\_CHOICES\_CATEGORIE}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{adherentRequired (gestion.models.Product attribute)@\spxentry{adherentRequired}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{amount (gestion.models.Product attribute)@\spxentry{amount}\spxextra{gestion.models.Product attribute}|hyperpage}{34}
+\indexentry{barcode (gestion.models.Product attribute)@\spxentry{barcode}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{category (gestion.models.Product attribute)@\spxentry{category}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{consumption\_set (gestion.models.Product attribute)@\spxentry{consumption\_set}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{consumptionhistory\_set (gestion.models.Product attribute)@\spxentry{consumptionhistory\_set}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{deg (gestion.models.Product attribute)@\spxentry{deg}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{futd (gestion.models.Product attribute)@\spxentry{futd}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{futg (gestion.models.Product attribute)@\spxentry{futg}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{futp (gestion.models.Product attribute)@\spxentry{futp}\spxextra{gestion.models.Product attribute}|hyperpage}{35}
+\indexentry{get\_category\_display() (gestion.models.Product method)@\spxentry{get\_category\_display()}\spxextra{gestion.models.Product method}|hyperpage}{36}
+\indexentry{history (gestion.models.Product attribute)@\spxentry{history}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{id (gestion.models.Product attribute)@\spxentry{id}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{is\_active (gestion.models.Product attribute)@\spxentry{is\_active}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{menu\_set (gestion.models.Product attribute)@\spxentry{menu\_set}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{name (gestion.models.Product attribute)@\spxentry{name}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{needQuantityButton (gestion.models.Product attribute)@\spxentry{needQuantityButton}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{objects (gestion.models.Product attribute)@\spxentry{objects}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{ranking (gestion.models.Product attribute)@\spxentry{ranking}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{save\_without\_historical\_record() (gestion.models.Product method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Product method}|hyperpage}{36}
+\indexentry{showingMultiplier (gestion.models.Product attribute)@\spxentry{showingMultiplier}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{stockBar (gestion.models.Product attribute)@\spxentry{stockBar}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{stockHold (gestion.models.Product attribute)@\spxentry{stockHold}\spxextra{gestion.models.Product attribute}|hyperpage}{36}
+\indexentry{user\_ranking() (gestion.models.Product method)@\spxentry{user\_ranking()}\spxextra{gestion.models.Product method}|hyperpage}{36}
+\indexentry{volume (gestion.models.Product attribute)@\spxentry{volume}\spxextra{gestion.models.Product attribute}|hyperpage}{37}
+\indexentry{Refund (class in gestion.models)@\spxentry{Refund}\spxextra{class in gestion.models}|hyperpage}{37}
+\indexentry{Refund.DoesNotExist@\spxentry{Refund.DoesNotExist}|hyperpage}{37}
+\indexentry{Refund.MultipleObjectsReturned@\spxentry{Refund.MultipleObjectsReturned}|hyperpage}{37}
+\indexentry{amount (gestion.models.Refund attribute)@\spxentry{amount}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{coopeman (gestion.models.Refund attribute)@\spxentry{coopeman}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{coopeman\_id (gestion.models.Refund attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{customer (gestion.models.Refund attribute)@\spxentry{customer}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{customer\_id (gestion.models.Refund attribute)@\spxentry{customer\_id}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{date (gestion.models.Refund attribute)@\spxentry{date}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{get\_next\_by\_date() (gestion.models.Refund method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.Refund method}|hyperpage}{37}
+\indexentry{get\_previous\_by\_date() (gestion.models.Refund method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.Refund method}|hyperpage}{37}
+\indexentry{history (gestion.models.Refund attribute)@\spxentry{history}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{id (gestion.models.Refund attribute)@\spxentry{id}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{objects (gestion.models.Refund attribute)@\spxentry{objects}\spxextra{gestion.models.Refund attribute}|hyperpage}{37}
+\indexentry{save\_without\_historical\_record() (gestion.models.Refund method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Refund method}|hyperpage}{37}
+\indexentry{Reload (class in gestion.models)@\spxentry{Reload}\spxextra{class in gestion.models}|hyperpage}{37}
+\indexentry{Reload.DoesNotExist@\spxentry{Reload.DoesNotExist}|hyperpage}{37}
+\indexentry{Reload.MultipleObjectsReturned@\spxentry{Reload.MultipleObjectsReturned}|hyperpage}{37}
+\indexentry{PaymentMethod (gestion.models.Reload attribute)@\spxentry{PaymentMethod}\spxextra{gestion.models.Reload attribute}|hyperpage}{37}
+\indexentry{PaymentMethod\_id (gestion.models.Reload attribute)@\spxentry{PaymentMethod\_id}\spxextra{gestion.models.Reload attribute}|hyperpage}{37}
+\indexentry{amount (gestion.models.Reload attribute)@\spxentry{amount}\spxextra{gestion.models.Reload attribute}|hyperpage}{37}
+\indexentry{coopeman (gestion.models.Reload attribute)@\spxentry{coopeman}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{coopeman\_id (gestion.models.Reload attribute)@\spxentry{coopeman\_id}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{customer (gestion.models.Reload attribute)@\spxentry{customer}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{customer\_id (gestion.models.Reload attribute)@\spxentry{customer\_id}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{date (gestion.models.Reload attribute)@\spxentry{date}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{get\_next\_by\_date() (gestion.models.Reload method)@\spxentry{get\_next\_by\_date()}\spxextra{gestion.models.Reload method}|hyperpage}{38}
+\indexentry{get\_previous\_by\_date() (gestion.models.Reload method)@\spxentry{get\_previous\_by\_date()}\spxextra{gestion.models.Reload method}|hyperpage}{38}
+\indexentry{history (gestion.models.Reload attribute)@\spxentry{history}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{id (gestion.models.Reload attribute)@\spxentry{id}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{objects (gestion.models.Reload attribute)@\spxentry{objects}\spxextra{gestion.models.Reload attribute}|hyperpage}{38}
+\indexentry{save\_without\_historical\_record() (gestion.models.Reload method)@\spxentry{save\_without\_historical\_record()}\spxextra{gestion.models.Reload method}|hyperpage}{38}
+\indexentry{isDemi() (in module gestion.models)@\spxentry{isDemi()}\spxextra{in module gestion.models}|hyperpage}{38}
+\indexentry{isGalopin() (in module gestion.models)@\spxentry{isGalopin()}\spxextra{in module gestion.models}|hyperpage}{38}
+\indexentry{isPinte() (in module gestion.models)@\spxentry{isPinte()}\spxextra{in module gestion.models}|hyperpage}{38}
+\indexentry{users.models (module)@\spxentry{users.models}\spxextra{module}|hyperpage}{38}
+\indexentry{CotisationHistory (class in users.models)@\spxentry{CotisationHistory}\spxextra{class in users.models}|hyperpage}{38}
+\indexentry{CotisationHistory.DoesNotExist@\spxentry{CotisationHistory.DoesNotExist}|hyperpage}{38}
+\indexentry{CotisationHistory.MultipleObjectsReturned@\spxentry{CotisationHistory.MultipleObjectsReturned}|hyperpage}{38}
+\indexentry{amount (users.models.CotisationHistory attribute)@\spxentry{amount}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{38}
+\indexentry{coopeman (users.models.CotisationHistory attribute)@\spxentry{coopeman}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{38}
+\indexentry{coopeman\_id (users.models.CotisationHistory attribute)@\spxentry{coopeman\_id}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{38}
+\indexentry{cotisation (users.models.CotisationHistory attribute)@\spxentry{cotisation}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{38}
+\indexentry{cotisation\_id (users.models.CotisationHistory attribute)@\spxentry{cotisation\_id}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{duration (users.models.CotisationHistory attribute)@\spxentry{duration}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{endDate (users.models.CotisationHistory attribute)@\spxentry{endDate}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{get\_next\_by\_endDate() (users.models.CotisationHistory method)@\spxentry{get\_next\_by\_endDate()}\spxextra{users.models.CotisationHistory method}|hyperpage}{39}
+\indexentry{get\_next\_by\_paymentDate() (users.models.CotisationHistory method)@\spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.CotisationHistory method}|hyperpage}{39}
+\indexentry{get\_previous\_by\_endDate() (users.models.CotisationHistory method)@\spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.CotisationHistory method}|hyperpage}{39}
+\indexentry{get\_previous\_by\_paymentDate() (users.models.CotisationHistory method)@\spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.CotisationHistory method}|hyperpage}{39}
+\indexentry{history (users.models.CotisationHistory attribute)@\spxentry{history}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{id (users.models.CotisationHistory attribute)@\spxentry{id}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{objects (users.models.CotisationHistory attribute)@\spxentry{objects}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{paymentDate (users.models.CotisationHistory attribute)@\spxentry{paymentDate}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{paymentMethod (users.models.CotisationHistory attribute)@\spxentry{paymentMethod}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{paymentMethod\_id (users.models.CotisationHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{save\_without\_historical\_record() (users.models.CotisationHistory method)@\spxentry{save\_without\_historical\_record()}\spxextra{users.models.CotisationHistory method}|hyperpage}{39}
+\indexentry{user (users.models.CotisationHistory attribute)@\spxentry{user}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{user\_id (users.models.CotisationHistory attribute)@\spxentry{user\_id}\spxextra{users.models.CotisationHistory attribute}|hyperpage}{39}
+\indexentry{HistoricalCotisationHistory (class in users.models)@\spxentry{HistoricalCotisationHistory}\spxextra{class in users.models}|hyperpage}{39}
+\indexentry{HistoricalCotisationHistory.DoesNotExist@\spxentry{HistoricalCotisationHistory.DoesNotExist}|hyperpage}{39}
+\indexentry{HistoricalCotisationHistory.MultipleObjectsReturned@\spxentry{HistoricalCotisationHistory.MultipleObjectsReturned}|hyperpage}{39}
+\indexentry{amount (users.models.HistoricalCotisationHistory attribute)@\spxentry{amount}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{39}
+\indexentry{coopeman (users.models.HistoricalCotisationHistory attribute)@\spxentry{coopeman}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{coopeman\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{coopeman\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{cotisation (users.models.HistoricalCotisationHistory attribute)@\spxentry{cotisation}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{cotisation\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{cotisation\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{duration (users.models.HistoricalCotisationHistory attribute)@\spxentry{duration}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{endDate (users.models.HistoricalCotisationHistory attribute)@\spxentry{endDate}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{get\_history\_type\_display() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_next\_by\_endDate() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_next\_by\_endDate()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_next\_by\_history\_date() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_next\_by\_paymentDate() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_previous\_by\_endDate() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_previous\_by\_history\_date() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{get\_previous\_by\_paymentDate() (users.models.HistoricalCotisationHistory method)@\spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{40}
+\indexentry{history\_change\_reason (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_change\_reason}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{40}
+\indexentry{history\_date (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_date}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{history\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{history\_object (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_object}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{history\_type (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_type}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{history\_user (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_user}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{history\_user\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{history\_user\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{id (users.models.HistoricalCotisationHistory attribute)@\spxentry{id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{instance (users.models.HistoricalCotisationHistory attribute)@\spxentry{instance}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{instance\_type (users.models.HistoricalCotisationHistory attribute)@\spxentry{instance\_type}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{next\_record (users.models.HistoricalCotisationHistory attribute)@\spxentry{next\_record}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{objects (users.models.HistoricalCotisationHistory attribute)@\spxentry{objects}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{paymentDate (users.models.HistoricalCotisationHistory attribute)@\spxentry{paymentDate}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{paymentMethod (users.models.HistoricalCotisationHistory attribute)@\spxentry{paymentMethod}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{paymentMethod\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{paymentMethod\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{41}
+\indexentry{prev\_record (users.models.HistoricalCotisationHistory attribute)@\spxentry{prev\_record}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{42}
+\indexentry{revert\_url() (users.models.HistoricalCotisationHistory method)@\spxentry{revert\_url()}\spxextra{users.models.HistoricalCotisationHistory method}|hyperpage}{42}
+\indexentry{user (users.models.HistoricalCotisationHistory attribute)@\spxentry{user}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{42}
+\indexentry{user\_id (users.models.HistoricalCotisationHistory attribute)@\spxentry{user\_id}\spxextra{users.models.HistoricalCotisationHistory attribute}|hyperpage}{42}
+\indexentry{HistoricalProfile (class in users.models)@\spxentry{HistoricalProfile}\spxextra{class in users.models}|hyperpage}{42}
+\indexentry{HistoricalProfile.DoesNotExist@\spxentry{HistoricalProfile.DoesNotExist}|hyperpage}{42}
+\indexentry{HistoricalProfile.MultipleObjectsReturned@\spxentry{HistoricalProfile.MultipleObjectsReturned}|hyperpage}{42}
+\indexentry{cotisationEnd (users.models.HistoricalProfile attribute)@\spxentry{cotisationEnd}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{credit (users.models.HistoricalProfile attribute)@\spxentry{credit}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{debit (users.models.HistoricalProfile attribute)@\spxentry{debit}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{get\_history\_type\_display() (users.models.HistoricalProfile method)@\spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalProfile method}|hyperpage}{42}
+\indexentry{get\_next\_by\_history\_date() (users.models.HistoricalProfile method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalProfile method}|hyperpage}{42}
+\indexentry{get\_previous\_by\_history\_date() (users.models.HistoricalProfile method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalProfile method}|hyperpage}{42}
+\indexentry{history\_change\_reason (users.models.HistoricalProfile attribute)@\spxentry{history\_change\_reason}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{history\_date (users.models.HistoricalProfile attribute)@\spxentry{history\_date}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{history\_id (users.models.HistoricalProfile attribute)@\spxentry{history\_id}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{42}
+\indexentry{history\_object (users.models.HistoricalProfile attribute)@\spxentry{history\_object}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{history\_type (users.models.HistoricalProfile attribute)@\spxentry{history\_type}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{history\_user (users.models.HistoricalProfile attribute)@\spxentry{history\_user}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{history\_user\_id (users.models.HistoricalProfile attribute)@\spxentry{history\_user\_id}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{id (users.models.HistoricalProfile attribute)@\spxentry{id}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{instance (users.models.HistoricalProfile attribute)@\spxentry{instance}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{instance\_type (users.models.HistoricalProfile attribute)@\spxentry{instance\_type}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{next\_record (users.models.HistoricalProfile attribute)@\spxentry{next\_record}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{objects (users.models.HistoricalProfile attribute)@\spxentry{objects}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{prev\_record (users.models.HistoricalProfile attribute)@\spxentry{prev\_record}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{revert\_url() (users.models.HistoricalProfile method)@\spxentry{revert\_url()}\spxextra{users.models.HistoricalProfile method}|hyperpage}{43}
+\indexentry{school (users.models.HistoricalProfile attribute)@\spxentry{school}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{school\_id (users.models.HistoricalProfile attribute)@\spxentry{school\_id}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{user (users.models.HistoricalProfile attribute)@\spxentry{user}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{43}
+\indexentry{user\_id (users.models.HistoricalProfile attribute)@\spxentry{user\_id}\spxextra{users.models.HistoricalProfile attribute}|hyperpage}{44}
+\indexentry{HistoricalSchool (class in users.models)@\spxentry{HistoricalSchool}\spxextra{class in users.models}|hyperpage}{44}
+\indexentry{HistoricalSchool.DoesNotExist@\spxentry{HistoricalSchool.DoesNotExist}|hyperpage}{44}
+\indexentry{HistoricalSchool.MultipleObjectsReturned@\spxentry{HistoricalSchool.MultipleObjectsReturned}|hyperpage}{44}
+\indexentry{get\_history\_type\_display() (users.models.HistoricalSchool method)@\spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalSchool method}|hyperpage}{44}
+\indexentry{get\_next\_by\_history\_date() (users.models.HistoricalSchool method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalSchool method}|hyperpage}{44}
+\indexentry{get\_previous\_by\_history\_date() (users.models.HistoricalSchool method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalSchool method}|hyperpage}{44}
+\indexentry{history\_change\_reason (users.models.HistoricalSchool attribute)@\spxentry{history\_change\_reason}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_date (users.models.HistoricalSchool attribute)@\spxentry{history\_date}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_id (users.models.HistoricalSchool attribute)@\spxentry{history\_id}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_object (users.models.HistoricalSchool attribute)@\spxentry{history\_object}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_type (users.models.HistoricalSchool attribute)@\spxentry{history\_type}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_user (users.models.HistoricalSchool attribute)@\spxentry{history\_user}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{history\_user\_id (users.models.HistoricalSchool attribute)@\spxentry{history\_user\_id}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{id (users.models.HistoricalSchool attribute)@\spxentry{id}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{instance (users.models.HistoricalSchool attribute)@\spxentry{instance}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{44}
+\indexentry{instance\_type (users.models.HistoricalSchool attribute)@\spxentry{instance\_type}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{45}
+\indexentry{name (users.models.HistoricalSchool attribute)@\spxentry{name}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{45}
+\indexentry{next\_record (users.models.HistoricalSchool attribute)@\spxentry{next\_record}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{45}
+\indexentry{objects (users.models.HistoricalSchool attribute)@\spxentry{objects}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{45}
+\indexentry{prev\_record (users.models.HistoricalSchool attribute)@\spxentry{prev\_record}\spxextra{users.models.HistoricalSchool attribute}|hyperpage}{45}
+\indexentry{revert\_url() (users.models.HistoricalSchool method)@\spxentry{revert\_url()}\spxextra{users.models.HistoricalSchool method}|hyperpage}{45}
+\indexentry{HistoricalWhiteListHistory (class in users.models)@\spxentry{HistoricalWhiteListHistory}\spxextra{class in users.models}|hyperpage}{45}
+\indexentry{HistoricalWhiteListHistory.DoesNotExist@\spxentry{HistoricalWhiteListHistory.DoesNotExist}|hyperpage}{45}
+\indexentry{HistoricalWhiteListHistory.MultipleObjectsReturned@\spxentry{HistoricalWhiteListHistory.MultipleObjectsReturned}|hyperpage}{45}
+\indexentry{coopeman (users.models.HistoricalWhiteListHistory attribute)@\spxentry{coopeman}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{45}
+\indexentry{coopeman\_id (users.models.HistoricalWhiteListHistory attribute)@\spxentry{coopeman\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{45}
+\indexentry{duration (users.models.HistoricalWhiteListHistory attribute)@\spxentry{duration}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{45}
+\indexentry{endDate (users.models.HistoricalWhiteListHistory attribute)@\spxentry{endDate}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{45}
+\indexentry{get\_history\_type\_display() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_history\_type\_display()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{45}
+\indexentry{get\_next\_by\_endDate() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_next\_by\_endDate()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{45}
+\indexentry{get\_next\_by\_history\_date() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{45}
+\indexentry{get\_next\_by\_paymentDate() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{45}
+\indexentry{get\_previous\_by\_endDate() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{45}
+\indexentry{get\_previous\_by\_history\_date() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{46}
+\indexentry{get\_previous\_by\_paymentDate() (users.models.HistoricalWhiteListHistory method)@\spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{46}
+\indexentry{history\_change\_reason (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_change\_reason}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_date (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_date}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_id (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_object (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_object}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_type (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_type}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_user (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_user}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{history\_user\_id (users.models.HistoricalWhiteListHistory attribute)@\spxentry{history\_user\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{id (users.models.HistoricalWhiteListHistory attribute)@\spxentry{id}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{instance (users.models.HistoricalWhiteListHistory attribute)@\spxentry{instance}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{instance\_type (users.models.HistoricalWhiteListHistory attribute)@\spxentry{instance\_type}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{next\_record (users.models.HistoricalWhiteListHistory attribute)@\spxentry{next\_record}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{objects (users.models.HistoricalWhiteListHistory attribute)@\spxentry{objects}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{paymentDate (users.models.HistoricalWhiteListHistory attribute)@\spxentry{paymentDate}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{prev\_record (users.models.HistoricalWhiteListHistory attribute)@\spxentry{prev\_record}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{46}
+\indexentry{revert\_url() (users.models.HistoricalWhiteListHistory method)@\spxentry{revert\_url()}\spxextra{users.models.HistoricalWhiteListHistory method}|hyperpage}{46}
+\indexentry{user (users.models.HistoricalWhiteListHistory attribute)@\spxentry{user}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{47}
+\indexentry{user\_id (users.models.HistoricalWhiteListHistory attribute)@\spxentry{user\_id}\spxextra{users.models.HistoricalWhiteListHistory attribute}|hyperpage}{47}
+\indexentry{Profile (class in users.models)@\spxentry{Profile}\spxextra{class in users.models}|hyperpage}{47}
+\indexentry{Profile.DoesNotExist@\spxentry{Profile.DoesNotExist}|hyperpage}{47}
+\indexentry{Profile.MultipleObjectsReturned@\spxentry{Profile.MultipleObjectsReturned}|hyperpage}{47}
+\indexentry{alcohol (users.models.Profile attribute)@\spxentry{alcohol}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{balance (users.models.Profile attribute)@\spxentry{balance}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{cotisationEnd (users.models.Profile attribute)@\spxentry{cotisationEnd}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{credit (users.models.Profile attribute)@\spxentry{credit}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{debit (users.models.Profile attribute)@\spxentry{debit}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{history (users.models.Profile attribute)@\spxentry{history}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{id (users.models.Profile attribute)@\spxentry{id}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{is\_adherent (users.models.Profile attribute)@\spxentry{is\_adherent}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{nb\_pintes (users.models.Profile attribute)@\spxentry{nb\_pintes}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{objects (users.models.Profile attribute)@\spxentry{objects}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{positiveBalance() (users.models.Profile method)@\spxentry{positiveBalance()}\spxextra{users.models.Profile method}|hyperpage}{47}
+\indexentry{rank (users.models.Profile attribute)@\spxentry{rank}\spxextra{users.models.Profile attribute}|hyperpage}{47}
+\indexentry{save\_without\_historical\_record() (users.models.Profile method)@\spxentry{save\_without\_historical\_record()}\spxextra{users.models.Profile method}|hyperpage}{47}
+\indexentry{school (users.models.Profile attribute)@\spxentry{school}\spxextra{users.models.Profile attribute}|hyperpage}{48}
+\indexentry{school\_id (users.models.Profile attribute)@\spxentry{school\_id}\spxextra{users.models.Profile attribute}|hyperpage}{48}
+\indexentry{user (users.models.Profile attribute)@\spxentry{user}\spxextra{users.models.Profile attribute}|hyperpage}{48}
+\indexentry{user\_id (users.models.Profile attribute)@\spxentry{user\_id}\spxextra{users.models.Profile attribute}|hyperpage}{48}
+\indexentry{School (class in users.models)@\spxentry{School}\spxextra{class in users.models}|hyperpage}{48}
+\indexentry{School.DoesNotExist@\spxentry{School.DoesNotExist}|hyperpage}{48}
+\indexentry{School.MultipleObjectsReturned@\spxentry{School.MultipleObjectsReturned}|hyperpage}{48}
+\indexentry{history (users.models.School attribute)@\spxentry{history}\spxextra{users.models.School attribute}|hyperpage}{48}
+\indexentry{id (users.models.School attribute)@\spxentry{id}\spxextra{users.models.School attribute}|hyperpage}{48}
+\indexentry{name (users.models.School attribute)@\spxentry{name}\spxextra{users.models.School attribute}|hyperpage}{48}
+\indexentry{objects (users.models.School attribute)@\spxentry{objects}\spxextra{users.models.School attribute}|hyperpage}{48}
+\indexentry{profile\_set (users.models.School attribute)@\spxentry{profile\_set}\spxextra{users.models.School attribute}|hyperpage}{48}
+\indexentry{save\_without\_historical\_record() (users.models.School method)@\spxentry{save\_without\_historical\_record()}\spxextra{users.models.School method}|hyperpage}{48}
+\indexentry{WhiteListHistory (class in users.models)@\spxentry{WhiteListHistory}\spxextra{class in users.models}|hyperpage}{48}
+\indexentry{WhiteListHistory.DoesNotExist@\spxentry{WhiteListHistory.DoesNotExist}|hyperpage}{48}
+\indexentry{WhiteListHistory.MultipleObjectsReturned@\spxentry{WhiteListHistory.MultipleObjectsReturned}|hyperpage}{48}
+\indexentry{coopeman (users.models.WhiteListHistory attribute)@\spxentry{coopeman}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{48}
+\indexentry{coopeman\_id (users.models.WhiteListHistory attribute)@\spxentry{coopeman\_id}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{48}
+\indexentry{duration (users.models.WhiteListHistory attribute)@\spxentry{duration}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{48}
+\indexentry{endDate (users.models.WhiteListHistory attribute)@\spxentry{endDate}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{get\_next\_by\_endDate() (users.models.WhiteListHistory method)@\spxentry{get\_next\_by\_endDate()}\spxextra{users.models.WhiteListHistory method}|hyperpage}{49}
+\indexentry{get\_next\_by\_paymentDate() (users.models.WhiteListHistory method)@\spxentry{get\_next\_by\_paymentDate()}\spxextra{users.models.WhiteListHistory method}|hyperpage}{49}
+\indexentry{get\_previous\_by\_endDate() (users.models.WhiteListHistory method)@\spxentry{get\_previous\_by\_endDate()}\spxextra{users.models.WhiteListHistory method}|hyperpage}{49}
+\indexentry{get\_previous\_by\_paymentDate() (users.models.WhiteListHistory method)@\spxentry{get\_previous\_by\_paymentDate()}\spxextra{users.models.WhiteListHistory method}|hyperpage}{49}
+\indexentry{history (users.models.WhiteListHistory attribute)@\spxentry{history}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{id (users.models.WhiteListHistory attribute)@\spxentry{id}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{objects (users.models.WhiteListHistory attribute)@\spxentry{objects}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{paymentDate (users.models.WhiteListHistory attribute)@\spxentry{paymentDate}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{save\_without\_historical\_record() (users.models.WhiteListHistory method)@\spxentry{save\_without\_historical\_record()}\spxextra{users.models.WhiteListHistory method}|hyperpage}{49}
+\indexentry{user (users.models.WhiteListHistory attribute)@\spxentry{user}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{user\_id (users.models.WhiteListHistory attribute)@\spxentry{user\_id}\spxextra{users.models.WhiteListHistory attribute}|hyperpage}{49}
+\indexentry{create\_user\_profile() (in module users.models)@\spxentry{create\_user\_profile()}\spxextra{in module users.models}|hyperpage}{49}
+\indexentry{save\_user\_profile() (in module users.models)@\spxentry{save\_user\_profile()}\spxextra{in module users.models}|hyperpage}{49}
+\indexentry{str\_user() (in module users.models)@\spxentry{str\_user()}\spxextra{in module users.models}|hyperpage}{49}
+\indexentry{preferences.models (module)@\spxentry{preferences.models}\spxextra{module}|hyperpage}{49}
+\indexentry{Cotisation (class in preferences.models)@\spxentry{Cotisation}\spxextra{class in preferences.models}|hyperpage}{49}
+\indexentry{Cotisation.DoesNotExist@\spxentry{Cotisation.DoesNotExist}|hyperpage}{49}
+\indexentry{Cotisation.MultipleObjectsReturned@\spxentry{Cotisation.MultipleObjectsReturned}|hyperpage}{49}
+\indexentry{amount (preferences.models.Cotisation attribute)@\spxentry{amount}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{49}
+\indexentry{cotisationhistory\_set (preferences.models.Cotisation attribute)@\spxentry{cotisationhistory\_set}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{49}
+\indexentry{duration (preferences.models.Cotisation attribute)@\spxentry{duration}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{50}
+\indexentry{history (preferences.models.Cotisation attribute)@\spxentry{history}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{50}
+\indexentry{id (preferences.models.Cotisation attribute)@\spxentry{id}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{50}
+\indexentry{objects (preferences.models.Cotisation attribute)@\spxentry{objects}\spxextra{preferences.models.Cotisation attribute}|hyperpage}{50}
+\indexentry{save\_without\_historical\_record() (preferences.models.Cotisation method)@\spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.Cotisation method}|hyperpage}{50}
+\indexentry{GeneralPreferences (class in preferences.models)@\spxentry{GeneralPreferences}\spxextra{class in preferences.models}|hyperpage}{50}
+\indexentry{GeneralPreferences.DoesNotExist@\spxentry{GeneralPreferences.DoesNotExist}|hyperpage}{50}
+\indexentry{GeneralPreferences.MultipleObjectsReturned@\spxentry{GeneralPreferences.MultipleObjectsReturned}|hyperpage}{50}
+\indexentry{active\_message (preferences.models.GeneralPreferences attribute)@\spxentry{active\_message}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{automatic\_logout\_time (preferences.models.GeneralPreferences attribute)@\spxentry{automatic\_logout\_time}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{brewer (preferences.models.GeneralPreferences attribute)@\spxentry{brewer}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{floating\_buttons (preferences.models.GeneralPreferences attribute)@\spxentry{floating\_buttons}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{global\_message (preferences.models.GeneralPreferences attribute)@\spxentry{global\_message}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{grocer (preferences.models.GeneralPreferences attribute)@\spxentry{grocer}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{history (preferences.models.GeneralPreferences attribute)@\spxentry{history}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{home\_text (preferences.models.GeneralPreferences attribute)@\spxentry{home\_text}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{id (preferences.models.GeneralPreferences attribute)@\spxentry{id}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{is\_active (preferences.models.GeneralPreferences attribute)@\spxentry{is\_active}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{50}
+\indexentry{lost\_pintes\_allowed (preferences.models.GeneralPreferences attribute)@\spxentry{lost\_pintes\_allowed}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{menu (preferences.models.GeneralPreferences attribute)@\spxentry{menu}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{objects (preferences.models.GeneralPreferences attribute)@\spxentry{objects}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{president (preferences.models.GeneralPreferences attribute)@\spxentry{president}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{rules (preferences.models.GeneralPreferences attribute)@\spxentry{rules}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{save\_without\_historical\_record() (preferences.models.GeneralPreferences method)@\spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.GeneralPreferences method}|hyperpage}{51}
+\indexentry{secretary (preferences.models.GeneralPreferences attribute)@\spxentry{secretary}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{statutes (preferences.models.GeneralPreferences attribute)@\spxentry{statutes}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{treasurer (preferences.models.GeneralPreferences attribute)@\spxentry{treasurer}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{use\_pinte\_monitoring (preferences.models.GeneralPreferences attribute)@\spxentry{use\_pinte\_monitoring}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{vice\_president (preferences.models.GeneralPreferences attribute)@\spxentry{vice\_president}\spxextra{preferences.models.GeneralPreferences attribute}|hyperpage}{51}
+\indexentry{HistoricalCotisation (class in preferences.models)@\spxentry{HistoricalCotisation}\spxextra{class in preferences.models}|hyperpage}{51}
+\indexentry{HistoricalCotisation.DoesNotExist@\spxentry{HistoricalCotisation.DoesNotExist}|hyperpage}{51}
+\indexentry{HistoricalCotisation.MultipleObjectsReturned@\spxentry{HistoricalCotisation.MultipleObjectsReturned}|hyperpage}{51}
+\indexentry{amount (preferences.models.HistoricalCotisation attribute)@\spxentry{amount}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{51}
+\indexentry{duration (preferences.models.HistoricalCotisation attribute)@\spxentry{duration}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{51}
+\indexentry{get\_history\_type\_display() (preferences.models.HistoricalCotisation method)@\spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalCotisation method}|hyperpage}{51}
+\indexentry{get\_next\_by\_history\_date() (preferences.models.HistoricalCotisation method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalCotisation method}|hyperpage}{51}
+\indexentry{get\_previous\_by\_history\_date() (preferences.models.HistoricalCotisation method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalCotisation method}|hyperpage}{51}
+\indexentry{history\_change\_reason (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{51}
+\indexentry{history\_date (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_date}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{51}
+\indexentry{history\_id (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_id}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{history\_object (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_object}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{history\_type (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_type}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{history\_user (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_user}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{history\_user\_id (preferences.models.HistoricalCotisation attribute)@\spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{id (preferences.models.HistoricalCotisation attribute)@\spxentry{id}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{instance (preferences.models.HistoricalCotisation attribute)@\spxentry{instance}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{instance\_type (preferences.models.HistoricalCotisation attribute)@\spxentry{instance\_type}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{next\_record (preferences.models.HistoricalCotisation attribute)@\spxentry{next\_record}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{objects (preferences.models.HistoricalCotisation attribute)@\spxentry{objects}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{prev\_record (preferences.models.HistoricalCotisation attribute)@\spxentry{prev\_record}\spxextra{preferences.models.HistoricalCotisation attribute}|hyperpage}{52}
+\indexentry{revert\_url() (preferences.models.HistoricalCotisation method)@\spxentry{revert\_url()}\spxextra{preferences.models.HistoricalCotisation method}|hyperpage}{52}
+\indexentry{HistoricalGeneralPreferences (class in preferences.models)@\spxentry{HistoricalGeneralPreferences}\spxextra{class in preferences.models}|hyperpage}{52}
+\indexentry{HistoricalGeneralPreferences.DoesNotExist@\spxentry{HistoricalGeneralPreferences.DoesNotExist}|hyperpage}{52}
+\indexentry{HistoricalGeneralPreferences.MultipleObjectsReturned@\spxentry{HistoricalGeneralPreferences.MultipleObjectsReturned}|hyperpage}{53}
+\indexentry{active\_message (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{active\_message}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{automatic\_logout\_time (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{automatic\_logout\_time}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{brewer (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{brewer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{floating\_buttons (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{floating\_buttons}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{get\_history\_type\_display() (preferences.models.HistoricalGeneralPreferences method)@\spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalGeneralPreferences method}|hyperpage}{53}
+\indexentry{get\_next\_by\_history\_date() (preferences.models.HistoricalGeneralPreferences method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalGeneralPreferences method}|hyperpage}{53}
+\indexentry{get\_previous\_by\_history\_date() (preferences.models.HistoricalGeneralPreferences method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalGeneralPreferences method}|hyperpage}{53}
+\indexentry{global\_message (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{global\_message}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{grocer (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{grocer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_change\_reason (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_date (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_date}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_id (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_object (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_object}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_type (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_type}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_user (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_user}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{53}
+\indexentry{history\_user\_id (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{home\_text (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{home\_text}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{id (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{id}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{instance (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{instance}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{instance\_type (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{instance\_type}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{is\_active (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{is\_active}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{lost\_pintes\_allowed (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{lost\_pintes\_allowed}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{menu (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{menu}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{next\_record (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{next\_record}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{objects (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{objects}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{president (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{president}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{prev\_record (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{prev\_record}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{revert\_url() (preferences.models.HistoricalGeneralPreferences method)@\spxentry{revert\_url()}\spxextra{preferences.models.HistoricalGeneralPreferences method}|hyperpage}{54}
+\indexentry{rules (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{rules}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{secretary (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{secretary}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{statutes (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{statutes}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{treasurer (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{treasurer}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{use\_pinte\_monitoring (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{use\_pinte\_monitoring}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{54}
+\indexentry{vice\_president (preferences.models.HistoricalGeneralPreferences attribute)@\spxentry{vice\_president}\spxextra{preferences.models.HistoricalGeneralPreferences attribute}|hyperpage}{55}
+\indexentry{HistoricalPaymentMethod (class in preferences.models)@\spxentry{HistoricalPaymentMethod}\spxextra{class in preferences.models}|hyperpage}{55}
+\indexentry{HistoricalPaymentMethod.DoesNotExist@\spxentry{HistoricalPaymentMethod.DoesNotExist}|hyperpage}{55}
+\indexentry{HistoricalPaymentMethod.MultipleObjectsReturned@\spxentry{HistoricalPaymentMethod.MultipleObjectsReturned}|hyperpage}{55}
+\indexentry{affect\_balance (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{affect\_balance}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{get\_history\_type\_display() (preferences.models.HistoricalPaymentMethod method)@\spxentry{get\_history\_type\_display()}\spxextra{preferences.models.HistoricalPaymentMethod method}|hyperpage}{55}
+\indexentry{get\_next\_by\_history\_date() (preferences.models.HistoricalPaymentMethod method)@\spxentry{get\_next\_by\_history\_date()}\spxextra{preferences.models.HistoricalPaymentMethod method}|hyperpage}{55}
+\indexentry{get\_previous\_by\_history\_date() (preferences.models.HistoricalPaymentMethod method)@\spxentry{get\_previous\_by\_history\_date()}\spxextra{preferences.models.HistoricalPaymentMethod method}|hyperpage}{55}
+\indexentry{history\_change\_reason (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_change\_reason}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_date (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_date}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_id (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_object (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_object}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_type (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_type}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_user (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_user}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{history\_user\_id (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{history\_user\_id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{55}
+\indexentry{icon (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{icon}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{id (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{id}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{instance (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{instance}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{instance\_type (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{instance\_type}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{is\_active (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{is\_active}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{is\_usable\_in\_cotisation (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{is\_usable\_in\_cotisation}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{is\_usable\_in\_reload (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{is\_usable\_in\_reload}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{name (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{name}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{next\_record (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{next\_record}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{objects (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{objects}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{prev\_record (preferences.models.HistoricalPaymentMethod attribute)@\spxentry{prev\_record}\spxextra{preferences.models.HistoricalPaymentMethod attribute}|hyperpage}{56}
+\indexentry{revert\_url() (preferences.models.HistoricalPaymentMethod method)@\spxentry{revert\_url()}\spxextra{preferences.models.HistoricalPaymentMethod method}|hyperpage}{56}
+\indexentry{PaymentMethod (class in preferences.models)@\spxentry{PaymentMethod}\spxextra{class in preferences.models}|hyperpage}{56}
+\indexentry{PaymentMethod.DoesNotExist@\spxentry{PaymentMethod.DoesNotExist}|hyperpage}{56}
+\indexentry{PaymentMethod.MultipleObjectsReturned@\spxentry{PaymentMethod.MultipleObjectsReturned}|hyperpage}{56}
+\indexentry{affect\_balance (preferences.models.PaymentMethod attribute)@\spxentry{affect\_balance}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{56}
+\indexentry{consumptionhistory\_set (preferences.models.PaymentMethod attribute)@\spxentry{consumptionhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{56}
+\indexentry{cotisationhistory\_set (preferences.models.PaymentMethod attribute)@\spxentry{cotisationhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{history (preferences.models.PaymentMethod attribute)@\spxentry{history}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{icon (preferences.models.PaymentMethod attribute)@\spxentry{icon}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{id (preferences.models.PaymentMethod attribute)@\spxentry{id}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{is\_active (preferences.models.PaymentMethod attribute)@\spxentry{is\_active}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{is\_usable\_in\_cotisation (preferences.models.PaymentMethod attribute)@\spxentry{is\_usable\_in\_cotisation}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{is\_usable\_in\_reload (preferences.models.PaymentMethod attribute)@\spxentry{is\_usable\_in\_reload}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{menuhistory\_set (preferences.models.PaymentMethod attribute)@\spxentry{menuhistory\_set}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{name (preferences.models.PaymentMethod attribute)@\spxentry{name}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{objects (preferences.models.PaymentMethod attribute)@\spxentry{objects}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{reload\_set (preferences.models.PaymentMethod attribute)@\spxentry{reload\_set}\spxextra{preferences.models.PaymentMethod attribute}|hyperpage}{57}
+\indexentry{save\_without\_historical\_record() (preferences.models.PaymentMethod method)@\spxentry{save\_without\_historical\_record()}\spxextra{preferences.models.PaymentMethod method}|hyperpage}{58}
+\indexentry{gestion.admin (module)@\spxentry{gestion.admin}\spxextra{module}|hyperpage}{59}
+\indexentry{ConsumptionAdmin (class in gestion.admin)@\spxentry{ConsumptionAdmin}\spxextra{class in gestion.admin}|hyperpage}{59}
+\indexentry{list\_display (gestion.admin.ConsumptionAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.ConsumptionAdmin attribute}|hyperpage}{59}
+\indexentry{media (gestion.admin.ConsumptionAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.ConsumptionAdmin attribute}|hyperpage}{59}
+\indexentry{ordering (gestion.admin.ConsumptionAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.ConsumptionAdmin attribute}|hyperpage}{59}
+\indexentry{search\_fields (gestion.admin.ConsumptionAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.ConsumptionAdmin attribute}|hyperpage}{59}
+\indexentry{ConsumptionHistoryAdmin (class in gestion.admin)@\spxentry{ConsumptionHistoryAdmin}\spxextra{class in gestion.admin}|hyperpage}{59}
+\indexentry{list\_display (gestion.admin.ConsumptionHistoryAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}|hyperpage}{59}
+\indexentry{list\_filter (gestion.admin.ConsumptionHistoryAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}|hyperpage}{59}
+\indexentry{media (gestion.admin.ConsumptionHistoryAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}|hyperpage}{59}
+\indexentry{ordering (gestion.admin.ConsumptionHistoryAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}|hyperpage}{59}
+\indexentry{search\_fields (gestion.admin.ConsumptionHistoryAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.ConsumptionHistoryAdmin attribute}|hyperpage}{59}
+\indexentry{KegAdmin (class in gestion.admin)@\spxentry{KegAdmin}\spxextra{class in gestion.admin}|hyperpage}{59}
+\indexentry{list\_display (gestion.admin.KegAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.KegAdmin attribute}|hyperpage}{59}
+\indexentry{list\_filter (gestion.admin.KegAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.KegAdmin attribute}|hyperpage}{59}
+\indexentry{media (gestion.admin.KegAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.KegAdmin attribute}|hyperpage}{59}
+\indexentry{ordering (gestion.admin.KegAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.KegAdmin attribute}|hyperpage}{59}
+\indexentry{search\_fields (gestion.admin.KegAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.KegAdmin attribute}|hyperpage}{59}
+\indexentry{KegHistoryAdmin (class in gestion.admin)@\spxentry{KegHistoryAdmin}\spxextra{class in gestion.admin}|hyperpage}{59}
+\indexentry{list\_display (gestion.admin.KegHistoryAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.KegHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{list\_filter (gestion.admin.KegHistoryAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.KegHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.KegHistoryAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.KegHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.KegHistoryAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.KegHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.KegHistoryAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.KegHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{MenuAdmin (class in gestion.admin)@\spxentry{MenuAdmin}\spxextra{class in gestion.admin}|hyperpage}{60}
+\indexentry{list\_display (gestion.admin.MenuAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.MenuAdmin attribute}|hyperpage}{60}
+\indexentry{list\_filter (gestion.admin.MenuAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.MenuAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.MenuAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.MenuAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.MenuAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.MenuAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.MenuAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.MenuAdmin attribute}|hyperpage}{60}
+\indexentry{MenuHistoryAdmin (class in gestion.admin)@\spxentry{MenuHistoryAdmin}\spxextra{class in gestion.admin}|hyperpage}{60}
+\indexentry{list\_display (gestion.admin.MenuHistoryAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.MenuHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.MenuHistoryAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.MenuHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.MenuHistoryAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.MenuHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.MenuHistoryAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.MenuHistoryAdmin attribute}|hyperpage}{60}
+\indexentry{ProductAdmin (class in gestion.admin)@\spxentry{ProductAdmin}\spxextra{class in gestion.admin}|hyperpage}{60}
+\indexentry{list\_display (gestion.admin.ProductAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.ProductAdmin attribute}|hyperpage}{60}
+\indexentry{list\_filter (gestion.admin.ProductAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.ProductAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.ProductAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.ProductAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.ProductAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.ProductAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.ProductAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.ProductAdmin attribute}|hyperpage}{60}
+\indexentry{RefundAdmin (class in gestion.admin)@\spxentry{RefundAdmin}\spxextra{class in gestion.admin}|hyperpage}{60}
+\indexentry{list\_display (gestion.admin.RefundAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.RefundAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.RefundAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.RefundAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.RefundAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.RefundAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.RefundAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.RefundAdmin attribute}|hyperpage}{60}
+\indexentry{ReloadAdmin (class in gestion.admin)@\spxentry{ReloadAdmin}\spxextra{class in gestion.admin}|hyperpage}{60}
+\indexentry{list\_display (gestion.admin.ReloadAdmin attribute)@\spxentry{list\_display}\spxextra{gestion.admin.ReloadAdmin attribute}|hyperpage}{60}
+\indexentry{list\_filter (gestion.admin.ReloadAdmin attribute)@\spxentry{list\_filter}\spxextra{gestion.admin.ReloadAdmin attribute}|hyperpage}{60}
+\indexentry{media (gestion.admin.ReloadAdmin attribute)@\spxentry{media}\spxextra{gestion.admin.ReloadAdmin attribute}|hyperpage}{60}
+\indexentry{ordering (gestion.admin.ReloadAdmin attribute)@\spxentry{ordering}\spxextra{gestion.admin.ReloadAdmin attribute}|hyperpage}{60}
+\indexentry{search\_fields (gestion.admin.ReloadAdmin attribute)@\spxentry{search\_fields}\spxextra{gestion.admin.ReloadAdmin attribute}|hyperpage}{61}
+\indexentry{users.admin (module)@\spxentry{users.admin}\spxextra{module}|hyperpage}{61}
+\indexentry{BalanceFilter (class in users.admin)@\spxentry{BalanceFilter}\spxextra{class in users.admin}|hyperpage}{61}
+\indexentry{lookups() (users.admin.BalanceFilter method)@\spxentry{lookups()}\spxextra{users.admin.BalanceFilter method}|hyperpage}{61}
+\indexentry{parameter\_name (users.admin.BalanceFilter attribute)@\spxentry{parameter\_name}\spxextra{users.admin.BalanceFilter attribute}|hyperpage}{61}
+\indexentry{queryset() (users.admin.BalanceFilter method)@\spxentry{queryset()}\spxextra{users.admin.BalanceFilter method}|hyperpage}{61}
+\indexentry{title (users.admin.BalanceFilter attribute)@\spxentry{title}\spxextra{users.admin.BalanceFilter attribute}|hyperpage}{61}
+\indexentry{CotisationHistoryAdmin (class in users.admin)@\spxentry{CotisationHistoryAdmin}\spxextra{class in users.admin}|hyperpage}{61}
+\indexentry{list\_display (users.admin.CotisationHistoryAdmin attribute)@\spxentry{list\_display}\spxextra{users.admin.CotisationHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{list\_filter (users.admin.CotisationHistoryAdmin attribute)@\spxentry{list\_filter}\spxextra{users.admin.CotisationHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{media (users.admin.CotisationHistoryAdmin attribute)@\spxentry{media}\spxextra{users.admin.CotisationHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{ordering (users.admin.CotisationHistoryAdmin attribute)@\spxentry{ordering}\spxextra{users.admin.CotisationHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{search\_fields (users.admin.CotisationHistoryAdmin attribute)@\spxentry{search\_fields}\spxextra{users.admin.CotisationHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{ProfileAdmin (class in users.admin)@\spxentry{ProfileAdmin}\spxextra{class in users.admin}|hyperpage}{61}
+\indexentry{list\_display (users.admin.ProfileAdmin attribute)@\spxentry{list\_display}\spxextra{users.admin.ProfileAdmin attribute}|hyperpage}{61}
+\indexentry{list\_filter (users.admin.ProfileAdmin attribute)@\spxentry{list\_filter}\spxextra{users.admin.ProfileAdmin attribute}|hyperpage}{61}
+\indexentry{media (users.admin.ProfileAdmin attribute)@\spxentry{media}\spxextra{users.admin.ProfileAdmin attribute}|hyperpage}{61}
+\indexentry{ordering (users.admin.ProfileAdmin attribute)@\spxentry{ordering}\spxextra{users.admin.ProfileAdmin attribute}|hyperpage}{61}
+\indexentry{search\_fields (users.admin.ProfileAdmin attribute)@\spxentry{search\_fields}\spxextra{users.admin.ProfileAdmin attribute}|hyperpage}{61}
+\indexentry{WhiteListHistoryAdmin (class in users.admin)@\spxentry{WhiteListHistoryAdmin}\spxextra{class in users.admin}|hyperpage}{61}
+\indexentry{list\_display (users.admin.WhiteListHistoryAdmin attribute)@\spxentry{list\_display}\spxextra{users.admin.WhiteListHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{media (users.admin.WhiteListHistoryAdmin attribute)@\spxentry{media}\spxextra{users.admin.WhiteListHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{ordering (users.admin.WhiteListHistoryAdmin attribute)@\spxentry{ordering}\spxextra{users.admin.WhiteListHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{search\_fields (users.admin.WhiteListHistoryAdmin attribute)@\spxentry{search\_fields}\spxextra{users.admin.WhiteListHistoryAdmin attribute}|hyperpage}{61}
+\indexentry{preferences.admin (module)@\spxentry{preferences.admin}\spxextra{module}|hyperpage}{61}
+\indexentry{CotisationAdmin (class in preferences.admin)@\spxentry{CotisationAdmin}\spxextra{class in preferences.admin}|hyperpage}{61}
+\indexentry{list\_display (preferences.admin.CotisationAdmin attribute)@\spxentry{list\_display}\spxextra{preferences.admin.CotisationAdmin attribute}|hyperpage}{61}
+\indexentry{media (preferences.admin.CotisationAdmin attribute)@\spxentry{media}\spxextra{preferences.admin.CotisationAdmin attribute}|hyperpage}{61}
+\indexentry{ordering (preferences.admin.CotisationAdmin attribute)@\spxentry{ordering}\spxextra{preferences.admin.CotisationAdmin attribute}|hyperpage}{62}
+\indexentry{GeneralPreferencesAdmin (class in preferences.admin)@\spxentry{GeneralPreferencesAdmin}\spxextra{class in preferences.admin}|hyperpage}{62}
+\indexentry{list\_display (preferences.admin.GeneralPreferencesAdmin attribute)@\spxentry{list\_display}\spxextra{preferences.admin.GeneralPreferencesAdmin attribute}|hyperpage}{62}
+\indexentry{media (preferences.admin.GeneralPreferencesAdmin attribute)@\spxentry{media}\spxextra{preferences.admin.GeneralPreferencesAdmin attribute}|hyperpage}{62}
+\indexentry{PaymentMethodAdmin (class in preferences.admin)@\spxentry{PaymentMethodAdmin}\spxextra{class in preferences.admin}|hyperpage}{62}
+\indexentry{list\_display (preferences.admin.PaymentMethodAdmin attribute)@\spxentry{list\_display}\spxextra{preferences.admin.PaymentMethodAdmin attribute}|hyperpage}{62}
+\indexentry{list\_filter (preferences.admin.PaymentMethodAdmin attribute)@\spxentry{list\_filter}\spxextra{preferences.admin.PaymentMethodAdmin attribute}|hyperpage}{62}
+\indexentry{media (preferences.admin.PaymentMethodAdmin attribute)@\spxentry{media}\spxextra{preferences.admin.PaymentMethodAdmin attribute}|hyperpage}{62}
+\indexentry{ordering (preferences.admin.PaymentMethodAdmin attribute)@\spxentry{ordering}\spxextra{preferences.admin.PaymentMethodAdmin attribute}|hyperpage}{62}
+\indexentry{search\_fields (preferences.admin.PaymentMethodAdmin attribute)@\spxentry{search\_fields}\spxextra{preferences.admin.PaymentMethodAdmin attribute}|hyperpage}{62}
+\indexentry{gestion.forms (module)@\spxentry{gestion.forms}\spxextra{module}|hyperpage}{63}
+\indexentry{GenerateReleveForm (class in gestion.forms)@\spxentry{GenerateReleveForm}\spxextra{class in gestion.forms}|hyperpage}{63}
+\indexentry{base\_fields (gestion.forms.GenerateReleveForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.GenerateReleveForm attribute}|hyperpage}{63}
+\indexentry{declared\_fields (gestion.forms.GenerateReleveForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.GenerateReleveForm attribute}|hyperpage}{63}
+\indexentry{media (gestion.forms.GenerateReleveForm attribute)@\spxentry{media}\spxextra{gestion.forms.GenerateReleveForm attribute}|hyperpage}{63}
+\indexentry{GestionForm (class in gestion.forms)@\spxentry{GestionForm}\spxextra{class in gestion.forms}|hyperpage}{63}
+\indexentry{base\_fields (gestion.forms.GestionForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.GestionForm attribute}|hyperpage}{63}
+\indexentry{declared\_fields (gestion.forms.GestionForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.GestionForm attribute}|hyperpage}{63}
+\indexentry{media (gestion.forms.GestionForm attribute)@\spxentry{media}\spxextra{gestion.forms.GestionForm attribute}|hyperpage}{63}
+\indexentry{KegForm (class in gestion.forms)@\spxentry{KegForm}\spxextra{class in gestion.forms}|hyperpage}{63}
+\indexentry{KegForm.Meta (class in gestion.forms)@\spxentry{KegForm.Meta}\spxextra{class in gestion.forms}|hyperpage}{63}
+\indexentry{exclude (gestion.forms.KegForm.Meta attribute)@\spxentry{exclude}\spxextra{gestion.forms.KegForm.Meta attribute}|hyperpage}{63}
+\indexentry{model (gestion.forms.KegForm.Meta attribute)@\spxentry{model}\spxextra{gestion.forms.KegForm.Meta attribute}|hyperpage}{63}
+\indexentry{widgets (gestion.forms.KegForm.Meta attribute)@\spxentry{widgets}\spxextra{gestion.forms.KegForm.Meta attribute}|hyperpage}{64}
+\indexentry{base\_fields (gestion.forms.KegForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.KegForm attribute}|hyperpage}{64}
+\indexentry{declared\_fields (gestion.forms.KegForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.KegForm attribute}|hyperpage}{64}
+\indexentry{media (gestion.forms.KegForm attribute)@\spxentry{media}\spxextra{gestion.forms.KegForm attribute}|hyperpage}{64}
+\indexentry{MenuForm (class in gestion.forms)@\spxentry{MenuForm}\spxextra{class in gestion.forms}|hyperpage}{64}
+\indexentry{MenuForm.Meta (class in gestion.forms)@\spxentry{MenuForm.Meta}\spxextra{class in gestion.forms}|hyperpage}{64}
+\indexentry{fields (gestion.forms.MenuForm.Meta attribute)@\spxentry{fields}\spxextra{gestion.forms.MenuForm.Meta attribute}|hyperpage}{64}
+\indexentry{model (gestion.forms.MenuForm.Meta attribute)@\spxentry{model}\spxextra{gestion.forms.MenuForm.Meta attribute}|hyperpage}{64}
+\indexentry{widgets (gestion.forms.MenuForm.Meta attribute)@\spxentry{widgets}\spxextra{gestion.forms.MenuForm.Meta attribute}|hyperpage}{64}
+\indexentry{base\_fields (gestion.forms.MenuForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.MenuForm attribute}|hyperpage}{64}
+\indexentry{declared\_fields (gestion.forms.MenuForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.MenuForm attribute}|hyperpage}{64}
+\indexentry{media (gestion.forms.MenuForm attribute)@\spxentry{media}\spxextra{gestion.forms.MenuForm attribute}|hyperpage}{64}
+\indexentry{PinteForm (class in gestion.forms)@\spxentry{PinteForm}\spxextra{class in gestion.forms}|hyperpage}{64}
+\indexentry{base\_fields (gestion.forms.PinteForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.PinteForm attribute}|hyperpage}{64}
+\indexentry{declared\_fields (gestion.forms.PinteForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.PinteForm attribute}|hyperpage}{64}
+\indexentry{media (gestion.forms.PinteForm attribute)@\spxentry{media}\spxextra{gestion.forms.PinteForm attribute}|hyperpage}{64}
+\indexentry{ProductForm (class in gestion.forms)@\spxentry{ProductForm}\spxextra{class in gestion.forms}|hyperpage}{64}
+\indexentry{ProductForm.Meta (class in gestion.forms)@\spxentry{ProductForm.Meta}\spxextra{class in gestion.forms}|hyperpage}{64}
+\indexentry{fields (gestion.forms.ProductForm.Meta attribute)@\spxentry{fields}\spxextra{gestion.forms.ProductForm.Meta attribute}|hyperpage}{64}
+\indexentry{model (gestion.forms.ProductForm.Meta attribute)@\spxentry{model}\spxextra{gestion.forms.ProductForm.Meta attribute}|hyperpage}{64}
+\indexentry{widgets (gestion.forms.ProductForm.Meta attribute)@\spxentry{widgets}\spxextra{gestion.forms.ProductForm.Meta attribute}|hyperpage}{64}
+\indexentry{base\_fields (gestion.forms.ProductForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.ProductForm attribute}|hyperpage}{64}
+\indexentry{declared\_fields (gestion.forms.ProductForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.ProductForm attribute}|hyperpage}{64}
+\indexentry{media (gestion.forms.ProductForm attribute)@\spxentry{media}\spxextra{gestion.forms.ProductForm attribute}|hyperpage}{64}
+\indexentry{RefundForm (class in gestion.forms)@\spxentry{RefundForm}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{RefundForm.Meta (class in gestion.forms)@\spxentry{RefundForm.Meta}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{fields (gestion.forms.RefundForm.Meta attribute)@\spxentry{fields}\spxextra{gestion.forms.RefundForm.Meta attribute}|hyperpage}{65}
+\indexentry{model (gestion.forms.RefundForm.Meta attribute)@\spxentry{model}\spxextra{gestion.forms.RefundForm.Meta attribute}|hyperpage}{65}
+\indexentry{widgets (gestion.forms.RefundForm.Meta attribute)@\spxentry{widgets}\spxextra{gestion.forms.RefundForm.Meta attribute}|hyperpage}{65}
+\indexentry{base\_fields (gestion.forms.RefundForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.RefundForm attribute}|hyperpage}{65}
+\indexentry{declared\_fields (gestion.forms.RefundForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.RefundForm attribute}|hyperpage}{65}
+\indexentry{media (gestion.forms.RefundForm attribute)@\spxentry{media}\spxextra{gestion.forms.RefundForm attribute}|hyperpage}{65}
+\indexentry{ReloadForm (class in gestion.forms)@\spxentry{ReloadForm}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{ReloadForm.Meta (class in gestion.forms)@\spxentry{ReloadForm.Meta}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{fields (gestion.forms.ReloadForm.Meta attribute)@\spxentry{fields}\spxextra{gestion.forms.ReloadForm.Meta attribute}|hyperpage}{65}
+\indexentry{model (gestion.forms.ReloadForm.Meta attribute)@\spxentry{model}\spxextra{gestion.forms.ReloadForm.Meta attribute}|hyperpage}{65}
+\indexentry{widgets (gestion.forms.ReloadForm.Meta attribute)@\spxentry{widgets}\spxextra{gestion.forms.ReloadForm.Meta attribute}|hyperpage}{65}
+\indexentry{base\_fields (gestion.forms.ReloadForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.ReloadForm attribute}|hyperpage}{65}
+\indexentry{declared\_fields (gestion.forms.ReloadForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.ReloadForm attribute}|hyperpage}{65}
+\indexentry{media (gestion.forms.ReloadForm attribute)@\spxentry{media}\spxextra{gestion.forms.ReloadForm attribute}|hyperpage}{65}
+\indexentry{SearchMenuForm (class in gestion.forms)@\spxentry{SearchMenuForm}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{base\_fields (gestion.forms.SearchMenuForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.SearchMenuForm attribute}|hyperpage}{65}
+\indexentry{declared\_fields (gestion.forms.SearchMenuForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.SearchMenuForm attribute}|hyperpage}{65}
+\indexentry{media (gestion.forms.SearchMenuForm attribute)@\spxentry{media}\spxextra{gestion.forms.SearchMenuForm attribute}|hyperpage}{65}
+\indexentry{SearchProductForm (class in gestion.forms)@\spxentry{SearchProductForm}\spxextra{class in gestion.forms}|hyperpage}{65}
+\indexentry{base\_fields (gestion.forms.SearchProductForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.SearchProductForm attribute}|hyperpage}{65}
+\indexentry{declared\_fields (gestion.forms.SearchProductForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.SearchProductForm attribute}|hyperpage}{65}
+\indexentry{media (gestion.forms.SearchProductForm attribute)@\spxentry{media}\spxextra{gestion.forms.SearchProductForm attribute}|hyperpage}{65}
+\indexentry{SelectActiveKegForm (class in gestion.forms)@\spxentry{SelectActiveKegForm}\spxextra{class in gestion.forms}|hyperpage}{66}
+\indexentry{base\_fields (gestion.forms.SelectActiveKegForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.SelectActiveKegForm attribute}|hyperpage}{66}
+\indexentry{declared\_fields (gestion.forms.SelectActiveKegForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.SelectActiveKegForm attribute}|hyperpage}{66}
+\indexentry{media (gestion.forms.SelectActiveKegForm attribute)@\spxentry{media}\spxextra{gestion.forms.SelectActiveKegForm attribute}|hyperpage}{66}
+\indexentry{SelectPositiveKegForm (class in gestion.forms)@\spxentry{SelectPositiveKegForm}\spxextra{class in gestion.forms}|hyperpage}{66}
+\indexentry{base\_fields (gestion.forms.SelectPositiveKegForm attribute)@\spxentry{base\_fields}\spxextra{gestion.forms.SelectPositiveKegForm attribute}|hyperpage}{66}
+\indexentry{declared\_fields (gestion.forms.SelectPositiveKegForm attribute)@\spxentry{declared\_fields}\spxextra{gestion.forms.SelectPositiveKegForm attribute}|hyperpage}{66}
+\indexentry{media (gestion.forms.SelectPositiveKegForm attribute)@\spxentry{media}\spxextra{gestion.forms.SelectPositiveKegForm attribute}|hyperpage}{66}
+\indexentry{users.forms (module)@\spxentry{users.forms}\spxextra{module}|hyperpage}{66}
+\indexentry{CreateGroupForm (class in users.forms)@\spxentry{CreateGroupForm}\spxextra{class in users.forms}|hyperpage}{66}
+\indexentry{CreateGroupForm.Meta (class in users.forms)@\spxentry{CreateGroupForm.Meta}\spxextra{class in users.forms}|hyperpage}{66}
+\indexentry{fields (users.forms.CreateGroupForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.CreateGroupForm.Meta attribute}|hyperpage}{66}
+\indexentry{model (users.forms.CreateGroupForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.CreateGroupForm.Meta attribute}|hyperpage}{66}
+\indexentry{base\_fields (users.forms.CreateGroupForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.CreateGroupForm attribute}|hyperpage}{66}
+\indexentry{declared\_fields (users.forms.CreateGroupForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.CreateGroupForm attribute}|hyperpage}{66}
+\indexentry{media (users.forms.CreateGroupForm attribute)@\spxentry{media}\spxextra{users.forms.CreateGroupForm attribute}|hyperpage}{66}
+\indexentry{CreateUserForm (class in users.forms)@\spxentry{CreateUserForm}\spxextra{class in users.forms}|hyperpage}{66}
+\indexentry{CreateUserForm.Meta (class in users.forms)@\spxentry{CreateUserForm.Meta}\spxextra{class in users.forms}|hyperpage}{66}
+\indexentry{fields (users.forms.CreateUserForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.CreateUserForm.Meta attribute}|hyperpage}{67}
+\indexentry{model (users.forms.CreateUserForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.CreateUserForm.Meta attribute}|hyperpage}{67}
+\indexentry{base\_fields (users.forms.CreateUserForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.CreateUserForm attribute}|hyperpage}{67}
+\indexentry{declared\_fields (users.forms.CreateUserForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.CreateUserForm attribute}|hyperpage}{67}
+\indexentry{media (users.forms.CreateUserForm attribute)@\spxentry{media}\spxextra{users.forms.CreateUserForm attribute}|hyperpage}{67}
+\indexentry{EditGroupForm (class in users.forms)@\spxentry{EditGroupForm}\spxextra{class in users.forms}|hyperpage}{67}
+\indexentry{EditGroupForm.Meta (class in users.forms)@\spxentry{EditGroupForm.Meta}\spxextra{class in users.forms}|hyperpage}{67}
+\indexentry{fields (users.forms.EditGroupForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.EditGroupForm.Meta attribute}|hyperpage}{67}
+\indexentry{model (users.forms.EditGroupForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.EditGroupForm.Meta attribute}|hyperpage}{67}
+\indexentry{base\_fields (users.forms.EditGroupForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.EditGroupForm attribute}|hyperpage}{67}
+\indexentry{declared\_fields (users.forms.EditGroupForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.EditGroupForm attribute}|hyperpage}{67}
+\indexentry{media (users.forms.EditGroupForm attribute)@\spxentry{media}\spxextra{users.forms.EditGroupForm attribute}|hyperpage}{67}
+\indexentry{EditPasswordForm (class in users.forms)@\spxentry{EditPasswordForm}\spxextra{class in users.forms}|hyperpage}{67}
+\indexentry{base\_fields (users.forms.EditPasswordForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.EditPasswordForm attribute}|hyperpage}{67}
+\indexentry{clean\_password2() (users.forms.EditPasswordForm method)@\spxentry{clean\_password2()}\spxextra{users.forms.EditPasswordForm method}|hyperpage}{67}
+\indexentry{declared\_fields (users.forms.EditPasswordForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.EditPasswordForm attribute}|hyperpage}{67}
+\indexentry{media (users.forms.EditPasswordForm attribute)@\spxentry{media}\spxextra{users.forms.EditPasswordForm attribute}|hyperpage}{67}
+\indexentry{ExportForm (class in users.forms)@\spxentry{ExportForm}\spxextra{class in users.forms}|hyperpage}{67}
+\indexentry{FIELDS\_CHOICES (users.forms.ExportForm attribute)@\spxentry{FIELDS\_CHOICES}\spxextra{users.forms.ExportForm attribute}|hyperpage}{67}
+\indexentry{QUERY\_TYPE\_CHOICES (users.forms.ExportForm attribute)@\spxentry{QUERY\_TYPE\_CHOICES}\spxextra{users.forms.ExportForm attribute}|hyperpage}{67}
+\indexentry{base\_fields (users.forms.ExportForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.ExportForm attribute}|hyperpage}{67}
+\indexentry{declared\_fields (users.forms.ExportForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.ExportForm attribute}|hyperpage}{67}
+\indexentry{media (users.forms.ExportForm attribute)@\spxentry{media}\spxextra{users.forms.ExportForm attribute}|hyperpage}{67}
+\indexentry{GroupsEditForm (class in users.forms)@\spxentry{GroupsEditForm}\spxextra{class in users.forms}|hyperpage}{67}
+\indexentry{GroupsEditForm.Meta (class in users.forms)@\spxentry{GroupsEditForm.Meta}\spxextra{class in users.forms}|hyperpage}{68}
+\indexentry{fields (users.forms.GroupsEditForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.GroupsEditForm.Meta attribute}|hyperpage}{68}
+\indexentry{model (users.forms.GroupsEditForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.GroupsEditForm.Meta attribute}|hyperpage}{68}
+\indexentry{base\_fields (users.forms.GroupsEditForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.GroupsEditForm attribute}|hyperpage}{68}
+\indexentry{declared\_fields (users.forms.GroupsEditForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.GroupsEditForm attribute}|hyperpage}{68}
+\indexentry{media (users.forms.GroupsEditForm attribute)@\spxentry{media}\spxextra{users.forms.GroupsEditForm attribute}|hyperpage}{68}
+\indexentry{LoginForm (class in users.forms)@\spxentry{LoginForm}\spxextra{class in users.forms}|hyperpage}{68}
+\indexentry{base\_fields (users.forms.LoginForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.LoginForm attribute}|hyperpage}{68}
+\indexentry{declared\_fields (users.forms.LoginForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.LoginForm attribute}|hyperpage}{68}
+\indexentry{media (users.forms.LoginForm attribute)@\spxentry{media}\spxextra{users.forms.LoginForm attribute}|hyperpage}{68}
+\indexentry{SchoolForm (class in users.forms)@\spxentry{SchoolForm}\spxextra{class in users.forms}|hyperpage}{68}
+\indexentry{SchoolForm.Meta (class in users.forms)@\spxentry{SchoolForm.Meta}\spxextra{class in users.forms}|hyperpage}{68}
+\indexentry{fields (users.forms.SchoolForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.SchoolForm.Meta attribute}|hyperpage}{68}
+\indexentry{model (users.forms.SchoolForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.SchoolForm.Meta attribute}|hyperpage}{68}
+\indexentry{base\_fields (users.forms.SchoolForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.SchoolForm attribute}|hyperpage}{68}
+\indexentry{declared\_fields (users.forms.SchoolForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.SchoolForm attribute}|hyperpage}{68}
+\indexentry{media (users.forms.SchoolForm attribute)@\spxentry{media}\spxextra{users.forms.SchoolForm attribute}|hyperpage}{68}
+\indexentry{SelectNonAdminUserForm (class in users.forms)@\spxentry{SelectNonAdminUserForm}\spxextra{class in users.forms}|hyperpage}{68}
+\indexentry{base\_fields (users.forms.SelectNonAdminUserForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.SelectNonAdminUserForm attribute}|hyperpage}{68}
+\indexentry{declared\_fields (users.forms.SelectNonAdminUserForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.SelectNonAdminUserForm attribute}|hyperpage}{68}
+\indexentry{media (users.forms.SelectNonAdminUserForm attribute)@\spxentry{media}\spxextra{users.forms.SelectNonAdminUserForm attribute}|hyperpage}{68}
+\indexentry{SelectNonSuperUserForm (class in users.forms)@\spxentry{SelectNonSuperUserForm}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{base\_fields (users.forms.SelectNonSuperUserForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.SelectNonSuperUserForm attribute}|hyperpage}{69}
+\indexentry{declared\_fields (users.forms.SelectNonSuperUserForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.SelectNonSuperUserForm attribute}|hyperpage}{69}
+\indexentry{media (users.forms.SelectNonSuperUserForm attribute)@\spxentry{media}\spxextra{users.forms.SelectNonSuperUserForm attribute}|hyperpage}{69}
+\indexentry{SelectUserForm (class in users.forms)@\spxentry{SelectUserForm}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{base\_fields (users.forms.SelectUserForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.SelectUserForm attribute}|hyperpage}{69}
+\indexentry{declared\_fields (users.forms.SelectUserForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.SelectUserForm attribute}|hyperpage}{69}
+\indexentry{media (users.forms.SelectUserForm attribute)@\spxentry{media}\spxextra{users.forms.SelectUserForm attribute}|hyperpage}{69}
+\indexentry{addCotisationHistoryForm (class in users.forms)@\spxentry{addCotisationHistoryForm}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{addCotisationHistoryForm.Meta (class in users.forms)@\spxentry{addCotisationHistoryForm.Meta}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{fields (users.forms.addCotisationHistoryForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.addCotisationHistoryForm.Meta attribute}|hyperpage}{69}
+\indexentry{model (users.forms.addCotisationHistoryForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.addCotisationHistoryForm.Meta attribute}|hyperpage}{69}
+\indexentry{base\_fields (users.forms.addCotisationHistoryForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.addCotisationHistoryForm attribute}|hyperpage}{69}
+\indexentry{declared\_fields (users.forms.addCotisationHistoryForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.addCotisationHistoryForm attribute}|hyperpage}{69}
+\indexentry{media (users.forms.addCotisationHistoryForm attribute)@\spxentry{media}\spxextra{users.forms.addCotisationHistoryForm attribute}|hyperpage}{69}
+\indexentry{addWhiteListHistoryForm (class in users.forms)@\spxentry{addWhiteListHistoryForm}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{addWhiteListHistoryForm.Meta (class in users.forms)@\spxentry{addWhiteListHistoryForm.Meta}\spxextra{class in users.forms}|hyperpage}{69}
+\indexentry{fields (users.forms.addWhiteListHistoryForm.Meta attribute)@\spxentry{fields}\spxextra{users.forms.addWhiteListHistoryForm.Meta attribute}|hyperpage}{69}
+\indexentry{model (users.forms.addWhiteListHistoryForm.Meta attribute)@\spxentry{model}\spxextra{users.forms.addWhiteListHistoryForm.Meta attribute}|hyperpage}{69}
+\indexentry{base\_fields (users.forms.addWhiteListHistoryForm attribute)@\spxentry{base\_fields}\spxextra{users.forms.addWhiteListHistoryForm attribute}|hyperpage}{69}
+\indexentry{declared\_fields (users.forms.addWhiteListHistoryForm attribute)@\spxentry{declared\_fields}\spxextra{users.forms.addWhiteListHistoryForm attribute}|hyperpage}{70}
+\indexentry{media (users.forms.addWhiteListHistoryForm attribute)@\spxentry{media}\spxextra{users.forms.addWhiteListHistoryForm attribute}|hyperpage}{70}
+\indexentry{preferences.forms (module)@\spxentry{preferences.forms}\spxextra{module}|hyperpage}{70}
+\indexentry{CotisationForm (class in preferences.forms)@\spxentry{CotisationForm}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{CotisationForm.Meta (class in preferences.forms)@\spxentry{CotisationForm.Meta}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{fields (preferences.forms.CotisationForm.Meta attribute)@\spxentry{fields}\spxextra{preferences.forms.CotisationForm.Meta attribute}|hyperpage}{70}
+\indexentry{model (preferences.forms.CotisationForm.Meta attribute)@\spxentry{model}\spxextra{preferences.forms.CotisationForm.Meta attribute}|hyperpage}{70}
+\indexentry{base\_fields (preferences.forms.CotisationForm attribute)@\spxentry{base\_fields}\spxextra{preferences.forms.CotisationForm attribute}|hyperpage}{70}
+\indexentry{declared\_fields (preferences.forms.CotisationForm attribute)@\spxentry{declared\_fields}\spxextra{preferences.forms.CotisationForm attribute}|hyperpage}{70}
+\indexentry{media (preferences.forms.CotisationForm attribute)@\spxentry{media}\spxextra{preferences.forms.CotisationForm attribute}|hyperpage}{70}
+\indexentry{GeneralPreferencesForm (class in preferences.forms)@\spxentry{GeneralPreferencesForm}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{GeneralPreferencesForm.Meta (class in preferences.forms)@\spxentry{GeneralPreferencesForm.Meta}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{fields (preferences.forms.GeneralPreferencesForm.Meta attribute)@\spxentry{fields}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}|hyperpage}{70}
+\indexentry{model (preferences.forms.GeneralPreferencesForm.Meta attribute)@\spxentry{model}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}|hyperpage}{70}
+\indexentry{widgets (preferences.forms.GeneralPreferencesForm.Meta attribute)@\spxentry{widgets}\spxextra{preferences.forms.GeneralPreferencesForm.Meta attribute}|hyperpage}{70}
+\indexentry{base\_fields (preferences.forms.GeneralPreferencesForm attribute)@\spxentry{base\_fields}\spxextra{preferences.forms.GeneralPreferencesForm attribute}|hyperpage}{70}
+\indexentry{declared\_fields (preferences.forms.GeneralPreferencesForm attribute)@\spxentry{declared\_fields}\spxextra{preferences.forms.GeneralPreferencesForm attribute}|hyperpage}{70}
+\indexentry{media (preferences.forms.GeneralPreferencesForm attribute)@\spxentry{media}\spxextra{preferences.forms.GeneralPreferencesForm attribute}|hyperpage}{70}
+\indexentry{PaymentMethodForm (class in preferences.forms)@\spxentry{PaymentMethodForm}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{PaymentMethodForm.Meta (class in preferences.forms)@\spxentry{PaymentMethodForm.Meta}\spxextra{class in preferences.forms}|hyperpage}{70}
+\indexentry{fields (preferences.forms.PaymentMethodForm.Meta attribute)@\spxentry{fields}\spxextra{preferences.forms.PaymentMethodForm.Meta attribute}|hyperpage}{71}
+\indexentry{model (preferences.forms.PaymentMethodForm.Meta attribute)@\spxentry{model}\spxextra{preferences.forms.PaymentMethodForm.Meta attribute}|hyperpage}{71}
+\indexentry{base\_fields (preferences.forms.PaymentMethodForm attribute)@\spxentry{base\_fields}\spxextra{preferences.forms.PaymentMethodForm attribute}|hyperpage}{71}
+\indexentry{declared\_fields (preferences.forms.PaymentMethodForm attribute)@\spxentry{declared\_fields}\spxextra{preferences.forms.PaymentMethodForm attribute}|hyperpage}{71}
+\indexentry{media (preferences.forms.PaymentMethodForm attribute)@\spxentry{media}\spxextra{preferences.forms.PaymentMethodForm attribute}|hyperpage}{71}
+\indexentry{coopeV3.acl (module)@\spxentry{coopeV3.acl}\spxextra{module}|hyperpage}{73}
+\indexentry{acl\_and() (in module coopeV3.acl)@\spxentry{acl\_and()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{acl\_or() (in module coopeV3.acl)@\spxentry{acl\_or()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{active\_required() (in module coopeV3.acl)@\spxentry{active\_required()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{admin\_required() (in module coopeV3.acl)@\spxentry{admin\_required()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{self\_or\_has\_perm() (in module coopeV3.acl)@\spxentry{self\_or\_has\_perm()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{superuser\_required() (in module coopeV3.acl)@\spxentry{superuser\_required()}\spxextra{in module coopeV3.acl}|hyperpage}{73}
+\indexentry{coopeV3.templatetags.vip (module)@\spxentry{coopeV3.templatetags.vip}\spxextra{module}|hyperpage}{73}
+\indexentry{brewer() (in module coopeV3.templatetags.vip)@\spxentry{brewer()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{73}
+\indexentry{global\_message() (in module coopeV3.templatetags.vip)@\spxentry{global\_message()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{73}
+\indexentry{grocer() (in module coopeV3.templatetags.vip)@\spxentry{grocer()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{73}
+\indexentry{logout\_time() (in module coopeV3.templatetags.vip)@\spxentry{logout\_time()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{73}
+\indexentry{menu() (in module coopeV3.templatetags.vip)@\spxentry{menu()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{73}
+\indexentry{president() (in module coopeV3.templatetags.vip)@\spxentry{president()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{rules() (in module coopeV3.templatetags.vip)@\spxentry{rules()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{secretary() (in module coopeV3.templatetags.vip)@\spxentry{secretary()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{statutes() (in module coopeV3.templatetags.vip)@\spxentry{statutes()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{treasurer() (in module coopeV3.templatetags.vip)@\spxentry{treasurer()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{vice\_president() (in module coopeV3.templatetags.vip)@\spxentry{vice\_president()}\spxextra{in module coopeV3.templatetags.vip}|hyperpage}{74}
+\indexentry{users.templatetags.users\_extra (module)@\spxentry{users.templatetags.users\_extra}\spxextra{module}|hyperpage}{74}
+\indexentry{random\_filter() (in module users.templatetags.users\_extra)@\spxentry{random\_filter()}\spxextra{in module users.templatetags.users\_extra}|hyperpage}{74}
+\indexentry{django\_tex.core (module)@\spxentry{django\_tex.core}\spxextra{module}|hyperpage}{75}
+\indexentry{compile\_template\_to\_pdf() (in module django\_tex.core)@\spxentry{compile\_template\_to\_pdf()}\spxextra{in module django\_tex.core}|hyperpage}{75}
+\indexentry{render\_template\_with\_context() (in module django\_tex.core)@\spxentry{render\_template\_with\_context()}\spxextra{in module django\_tex.core}|hyperpage}{75}
+\indexentry{run\_tex() (in module django\_tex.core)@\spxentry{run\_tex()}\spxextra{in module django\_tex.core}|hyperpage}{75}
+\indexentry{django\_tex.engine (module)@\spxentry{django\_tex.engine}\spxextra{module}|hyperpage}{75}
+\indexentry{TeXEngine (class in django\_tex.engine)@\spxentry{TeXEngine}\spxextra{class in django\_tex.engine}|hyperpage}{75}
+\indexentry{app\_dirname (django\_tex.engine.TeXEngine attribute)@\spxentry{app\_dirname}\spxextra{django\_tex.engine.TeXEngine attribute}|hyperpage}{75}
+\indexentry{django\_tex.environment (module)@\spxentry{django\_tex.environment}\spxextra{module}|hyperpage}{75}
+\indexentry{environment() (in module django\_tex.environment)@\spxentry{environment()}\spxextra{in module django\_tex.environment}|hyperpage}{75}
+\indexentry{django\_tex.exceptions (module)@\spxentry{django\_tex.exceptions}\spxextra{module}|hyperpage}{75}
+\indexentry{TexError@\spxentry{TexError}|hyperpage}{75}
+\indexentry{get\_message() (django\_tex.exceptions.TexError method)@\spxentry{get\_message()}\spxextra{django\_tex.exceptions.TexError method}|hyperpage}{75}
+\indexentry{prettify\_message() (in module django\_tex.exceptions)@\spxentry{prettify\_message()}\spxextra{in module django\_tex.exceptions}|hyperpage}{75}
+\indexentry{tokenizer() (in module django\_tex.exceptions)@\spxentry{tokenizer()}\spxextra{in module django\_tex.exceptions}|hyperpage}{76}
+\indexentry{django\_tex.filters (module)@\spxentry{django\_tex.filters}\spxextra{module}|hyperpage}{76}
+\indexentry{do\_linebreaks() (in module django\_tex.filters)@\spxentry{do\_linebreaks()}\spxextra{in module django\_tex.filters}|hyperpage}{76}
+\indexentry{django\_tex.models (module)@\spxentry{django\_tex.models}\spxextra{module}|hyperpage}{76}
+\indexentry{TeXTemplateFile (class in django\_tex.models)@\spxentry{TeXTemplateFile}\spxextra{class in django\_tex.models}|hyperpage}{76}
+\indexentry{TeXTemplateFile.Meta (class in django\_tex.models)@\spxentry{TeXTemplateFile.Meta}\spxextra{class in django\_tex.models}|hyperpage}{76}
+\indexentry{abstract (django\_tex.models.TeXTemplateFile.Meta attribute)@\spxentry{abstract}\spxextra{django\_tex.models.TeXTemplateFile.Meta attribute}|hyperpage}{76}
+\indexentry{name (django\_tex.models.TeXTemplateFile attribute)@\spxentry{name}\spxextra{django\_tex.models.TeXTemplateFile attribute}|hyperpage}{76}
+\indexentry{title (django\_tex.models.TeXTemplateFile attribute)@\spxentry{title}\spxextra{django\_tex.models.TeXTemplateFile attribute}|hyperpage}{76}
+\indexentry{validate\_template\_path() (in module django\_tex.models)@\spxentry{validate\_template\_path()}\spxextra{in module django\_tex.models}|hyperpage}{76}
+\indexentry{django\_tex.views (module)@\spxentry{django\_tex.views}\spxextra{module}|hyperpage}{76}
+\indexentry{PDFResponse (class in django\_tex.views)@\spxentry{PDFResponse}\spxextra{class in django\_tex.views}|hyperpage}{76}
+\indexentry{render\_to\_pdf() (in module django\_tex.views)@\spxentry{render\_to\_pdf()}\spxextra{in module django\_tex.views}|hyperpage}{76}

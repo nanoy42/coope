@@ -1,0 +1,255 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>coopeV3 package &#8212; Documentation CoopeV3 3.4.0</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="coopev3-package">
+<h1>coopeV3 package<a class="headerlink" href="#coopev3-package" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="coopeV3.templatetags.html">coopeV3.templatetags package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coopeV3.templatetags.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coopeV3.templatetags.html#module-coopeV3.templatetags.vip">coopeV3.templatetags.vip module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coopeV3.templatetags.html#module-coopeV3.templatetags">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-coopeV3.acl">
+<span id="coopev3-acl-module"></span><h2>coopeV3.acl module<a class="headerlink" href="#module-coopeV3.acl" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="coopeV3.acl.acl_and">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">acl_and</code><span class="sig-paren">(</span><em>*perms</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.acl_and" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.acl.acl_or">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">acl_or</code><span class="sig-paren">(</span><em>*perms</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.acl_or" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.acl.active_required">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">active_required</code><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.active_required" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.acl.admin_required">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">admin_required</code><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.admin_required" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Test if the user is staff</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.acl.self_or_has_perm">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">self_or_has_perm</code><span class="sig-paren">(</span><em>pkName</em>, <em>perm</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.self_or_has_perm" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Test if the user is the request user (pk) or has perm permission</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.acl.superuser_required">
+<code class="descclassname">coopeV3.acl.</code><code class="descname">superuser_required</code><span class="sig-paren">(</span><em>view</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.acl.superuser_required" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Test if the user is superuser</p>
+</dd></dl>
+
+</div>
+<div class="section" id="coopev3-local-settings-example-module">
+<h2>coopeV3.local_settings.example module<a class="headerlink" href="#coopev3-local-settings-example-module" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-coopeV3.local_settings">
+<span id="coopev3-local-settings-module"></span><h2>coopeV3.local_settings module<a class="headerlink" href="#module-coopeV3.local_settings" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+<div class="section" id="module-coopeV3.settings">
+<span id="coopev3-settings-module"></span><h2>coopeV3.settings module<a class="headerlink" href="#module-coopeV3.settings" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Django settings for coopeV3 project.</p>
+<p>Generated by “django-admin startproject” using Django 2.1.</p>
+<p>For more information on this file, see
+<a class="reference external" href="https://docs.djangoproject.com/en/2.1/topics/settings/">https://docs.djangoproject.com/en/2.1/topics/settings/</a></p>
+<p>For the full list of settings and their values, see
+<a class="reference external" href="https://docs.djangoproject.com/en/2.1/ref/settings/">https://docs.djangoproject.com/en/2.1/ref/settings/</a></p>
+</div>
+<div class="section" id="module-coopeV3.urls">
+<span id="coopev3-urls-module"></span><h2>coopeV3.urls module<a class="headerlink" href="#module-coopeV3.urls" title="Lien permanent vers ce titre">¶</a></h2>
+<p>coopeV3 URL Configuration</p>
+<dl class="docutils">
+<dt>The <cite>urlpatterns</cite> list routes URLs to views. For more information please see:</dt>
+<dd><a class="reference external" href="https://docs.djangoproject.com/en/2.1/topics/http/urls/">https://docs.djangoproject.com/en/2.1/topics/http/urls/</a></dd>
+</dl>
+<p>Examples:
+Function views</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Add an import:  from my_app import views</li>
+<li>Add a URL to urlpatterns:  path(“”, views.home, name=”home”)</li>
+</ol>
+</div></blockquote>
+<dl class="docutils">
+<dt>Class-based views</dt>
+<dd><ol class="first last arabic simple">
+<li>Add an import:  from other_app.views import Home</li>
+<li>Add a URL to urlpatterns:  path(“”, Home.as_view(), name=”home”)</li>
+</ol>
+</dd>
+<dt>Including another URLconf</dt>
+<dd><ol class="first last arabic simple">
+<li>Import the include() function: from django.urls import include, path</li>
+<li>Add a URL to urlpatterns:  path(“blog/”, include(“blog.urls”))</li>
+</ol>
+</dd>
+</dl>
+<dl class="function">
+<dt id="coopeV3.urls.path">
+<code class="descclassname">coopeV3.urls.</code><code class="descname">path</code><span class="sig-paren">(</span><em>route</em>, <em>view</em>, <em>kwargs=None</em>, <em>name=None</em>, <em>*</em>, <em>Pattern=&lt;class 'django.urls.resolvers.RoutePattern'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.urls.path" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-coopeV3.views">
+<span id="coopev3-views-module"></span><h2>coopeV3.views module<a class="headerlink" href="#module-coopeV3.views" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="function">
+<dt id="coopeV3.views.coope_runner">
+<code class="descclassname">coopeV3.views.</code><code class="descname">coope_runner</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.coope_runner" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.views.home">
+<code class="descclassname">coopeV3.views.</code><code class="descname">home</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.home" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="coopeV3.views.homepage">
+<code class="descclassname">coopeV3.views.</code><code class="descname">homepage</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.views.homepage" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-coopeV3.widgets">
+<span id="coopev3-widgets-module"></span><h2>coopeV3.widgets module<a class="headerlink" href="#module-coopeV3.widgets" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="class">
+<dt id="coopeV3.widgets.SearchField">
+<em class="property">class </em><code class="descclassname">coopeV3.widgets.</code><code class="descname">SearchField</code><span class="sig-paren">(</span><em>attrs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.widgets.SearchField" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Bases : <code class="xref py py-class docutils literal notranslate"><span class="pre">django.forms.widgets.Input</span></code></p>
+<dl class="attribute">
+<dt id="coopeV3.widgets.SearchField.media">
+<code class="descname">media</code><a class="headerlink" href="#coopeV3.widgets.SearchField.media" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="coopeV3.widgets.SearchField.render">
+<code class="descname">render</code><span class="sig-paren">(</span><em>name</em>, <em>value</em>, <em>attrs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#coopeV3.widgets.SearchField.render" title="Lien permanent vers cette définition">¶</a></dt>
+<dd><p>Render the widget as an HTML string.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-coopeV3.wsgi">
+<span id="coopev3-wsgi-module"></span><h2>coopeV3.wsgi module<a class="headerlink" href="#module-coopeV3.wsgi" title="Lien permanent vers ce titre">¶</a></h2>
+<p>WSGI config for coopeV3 project.</p>
+<p>It exposes the WSGI callable as a module-level variable named <code class="docutils literal notranslate"><span class="pre">application</span></code>.</p>
+<p>For more information on this file, see
+<a class="reference external" href="https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/">https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/</a></p>
+</div>
+<div class="section" id="module-coopeV3">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-coopeV3" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">CoopeV3</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Yoann Pietri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/coopeV3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,70 @@
+django\_tex package
+===================
+
+Submodules
+----------
+
+django\_tex.core module
+-----------------------
+
+.. automodule:: django_tex.core
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.engine module
+-------------------------
+
+.. automodule:: django_tex.engine
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.environment module
+------------------------------
+
+.. automodule:: django_tex.environment
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.exceptions module
+-----------------------------
+
+.. automodule:: django_tex.exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.filters module
+--------------------------
+
+.. automodule:: django_tex.filters
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.models module
+-------------------------
+
+.. automodule:: django_tex.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+django\_tex.views module
+------------------------
+
+.. automodule:: django_tex.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: django_tex
+    :members:
+    :undoc-members:
+    :show-inheritance:

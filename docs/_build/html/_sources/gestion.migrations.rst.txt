@@ -1,0 +1,62 @@
+gestion.migrations package
+==========================
+
+Submodules
+----------
+
+gestion.migrations.0001\_initial module
+---------------------------------------
+
+.. automodule:: gestion.migrations.0001_initial
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+gestion.migrations.0002\_pinte module
+-------------------------------------
+
+.. automodule:: gestion.migrations.0002_pinte
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+gestion.migrations.0003\_historicalpinte module
+-----------------------------------------------
+
+.. automodule:: gestion.migrations.0003_historicalpinte
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+gestion.migrations.0004\_auto\_20181223\_1830 module
+----------------------------------------------------
+
+.. automodule:: gestion.migrations.0004_auto_20181223_1830
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+gestion.migrations.0005\_auto\_20190106\_0018 module
+----------------------------------------------------
+
+.. automodule:: gestion.migrations.0005_auto_20190106_0018
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+gestion.migrations.0006\_auto\_20190227\_0859 module
+----------------------------------------------------
+
+.. automodule:: gestion.migrations.0006_auto_20190227_0859
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: gestion.migrations
+    :members:
+    :undoc-members:
+    :show-inheritance:
