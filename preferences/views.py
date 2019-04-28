@@ -182,6 +182,7 @@ def get_config(request):
     del gp_dict["statutes"]
     del gp_dict["rules"]
     del gp_dict["menu"]
+    del gp_dict["alcohol_charter"]
     data = json.dumps(gp_dict)
     return HttpResponse(data, content_type='application/json')
     
