@@ -52,7 +52,7 @@ class KegForm(forms.ModelForm):
 
     class Meta:
         model = Keg
-        exclude = ("is_active", )
+        fields = "__all__"
         widgets = {'amount': forms.TextInput}
 
 class MenuForm(forms.ModelForm):
