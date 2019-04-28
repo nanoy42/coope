@@ -8,7 +8,7 @@ from django.template.loader import get_template
 from django_tex.exceptions import TexError
 from django.conf import settings
 
-DEFAULT_INTERPRETER = 'lualatex'
+DEFAULT_INTERPRETER = 'pdflatex'
 
 def run_tex(source):
     """
