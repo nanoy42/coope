@@ -116,6 +116,10 @@ class GeneralPreferences(models.Model):
     """
     The file of the menu
     """
+    alcohol_charter = models.FileField(blank=True, null=True, verbose_name="Charte alcool")
+    """
+    The file of the alcohol charter
+    """
     history = HistoricalRecords()
 
 class Cotisation(models.Model):

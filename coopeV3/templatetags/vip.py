@@ -102,3 +102,14 @@ def menu():
         return '<a target="_blank" href="' + gp.menu.url + '">' + str(gp.menu) + '</a>'
     except:
         return "Pas de document"
+
+@register.simple_tag
+def alcool_charter():
+    """
+    A tag which returns :attr:`preferences.models.GeneralPreferences.alcool_charter`.
+    """
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    try:
+        return '<a target="_blank" href="' + gp.alcohol_charter.url + '">' + str(gp.alcohol_charter) + '</a>'
+    except:
+        return "Pas de document"
