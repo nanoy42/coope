@@ -1,3 +1,8 @@
+## v3.4.1
+* Rajout d'un bouton actif sur les KegForm
+* Suppression épic épicier, maitre brasseur et vice-président.
+* Rajout responsable Phoenix Technopôle Metz
+* Rajout de la charte alcool
 ## v3.4.0
 * Fix bugs et améliorations
 * Réparation de la génération de documents en latex

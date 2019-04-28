@@ -64,10 +64,6 @@ class GeneralPreferences(models.Model):
     """
     The name of the president
     """
-    vice_president = models.CharField(max_length=255, blank=True, verbose_name="Vice Président")
-    """
-    The name of the vice-president
-    """
     treasurer = models.CharField(max_length=255, blank=True, verbose_name="Trésorier")
     """
     The name of the treasurer
@@ -76,13 +72,9 @@ class GeneralPreferences(models.Model):
     """
     The name of the secretary
     """
-    brewer = models.CharField(max_length=255, blank=True, verbose_name="Maître Brasseur")
+    phoenixTM_responsible = models.CharField(max_length=255, blank=True, verbose_name="Responsable Phœnix Technopôle Metz")
     """
-    The name of the brewer
-    """
-    grocer = models.CharField(max_length=255, blank=True, verbose_name="Épic Épicier")
-    """
-    The name of the grocer
+    The name of the people in charge of the club
     """
     use_pinte_monitoring = models.BooleanField(default=False, verbose_name="Suivi de pintes")
     """
@@ -115,6 +107,10 @@ class GeneralPreferences(models.Model):
     menu = models.FileField(blank=True, null=True, verbose_name="Menu")
     """
     The file of the menu
+    """
+    alcohol_charter = models.FileField(blank=True, null=True, verbose_name="Charte alcool")
+    """
+    The file of the alcohol charter
     """
     history = HistoricalRecords()
 

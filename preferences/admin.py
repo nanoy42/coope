@@ -13,7 +13,7 @@ class GeneralPreferencesAdmin(SimpleHistoryAdmin):
     """
     The admin class for :class:`Consumptions <preferences.models.GeneralPreferences>`.
     """
-    list_display = ('is_active', 'president', 'vice_president', 'treasurer', 'secretary', 'brewer', 'grocer', 'use_pinte_monitoring', 'lost_pintes_allowed', 'floating_buttons', 'automatic_logout_time')
+    list_display = ('is_active', 'president', 'treasurer', 'secretary', 'phoenixTM_responsible', 'use_pinte_monitoring', 'lost_pintes_allowed', 'floating_buttons', 'automatic_logout_time')
 
 class PaymentMethodAdmin(SimpleHistoryAdmin):
     """

@@ -13,14 +13,6 @@ def president():
     return gp.president
 
 @register.simple_tag
-def vice_president():
-    """
-    A tag which returns :attr:`preferences.models.GeneralPreferences.vice_president`.
-    """
-    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    return gp.vice_president
-
-@register.simple_tag
 def treasurer():
     """
     A tag which returns :attr:`preferences.models.GeneralPreferences.treasurer`.
@@ -37,20 +29,12 @@ def secretary():
     return gp.secretary
 
 @register.simple_tag
-def brewer():
+def phoenix():
     """
-    A tag which returns :attr:`preferences.models.GeneralPreferences.brewer`.
-    """
-    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    return gp.brewer
-
-@register.simple_tag
-def grocer():
-    """
-    A tag which returns :attr:`preferences.models.GeneralPreferences.grocer`.
+    A tag which returns :attr:`preferences.models.GeneralPreferences.phoenixTM_responsible`.
     """
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
-    return gp.grocer
+    return gp.phoenixTM_responsible
 
 @register.simple_tag
 def global_message():
@@ -100,5 +84,16 @@ def menu():
     gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
     try:
         return '<a target="_blank" href="' + gp.menu.url + '">' + str(gp.menu) + '</a>'
+    except:
+        return "Pas de document"
+
+@register.simple_tag
+def alcool_charter():
+    """
+    A tag which returns :attr:`preferences.models.GeneralPreferences.alcool_charter`.
+    """
+    gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+    try:
+        return '<a target="_blank" href="' + gp.alcohol_charter.url + '">' + str(gp.alcohol_charter) + '</a>'
     except:
         return "Pas de document"

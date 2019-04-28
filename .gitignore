@@ -44,3 +44,4 @@ venv
 static/
 Pipfile
 mediafiles
+Pipfile.lock
