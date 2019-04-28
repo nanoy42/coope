@@ -1,3 +1,5 @@
+## v3.4.2
+* Fix de getConfig
 ## v3.4.1
 * Rajout d'un bouton actif sur les KegForm
 * Suppression épic épicier, maitre brasseur et vice-président.
