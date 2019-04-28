@@ -31,11 +31,9 @@ class GeneralPreferencesForm(forms.ModelForm):
             'global_message': forms.Textarea(attrs={'placeholder': 'Message global à afficher sur le site'}),
             'active_message': forms.Textarea(attrs={'placeholder': 'Ce message s\'affichera si le site n\'est pas actif'}),
             'president': forms.TextInput(attrs={'placeholder': 'Président'}),
-            'vice_president': forms.TextInput(attrs={'placeholder': 'Vice-président'}),
             'secretary': forms.TextInput(attrs={'placeholder': 'Secrétaire'}),
             'treasurer': forms.TextInput(attrs={'placeholder': 'Trésorier'}),
-            'brewer': forms.TextInput(attrs={'placeholder': 'Maître brasseur'}),
-            'grocer': forms.TextInput(attrs={'placeholder': 'Epic épicier'}),
+            'phoenixTM_responsible': forms.TextInput(attrs={'placeholder': 'Responsable Phœnix Technopôle Metz'}),
             'home_text': forms.Textarea(attrs={'placeholder': 'Ce message sera affiché sur la page d\'accueil'})
         }
 
