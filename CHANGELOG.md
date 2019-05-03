@@ -1,3 +1,6 @@
+## v3.5.0
+* Ajout des stats
+* Ajout des catégories dynamiques
 ## v3.4.2
 * Fix de getConfig
 ## v3.4.1
