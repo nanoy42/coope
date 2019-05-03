@@ -45,4 +45,11 @@ urlpatterns = [
     path('menus-autcomplete', views.MenusAutocomplete.as_view(), name="menus-autocomplete"),
     path('cancelReload/<int:pk>', views.cancel_reload, name="cancelReload"),
     path('gen_releve', views.gen_releve, name="gen_releve"),
+    path('categoriesList', views.categoriesList, name="catrgorisList"),
+    path('addCategory', views.addCategory, name="addCategory"),
+    path('editCategory/<int:pk>', views.editCategory, name="editCategory"),
+    path('searchCategory', views.searchCategory, name="searchCategory"),
+    path('categoryProfile/<int:pk>', views.categoryProfile, name="categoryProfile"),
+    path('categoriesList', views.categoriesList, name="categoriesList"),
+    path('categories-autocomplete', views.CategoriesAutocomplete.as_view(), name="categories-autocomplete"),
 ]

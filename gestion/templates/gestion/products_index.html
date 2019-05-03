@@ -2,6 +2,9 @@
 {% block entete %}Gestion des produits{% endblock %}
 {% block navbar%}
 <ul>
+	{% if perms.gestion.add_category or perms.gestion.view_category %}
+	<li><a href="#fifth">Catégories</a></li>
+	{% endif %}
 	{% if perms.gestion.add_product or perms.gestion.view_product %}
 	<li><a href="#first">Produits</a></li>
 	{% endif %}
@@ -17,6 +20,23 @@
 </ul>
 {% endblock %}
 {% block content %}
+{% if perms.gestion.add_category or perms.gestion.view_category %}
+<section id="fifth" class="main">
+	<header class="major">
+		<h2>Catégories</h2>
+	</header>
+	Actions possibles :
+	<ul>
+		{% if perms.gestion.add_category %}
+		<li><a href="{% url 'gestion:addCategory' %}">Créer une catégorie</a></li>
+		{% endif %}
+		{% if perms.gestion.view_category %}
+		<li><a href="{% url 'gestion:searchCategory' %}">Rechercher une catégorie</a></li>
+		<li><a href="{% url 'gestion:categoriesList' %}">Lister toutes les catégories</a></li>
+		{% endif %}
+	</ul>
+</section>
+{% endif %}
 {% if perms.gestion.add_product or perms.gestion.view_product %}
 <section id="first" class="main">
 	<header class="major">

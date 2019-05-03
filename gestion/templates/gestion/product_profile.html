@@ -17,7 +17,7 @@
         <strong>Stock en soute</strong> : {{ product.stockHold }}<br>
         <strong>Stock au bar</strong> : {{ product.stockBar }}<br>
         <strong>Code Barre</strong> : {{ product.barcode }}<br>
-        <strong>Catégorie</strong> : {{ product.category }}<br>
+        <strong>Catégorie</strong> : <a href="{% url 'gestion:categoryProfile' product.category.pk %}">{{ product.category }}</a><br>
         <strong>Actif</strong> : {{ product.is_active | yesno:"Oui, Non"}}<br>
         <strong>Dégré</strong> : {{ product.deg }}<br>
         <strong>Volume</strong> : {{ product.volume }}cl<br>

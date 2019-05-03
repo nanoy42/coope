@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from dal import autocomplete
 
-from .models import Reload, Refund, Product, Keg, Menu
+from .models import Reload, Refund, Product, Keg, Menu, Category
 from preferences.models import PaymentMethod
 
 class ReloadForm(forms.ModelForm):
@@ -109,3 +109,17 @@ class GenerateReleveForm(forms.Form):
     """
     begin = forms.DateTimeField(label="Date de début")
     end = forms.DateTimeField(label="Date de fin")
+
+class CategoryForm(forms.ModelForm):
+    """
+    A form to create and edit a :class:`~gestion.models.Category`.
+    """
+    class Meta:
+        model = Category
+        fields = "__all__"
+
+class SearchCategoryForm(forms.Form):
+    """
+    A form to search a :class:`~gestion.models.Category`.
+    """
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=True, label="Catégorie", widget=autocomplete.ModelSelect2(url='gestion:categories-autocomplete', attrs={'data-minimum-input-length':2}))

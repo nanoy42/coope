@@ -5,27 +5,32 @@ from django.core.validators import MinValueValidator
 from preferences.models import PaymentMethod
 from django.core.exceptions import ValidationError
 
+class Category(models.Model):
+    """
+    A product category
+    """
+    class Meta:
+        verbose_name="Catégorie"
+    name = models.CharField(max_length=100, verbose_name="Nom", unique=True)
+    order = models.IntegerField(default=0)
+    """
+    The name of the category
+    """
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def active_products(self):
+        """
+        Return active producs of this category
+        """
+        return self.product_set.filter(is_active=True)
 
 class Product(models.Model):
     """
     Stores a product.
     """
-    P_PRESSION = 'PP'
-    D_PRESSION = 'DP'
-    G_PRESSION = 'GP'
-    BOTTLE = 'BT'
-    SOFT = 'SO'
-    FOOD = 'FO'
-    PANINI = 'PA'
-    TYPEINPUT_CHOICES_CATEGORIE = (
-        (P_PRESSION, "Pinte Pression"),
-        (D_PRESSION, "Demi Pression"),
-        (G_PRESSION, "Galopin pression"),
-        (BOTTLE, "Bouteille"),
-        (SOFT, "Soft"),
-        (FOOD, "En-cas"),
-        (PANINI, "Ingredients panini"),
-    )
     class Meta:
         verbose_name = "Produit"
     name = models.CharField(max_length=40, verbose_name="Nom", unique=True)
@@ -48,7 +53,7 @@ class Product(models.Model):
     """
     The barcode of the product.
     """
-    category = models.CharField(max_length=2, choices=TYPEINPUT_CHOICES_CATEGORIE, default=FOOD, verbose_name="Catégorie")
+    category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Catégorie")
     """
     The category of the product
     """

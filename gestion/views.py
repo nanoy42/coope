@@ -18,8 +18,8 @@ import simplejson as json
 from dal import autocomplete
 from decimal import *
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm
-from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm
+from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from preferences.models import PaymentMethod, GeneralPreferences, Cotisation
 from users.models import CotisationHistory
 
@@ -30,15 +30,12 @@ def manage(request):
     """
     Displays the manage view.
     """
+    categories = Category.objects.exclude(order=0).order_by('order')
     pay_buttons = PaymentMethod.objects.filter(is_active=True)
     gestion_form = GestionForm(request.POST or None)
     reload_form = ReloadForm(request.POST or None)
     refund_form = RefundForm(request.POST or None)
     bieresPression = []
-    bieresBouteille = Product.objects.filter(category=Product.BOTTLE).filter(is_active=True)
-    panini = Product.objects.filter(category=Product.PANINI).filter(is_active=True)
-    food = Product.objects.filter(category=Product.FOOD).filter(is_active=True)
-    soft = Product.objects.filter(category=Product.SOFT).filter(is_active=True)
     menus = Menu.objects.filter(is_active=True)
     kegs = Keg.objects.filter(is_active=True)
     gp, _ = GeneralPreferences.objects.get_or_create(pk=1)
@@ -56,11 +53,7 @@ def manage(request):
         "reload_form": reload_form,
         "refund_form": refund_form,
         "bieresPression": bieresPression,
-        "bieresBouteille": bieresBouteille,
-        "panini": panini,
-        "food": food,
-        "soft": soft,
-        "menus": menus,
+        "categories": categories,
         "pay_buttons": pay_buttons,
         "floating_buttons": floating_buttons,
         "cotisations": cotisations
@@ -884,3 +877,82 @@ def gen_releve(request):
         return render_to_pdf(request, 'gestion/releve.tex', {"consumptions": consumptions, "reloads": reloads, "refunds": refunds, "cotisations": cotisations, "begin": begin, "end": end, "now": now, "value_especes": value_especes, "value_lydia": value_lydia, "value_cheque": value_cheque}, filename="releve.pdf")
     else:
         return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer", "form_button_icon": "file-pdf"})
+
+
+########## categories ##########
+@active_required
+@login_required
+@permission_required('gestion.add_category')
+def addCategory(request):
+    """
+    Displays a :class:`gestion.forms.CategoryForm` to add a category.
+    """
+    form = CategoryForm(request.POST or None)
+    if(form.is_valid()):
+        category = form.save()
+        messages.success(request, "La catégorie a bien été ajoutée")
+        return redirect(reverse('gestion:categoryProfile', kwargs={'pk':category.pk}))
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'une catégorie", "form_button": "Ajouter", "form_button_icon": "plus-square"})
+
+@active_required
+@login_required
+@permission_required('gestion.change_category')
+def editCategory(request, pk):
+    """
+    Displays a :class:`gestion.forms.CategoryForm` to edit a category.
+
+    pk
+        The primary key of the the :class:`gestion.models.Category` to edit.
+    """
+    category = get_object_or_404(Category, pk=pk)
+    form = CategoryForm(request.POST or None, instance=category)
+    if(form.is_valid()):
+        form.save()
+        messages.success(request, "La catégorie a bien été modifiée")
+        return redirect(reverse('gestion:categoryProfile', kwargs={'pk': category.pk}))
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'une catégorie", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
+
+@active_required
+@login_required
+@permission_required('gestion.view_category')
+def categoriesList(request):
+    """
+    Display the list of :class:`categories <gestion.models.Category>`.
+    """
+    categories = Category.objects.all().order_by('order')
+    return render(request, "gestion/categories_list.html", {"categories": categories})
+
+@active_required
+@login_required
+@permission_required('gestion.view_category')
+def searchCategory(request):
+    """
+    Displays a :class:`gestion.forms.SearchCategory` to search a :class:`gestion.models.Category`.
+    """
+    form = SearchCategoryForm(request.POST or None)
+    if(form.is_valid()):
+        return redirect(reverse('gestion:categoryProfile', kwargs={'pk': form.cleaned_data['category'].pk }))
+    return render(request, "form.html", {"form": form, "form_title":"Rechercher une catégorie", "form_button": "Rechercher", "form_button_icon": "search"})
+
+@active_required
+@login_required
+@permission_required('gestion.view_category')
+def categoryProfile(request, pk):
+    """
+    Displays the profile of a :class:`gestion.models.Category`.
+
+    pk
+        The primary key of the :class:`gestion.models.Category` to display profile.
+    """
+    category = get_object_or_404(Category, pk=pk)
+    return render(request, "gestion/category_profile.html", {"category": category})
+
+class CategoriesAutocomplete(autocomplete.Select2QuerySetView):
+    """
+    Autocomplete view for active :class:`categories <gestion.models.Category>`.
+    """
+    def get_queryset(self):
+        qs = Category.objects.all()
+        if self.q:
+            qs = qs.filter(name__icontains=self.q)
+        return qs

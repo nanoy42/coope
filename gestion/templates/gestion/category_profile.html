@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block entete %}Gestion des produits : Profil de {{category}}{% endblock %}
+{% block navbar %}
+<ul>
+  <li><a href="#first">Général</a></li>
+  <li><a href="#second">Liste des produits</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		  <h2>Général</h2>
+    </header>
+    <a class="button small" href="{% url 'gestion:categoriesList' %}">Liste des catégories</a><br><br>
+    {% if perms.gestion.change_category %}<a href="{% url 'gestion:editCategory' category.pk %}" class="button small">Modifier</a><br>{% endif %}<br>
+        <strong>Nom</strong> : {{ category.name }}<br>
+        <strong>Ordre</strong> : {{ category.order }}<br>
+</section>
+<section id="first" class="main">
+  <header class="major">
+    <h2>Liste des produits ({{category.product_set.all.count}} au total dont {{category.active_products.count}} actifs)</h2>
+  </header>
+  <ul>
+  {% for product in category.product_set.all %}
+    <li><a href="{% url 'gestion:productProfile' product.pk %}">{{product}}</a></li>
+  {% endfor %}
+  </ul>
+</section>
+{% endblock %}

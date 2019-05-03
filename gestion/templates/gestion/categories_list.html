@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block entete %}Gestion des produits{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Liste des catégories</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des catégories</h2>
+	</header>
+	{% if perms.gestion.add_category %}
+	<a class="button" href="{% url 'gestion:addCategory' %}"><i class="fa fa-boxes"></i> Créer une catégorie</a><br><br>
+	{% endif %}
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Ordre</th>
+					<th>Administrer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+				<tr>
+					<td><a href="{% url 'gestion:categoryProfile' category.pk %}">{{ category }}</a></td>
+					<td>{% if category.order == 0 %}0 (non affichéé){% else %}{{category.order}}{% endif %}</td>
+					<td><a href="{% url 'gestion:categoryProfile' category.pk %}" class="button small"><i class="fa fa-eye"></i> Profil</a> {% if perms.gestion.change_category %}<a href="{% url 'gestion:editCategory' category.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

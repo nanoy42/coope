@@ -1,7 +1,7 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
 
-from .models import Reload, Refund, Product, Keg, ConsumptionHistory, KegHistory, Consumption, Menu, MenuHistory
+from .models import Reload, Refund, Product, Keg, ConsumptionHistory, KegHistory, Consumption, Menu, MenuHistory, Category
 
 class ConsumptionAdmin(SimpleHistoryAdmin):
     """
@@ -81,6 +81,12 @@ class RefundAdmin(SimpleHistoryAdmin):
     ordering = ('-date', 'amount', 'customer')
     search_fields = ('customer',)
 
+class CategoryAdmin(SimpleHistoryAdmin):
+    """
+    The admin class for Category
+    """
+    ordering = ("order",)
+
 admin.site.register(Reload, ReloadAdmin)
 admin.site.register(Refund, RefundAdmin)
 admin.site.register(Product, ProductAdmin)
@@ -90,3 +96,4 @@ admin.site.register(KegHistory, KegHistoryAdmin)
 admin.site.register(Consumption, ConsumptionAdmin)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(MenuHistory, MenuHistoryAdmin)
+admin.site.register(Category, CategoryAdmin)

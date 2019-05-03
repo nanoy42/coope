@@ -125,7 +125,7 @@
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not bieresPression|divisibleby:4 %}
+								{% if not cotisations|divisibleby:4 %}
 								</tr>
 								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
@@ -141,8 +141,9 @@
 								{% if not bieresPression|divisibleby:4 %}
 								</tr>
 								{% endif %}
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières bouteilles</td></tr>
-								{% for product in bieresBouteille %}
+								{% for category in categories %}
+								<tr style="text-align:center; font-weight:bold;"><td colspan="4">{{category}}</td></tr>
+								{% for product in category.active_products %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
 									{% endif %}
@@ -151,49 +152,10 @@
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not bieresBouteille|divisibleby:4 %}
-								</tr>
-								{% endif %}
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Paninis</td></tr>
-								{% for product in panini %}
-								{% if forloop.counter0|divisibleby:4 %}
-								<tr style="text-align:center">
-									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
+								{% if not category.active_products|divisibleby:4 %}
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not panini|divisibleby:4 %}
-								</tr>
-								{% endif %}
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Boissons sans alcool</td></tr>
-								{% for product in soft %}
-								{% if forloop.counter0|divisibleby:4 %}
-								<tr style="text-align:center">
-									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
-								</tr>
-								{% endif %}
-								{% endfor %}
-								{% if not soft|divisibleby:4 %}
-								</tr>
-								{% endif %}
-
-								<tr style="text-align:center; font-weight:bold;"><td colspan="4">En-cas</td></tr>
-								{% for product in food %}
-								{% if forloop.counter0|divisibleby:4 %}
-								<tr style="text-align:center">
-									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
-								</tr>
-								{% endif %}
-								{% endfor %}
-								{% if not autreBouffe|divisibleby:4 %}
-								</tr>
-								{% endif %}
 								{% if menus %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Menus</td></tr>
 								{% for product in menus %}
