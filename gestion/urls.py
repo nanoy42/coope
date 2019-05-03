@@ -52,4 +52,5 @@ urlpatterns = [
     path('categoryProfile/<int:pk>', views.categoryProfile, name="categoryProfile"),
     path('categoriesList', views.categoriesList, name="categoriesList"),
     path('categories-autocomplete', views.CategoriesAutocomplete.as_view(), name="categories-autocomplete"),
+    path('stats', views.stats, name="stats"),
 ]

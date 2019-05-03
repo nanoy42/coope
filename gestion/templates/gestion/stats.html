@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block entete %}Stats{% endblock %}
+{% block navbar%}
+<ul>
+	<li><a href="#first">Stats association</a></li>
+	<li><a href="#second">Stats produits et catégories</a></li>
+	<li><a href="#third">Stats moyens de paiments et cotisations</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Stats association</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Champ</th>
+					<th>Valeur</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nombre d'adhérents</td>
+					<td>{{adherents|length}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de comptes</td>
+					<td>{{users.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de transactions</td>
+					<td>{{transactions.count}}</td>
+				</tr>
+				<tr>
+					<td>Somme des soldes positifs</td>
+					<td>{{sum_positive_balance}}</td>
+				</tr>
+				<tr>
+					<td>Somme des soldes positifs et négatifs</td>
+					<td>{{sum_balance}}</td>
+				</tr>
+				<tr>
+					<td>Nombre d'écoles</td>
+					<td>{{schools.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de groupes</td>
+					<td>{{groups.count}}</td>
+				</tr>
+				{% for group in groups %}
+				<tr>
+					<td>Nombre dans le groupe {{group}}</td>
+					<td>{{group.user_set.count}}</td>
+				</tr>
+				{% endfor %}
+				<tr>
+					<td>Nombre d'admins</td>
+					<td>{{admins.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de superusers</td>
+					<td>{{superusers.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre 8</td>
+					<td>8</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Stats produits et catégories</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Champ</th>
+					<th>Valeur</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nombre de catégories</td>
+					<td>{{categories.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de catégories affichées</td>
+					<td>{{categories_shown.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de produits</td>
+					<td>{{products.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de produits actifs</td>
+					<td>{{active_products.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de fûts actifs</td>
+					<td>{{active_kegs.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de menus</td>
+					<td>{{menus.count}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Stats moyens de paiement et cotisations</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Champ</th>
+					<th>Valeur</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Nombre de moyens de paiement</td>
+					<td>{{payment_methods.count}}</td>
+				</tr>
+				<tr>
+					<td>Nombre de types de cotisations</td>
+					<td>{{cotisations.count}}</td>
+				</tr>
+				{% for cotisation in cotisations %}
+				<tr>
+					<td>Nombre de {{cotisation}}</td>
+					<td>{{cotisation.cotisationhistory_set.count}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
