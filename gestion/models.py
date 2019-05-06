@@ -31,8 +31,21 @@ class Product(models.Model):
     """
     Stores a product.
     """
+    DRAFT_NONE = 0
+    DRAFT_PINTE = 1
+    DRAFT_DEMI = 2
+    DRAFT_GALOPIN = 3
+
+    DRAFT_TYPES = (
+        (DRAFT_NONE, "Pas une bière pression"),
+        (DRAFT_PINTE, "Pinte"),
+        (DRAFT_DEMI, "Demi"),
+        (DRAFT_GALOPIN, "Galopin"),
+    )
+
     class Meta:
         verbose_name = "Produit"
+
     name = models.CharField(max_length=40, verbose_name="Nom", unique=True)
     """
     The name of the product.
@@ -81,6 +94,7 @@ class Product(models.Model):
     """
     On the graphs on :func:`users.views.profile` view, the number of total consumptions is divised by the showingMultiplier
     """
+    draft_category = models.IntegerField(choices=DRAFT_TYPES, default=DRAFT_NONE, verbose_name="Type de pression")
     history = HistoricalRecords()
 
     def __str__(self):
@@ -110,7 +124,7 @@ class Product(models.Model):
 
 def isPinte(id):
     product = Product.objects.get(id=id)
-    if product.category != Product.P_PRESSION:
+    if product.draft_category != Product.DRAFT_PINTE:
         raise ValidationError(
             ('%(product)s n\'est pas une pinte'),
             params={'product': product},
@@ -119,7 +133,7 @@ def isPinte(id):
 
 def isDemi(id):
     product = Product.objects.get(id=id)
-    if product.category != Product.D_PRESSION:
+    if product.draft_category != Product.DRAFT_DEMI:
         raise ValidationError(
             ('%(product)s n\'est pas un demi'),
             params={'product': product},
@@ -127,7 +141,7 @@ def isDemi(id):
 
 def isGalopin(id):
     product = Product.objects.get(id=id)
-    if product.category != Product.G_PRESSION:
+    if product.draft_category != Product.DRAFT_GALOPIN:
         raise ValidationError(
             ('%(product)s n\'est pas un galopin'),
             params={'product': product},

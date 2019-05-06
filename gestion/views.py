@@ -130,7 +130,7 @@ def order(request):
                 for o in order:
                     product = get_object_or_404(Product, pk=o["pk"])
                     quantity = int(o["quantity"])
-                    if(product.category == Product.P_PRESSION):
+                    if(product.draft_category == Product.DRAFT_PINTE):
                         keg = get_object_or_404(Keg, pinte=product)
                         if(not keg.is_active):
                             raise Exception("Fût non actif")
@@ -138,7 +138,7 @@ def order(request):
                         kegHistory.quantitySold += Decimal(quantity * 0.5)
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
-                    elif(product.category == Product.D_PRESSION):
+                    elif(product.draft_category == Product.DRAFT_DEMI):
                         keg = get_object_or_404(Keg, demi=product)
                         if(not keg.is_active):
                             raise Exception("Fût non actif")
@@ -146,7 +146,7 @@ def order(request):
                         kegHistory.quantitySold += Decimal(quantity * 0.25)
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
-                    elif(product.category == Product.G_PRESSION):
+                    elif(product.draft_category == Product.DRAFT_GALOPIN):
                         keg = get_object_or_404(Keg, galopin=product)
                         if(not keg.is_active):
                             raise Exception("Fût non actif")
@@ -392,7 +392,7 @@ def getProduct(request, pk):
         The primary key of the :class:`gestion.models.Product` to get infos.
     """
     product = Product.objects.get(pk=pk)
-    if product.category == Product.P_PRESSION:
+    if product.category == Product.DRAFT_PINTE:
         nb_pintes = 1
     else:
         nb_pintes = 0
@@ -691,7 +691,7 @@ def get_menu(request, pk):
     menu = get_object_or_404(Menu, pk=pk)
     nb_pintes = 0
     for article in menu.articles:
-        if article.category == Product.P_PRESSION:
+        if article.category == Product.DRAFT_PINTE:
             nb_pintes +=1
     data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
