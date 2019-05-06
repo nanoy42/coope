@@ -19,6 +19,7 @@
 				<tr>
 					<th>Nom</th>
 					<th>Ordre</th>
+					<th>Nombre de produits (dont actifs)</th>
 					<th>Administrer</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 				<tr>
 					<td><a href="{% url 'gestion:categoryProfile' category.pk %}">{{ category }}</a></td>
 					<td>{% if category.order == 0 %}0 (non affichéé){% else %}{{category.order}}{% endif %}</td>
+					<td>{{category.product_set.count}} ({{category.active_products.count}})</td>
 					<td><a href="{% url 'gestion:categoryProfile' category.pk %}" class="button small"><i class="fa fa-eye"></i> Profil</a> {% if perms.gestion.change_category %}<a href="{% url 'gestion:editCategory' category.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
 				</tr>
 				{% endfor %}

@@ -142,14 +142,16 @@
 								</tr>
 								{% endif %}
 								{% for category in categories %}
+								{% if category.active_products.count > 0 %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">{{category}}</td></tr>
 								{% for product in category.active_products %}
 								{% if forloop.counter0|divisibleby:4 %}
 								<tr style="text-align:center">
-									{% endif %}
+								{% endif %}
 									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
+								{% if forloop.counter|divisibleby:4 %}
 								</tr>
+								{% endif %}
 								{% endif %}
 								{% endfor %}
 								{% if not category.active_products|divisibleby:4 %}
