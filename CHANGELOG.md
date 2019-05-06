@@ -1,3 +1,7 @@
+## v3.5.1
+* Les catégories apapraissent que si elles sont pas vides
+* Nombre de produits affiché sur la liste des catégories
+* Fix catégories et bières pressions
 ## v3.5.0
 * Ajout des stats
 * Ajout des catégories dynamiques
