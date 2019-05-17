@@ -46,9 +46,9 @@ class KegForm(forms.ModelForm):
     """
     def __init__(self, *args, **kwargs):
         super(KegForm, self).__init__(*args, **kwargs)
-        self.fields['pinte'].queryset = Product.objects.filter(category=Product.P_PRESSION)
-        self.fields['demi'].queryset = Product.objects.filter(category=Product.D_PRESSION)
-        self.fields['galopin'].queryset = Product.objects.filter(category=Product.G_PRESSION)
+        self.fields['pinte'].queryset = Product.objects.filter(draft_category=Product.DRAFT_PINTE)
+        self.fields['demi'].queryset = Product.objects.filter(draft_category=Product.DRAFT_DEMI)
+        self.fields['galopin'].queryset = Product.objects.filter(draft_category=Product.DRAFT_GALOPIN)
 
     class Meta:
         model = Keg

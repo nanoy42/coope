@@ -1,3 +1,5 @@
+## v3.5.2
+* Fix la vue editKeg
 ## v3.5.1
 * Les catégories apapraissent que si elles sont pas vides
 * Nombre de produits affiché sur la liste des catégories
