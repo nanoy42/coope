@@ -98,7 +98,11 @@ class Product(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return self.name
+        if self.draft_category == self.DRAFT_NONE:
+            return self.name + "(" + str(self.amount) + " €)"
+        else:
+            return self.name + " (" + str(self.amount) + " €, " + str(self.deg) + "°)"
+
 
     def user_ranking(self, pk):
         """
