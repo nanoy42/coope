@@ -129,4 +129,8 @@ class Cotisation(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return "Cotisation de " + str(self.duration) + " jours pour le prix de " + str(self.amount) + "€"
+        if self.duration == 1:
+            jour = "jour"
+        else:
+            jour = "jours"
+        return "Cotisation de " + str(self.duration) + " " + jour + " pour le prix de " + str(self.amount) + "€"

@@ -25,7 +25,7 @@
 			<tbody>
 				{% for cotisation in cotisations %}
 				<tr>
-					<td>{{ cotisation.duration }} jours</td>
+					<td>{{ cotisation.duration }} jour{{ cotisation.duration|pluralize }}</td>
 					<td>{{ cotisation.amount }} €</td>
 					<td>{% if perms.preferences.change_cotisation %}<a class="button small" href="{% url 'preferences:editCotisation' cotisation.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_cotisation %}<a class="button small" href="{% url 'preferences:deleteCotisation' cotisation.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
