@@ -35,10 +35,7 @@ def loginView(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Vous êtes à présent connecté sous le compte " + str(user))
-            if(request.user.has_perm('gestion.can_manage')):
-               return redirect(reverse('gestion:manage'))
-            else:
-               return redirect(reverse('users:profile', kwargs={'pk':request.user.pk}))
+            return redirect(reverse('home'))
         else:
             messages.error(request, "Nom d'utilisateur et/ou mot de passe invalide")
     return render(request, "form.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter", "form_button_icon": "sign-in-alt"})
