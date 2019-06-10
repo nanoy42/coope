@@ -715,12 +715,13 @@ def ranking(request):
     Displays the ranking page.
     """
     bestBuyers = User.objects.order_by('-profile__debit')[:25]
-    customers = User.objects.all()
-    list = []
-    for customer in customers:
-        alcohol = customer.profile.alcohol
-        list.append([customer, alcohol])
-    bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
+    #customers = User.objects.all()
+    #list = []
+    #for customer in customers:
+    #    alcohol = customer.profile.alcohol
+    #    list.append([customer, alcohol])
+    #bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
+    bestDrinkers = User.objects.order_by('-profile__alcohol')[:25]
     form = SearchProductForm(request.POST or None)
     if(form.is_valid()):
         product_ranking = form.cleaned_data['product'].ranking
