@@ -163,6 +163,7 @@ def order(request):
                     consumption.save()
                     ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
                     ch.save()
+                    user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                     if(paymentMethod.affect_balance):
                         if(user.profile.balance >= Decimal(product.amount*quantity)):
                             user.profile.debit += Decimal(product.amount*quantity)
@@ -187,11 +188,10 @@ def order(request):
                         if(article.stockHold > 0):
                             article.stockHold -= 1
                             article.save()
+                        user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
                 return HttpResponse("La commande a bien été effectuée")
     except Exception as e:
-        print(e)
-        print("test")
         return HttpResponse(error_message)
 
 @active_required
@@ -274,7 +274,8 @@ def cancel_consumption(request, pk):
     user = consumption.customer
     if consumption.paymentMethod.affect_balance:
         user.profile.debit -= consumption.amount
-        user.save()
+    user.profile.alcohol -= Decimal(consumption.quantity * float(consumption.product.deg) * consumption.product.volume * 0.79 /10 /1000)
+    user.save()
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
     consumptionT.quantity -= consumption.quantity
     consumptionT.save()
@@ -301,6 +302,8 @@ def cancel_menu(request, pk):
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
         consumptionT.save()
+        user.profile.alcohol -= Decimal(menu_history.quantity * float(menu_history.product.deg) * menu_history.product.volume * 0.79 /10 /1000)
+        user.save()
     menu_history.delete()
     messages.success(request, "La consommation du menu a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -715,12 +718,6 @@ def ranking(request):
     Displays the ranking page.
     """
     bestBuyers = User.objects.order_by('-profile__debit')[:25]
-    #customers = User.objects.all()
-    #list = []
-    #for customer in customers:
-    #    alcohol = customer.profile.alcohol
-    #    list.append([customer, alcohol])
-    #bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
     bestDrinkers = User.objects.order_by('-profile__alcohol')[:25]
     form = SearchProductForm(request.POST or None)
     if(form.is_valid()):
