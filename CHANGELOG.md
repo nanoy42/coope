@@ -1,3 +1,5 @@
+## v3.5.3
+* Fix le profil (division par 0 lorsque toutes les transactions d'un produit avaient été annulées)
 ## v3.5.2
 * Fix la vue editKeg
 ## v3.5.1

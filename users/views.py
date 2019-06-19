@@ -141,7 +141,7 @@ def profile(request, pk):
     products = []
     quantities = []
     for k in range(tot):
-        if quantities_pre[k]/totQ >= 0.01:
+        if totQ > 0 and quantities_pre[k]/totQ >= 0.01:
             products.append(products_pre[k])
             quantities.append(quantities_pre[k])
     lastConsumptions = ConsumptionHistory.objects.filter(customer=user).order_by('-date')[:10]
