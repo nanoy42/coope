@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'dal_select2',
     'simple_history',
     'django_tex',
+    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'coopeV3.urls'
@@ -127,3 +129,4 @@ LOGIN_URL = '/users/login'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
+INTERNAL_IPS = ["127.0.0.1"]

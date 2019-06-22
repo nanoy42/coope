@@ -120,6 +120,10 @@ class Profile(models.Model):
     """
     Date of end of cotisation for the client
     """
+    alcohol = models.DecimalField(max_digits=5, decimal_places=2, default=0, null=True)
+    """
+    Ingerated alcohol
+    """
     history = HistoricalRecords()
 
     @property
@@ -151,18 +155,6 @@ class Profile(models.Model):
         Computes the rank (by :attr:`gestion.models.Profile.debit`) of the client.
         """
         return Profile.objects.filter(debit__gte=self.debit).count()
-
-    @property
-    def alcohol(self):
-        """
-        Computes ingerated alcohol.
-        """
-        consumptions = ConsumptionHistory.objects.filter(customer=self.user).select_related('product')
-        alcohol = 0
-        for consumption in consumptions:
-            product = consumption.product
-            alcohol += consumption.quantity * float(product.deg) * product.volume * 0.79 /10 /1000
-        return alcohol
 
     @property
     def nb_pintes(self):
