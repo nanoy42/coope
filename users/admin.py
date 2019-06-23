@@ -50,9 +50,9 @@ class WhiteListHistoryAdmin(SimpleHistoryAdmin):
     """
     The admin class for :class:`Consumptions <users.models.WhiteListHistory>`.
     """
-    list_display = ('user', 'paymentDate', 'endDate', 'duration')
+    list_display = ('user', 'paymentDate', 'endDate', 'duration', 'reason')
     ordering = ('user', 'duration', 'paymentDate', 'endDate')
-    search_fields = ('user__username', 'user__first_name', 'user__last_name')
+    search_fields = ('user__username', 'user__first_name', 'user__last_name', 'reason')
 
 admin.site.register(Permission, SimpleHistoryAdmin)
 admin.site.register(School, SimpleHistoryAdmin)

@@ -99,6 +99,10 @@ class WhiteListHistory(models.Model):
     """
     User (:class:`django.contrib.auth.models.User`) who registered the cotisation.
     """
+    reason = models.CharField(max_length=255, verbose_name="Raison", blank=True)
+    """
+    Reason of the whitelist
+    """
     history = HistoricalRecords()
 
 class Profile(models.Model):

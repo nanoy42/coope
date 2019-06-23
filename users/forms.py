@@ -99,7 +99,7 @@ class addWhiteListHistoryForm(forms.ModelForm):
     """
     class Meta:
         model = WhiteListHistory
-        fields = ("duration", )
+        fields = ("duration", "reason")
 
 class SchoolForm(forms.ModelForm):
     """
