@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
+
 
 from dal import autocomplete
 
@@ -44,16 +46,20 @@ class KegForm(forms.ModelForm):
     """
     A form to create and edit a :class:`~gestion.models.Keg`.
     """
-    def __init__(self, *args, **kwargs):
-        super(KegForm, self).__init__(*args, **kwargs)
-        self.fields['pinte'].queryset = Product.objects.filter(draft_category=Product.DRAFT_PINTE)
-        self.fields['demi'].queryset = Product.objects.filter(draft_category=Product.DRAFT_DEMI)
-        self.fields['galopin'].queryset = Product.objects.filter(draft_category=Product.DRAFT_GALOPIN)
 
     class Meta:
         model = Keg
-        fields = "__all__"
+        fields = ["name", "stockHold", "barcode", "amount", "capacity"]
         widgets = {'amount': forms.TextInput}
+
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie")
+    deg = forms.DecimalField(max_digits=5, decimal_places=2, label="Degré", validators=[MinValueValidator(0)])
+    create_galopin = forms.BooleanField(label="Créer le produit galopin ?")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get("name")[0:4] != "Fût ":
+            raise ValidationError("Le nom du fût doit être sous la forme 'Fût nom de la bière'")
 
 class MenuForm(forms.ModelForm):
     """

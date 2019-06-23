@@ -46,7 +46,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Produit"
 
-    name = models.CharField(max_length=40, verbose_name="Nom", unique=True)
+    name = models.CharField(max_length=255, verbose_name="Nom", unique=True)
     """
     The name of the product.
     """
@@ -62,7 +62,7 @@ class Product(models.Model):
     """
     Number of product at the bar.
     """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
+    barcode = models.CharField(max_length=255, unique=True, verbose_name="Code barre")
     """
     The barcode of the product.
     """
@@ -162,7 +162,7 @@ class Keg(models.Model):
             ("close_keg", "Peut fermer les fûts")
         )
 
-    name = models.CharField(max_length=20, unique=True, verbose_name="Nom")
+    name = models.CharField(max_length=255, unique=True, verbose_name="Nom")
     """
     The name of the keg.
     """

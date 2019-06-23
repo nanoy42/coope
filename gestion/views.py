@@ -25,7 +25,7 @@ from math import floor, ceil
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
-from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory
+from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory, PriceProfile
 from users.models import CotisationHistory
 
 @active_required
@@ -452,7 +452,65 @@ def addKeg(request):
     Displays a :class:`gestion.forms.KegForm` to add a :class:`gestion.models.Keg`.
     """
     form = KegForm(request.POST or None)
-    if(form.is_valid()):
+    if form.is_valid():
+        keg = form.save(commit=False)
+        price_profile = get_object_or_404(PriceProfile, use_for_draft=True)
+        pinte_price = compute_price(form.cleaned_data["amount"]/(2*form.cleaned_data["capacity"]), price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        pinte_price = ceil(10*pinte_price)/10
+        name = form.cleaned_data["name"][4:]
+        create_galopin = form.cleaned_data["create_galopin"]
+        pinte = Product(
+            name = "Pinte " + name,
+            amount = pinte_price,
+            stockHold = 0,
+            stockBar = 0,
+            barcode = "pinte_" + form.cleaned_data["barcode"],
+            category = form.cleaned_data["category"],
+            needQuantityButton = False,
+            is_active = True,
+            volume = 50,
+            deg = form.cleaned_data["deg"],
+            adherentRequired = True,
+            showingMultiplier = 1,
+            draft_category = Product.DRAFT_PINTE
+        )
+        pinte.save()
+        keg.pinte = pinte
+        demi = Product(
+            name = "Demi " + name,
+            amount = ceil(5*pinte_price)/10,
+            stockHold = 0,
+            stockBar = 0,
+            barcode = "demi_" + form.cleaned_data["barcode"],
+            category = form.cleaned_data["category"],
+            needQuantityButton = False,
+            is_active = True,
+            volume = 25,
+            deg = form.cleaned_data["deg"],
+            adherentRequired = True,
+            showingMultiplier = 1,
+            draft_category = Product.DRAFT_DEMI
+        )
+        demi.save()
+        keg.demi = demi
+        if create_galopin:
+            galopin = Product(
+                name = "Galopin " + name,
+                amount = ceil(2.5 * pinte_price)/10,
+                stockHold = 0,
+                stockBar = 0,
+                barcode = "galopin_" + form.cleaned_data["barcode"],
+                category = form.cleaned_data["category"],
+                needQuantityButton = False,
+                is_active = True,
+                volume = 13,
+                deg = form.cleaned_data["deg"],
+                adherentRequired = True,
+                showingMultiplier = 1,
+                draft_category = Product.DRAFT_DEMI
+            )
+            galopin.save()
+            keg.galopin = galopin
         keg = form.save()
         messages.success(request, "Le fût " + keg.name + " a bien été ajouté")
         return redirect(reverse('gestion:kegsList'))
