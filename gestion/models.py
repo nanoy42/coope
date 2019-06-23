@@ -62,10 +62,6 @@ class Product(models.Model):
     """
     Number of product at the bar.
     """
-    barcode = models.CharField(max_length=255, unique=True, verbose_name="Code barre")
-    """
-    The barcode of the product.
-    """
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Catégorie")
     """
     The category of the product
@@ -169,10 +165,6 @@ class Keg(models.Model):
     stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
     """
     The number of this keg in the hold.
-    """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    """
-    The barcode of the keg.
     """
     amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Prix du fût", validators=[MinValueValidator(0)])
     """
@@ -316,10 +308,6 @@ class Menu(models.Model):
     amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     """
     Price of the menu.
-    """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    """
-    Barcode of the menu.
     """
     articles = models.ManyToManyField(Product, verbose_name="Produits")
     """

@@ -19,14 +19,14 @@ function get_config(){
 function get_product(id){
 	res = $.get("getProduct/" + id, function(data){
 		nbPintes += data.nb_pintes;
-		add_product(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
+		add_product(data.pk, data.name, data.amount, data.needQuantityButton);
 	});
 }
 
 function get_menu(id){
 	res = $.get("getMenu/" + id, function(data){
 		nbPintes += data.nb_pintes;
-		add_menu(data.pk, data.barcode, data.name, data.amount, data.needQuantityButton);
+		add_menu(data.pk, data.name, data.amount, data.needQuantityButton);
 	});
 }
 
@@ -36,7 +36,7 @@ function get_cotisation(id){
 	});
 }
 
-function add_product(pk, barcode, name, amount, needQuantityButton){
+function add_product(pk, name, amount, needQuantityButton){
 	exist = false
 	index = -1;
 	for(k=0;k < products.length; k++){
@@ -56,12 +56,12 @@ function add_product(pk, barcode, name, amount, needQuantityButton){
 	if(exist){
 		products[index].quantity += quantity;
 	}else{
-		products.push({"pk": pk, "barcode": barcode, "name": name, "amount": amount, "quantity": quantity});
+		products.push({"pk": pk, "name": name, "amount": amount, "quantity": quantity});
 	}
 	generate_html()
 }
 
-function add_menu(pk, barcode, name, amount){
+function add_menu(pk, name, amount){
 	exist = false;
 	index = -1;
 	for(k=0; k < menus.length; k++){
@@ -73,12 +73,12 @@ function add_menu(pk, barcode, name, amount){
 	if(exist){
 		menus[index].quantity += 1;
 	}else{
-		menus.push({"pk": pk, "barcode": barcode, "name": name, "amount": amount, "quantity":1});
+		menus.push({"pk": pk, "name": name, "amount": amount, "quantity":1});
 	}
 	generate_html();
 }
 
-function add_cotisation(pk, barcode, duration, amount){
+function add_cotisation(pk, duration, amount){
 	exist = false;
 	index = -1;
 	for(k=0; k < cotisations.length; k++){
@@ -90,7 +90,7 @@ function add_cotisation(pk, barcode, duration, amount){
 	if(exist){
 		cotisations[index].quantity += 1;
 	}else{
-		cotisations.push({"pk": pk, "barcode": barcode, "duration": duration, "amount": amount, "quantity":1});
+		cotisations.push({"pk": pk, "duration": duration, "amount": amount, "quantity":1});
 	}
 	generate_html();
 }
@@ -103,11 +103,11 @@ function generate_html(){
 	}
 	for(k=0;k<products.length;k++){
 		product = products[k]
-		html += '<tr><td>' + product.barcode + '</td><td>' + product.name + '</td><td>' + String(product.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + ' €</td></tr>';
+		html += '<tr><td>' + product.name + '</td><td>' + String(product.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateInput(this)" value="' + String(product.quantity) + '"/></td><td>' + String(Number((product.quantity * product.amount).toFixed(2))) + ' €</td></tr>';
 	}
 	for(k=0; k<menus.length;k++){
 		menu = menus[k]
-		html += '<tr><td>' + menu.barcode + '</td><td>' + menu.name + '</td><td>' + String(menu.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(Number((menu.quantity * menu.amount).toFixed(2))) + ' €</td></tr>';
+		html += '<tr><td>' + menu.name + '</td><td>' + String(menu.amount) + ' €</td><td><input type="number" data-target="' + String(k) + '" onChange="updateMenuInput(this)" value="' + String(menu.quantity) + '"/></td><td>' + String(Number((menu.quantity * menu.amount).toFixed(2))) + ' €</td></tr>';
 	}
 	$("#items").html(html)
 	updateTotal();

@@ -49,7 +49,7 @@ class KegForm(forms.ModelForm):
 
     class Meta:
         model = Keg
-        fields = ["name", "stockHold", "barcode", "amount", "capacity"]
+        fields = ["name", "stockHold", "amount", "capacity"]
         widgets = {'amount': forms.TextInput}
 
     category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie")

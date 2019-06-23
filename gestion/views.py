@@ -393,7 +393,7 @@ def productProfile(request, pk):
 @login_required
 def getProduct(request, pk):
     """
-    Get a :class:`gestion.models.Product` by barcode and return it in JSON format.
+    Get a :class:`gestion.models.Product` by pk and return it in JSON format.
 
     pk
         The primary key of the :class:`gestion.models.Product` to get infos.
@@ -403,7 +403,7 @@ def getProduct(request, pk):
         nb_pintes = 1
     else:
         nb_pintes = 0
-    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
+    data = json.dumps({"pk": product.pk, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
@@ -464,7 +464,6 @@ def addKeg(request):
             amount = pinte_price,
             stockHold = 0,
             stockBar = 0,
-            barcode = "pinte_" + form.cleaned_data["barcode"],
             category = form.cleaned_data["category"],
             needQuantityButton = False,
             is_active = True,
@@ -481,7 +480,6 @@ def addKeg(request):
             amount = ceil(5*pinte_price)/10,
             stockHold = 0,
             stockBar = 0,
-            barcode = "demi_" + form.cleaned_data["barcode"],
             category = form.cleaned_data["category"],
             needQuantityButton = False,
             is_active = True,
@@ -499,7 +497,6 @@ def addKeg(request):
                 amount = ceil(2.5 * pinte_price)/10,
                 stockHold = 0,
                 stockBar = 0,
-                barcode = "galopin_" + form.cleaned_data["barcode"],
                 category = form.cleaned_data["category"],
                 needQuantityButton = False,
                 is_active = True,
@@ -758,7 +755,7 @@ def get_menu(request, pk):
     for article in menu.articles:
         if article.category == Product.DRAFT_PINTE:
             nb_pintes +=1
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
+    data = json.dumps({"pk": menu.pk, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
