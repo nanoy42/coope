@@ -17,7 +17,6 @@
 				<tr>
 					<th>Nom</th>
 					<th>Prix</th>
-					<th>Code barre</th>
 					<th>Produits</th>
 					<th>Actif</th>
 					<th>Administrer</th>
@@ -28,7 +27,6 @@
 				<tr>
 					<td>{{ menu.name }}</td>
 					<td>{{ menu.amount}} €</td>
-					<td>{{ menu.barcode }}</td>
 					<td>{% for art in menu.articles.all %}<a href="{% url 'gestion:productProfile' art.pk %}">{{art}}</a>,{% endfor %}</td>
 					<td>{{ menu.is_active | yesno:"Oui, Non"}}</td>
 					<td>{% if perms.gestion.change_menu %}<a href="{% url 'gestion:switchActivateMenu' menu.pk %}" class="button small">{% if menu.is_active %}<i class="fa fa-times-cirlce"></i> Désa{% else %}<i class="fa fa-check-circle"></i> A{% endif %}ctiver</a> <a href="{% url 'gestion:editMenu' menu.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>

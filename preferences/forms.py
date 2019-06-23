@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Cotisation, PaymentMethod, GeneralPreferences
+from .models import Cotisation, PaymentMethod, GeneralPreferences, PriceProfile
 
 class CotisationForm(forms.ModelForm):
     """
@@ -11,6 +11,12 @@ class CotisationForm(forms.ModelForm):
         model = Cotisation
         fields = "__all__"
 
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get("amount_ptm") > cleaned_data.get("amount"):
+            raise ValidationError("La quantité d'argent donnée au club doit être inférieure à\
+                la quantité d'argent totale")
+
 class PaymentMethodForm(forms.ModelForm):
     """
     Form to add and edit :class:`~preferences.models.PaymentMethod`.
@@ -19,6 +25,13 @@ class PaymentMethodForm(forms.ModelForm):
         model = PaymentMethod
         fields = "__all__"
 
+class PriceProfileForm(forms.ModelForm):
+    """
+    Form to add and edit :class:`~preferences.models.PriceProfile`.
+    """
+    class Meta:
+        model = PriceProfile
+        fields = "__all__"
 
 class GeneralPreferencesForm(forms.ModelForm):
     """

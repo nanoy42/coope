@@ -32,9 +32,19 @@
 {% if request.user.is_staff %}
 <span class="tabulation2">
 		<i class="fa fa-chart-bar"></i> <a href="{% url 'gestion:stats' %}">Stats</a>
-	</span>
+</span>
 <span class="tabulation2">
-	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Comptabilité</a>
+	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Relevé</a>
+</span>
+{% endif %}
+{% if perms.preferences.can_divide %}
+<span class="tabulation2">
+	<i class="fa fa-hand-holding-usd"></i> <a href="{% url 'gestion:divide' %}">Répartition</a>
+</span>
+{% endif %}
+{% if perms.users.can_generate_invoices %}
+<span class="tabulation2">
+	<i class="fa fa-file-invoice-dollar"></i> <a href="{% url 'gestion:gen_invoice' %}">Facture</a>
 </span>
 {% endif %}
 {% if perms.preferences.view_cotisation %}
@@ -42,9 +52,17 @@
 	<i class="fa fa-calendar-check"></i> <a href="{% url 'preferences:cotisationsIndex' %}">Cotisations</a>
 </span>
 {% endif %}
-{% if perms.preferences.view_cotisation %}
+{% if perms.preferences.view_paymentmethod %}
 <span class="tabulation2">
 	<i class="fa fa-comments-dollar"></i> <a href="{% url 'preferences:paymentMethodsIndex' %}">Moyens de paiement</a>
+</span>
+{% endif %}
+{% if perms.preferences.view_priceprofile %}
+<span class="tabulation2">
+	<i class="fa fa-search-dollar"></i> <a href="{% url 'preferences:priceProfilesIndex' %}">Profils de prix</a>
+</span>
+<span class="tabulation2">
+	<i class="fa fa-search-dollar"></i> <a href="{% url 'gestion:compute-price' %}">Calcul de prix</a>
 </span>
 {% endif %}
 <span class="tabulation2">

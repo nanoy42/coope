@@ -1,6 +1,7 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import User
 
 
 class PaymentMethod(models.Model):
@@ -118,6 +119,8 @@ class Cotisation(models.Model):
     """
     Stores cotisations.
     """
+    class Meta:
+        permissions = (("can_divide", "Can divide money for cotisation"),)
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant", validators=[MinValueValidator(0)])
     """
     Price of the cotisation.
@@ -126,7 +129,72 @@ class Cotisation(models.Model):
     """
     Duration (in days) of the cotisation
     """
+    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz")
+    """
+    Amount of money given to the PTM club
+    """
     history = HistoricalRecords()
 
     def __str__(self):
-        return "Cotisation de " + str(self.duration) + " jours pour le prix de " + str(self.amount) + "€"
+        if self.duration == 1:
+            jour = "jour"
+        else:
+            jour = "jours"
+        return "Cotisation de " + str(self.duration) + " " + jour + " pour le prix de " + str(self.amount) + "€"
+
+class DivideHistory(models.Model):
+    """
+    Stores divide history
+    """
+    class Meta:
+        verbose_name = "Historique répartition"
+
+    date = models.DateTimeField(auto_now_add=True)
+    """
+    Date of the divide
+    """
+    total_cotisations = models.IntegerField(verbose_name="Nombre de cotisations")
+    """
+    Number of non-divided cotisations (before the divide)
+    """
+    total_cotisations_amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant total des cotisations")
+    """
+    Amount of non-divided cotisations (before the divide)
+    """
+    total_ptm_amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant donné au Phœnix Technopôle Metz")
+    """
+    Amount given to the PTM
+    """
+    coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="divide_realized")
+    """
+    Coopeman (:class:`django.contrib.auth.models.User`) who collected the reload.
+    """
+
+    def __str__(self):
+        return "Répartition du " + str(self.date)
+    
+
+class PriceProfile(models.Model):
+    """
+    Stores parameters to compute price
+    """
+    name = models.CharField(max_length=255, verbose_name="Nom")
+    a = models.DecimalField(verbose_name="Marge constante", max_digits=3, decimal_places=2)
+    b = models.DecimalField(verbose_name="Marge variable", max_digits=3, decimal_places=2)
+    c = models.DecimalField(verbose_name="Paramètre de forme", max_digits=4, decimal_places=2)
+    alpha = models.DecimalField(verbose_name="Étendue", max_digits=4, decimal_places=2)
+    use_for_draft = models.BooleanField(default=False, verbose_name="Utiliser pour les pressions ?")
+
+    def save(self, *args, **kwargs):
+        if self.use_for_draft:
+            try:
+                temp = PriceProfile.objects.get(use_for_draft=True)
+                if self != temp:
+                    temp.use_for_draft = False
+                    temp.save()
+            except PriceProfile.DoesNotExist:
+                pass
+        super(PriceProfile, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name

@@ -38,7 +38,8 @@
 					</li>
 					<li><b>Solde : </b>{{user.profile.balance}} €<span class="tabulation">
 						<b>Crédit : </b>{{user.profile.credit}} €</span><span class="tabulation">
-						<b>Débit : </b>{{user.profile.debit}} €</span>
+						<b>Débit : </b>{{user.profile.debit}} €</span><span class="tabulation">
+						<b>Débit direct : </b>{{user.profile.direct_debit}}</b></span>
 					</li>
 					<li><b>Groupe(s) : </b>{{user.groups.all|join:", "}}</li>
 					<li>
@@ -263,6 +264,7 @@
 						<th>Date de l'ajout</th>
 						<th>Date de fin</th>
 						<th>Durée</th>
+						<th>Raison</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -271,6 +273,7 @@
 						<td>{{whitelist.paymentDate}}</td>
 						<td>{{whitelist.endDate}}</td>
 						<td>{{whitelist.duration}} jours</td>
+						<td>{{ whitelist.reason }}</td>
 					</tr>
 					{% endfor %}
 				</tbody>

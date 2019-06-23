@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{%block entete%}Gestion de la Coopé™{%endblock%}
+{%block entete%}Gestion de la Coopé Technopôle Metz{%endblock%}
 
 {% block navbar %}
 <ul>
@@ -98,7 +98,6 @@
 					<table id="productTable" type="input" name="tableau" class="alt">
 						<thead>
 							<tr>
-								<th>CodeBarre</th>
 								<th>Nom Produit</th>
 								<th>Prix Unitaire</th>
 								<th>Quantité</th>
@@ -117,43 +116,43 @@
 							<tbody class="actions" id="bouton Produit">
 								<tr class="cotisation-hidden" style="text-align:center; font-weight:bold;"><td colspan="4">Cotisations</td></tr>
 								{% for cotisation in cotisations %}
-								{% if forloop.counter0|divisibleby:4 %}
+								{% if forloop.counter0|divisibleby:3 %}
 								<tr class="cotisation-hidden" style="text-align:center">
 									{% endif %}
 									<td class="cotisation-hidden"><button class="cotisation" target="{{cotisation.pk}}">Cotisation {{cotisation.duration}} jours ({{cotisation.amount}} €)</button></td>
-									{% if forloop.counter|divisibleby:4 %}
+									{% if forloop.counter|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not cotisations|divisibleby:4 %}
+								{% if not cotisations|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
 								{% for product in bieresPression %}
-								{% if forloop.counter0|divisibleby:4 %}
+								{% if forloop.counter0|divisibleby:3 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product}}</button></td>
+									{% if forloop.counter|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not bieresPression|divisibleby:4 %}
+								{% if not bieresPression|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% for category in categories %}
 								{% if category.active_products.count > 0 %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">{{category}}</td></tr>
 								{% for product in category.active_products %}
-								{% if forloop.counter0|divisibleby:4 %}
+								{% if forloop.counter0|divisibleby:3 %}
 								<tr style="text-align:center">
 								{% endif %}
-									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-								{% if forloop.counter|divisibleby:4 %}
+									<td><button class="product {% if product.adherentRequired %}special{% endif%}" target="{{product.pk}}">{{product}}</button></td>
+								{% if forloop.counter|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not category.active_products|divisibleby:4 %}
+								{% if not category.active_products|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endif %}
@@ -161,15 +160,15 @@
 								{% if menus %}
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Menus</td></tr>
 								{% for product in menus %}
-								{% if forloop.counter0|divisibleby:4 %}
+								{% if forloop.counter0|divisibleby:3 %}
 								<tr style="text-align:center">
 									{% endif %}
-									<td><button class="menu {% if product.adherent_required %}special{% endif%}" target="{{product.pk}}">{{product.name}}</button></td>
-									{% if forloop.counter|divisibleby:4 %}
+									<td><button class="menu {% if product.adherent_required %}special{% endif%}" target="{{product.pk}}">{{product}}</button></td>
+									{% if forloop.counter|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endfor %}
-								{% if not menus|divisibleby:4 %}
+								{% if not menus|divisibleby:3 %}
 								</tr>
 								{% endif %}
 								{% endif %}
