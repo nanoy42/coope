@@ -173,3 +173,28 @@ class DivideHistory(models.Model):
     def __str__(self):
         return "Répartition du " + str(self.date)
     
+
+class PriceProfile(models.Model):
+    """
+    Stores parameters to compute price
+    """
+    name = models.CharField(max_length=255, verbose_name="Nom")
+    a = models.DecimalField(verbose_name="Marge constante", max_digits=3, decimal_places=2)
+    b = models.DecimalField(verbose_name="Marge variable", max_digits=3, decimal_places=2)
+    c = models.DecimalField(verbose_name="Paramètre de forme", max_digits=4, decimal_places=2)
+    alpha = models.DecimalField(verbose_name="Étendue", max_digits=4, decimal_places=2)
+    use_for_draft = models.BooleanField(default=False, verbose_name="Utiliser pour les pressions ?")
+
+    def save(self, *args, **kwargs):
+        if self.use_for_draft:
+            try:
+                temp = PriceProfile.objects.get(use_for_draft=True)
+                if self != temp:
+                    temp.use_for_draft = False
+                    temp.save()
+            except PriceProfile.DoesNotExist:
+                pass
+        super(PriceProfile, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name

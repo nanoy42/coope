@@ -10,9 +10,9 @@ from django.http import Http404
 
 from coopeV3.acl import active_required
 
-from .models import GeneralPreferences, Cotisation, PaymentMethod
+from .models import GeneralPreferences, Cotisation, PaymentMethod, PriceProfile
 
-from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm
+from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm, PriceProfileForm
 
 @active_required
 @login_required
@@ -186,3 +186,62 @@ def get_config(request):
     data = json.dumps(gp_dict)
     return HttpResponse(data, content_type='application/json')
     
+########## Price Profiles ##########
+
+@active_required
+@login_required
+@permission_required('preferences.view_priceprofile')
+def price_profiles_index(request):
+    """
+    View which lists all the :class:`~preferences.models.PriceProfile`.
+    """
+    price_profiles = PriceProfile.objects.all()
+    return render(request, "preferences/price_profiles_index.html", {"price_profiles": price_profiles})
+
+@active_required
+@login_required
+@permission_required('preferences.add_priceprofile')
+def add_price_profile(request):
+    """
+    View which displays a :class:`~preferences.forms.PriceProfileForm` to create a :class:`~preferences.models.PriceProfile`.
+    """
+    form = PriceProfileForm(request.POST or None)
+    if form.is_valid():
+        price_profile = form.save()
+        messages.success(request, "Le profil de prix " + price_profile.name + " a bien été crée")
+        return redirect(reverse('preferences:priceProfilesIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Création d'un profil de prix", "form_button": "Créer", "form_button_icon": "plus-square"})
+
+@active_required
+@login_required
+@permission_required('preferences.change_priceprofile')
+def edit_price_profile(request, pk):
+    """
+    View which displays a :class:`~preferences.forms.PriceProfile` to edit a :class:`~preferences.models.PriceProfile`.
+
+    pk
+        The primary key of the :class:`~preferences.models.PriceProfile` to edit.
+    """
+    price_profile = get_object_or_404(PriceProfile, pk=pk)
+    form = PriceProfileForm(request.POST or None, instance=price_profile)
+    if form.is_valid():
+        price_profile = form.save()
+        messages.success(request, "Le profil de prix " + price_profile.name + " a bien été modifié")
+        return redirect(reverse('preferences:priceProfilesIndex'))
+    return render(request, "form.html", {"form": form, "form_title": "Modification d'un profil de prix", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
+
+@active_required
+@login_required
+@permission_required('preferences.delete_priceprofile')
+def delete_price_profile(request,pk):
+    """
+    Delete a :class:`~preferences.models.PriceProfile`.
+
+    pk
+        The primary key of the :class:`~preferences.models.PriceProfile` to delete.
+    """
+    price_profile = get_object_or_404(PriceProfile, pk=pk)
+    message = "Le profil de prix " + price_profile.name + " a bien été supprimé"
+    price_pofile.delete()
+    messages.success(request, message)
+    return redirect(reverse('preferences:priceProfilesIndex'))

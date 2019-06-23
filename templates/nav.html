@@ -52,9 +52,14 @@
 	<i class="fa fa-calendar-check"></i> <a href="{% url 'preferences:cotisationsIndex' %}">Cotisations</a>
 </span>
 {% endif %}
-{% if perms.preferences.view_cotisation %}
+{% if perms.preferences.view_paymentmethod %}
 <span class="tabulation2">
 	<i class="fa fa-comments-dollar"></i> <a href="{% url 'preferences:paymentMethodsIndex' %}">Moyens de paiement</a>
+</span>
+{% endif %}
+{% if perms.preferences.view_priceprofile %}
+<span class="tabulation2">
+	<i class="fa fa-search-dollar"></i> <a href="{% url 'preferences:priceProfilesIndex' %}">Profils de prix</a>
 </span>
 {% endif %}
 <span class="tabulation2">

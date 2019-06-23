@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Cotisation, PaymentMethod, GeneralPreferences
+from .models import Cotisation, PaymentMethod, GeneralPreferences, PriceProfile
 
 class CotisationForm(forms.ModelForm):
     """
@@ -25,6 +25,13 @@ class PaymentMethodForm(forms.ModelForm):
         model = PaymentMethod
         fields = "__all__"
 
+class PriceProfileForm(forms.ModelForm):
+    """
+    Form to add and edit :class:`~preferences.models.PriceProfile`.
+    """
+    class Meta:
+        model = PriceProfile
+        fields = "__all__"
 
 class GeneralPreferencesForm(forms.ModelForm):
     """
