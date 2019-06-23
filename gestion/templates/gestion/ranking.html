@@ -23,6 +23,7 @@
 								<th>Place</th>
 								<th>Pseudo</th>
 								<th>Debit</th>
+								<th>Débit direct (non pris en compte pour le classement)</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -30,7 +31,8 @@
 							<tr>
                                 <th>{{ forloop.counter }}</th>
                                 <th><a href="{% url 'users:profile' customer.pk %}">{{ customer.username }}</a></th>
-                                <th>{{ customer.profile.debit }}€</th>
+								<th>{{ customer.profile.debit }} €</th>
+								<th>{{ customer.profile.direct_debit }} €</th>
 							</tr>
 							{%endfor%}
 						</tbody>

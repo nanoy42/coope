@@ -100,6 +100,8 @@ def order(request):
                                 else:
                                     error_message = "Solde insuffisant"
                                     raise Exception(error_message)
+                            else:
+                                user.profile.direct_debit += cotisation_history.cotisation.amount
                             cotisation_history.user = user
                             cotisation_history.coopeman = request.user
                             cotisation_history.amount = cotisation.amount
@@ -174,6 +176,8 @@ def order(request):
                         else:
                             error_message = "Solde insuffisant"
                             raise Exception(error_message)
+                    else:
+                        user.profile.direct_debit += Decimal(product.amount*quantity)
                 for m in menus:
                     menu = get_object_or_404(Menu, pk=m["pk"])
                     quantity = int(m["quantity"])
@@ -185,6 +189,8 @@ def order(request):
                         else:
                             error_message = "Solde insuffisant"
                             raise Exception(error_message)
+                    else:
+                        user.profile.direct_debit += Decimal(product.amount*quantity)
                     for article in menu.articles.all():
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
@@ -278,6 +284,8 @@ def cancel_consumption(request, pk):
     user = consumption.customer
     if consumption.paymentMethod.affect_balance:
         user.profile.debit -= consumption.amount
+    else:
+        user.profile.direct_debit -= consumption.amount
     user.profile.alcohol -= Decimal(consumption.quantity * float(consumption.product.deg) * consumption.product.volume * 0.79 /10 /1000)
     user.save()
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
@@ -301,13 +309,14 @@ def cancel_menu(request, pk):
     user = menu_history.customer
     if menu_history.paymentMethod.affect_balance:
         user.profile.debit -= menu_history.amount
-        user.save()
+    else:
+        user.profile.direct_debit -= menu_history.amount
     for product in manu_history.menu.articles:
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
         consumptionT.save()
         user.profile.alcohol -= Decimal(menu_history.quantity * float(menu_history.product.deg) * menu_history.product.volume * 0.79 /10 /1000)
-        user.save()
+    user.save()
     menu_history.delete()
     messages.success(request, "La consommation du menu a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))

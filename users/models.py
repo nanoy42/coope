@@ -123,7 +123,11 @@ class Profile(models.Model):
     """
     debit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Débit")
     """
-    Amount of money, in euros, spent form the account
+    Amount of money, in euros, spent from the account
+    """
+    direct_debit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Débit (non compte)")
+    """
+    Amount of money, in euro, spent with other mean than the account
     """
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True, verbose_name="École")
     """
