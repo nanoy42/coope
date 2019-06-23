@@ -11,7 +11,7 @@ class CotisationHistoryAdmin(SimpleHistoryAdmin):
     """
     list_display = ('user', 'amount', 'duration', 'paymentDate', 'endDate', 'paymentMethod')
     ordering = ('user', 'amount', 'duration', 'paymentDate', 'endDate')
-    search_fields = ('user',)
+    search_fields = ('user__username', 'user__first_name', 'user__last_name')
     list_filter = ('paymentMethod', )
 
 class BalanceFilter(admin.SimpleListFilter):
@@ -43,7 +43,7 @@ class ProfileAdmin(SimpleHistoryAdmin):
     """
     list_display = ('user', 'credit', 'debit', 'balance', 'school', 'cotisationEnd', 'is_adherent')
     ordering = ('user', '-credit', '-debit')
-    search_fields = ('user',)
+    search_fields = ('user__username', 'user__first_name', 'user__last_name')
     list_filter = ('school', BalanceFilter)
 
 class WhiteListHistoryAdmin(SimpleHistoryAdmin):
@@ -52,7 +52,7 @@ class WhiteListHistoryAdmin(SimpleHistoryAdmin):
     """
     list_display = ('user', 'paymentDate', 'endDate', 'duration')
     ordering = ('user', 'duration', 'paymentDate', 'endDate')
-    search_fields = ('user',)
+    search_fields = ('user__username', 'user__first_name', 'user__last_name')
 
 admin.site.register(Permission, SimpleHistoryAdmin)
 admin.site.register(School, SimpleHistoryAdmin)
