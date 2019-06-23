@@ -14,13 +14,15 @@ from datetime import datetime, timedelta
 
 from django_tex.views import render_to_pdf
 from coopeV3.acl import active_required, acl_or, admin_required
+from coopeV3.utils import compute_price
 
 import simplejson as json
 from dal import autocomplete
 from decimal import *
 import os
+from math import floor, ceil
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
 from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory
@@ -1065,3 +1067,15 @@ def stats(request):
         "payment_methods": payment_methods,
         "cotisations": cotisations,
     })
+
+########## Compute price ##########
+
+def compute_price_view(request):
+    form = ComputePriceForm(request.POST or None)
+    if form.is_valid():
+        price_profile = form.cleaned_data["price_profile"]
+        price = compute_price(form.cleaned_data["price"], price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        form_p = "Le prix est " + str(ceil(100*price)/100) + " € (arrondi au centième) ou " + str(ceil(10*price)/10) + " € (arrondi au dixième)."
+    else:
+        form_p = ""
+    return render(request, "form.html", {"form": form, "form_title": "Calcul d'un prix", "form_button": "Calculer", "form_icon": "search_dollar", "form_p": form_p})

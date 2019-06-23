@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from dal import autocomplete
 
 from .models import Reload, Refund, Product, Keg, Menu, Category
-from preferences.models import PaymentMethod
+from preferences.models import PaymentMethod, PriceProfile
 
 class ReloadForm(forms.ModelForm):
     """
@@ -137,3 +137,10 @@ class GenerateInvoiceForm(forms.Form):
     client_address_fisrt_line = forms.CharField(label="Première ligne d'adresse")
     client_address_second_line = forms.CharField(label="Deuxième ligne d'adresse")
     products = forms.CharField(widget=forms.Textarea, label="Produits", help_text="Au format nom;prix;quantité avec saut de ligne")
+
+class ComputePriceForm(forms.Form):
+    """
+    A form to compute price
+    """
+    price_profile = forms.ModelChoiceField(queryset=PriceProfile.objects.all(), label="Profil de prix")
+    price = forms.DecimalField(max_digits=10, decimal_places=5, label="Prix")
