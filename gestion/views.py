@@ -8,20 +8,24 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.db import transaction
+from django.conf import settings
 
 from datetime import datetime, timedelta
 
 from django_tex.views import render_to_pdf
 from coopeV3.acl import active_required, acl_or, admin_required
+from coopeV3.utils import compute_price
 
 import simplejson as json
 from dal import autocomplete
 from decimal import *
+import os
+from math import floor, ceil
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
-from preferences.models import PaymentMethod, GeneralPreferences, Cotisation
+from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory, PriceProfile
 from users.models import CotisationHistory
 
 @active_required
@@ -96,6 +100,8 @@ def order(request):
                                 else:
                                     error_message = "Solde insuffisant"
                                     raise Exception(error_message)
+                            else:
+                                user.profile.direct_debit += cotisation_history.cotisation.amount
                             cotisation_history.user = user
                             cotisation_history.coopeman = request.user
                             cotisation_history.amount = cotisation.amount
@@ -163,12 +169,15 @@ def order(request):
                     consumption.save()
                     ch = ConsumptionHistory(customer=user, quantity=quantity, paymentMethod=paymentMethod, product=product, amount=Decimal(quantity*product.amount), coopeman=request.user)
                     ch.save()
+                    user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                     if(paymentMethod.affect_balance):
                         if(user.profile.balance >= Decimal(product.amount*quantity)):
                             user.profile.debit += Decimal(product.amount*quantity)
                         else:
                             error_message = "Solde insuffisant"
                             raise Exception(error_message)
+                    else:
+                        user.profile.direct_debit += Decimal(product.amount*quantity)
                 for m in menus:
                     menu = get_object_or_404(Menu, pk=m["pk"])
                     quantity = int(m["quantity"])
@@ -180,6 +189,8 @@ def order(request):
                         else:
                             error_message = "Solde insuffisant"
                             raise Exception(error_message)
+                    else:
+                        user.profile.direct_debit += Decimal(product.amount*quantity)
                     for article in menu.articles.all():
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
@@ -187,11 +198,10 @@ def order(request):
                         if(article.stockHold > 0):
                             article.stockHold -= 1
                             article.save()
+                        user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
                 return HttpResponse("La commande a bien été effectuée")
     except Exception as e:
-        print(e)
-        print("test")
         return HttpResponse(error_message)
 
 @active_required
@@ -274,7 +284,10 @@ def cancel_consumption(request, pk):
     user = consumption.customer
     if consumption.paymentMethod.affect_balance:
         user.profile.debit -= consumption.amount
-        user.save()
+    else:
+        user.profile.direct_debit -= consumption.amount
+    user.profile.alcohol -= Decimal(consumption.quantity * float(consumption.product.deg) * consumption.product.volume * 0.79 /10 /1000)
+    user.save()
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
     consumptionT.quantity -= consumption.quantity
     consumptionT.save()
@@ -296,11 +309,14 @@ def cancel_menu(request, pk):
     user = menu_history.customer
     if menu_history.paymentMethod.affect_balance:
         user.profile.debit -= menu_history.amount
-        user.save()
+    else:
+        user.profile.direct_debit -= menu_history.amount
     for product in manu_history.menu.articles:
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
         consumptionT.save()
+        user.profile.alcohol -= Decimal(menu_history.quantity * float(menu_history.product.deg) * menu_history.product.volume * 0.79 /10 /1000)
+    user.save()
     menu_history.delete()
     messages.success(request, "La consommation du menu a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -386,7 +402,7 @@ def productProfile(request, pk):
 @login_required
 def getProduct(request, pk):
     """
-    Get a :class:`gestion.models.Product` by barcode and return it in JSON format.
+    Get a :class:`gestion.models.Product` by pk and return it in JSON format.
 
     pk
         The primary key of the :class:`gestion.models.Product` to get infos.
@@ -396,7 +412,7 @@ def getProduct(request, pk):
         nb_pintes = 1
     else:
         nb_pintes = 0
-    data = json.dumps({"pk": product.pk, "barcode" : product.barcode, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
+    data = json.dumps({"pk": product.pk, "name": product.name, "amount": product.amount, "needQuantityButton": product.needQuantityButton, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 @active_required
@@ -445,7 +461,62 @@ def addKeg(request):
     Displays a :class:`gestion.forms.KegForm` to add a :class:`gestion.models.Keg`.
     """
     form = KegForm(request.POST or None)
-    if(form.is_valid()):
+    if form.is_valid():
+        keg = form.save(commit=False)
+        price_profile = get_object_or_404(PriceProfile, use_for_draft=True)
+        pinte_price = compute_price(form.cleaned_data["amount"]/(2*form.cleaned_data["capacity"]), price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        pinte_price = ceil(10*pinte_price)/10
+        name = form.cleaned_data["name"][4:]
+        create_galopin = form.cleaned_data["create_galopin"]
+        pinte = Product(
+            name = "Pinte " + name,
+            amount = pinte_price,
+            stockHold = 0,
+            stockBar = 0,
+            category = form.cleaned_data["category"],
+            needQuantityButton = False,
+            is_active = True,
+            volume = 50,
+            deg = form.cleaned_data["deg"],
+            adherentRequired = True,
+            showingMultiplier = 1,
+            draft_category = Product.DRAFT_PINTE
+        )
+        pinte.save()
+        keg.pinte = pinte
+        demi = Product(
+            name = "Demi " + name,
+            amount = ceil(5*pinte_price)/10,
+            stockHold = 0,
+            stockBar = 0,
+            category = form.cleaned_data["category"],
+            needQuantityButton = False,
+            is_active = True,
+            volume = 25,
+            deg = form.cleaned_data["deg"],
+            adherentRequired = True,
+            showingMultiplier = 1,
+            draft_category = Product.DRAFT_DEMI
+        )
+        demi.save()
+        keg.demi = demi
+        if create_galopin:
+            galopin = Product(
+                name = "Galopin " + name,
+                amount = ceil(2.5 * pinte_price)/10,
+                stockHold = 0,
+                stockBar = 0,
+                category = form.cleaned_data["category"],
+                needQuantityButton = False,
+                is_active = True,
+                volume = 13,
+                deg = form.cleaned_data["deg"],
+                adherentRequired = True,
+                showingMultiplier = 1,
+                draft_category = Product.DRAFT_DEMI
+            )
+            galopin.save()
+            keg.galopin = galopin
         keg = form.save()
         messages.success(request, "Le fût " + keg.name + " a bien été ajouté")
         return redirect(reverse('gestion:kegsList'))
@@ -693,7 +764,7 @@ def get_menu(request, pk):
     for article in menu.articles:
         if article.category == Product.DRAFT_PINTE:
             nb_pintes +=1
-    data = json.dumps({"pk": menu.pk, "barcode" : menu.barcode, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
+    data = json.dumps({"pk": menu.pk, "name": menu.name, "amount" : menu.amount, "needQuantityButton": False, "nb_pintes": nb_pintes})
     return HttpResponse(data, content_type='application/json')
 
 class MenusAutocomplete(autocomplete.Select2QuerySetView):
@@ -715,12 +786,7 @@ def ranking(request):
     Displays the ranking page.
     """
     bestBuyers = User.objects.order_by('-profile__debit')[:25]
-    customers = User.objects.all()
-    list = []
-    for customer in customers:
-        alcohol = customer.profile.alcohol
-        list.append([customer, alcohol])
-    bestDrinkers = sorted(list, key=lambda x: x[1], reverse=True)[:25]
+    bestDrinkers = User.objects.order_by('-profile__alcohol')[:25]
     form = SearchProductForm(request.POST or None)
     if(form.is_valid()):
         product_ranking = form.cleaned_data['product'].ranking
@@ -830,6 +896,41 @@ def pintes_user_list(request):
 
 @active_required
 @login_required
+@permission_required('users.can_generate_invoices')
+def gen_invoice(request):
+    """
+    Displays a form to generate an invoice.
+    """
+    form = GenerateInvoiceForm(request.POST or None)
+    if form.is_valid():
+        products = [x.split(";") for x in form.cleaned_data["products"].split("\n")]
+        total = 0
+        for product in products:
+            sub_total = Decimal(product[1]) * Decimal(product[2])
+            product.append(sub_total)
+            total += sub_total
+        return render_to_pdf(
+            request,
+            'gestion/invoice.tex',
+            {
+                "invoice_date": form.cleaned_data["invoice_date"],
+                "invoice_number": form.cleaned_data["invoice_number"],
+                "invoice_place": form.cleaned_data["invoice_place"],
+                "invoice_object": form.cleaned_data["invoice_object"],
+                "invoice_description": form.cleaned_data["invoice_description"],
+                "client_name": form.cleaned_data["client_name"],
+                "client_address_first_line": form.cleaned_data["client_address_fisrt_line"],
+                "client_address_second_line": form.cleaned_data["client_address_second_line"],
+                "products" : products,
+                "total": total,
+                "path" : os.path.join(settings.BASE_DIR, "templates/coope.png"),
+            }, 
+            filename="FE" + form.cleaned_data["invoice_number"] + ".pdf")
+    else:
+        return render(request, "form.html", {"form": form, "form_title": "Génération d'une facture", "form_button": "Générer", "form_button_icon": "file-pdf"})
+
+@active_required
+@login_required
 @admin_required
 def gen_releve(request):
     """
@@ -879,7 +980,39 @@ def gen_releve(request):
     else:
         return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer", "form_button_icon": "file-pdf"})
 
-
+@active_required
+@login_required
+@permission_required('preferences.can_divide')
+def divide(request):
+    """
+    Divide all non-divided cotisation
+    """
+    if request.POST:
+        non_divided_cotisations = CotisationHistory.objects.filter(divided=False)
+        for cotisation_history in non_divided_cotisations:
+            cotisation_history.divided = True
+            cotisation_history.save()
+        divide_history = DivideHistory(
+            total_cotisations = non_divided_cotisations.count(),
+            total_cotisations_amount = sum([x.amount for x in non_divided_cotisations]),
+            total_ptm_amount = sum([x.amount_ptm for x in non_divided_cotisations]),
+            coopeman = request.user
+        )
+        divide_history.save()
+    non_divided_cotisations = CotisationHistory.objects.filter(divided=False)
+    total_amount = sum([x.amount for x in non_divided_cotisations])
+    total_amount_ptm = sum([x.amount_ptm for x in non_divided_cotisations])
+    divide_histories = DivideHistory.objects.all().order_by('-date')
+    return render(
+        request, 
+        "gestion/divide.html", 
+        {
+            "total_cotisations": non_divided_cotisations.count(),
+            "total_amount": total_amount,
+            "total_amount_ptm": total_amount_ptm,
+            "divide_histories": divide_histories,
+        }
+    )
 ########## categories ##########
 @active_required
 @login_required
@@ -998,3 +1131,15 @@ def stats(request):
         "payment_methods": payment_methods,
         "cotisations": cotisations,
     })
+
+########## Compute price ##########
+
+def compute_price_view(request):
+    form = ComputePriceForm(request.POST or None)
+    if form.is_valid():
+        price_profile = form.cleaned_data["price_profile"]
+        price = compute_price(form.cleaned_data["price"], price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        form_p = "Le prix est " + str(ceil(100*price)/100) + " € (arrondi au centième) ou " + str(ceil(10*price)/10) + " € (arrondi au dixième)."
+    else:
+        form_p = ""
+    return render(request, "form.html", {"form": form, "form_title": "Calcul d'un prix", "form_button": "Calculer", "form_icon": "search_dollar", "form_p": form_p})

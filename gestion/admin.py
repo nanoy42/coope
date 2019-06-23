@@ -17,7 +17,7 @@ class ConsumptionHistoryAdmin(SimpleHistoryAdmin):
     """
     list_display = ('customer', 'product', 'quantity', 'paymentMethod', 'date', 'amount')
     ordering = ('-date', )
-    search_fields = ('customer', 'product')
+    search_fields = ('customer__username', 'customer__first_name', 'customer__last_name', 'product__name')
     list_filter = ('paymentMethod',)
 
 class KegAdmin(SimpleHistoryAdmin):
@@ -35,7 +35,7 @@ class KegHistoryAdmin(SimpleHistoryAdmin):
     """
     list_display = ('keg', 'openingDate', 'closingDate', 'isCurrentKegHistory', 'quantitySold')
     ordering = ('-openingDate', 'quantitySold')
-    search_fields = ('keg',)
+    search_fields = ('keg__name',)
     list_filter = ('isCurrentKegHistory', 'keg')
 
 class MenuHistoryAdmin(SimpleHistoryAdmin):
@@ -70,7 +70,7 @@ class ReloadAdmin(SimpleHistoryAdmin):
     """
     list_display = ('customer', 'amount', 'date', 'PaymentMethod')
     ordering = ('-date', 'amount', 'customer')
-    search_fields = ('customer',)
+    search_fields = ('customer__username', 'customer__first_name', 'customer__last_name')
     list_filter = ('PaymentMethod', )
 
 class RefundAdmin(SimpleHistoryAdmin):
@@ -79,7 +79,7 @@ class RefundAdmin(SimpleHistoryAdmin):
     """
     list_display = ('customer', 'amount', 'date')
     ordering = ('-date', 'amount', 'customer')
-    search_fields = ('customer',)
+    search_fields = ('customer__username', 'customer__first_name', 'customer__last_name')
 
 class CategoryAdmin(SimpleHistoryAdmin):
     """

@@ -1,11 +1,13 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
+
 
 from dal import autocomplete
 
 from .models import Reload, Refund, Product, Keg, Menu, Category
-from preferences.models import PaymentMethod
+from preferences.models import PaymentMethod, PriceProfile
 
 class ReloadForm(forms.ModelForm):
     """
@@ -44,16 +46,20 @@ class KegForm(forms.ModelForm):
     """
     A form to create and edit a :class:`~gestion.models.Keg`.
     """
-    def __init__(self, *args, **kwargs):
-        super(KegForm, self).__init__(*args, **kwargs)
-        self.fields['pinte'].queryset = Product.objects.filter(draft_category=Product.DRAFT_PINTE)
-        self.fields['demi'].queryset = Product.objects.filter(draft_category=Product.DRAFT_DEMI)
-        self.fields['galopin'].queryset = Product.objects.filter(draft_category=Product.DRAFT_GALOPIN)
 
     class Meta:
         model = Keg
-        fields = "__all__"
+        fields = ["name", "stockHold", "amount", "capacity"]
         widgets = {'amount': forms.TextInput}
+
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie")
+    deg = forms.DecimalField(max_digits=5, decimal_places=2, label="Degré", validators=[MinValueValidator(0)])
+    create_galopin = forms.BooleanField(label="Créer le produit galopin ?")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get("name")[0:4] != "Fût ":
+            raise ValidationError("Le nom du fût doit être sous la forme 'Fût nom de la bière'")
 
 class MenuForm(forms.ModelForm):
     """
@@ -123,3 +129,24 @@ class SearchCategoryForm(forms.Form):
     A form to search a :class:`~gestion.models.Category`.
     """
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=True, label="Catégorie", widget=autocomplete.ModelSelect2(url='gestion:categories-autocomplete', attrs={'data-minimum-input-length':2}))
+
+class GenerateInvoiceForm(forms.Form):
+    """
+    A form to generate an invoice
+    """
+    invoice_date = forms.CharField(label="Date")
+    invoice_number = forms.CharField(label="Numéro", help_text="Au format 19018, sans le FE")
+    invoice_place = forms.CharField(label="Lieu")
+    invoice_object = forms.CharField(label="Objet")
+    invoice_description = forms.CharField(label="Description", required=False)
+    client_name = forms.CharField(label="Nom du client")
+    client_address_fisrt_line = forms.CharField(label="Première ligne d'adresse")
+    client_address_second_line = forms.CharField(label="Deuxième ligne d'adresse")
+    products = forms.CharField(widget=forms.Textarea, label="Produits", help_text="Au format nom;prix;quantité avec saut de ligne")
+
+class ComputePriceForm(forms.Form):
+    """
+    A form to compute price
+    """
+    price_profile = forms.ModelChoiceField(queryset=PriceProfile.objects.all(), label="Profil de prix")
+    price = forms.DecimalField(max_digits=10, decimal_places=5, label="Prix")

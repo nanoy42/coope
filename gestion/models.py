@@ -46,7 +46,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Produit"
 
-    name = models.CharField(max_length=40, verbose_name="Nom", unique=True)
+    name = models.CharField(max_length=255, verbose_name="Nom", unique=True)
     """
     The name of the product.
     """
@@ -61,10 +61,6 @@ class Product(models.Model):
     stockBar = models.IntegerField(default=0, verbose_name="Stock en bar")
     """
     Number of product at the bar.
-    """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    """
-    The barcode of the product.
     """
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Catégorie")
     """
@@ -98,7 +94,11 @@ class Product(models.Model):
     history = HistoricalRecords()
 
     def __str__(self):
-        return self.name
+        if self.draft_category == self.DRAFT_NONE:
+            return self.name + "(" + str(self.amount) + " €)"
+        else:
+            return self.name + " (" + str(self.amount) + " €, " + str(self.deg) + "°)"
+
 
     def user_ranking(self, pk):
         """
@@ -158,17 +158,13 @@ class Keg(models.Model):
             ("close_keg", "Peut fermer les fûts")
         )
 
-    name = models.CharField(max_length=20, unique=True, verbose_name="Nom")
+    name = models.CharField(max_length=255, unique=True, verbose_name="Nom")
     """
     The name of the keg.
     """
     stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
     """
     The number of this keg in the hold.
-    """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    """
-    The barcode of the keg.
     """
     amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Prix du fût", validators=[MinValueValidator(0)])
     """
@@ -312,10 +308,6 @@ class Menu(models.Model):
     amount = models.DecimalField(max_digits=7, decimal_places=2, verbose_name="Montant", validators=[MinValueValidator(0)])
     """
     Price of the menu.
-    """
-    barcode = models.CharField(max_length=20, unique=True, verbose_name="Code barre")
-    """
-    Barcode of the menu.
     """
     articles = models.ManyToManyField(Product, verbose_name="Produits")
     """

@@ -1,3 +1,17 @@
+## v3.6.0
+* AJout d'un débit direct comme champ du profil
+* Suppression des codes bare
+* Création plus simple (création automatiques des produits avec les bons prix)
+* Calcul des prix des produits depuis le site
+* Génération de factures depuis le site
+* Ajouter un champ "raison" dans les accès gracieux
+* Fix de la recherche dans l'admin
+* Onglet de répartition des cotisations
+* Ajout d'un champ alcool pour optimiser le classement
+* Amélioration et fix de la redirection après connexion
+* Amélioration de l'affichage du nombre de jour dans une cotisation
+* Amélioration de l'affichage des pressions
+* TM (trademarks) enlevés et remplacés
 ## v3.5.3
 * Fix le profil (division par 0 lorsque toutes les transactions d'un produit avaient été annulées)
 ## v3.5.2

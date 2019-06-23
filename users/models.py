@@ -61,6 +61,14 @@ class CotisationHistory(models.Model):
     """
     User (:class:`django.contrib.auth.models.User`) who registered the cotisation.
     """
+    divided = models.BooleanField(default=False, verbose_name="Répartition")
+    """
+    True if money of cotisation have been divided between CTM and PTM
+    """
+    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz")
+    """
+    Amount of money given to the PTM club
+    """
     history = HistoricalRecords()
 
 class WhiteListHistory(models.Model):
@@ -91,6 +99,10 @@ class WhiteListHistory(models.Model):
     """
     User (:class:`django.contrib.auth.models.User`) who registered the cotisation.
     """
+    reason = models.CharField(max_length=255, verbose_name="Raison", blank=True)
+    """
+    Reason of the whitelist
+    """
     history = HistoricalRecords()
 
 class Profile(models.Model):
@@ -99,6 +111,7 @@ class Profile(models.Model):
     """
     class Meta:
         verbose_name = "Profil"
+        permissions = (('can_generate_invoices', 'Can generate invocies'),)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Utilisateur")
     """
@@ -110,7 +123,11 @@ class Profile(models.Model):
     """
     debit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Débit")
     """
-    Amount of money, in euros, spent form the account
+    Amount of money, in euros, spent from the account
+    """
+    direct_debit = models.DecimalField(max_digits=7, decimal_places=2, default=0, verbose_name="Débit (non compte)")
+    """
+    Amount of money, in euro, spent with other mean than the account
     """
     school = models.ForeignKey(School, on_delete=models.PROTECT, blank=True, null=True, verbose_name="École")
     """
@@ -119,6 +136,10 @@ class Profile(models.Model):
     cotisationEnd = models.DateTimeField(blank=True, null=True, verbose_name="Fin de cotisation")
     """
     Date of end of cotisation for the client
+    """
+    alcohol = models.DecimalField(max_digits=5, decimal_places=2, default=0, null=True)
+    """
+    Ingerated alcohol
     """
     history = HistoricalRecords()
 
@@ -151,18 +172,6 @@ class Profile(models.Model):
         Computes the rank (by :attr:`gestion.models.Profile.debit`) of the client.
         """
         return Profile.objects.filter(debit__gte=self.debit).count()
-
-    @property
-    def alcohol(self):
-        """
-        Computes ingerated alcohol.
-        """
-        consumptions = ConsumptionHistory.objects.filter(customer=self.user).select_related('product')
-        alcohol = 0
-        for consumption in consumptions:
-            product = consumption.product
-            alcohol += consumption.quantity * float(product.deg) * product.volume * 0.79 /10 /1000
-        return alcohol
 
     @property
     def nb_pintes(self):

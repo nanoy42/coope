@@ -35,10 +35,7 @@ def loginView(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Vous êtes à présent connecté sous le compte " + str(user))
-            if(request.user.has_perm('gestion.can_manage')):
-               return redirect(reverse('gestion:manage'))
-            else:
-               return redirect(reverse('users:profile', kwargs={'pk':request.user.pk}))
+            return redirect(reverse('home'))
         else:
             messages.error(request, "Nom d'utilisateur et/ou mot de passe invalide")
     return render(request, "form.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter", "form_button_icon": "sign-in-alt"})
@@ -349,7 +346,7 @@ def gen_user_infos(request, pk):
     user= get_object_or_404(User, pk=pk)
     cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
     now = datetime.now()
-    path = os.path.join(settings.BASE_DIR, "users/templates/users/coope.png")
+    path = os.path.join(settings.BASE_DIR, "templates/coope.png")
     return render_to_pdf(request, 'users/bulletin.tex', {"user": user, "now": now, "cotisations": cotisations, "path":path}, filename="bulletin_" + user.first_name + "_" + user.last_name + ".pdf")
 
 ########## Groups ##########
@@ -586,6 +583,7 @@ def addCotisationHistory(request, pk):
         cotisation.coopeman = request.user
         cotisation.amount = cotisation.cotisation.amount
         cotisation.duration = cotisation.cotisation.duration
+        cotisation.amount_ptm = cotisation.cotisation.amount_ptm
         if(user.profile.cotisationEnd and user.profile.cotisationEnd > timezone.now()):
             cotisation.endDate = user.profile.cotisationEnd + timedelta(days=cotisation.cotisation.duration)
         else:

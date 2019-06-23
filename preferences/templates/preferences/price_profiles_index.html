@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block entete %}Gestion des profils de prix{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Liste des profils de prix</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des profils de prix</h2>
+	</header>
+	{% if perms.preferences.add_priceprofile %}
+	<a class="button" href="{% url 'preferences:addPriceProfile' %}"><i class="fa fa-plus-square"></i> Créer un profil de prix</a><br><br>
+	{% endif %}
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>a (marge constante)</th>
+					<th>b (marge variable)</th>
+					<th>c (paramètre de forme)</th>
+					<th>alpha (étendue)</th>
+					<th>Pression ?</th>
+					<th>Administration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for pp in price_profiles %}
+				<tr>
+					<td>{{ pp.name }} </td>
+					<td>{{ pp.a }}</td>
+					<td>{{ pp.b }}</td>
+					<td>{{ pp.c }}</td>
+					<td>{{ pp.alpha }}</td>
+					<td>{{ pp.use_for_draft | yesno:"Oui,Non"}}</td>
+					<td>{% if perms.preferences.change_priceprofile %}<a class="button small" href="{% url 'preferences:editPriceProfile' pp.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_priceprofile %}<a class="button small" href="{% url 'preferences:deletePriceProfile' pp.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}
