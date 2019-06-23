@@ -583,6 +583,7 @@ def addCotisationHistory(request, pk):
         cotisation.coopeman = request.user
         cotisation.amount = cotisation.cotisation.amount
         cotisation.duration = cotisation.cotisation.duration
+        cotisation.amount_ptm = cotisation.cotisation.amount_ptm
         if(user.profile.cotisationEnd and user.profile.cotisationEnd > timezone.now()):
             cotisation.endDate = user.profile.cotisationEnd + timedelta(days=cotisation.cotisation.duration)
         else:

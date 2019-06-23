@@ -21,7 +21,7 @@ from decimal import *
 from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
-from preferences.models import PaymentMethod, GeneralPreferences, Cotisation
+from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory
 from users.models import CotisationHistory
 
 @active_required
@@ -877,7 +877,39 @@ def gen_releve(request):
     else:
         return render(request, "form.html", {"form": form, "form_title": "Génération d'un relevé", "form_button": "Générer", "form_button_icon": "file-pdf"})
 
-
+@active_required
+@login_required
+@permission_required('preferences.can_divide')
+def divide(request):
+    """
+    Divide all non-divided cotisation
+    """
+    if request.POST:
+        non_divided_cotisations = CotisationHistory.objects.filter(divided=False)
+        for cotisation_history in non_divided_cotisations:
+            cotisation_history.divided = True
+            cotisation_history.save()
+        divide_history = DivideHistory(
+            total_cotisations = non_divided_cotisations.count(),
+            total_cotisations_amount = sum([x.amount for x in non_divided_cotisations]),
+            total_ptm_amount = sum([x.amount_ptm for x in non_divided_cotisations]),
+            coopeman = request.user
+        )
+        divide_history.save()
+    non_divided_cotisations = CotisationHistory.objects.filter(divided=False)
+    total_amount = sum([x.amount for x in non_divided_cotisations])
+    total_amount_ptm = sum([x.amount_ptm for x in non_divided_cotisations])
+    divide_histories = DivideHistory.objects.all().order_by('-date')
+    return render(
+        request, 
+        "gestion/divide.html", 
+        {
+            "total_cotisations": non_divided_cotisations.count(),
+            "total_amount": total_amount,
+            "total_amount_ptm": total_amount_ptm,
+            "divide_histories": divide_histories,
+        }
+    )
 ########## categories ##########
 @active_required
 @login_required

@@ -19,6 +19,7 @@
 				<tr>
 					<th>Durée de cotisation</th>
 					<th>Prix</th>
+					<th>Pour PhœnixTM</th>
 					<th>Administration</th>
 				</tr>
 			</thead>
@@ -27,6 +28,7 @@
 				<tr>
 					<td>{{ cotisation.duration }} jour{{ cotisation.duration|pluralize }}</td>
 					<td>{{ cotisation.amount }} €</td>
+					<td>{{ cotisation.amount_ptm | default:0}} €</td>
 					<td>{% if perms.preferences.change_cotisation %}<a class="button small" href="{% url 'preferences:editCotisation' cotisation.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_cotisation %}<a class="button small" href="{% url 'preferences:deleteCotisation' cotisation.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}

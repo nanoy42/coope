@@ -1,6 +1,6 @@
 from django.contrib import admin
 from simple_history.admin import SimpleHistoryAdmin
-from .models import PaymentMethod, GeneralPreferences, Cotisation
+from .models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory
 
 class CotisationAdmin(SimpleHistoryAdmin):
     """
@@ -24,6 +24,14 @@ class PaymentMethodAdmin(SimpleHistoryAdmin):
     search_fields = ('name',)
     list_filter = ('is_active', 'is_usable_in_cotisation', 'is_usable_in_reload', 'affect_balance')
 
+class DivideHistoryAdmin(SimpleHistoryAdmin):
+    """
+    The admin class for Divide histories
+    """
+    list_display = ('date', 'total_cotisations', 'total_cotisations_amount', 'total_ptm_amount', 'coopeman')
+    ordering = ('-date',)
+
 admin.site.register(PaymentMethod, PaymentMethodAdmin)
 admin.site.register(GeneralPreferences, GeneralPreferencesAdmin)
 admin.site.register(Cotisation, CotisationAdmin)
+admin.site.register(DivideHistory, DivideHistoryAdmin)

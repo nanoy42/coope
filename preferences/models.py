@@ -1,6 +1,7 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 from django.core.validators import MinValueValidator
+from django.contrib.auth.models import User
 
 
 class PaymentMethod(models.Model):
@@ -118,6 +119,8 @@ class Cotisation(models.Model):
     """
     Stores cotisations.
     """
+    class Meta:
+        permissions = (("can_divide", "Can divide money for cotisation"),)
     amount = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant", validators=[MinValueValidator(0)])
     """
     Price of the cotisation.
@@ -125,6 +128,10 @@ class Cotisation(models.Model):
     duration = models.PositiveIntegerField(verbose_name="Durée de la cotisation (jours)")
     """
     Duration (in days) of the cotisation
+    """
+    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz")
+    """
+    Amount of money given to the PTM club
     """
     history = HistoricalRecords()
 
@@ -134,3 +141,35 @@ class Cotisation(models.Model):
         else:
             jour = "jours"
         return "Cotisation de " + str(self.duration) + " " + jour + " pour le prix de " + str(self.amount) + "€"
+
+class DivideHistory(models.Model):
+    """
+    Stores divide history
+    """
+    class Meta:
+        verbose_name = "Historique répartition"
+
+    date = models.DateTimeField(auto_now_add=True)
+    """
+    Date of the divide
+    """
+    total_cotisations = models.IntegerField(verbose_name="Nombre de cotisations")
+    """
+    Number of non-divided cotisations (before the divide)
+    """
+    total_cotisations_amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant total des cotisations")
+    """
+    Amount of non-divided cotisations (before the divide)
+    """
+    total_ptm_amount = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Montant donné au Phœnix Technopôle Metz")
+    """
+    Amount given to the PTM
+    """
+    coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="divide_realized")
+    """
+    Coopeman (:class:`django.contrib.auth.models.User`) who collected the reload.
+    """
+
+    def __str__(self):
+        return "Répartition du " + str(self.date)
+    

@@ -61,6 +61,14 @@ class CotisationHistory(models.Model):
     """
     User (:class:`django.contrib.auth.models.User`) who registered the cotisation.
     """
+    divided = models.BooleanField(default=False, verbose_name="Répartition")
+    """
+    True if money of cotisation have been divided between CTM and PTM
+    """
+    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz")
+    """
+    Amount of money given to the PTM club
+    """
     history = HistoricalRecords()
 
 class WhiteListHistory(models.Model):

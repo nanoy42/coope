@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block entete %}Répartition des cotisations{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Répartition des cotisations</a></li>
+	<li><a href="#second">Historique des répartitions</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Répartition des cotisations</h2>
+	</header>
+	<section>
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Champ</th>
+						<th>Valeur</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Nombre de cotisations non réparties</td>
+						<td>{{total_cotisations}}</td>
+					</tr>
+					<tr>
+						<td>Valeur totale des cotisations non réparties</td>
+						<td>{{total_amount}} €</td>
+					</tr>
+					<tr>
+						<td>Valeur à donner au Club Phœnix Technopôle Metz</td>
+						<td>{{total_amount_ptm}} €</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<form action="" method="post">
+			{% csrf_token %}
+			<button type="submit"><i class="fa fa-hand-holding-usd"></i> Répartir</button>
+		</form>
+		<p>Attention, cliquer sur ce bouton marquera toutes les cotisations actuellement non réparties comme réparties. L'historique de cette action n'est pas simple à obtenir et l'action peut être considérée comme irreversible.</p>
+	</section>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Historique des répartitions</h2>
+	</header>
+	<section>
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Date</th>
+						<th>Nombre de cotisations</th>
+						<th>Montant des cotisations</th>
+						<th>Montant des cotisations pourle Phœnix</th>
+						<th>Coopeman</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for divide_history in divide_histories %}
+					<tr>
+						<td>{{ divide_history.date }}</td>
+						<td>{{ divide_history.total_cotisations }}</td>
+						<td>{{ divide_history.total_cotisations_amount }} €</td>
+						<td>{{ divide_history.total_ptm_amount }} €</td>
+						<td>{{ divide_history.coopeman }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+{% endblock %}

@@ -32,9 +32,14 @@
 {% if request.user.is_staff %}
 <span class="tabulation2">
 		<i class="fa fa-chart-bar"></i> <a href="{% url 'gestion:stats' %}">Stats</a>
-	</span>
+</span>
 <span class="tabulation2">
-	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Comptabilité</a>
+	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Relevé</a>
+</span>
+{% endif %}
+{% if perms.preferences.can_divide %}
+<span class="tabulation2">
+	<i class="fa fa-hand-holding-usd"></i> <a href="{% url 'gestion:divide' %}">Répartition</a>
 </span>
 {% endif %}
 {% if perms.preferences.view_cotisation %}
