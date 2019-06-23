@@ -123,3 +123,17 @@ class SearchCategoryForm(forms.Form):
     A form to search a :class:`~gestion.models.Category`.
     """
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=True, label="Catégorie", widget=autocomplete.ModelSelect2(url='gestion:categories-autocomplete', attrs={'data-minimum-input-length':2}))
+
+class GenerateInvoiceForm(forms.Form):
+    """
+    A form to generate an invoice
+    """
+    invoice_date = forms.CharField(label="Date")
+    invoice_number = forms.CharField(label="Numéro", help_text="Au format 19018, sans le FE")
+    invoice_place = forms.CharField(label="Lieu")
+    invoice_object = forms.CharField(label="Objet")
+    invoice_description = forms.CharField(label="Description", required=False)
+    client_name = forms.CharField(label="Nom du client")
+    client_address_fisrt_line = forms.CharField(label="Première ligne d'adresse")
+    client_address_second_line = forms.CharField(label="Deuxième ligne d'adresse")
+    products = forms.CharField(widget=forms.Textarea, label="Produits", help_text="Au format nom;prix;quantité avec saut de ligne")

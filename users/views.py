@@ -346,7 +346,7 @@ def gen_user_infos(request, pk):
     user= get_object_or_404(User, pk=pk)
     cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
     now = datetime.now()
-    path = os.path.join(settings.BASE_DIR, "users/templates/users/coope.png")
+    path = os.path.join(settings.BASE_DIR, "templates/coope.png")
     return render_to_pdf(request, 'users/bulletin.tex', {"user": user, "now": now, "cotisations": cotisations, "path":path}, filename="bulletin_" + user.first_name + "_" + user.last_name + ".pdf")
 
 ########## Groups ##########

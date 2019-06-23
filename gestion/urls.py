@@ -54,4 +54,5 @@ urlpatterns = [
     path('categories-autocomplete', views.CategoriesAutocomplete.as_view(), name="categories-autocomplete"),
     path('stats', views.stats, name="stats"),
     path('divide', views.divide, name="divide"),
+    path('gen_invoice', views.gen_invoice, name="gen_invoice"),
 ]

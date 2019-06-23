@@ -18,6 +18,7 @@ def run_tex(source):
         filename = os.path.join(tempdir, 'texput.tex')
         with open(filename, 'x', encoding='utf-8') as f:
             f.write(source)
+            print(source)
         latex_interpreter = getattr(settings, 'LATEX_INTERPRETER', DEFAULT_INTERPRETER)
         latex_command = 'cd "{tempdir}" && {latex_interpreter} -interaction=batchmode {path}'.format(tempdir=tempdir, latex_interpreter=latex_interpreter, path=os.path.basename(filename))
         process = run(latex_command, shell=True, stdout=PIPE, stderr=PIPE)

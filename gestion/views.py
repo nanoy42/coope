@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.db import transaction
+from django.conf import settings
 
 from datetime import datetime, timedelta
 
@@ -17,8 +18,9 @@ from coopeV3.acl import active_required, acl_or, admin_required
 import simplejson as json
 from dal import autocomplete
 from decimal import *
+import os
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm
+from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
 from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory
@@ -825,6 +827,41 @@ def pintes_user_list(request):
     pks = [x.pk for x in User.objects.all() if x.profile.nb_pintes > 0]
     users = User.objects.filter(pk__in=pks)
     return render(request, "gestion/pintes_user_list.html", {"users": users})
+
+@active_required
+@login_required
+@permission_required('users.can_generate_invoices')
+def gen_invoice(request):
+    """
+    Displays a form to generate an invoice.
+    """
+    form = GenerateInvoiceForm(request.POST or None)
+    if form.is_valid():
+        products = [x.split(";") for x in form.cleaned_data["products"].split("\n")]
+        total = 0
+        for product in products:
+            sub_total = Decimal(product[1]) * Decimal(product[2])
+            product.append(sub_total)
+            total += sub_total
+        return render_to_pdf(
+            request,
+            'gestion/invoice.tex',
+            {
+                "invoice_date": form.cleaned_data["invoice_date"],
+                "invoice_number": form.cleaned_data["invoice_number"],
+                "invoice_place": form.cleaned_data["invoice_place"],
+                "invoice_object": form.cleaned_data["invoice_object"],
+                "invoice_description": form.cleaned_data["invoice_description"],
+                "client_name": form.cleaned_data["client_name"],
+                "client_address_first_line": form.cleaned_data["client_address_fisrt_line"],
+                "client_address_second_line": form.cleaned_data["client_address_second_line"],
+                "products" : products,
+                "total": total,
+                "path" : os.path.join(settings.BASE_DIR, "templates/coope.png"),
+            }, 
+            filename="FE" + form.cleaned_data["invoice_number"] + ".pdf")
+    else:
+        return render(request, "form.html", {"form": form, "form_title": "Génération d'une facture", "form_button": "Générer", "form_button_icon": "file-pdf"})
 
 @active_required
 @login_required

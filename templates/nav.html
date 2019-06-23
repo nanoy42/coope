@@ -42,6 +42,11 @@
 	<i class="fa fa-hand-holding-usd"></i> <a href="{% url 'gestion:divide' %}">Répartition</a>
 </span>
 {% endif %}
+{% if perms.users.can_generate_invoices %}
+<span class="tabulation2">
+	<i class="fa fa-file-invoice-dollar"></i> <a href="{% url 'gestion:gen_invoice' %}">Facture</a>
+</span>
+{% endif %}
 {% if perms.preferences.view_cotisation %}
 <span class="tabulation2">
 	<i class="fa fa-calendar-check"></i> <a href="{% url 'preferences:cotisationsIndex' %}">Cotisations</a>
