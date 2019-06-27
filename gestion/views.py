@@ -994,14 +994,14 @@ def divide(request):
             cotisation_history.save()
         divide_history = DivideHistory(
             total_cotisations = non_divided_cotisations.count(),
-            total_cotisations_amount = sum([x.amount for x in non_divided_cotisations]),
-            total_ptm_amount = sum([x.amount_ptm for x in non_divided_cotisations]),
+            total_cotisations_amount = sum([x.amount or 0 for x in non_divided_cotisations]),
+            total_ptm_amount = sum([x.amount_ptm or 0 for x in non_divided_cotisations]),
             coopeman = request.user
         )
         divide_history.save()
     non_divided_cotisations = CotisationHistory.objects.filter(divided=False)
-    total_amount = sum([x.amount for x in non_divided_cotisations])
-    total_amount_ptm = sum([x.amount_ptm for x in non_divided_cotisations])
+    total_amount = sum([x.amount or 0 for x in non_divided_cotisations])
+    total_amount_ptm = sum([x.amount_ptm or 0 for x in non_divided_cotisations])
     divide_histories = DivideHistory.objects.all().order_by('-date')
     return render(
         request, 
