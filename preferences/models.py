@@ -129,7 +129,7 @@ class Cotisation(models.Model):
     """
     Duration (in days) of the cotisation
     """
-    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz")
+    amount_ptm = models.DecimalField(max_digits=5, decimal_places=2, null=True, verbose_name="Montant pour le club Phœnix Technopôle Metz", default=0)
     """
     Amount of money given to the PTM club
     """
@@ -178,6 +178,10 @@ class PriceProfile(models.Model):
     """
     Stores parameters to compute price
     """
+    class Meta:
+        verbose_name = "Profil de prix"
+        verbose_name_plural = "Profils de prix"
+        
     name = models.CharField(max_length=255, verbose_name="Nom")
     a = models.DecimalField(verbose_name="Marge constante", max_digits=3, decimal_places=2)
     b = models.DecimalField(verbose_name="Marge variable", max_digits=3, decimal_places=2)

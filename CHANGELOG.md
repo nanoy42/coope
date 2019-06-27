@@ -1,3 +1,5 @@
+## v3.6.1
+* Valeur par défaut des répartitions et calcul des répartitions
 ## v3.6.0
 * AJout d'un débit direct comme champ du profil
 * Suppression des codes bare
