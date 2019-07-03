@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block entete %}À propos{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">CoopeV3</a></li>
+	<li><a href="#second">License</a></li>
+	<li><a href="#third">Contributeurs</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>CoopeV3</h2>
+	</header>
+	<section>
+		CoopeV3 est un logiciel codé avec le framework Django pour répondre aux besoins de l'association Coopé Technopôle Metz. Il implémente une gestion des
+		adhérents, des cotisations, des transactions etc... Le code source de ce projet peut être trouvé sur github : <a href="https://github.com/nanoy42/coope" target="_blank">https://github.com/nanoy42/coope</a>.
+	</section>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>License</h2>
+	</header>
+	<section>
+		Le code source est opensource et distribué sous la license MIT, dont voici le texte exact : <br>
+		{% for l in license %}
+			{{l}}<br>
+		{% endfor %}
+		(<a href="https://github.com/nanoy42/coope/blob/master/LICENSE" target="_blank">https://github.com/nanoy42/coope/blob/master/LICENSE</a>).
+	</section>
+</section>
+<section id="third" class="main">
+	<header class="major">
+		<h2>Contributeurs</h2>
+	</header>
+	<section>
+		Les contributeurs, triés par ordre décroissant de nombre de commits, sont: 
+		<ol>
+			{% for contributor in contributors %}
+			<li>{{contributor.0}} ({{contributor.1}} commits)</li>
+			{% endfor %}
+		</ol>
+	</section>
+</section>
+{% endblock %}
