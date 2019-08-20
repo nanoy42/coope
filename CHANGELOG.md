@@ -1,3 +1,7 @@
+## v3.6.2
+* Fix sur les prix des cotisations.
+* Page À propose
+* Fix typo
 ## v3.6.1
 * Valeur par défaut des répartitions et calcul des répartitions
 ## v3.6.0
