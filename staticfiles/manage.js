@@ -32,7 +32,7 @@ function get_menu(id){
 
 function get_cotisation(id){
 	res = $.get("../preferences/getCotisation/" + id, function(data){
-		add_cotisation(data.pk, "", data.duration, data.amount, data.needQuantityButton);
+		add_cotisation(data.pk, data.duration, data.amount);
 	});
 }
 
