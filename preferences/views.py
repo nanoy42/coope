@@ -242,6 +242,6 @@ def delete_price_profile(request,pk):
     """
     price_profile = get_object_or_404(PriceProfile, pk=pk)
     message = "Le profil de prix " + price_profile.name + " a bien été supprimé"
-    price_pofile.delete()
+    price_profile.delete()
     messages.success(request, message)
     return redirect(reverse('preferences:priceProfilesIndex'))
