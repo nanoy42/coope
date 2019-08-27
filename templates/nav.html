@@ -31,7 +31,7 @@
 {% endif %}
 {% if request.user.is_staff %}
 <span class="tabulation2">
-		<i class="fa fa-chart-bar"></i> <a href="{% url 'gestion:stats' %}">Stats</a>
+		<i class="fa fa-chart-bar"></i> <a href="{% url 'stats' %}">Stats</a>
 </span>
 <span class="tabulation2">
 	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Relevé</a>

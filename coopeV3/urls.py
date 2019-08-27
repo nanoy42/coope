@@ -25,11 +25,13 @@ urlpatterns = [
     path('home', views.homepage, name="homepage"),
     path('about', views.about, name="about"),
     path('coope-runner', views.coope_runner, name="coope-runner"),
+    path('stats', views.stats, name="stats"),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
     path('gestion/', include('gestion.urls')),
-    path('preferences/', include('preferences.urls')),   
+    path('preferences/', include('preferences.urls')), 
+  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

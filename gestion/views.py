@@ -1013,7 +1013,9 @@ def divide(request):
             "divide_histories": divide_histories,
         }
     )
+
 ########## categories ##########
+
 @active_required
 @login_required
 @permission_required('gestion.add_category')
@@ -1090,47 +1092,6 @@ class CategoriesAutocomplete(autocomplete.Select2QuerySetView):
         if self.q:
             qs = qs.filter(name__icontains=self.q)
         return qs
-
-@active_required
-@login_required
-@admin_required
-def stats(request):
-    users = User.objects.all()
-    adherents = [x for x in users if x.profile.is_adherent]
-    transactions = ConsumptionHistory.objects.all()
-    categories = Category.objects.all()
-    categories_shown = Category.objects.exclude(order=0)
-    products = Product.objects.all()
-    active_products = Product.objects.filter(is_active=True)
-    active_kegs = Keg.objects.filter(is_active=True)
-    sum_positive_balance = sum([x.profile.balance for x in users if x.profile.balance > 0])
-    sum_balance = sum([x.profile.balance for x in users])
-    schools = School.objects.all()
-    groups = Group.objects.all()
-    admins = User.objects.filter(is_staff=True)
-    superusers = User.objects.filter(is_superuser=True)
-    menus = Menu.objects.all()
-    payment_methods = PaymentMethod.objects.all()
-    cotisations = Cotisation.objects.all()
-    return render(request, "gestion/stats.html", {
-        "users": users,
-        "adherents": adherents,
-        "transactions": transactions,
-        "categories": categories,
-        "categories_shown": categories_shown,
-        "products": products,
-        "active_products": active_products,
-        "active_kegs": active_kegs,
-        "sum_positive_balance": sum_positive_balance,
-        "sum_balance": sum_balance,
-        "schools": schools,
-        "groups": groups,
-        "admins": admins,
-        "superusers": superusers,
-        "menus": menus,
-        "payment_methods": payment_methods,
-        "cotisations": cotisations,
-    })
 
 ########## Compute price ##########
 
