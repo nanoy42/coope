@@ -95,7 +95,7 @@ class Product(models.Model):
 
     def __str__(self):
         if self.draft_category == self.DRAFT_NONE:
-            return self.name + "(" + str(self.amount) + " €)"
+            return self.name + " (" + str(self.amount) + " €)"
         else:
             return self.name + " (" + str(self.amount) + " €, " + str(self.deg) + "°)"
 

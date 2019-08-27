@@ -161,8 +161,11 @@ def order(request):
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
                     else:
-                        if(product.stockHold > 0):
-                            product.stockHold -= 1
+                        if(product.stockBar > quantity):
+                            product.stockBar -= quantity
+                            product.save()
+                        else:
+                            product.stockBar = 0
                             product.save()
                     consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
                     consumption.quantity += quantity
@@ -195,8 +198,11 @@ def order(request):
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
                         consumption.save()
-                        if(article.stockHold > 0):
-                            article.stockHold -= 1
+                        if(article.stockBar > quantity):
+                            article.stockBar -= quantity
+                            article.save()
+                        else:
+                            article.stockBar = 0
                             article.save()
                         user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
