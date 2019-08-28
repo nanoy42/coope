@@ -1,8 +1,3 @@
-## v3.6.3
-* Refonte totale du système de stocks
-* Fix price profile
-* Rajoute un nombre de citations sur la page de statistiques
-* Fix les contributeurs sur la page about et gencontributors en commande
 ## v3.6.2
 * Fix sur les prix des cotisations.
 * Page À propose
