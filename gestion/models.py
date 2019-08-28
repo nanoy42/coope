@@ -54,13 +54,9 @@ class Product(models.Model):
     """
     The price of the product.
     """
-    stockHold = models.IntegerField(default=0, verbose_name="Stock en soute")
+    stock = models.IntegerField(default=0, verbose_name="Stock")
     """
-    Number of product in the hold.
-    """
-    stockBar = models.IntegerField(default=0, verbose_name="Stock en bar")
-    """
-    Number of product at the bar.
+    Number of product
     """
     category = models.ForeignKey('Category', on_delete=models.PROTECT, verbose_name="Catégorie")
     """
@@ -95,7 +91,7 @@ class Product(models.Model):
 
     def __str__(self):
         if self.draft_category == self.DRAFT_NONE:
-            return self.name + "(" + str(self.amount) + " €)"
+            return self.name + " (" + str(self.amount) + " €)"
         else:
             return self.name + " (" + str(self.amount) + " €, " + str(self.deg) + "°)"
 

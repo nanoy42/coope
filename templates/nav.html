@@ -20,8 +20,13 @@
 	<i class="fa fa-dolly-flatbed"></i> <a href="{% url 'gestion:productsIndex' %}">Gestion des produits</a>
 </span>
 {% endif %}
+{% if  perms.gestion.change_product %}
 <span class="tabulation2">
-	<br>
+<br>
+	<i class="fa fa-boxes"></i> <a href="{% url 'gestion:stocks' %}">Stocks</a>
+</span>
+{% endif %}
+<span class="tabulation2">
 	<i class="fa fa-list-ol"></i> <a href="{% url 'gestion:ranking' %}">Classement</a>
 </span>
 {% if perms.preferences.change_generalpreferences %}
@@ -31,7 +36,7 @@
 {% endif %}
 {% if request.user.is_staff %}
 <span class="tabulation2">
-		<i class="fa fa-chart-bar"></i> <a href="{% url 'gestion:stats' %}">Stats</a>
+		<i class="fa fa-chart-bar"></i> <a href="{% url 'stats' %}">Stats</a>
 </span>
 <span class="tabulation2">
 	<i class="fa fa-business-time"></i> <a href="{% url 'gestion:gen_releve' %}">Relevé</a>

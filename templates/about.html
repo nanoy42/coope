@@ -28,8 +28,6 @@
 		{% endfor %}
 		(<a href="https://github.com/nanoy42/coope/blob/master/LICENSE" target="_blank">https://github.com/nanoy42/coope/blob/master/LICENSE</a>).
 		<br><br>
-
-		Version 3.6.2.
 	</section>
 </section>
 <section id="third" class="main">
@@ -37,12 +35,16 @@
 		<h2>Contributeurs</h2>
 	</header>
 	<section>
+		{% if contributors %}
 		Les contributeurs, triés par ordre décroissant de nombre de commits, sont: 
 		<ol>
 			{% for contributor in contributors %}
 			<li>{{contributor.0}} ({{contributor.1}} commits)</li>
 			{% endfor %}
 		</ol>
+		{% else %}
+		Impossible d'afficher la liste des contributeurs
+		{% endif %}
 	</section>
 </section>
 {% endblock %}
