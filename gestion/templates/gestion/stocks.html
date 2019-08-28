@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block entete %}Gestion des produits{% endblock %}
+{% block navbar%}
+<ul>
+	{% for category in categories %}
+	<li><a href="#{{category}}">Stocks {{category}}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}
+{% block content %}
+{% for category in categories %}
+<section id="{{category}}" class="main">
+	<header class="major">
+		<h2>Stocks {{category}}</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Stock</th>
+					<th>Mettre à jour</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in category.active_products %}
+				<tr id="tr-{{product.pk}}">
+					<td><a href="{% url 'gestion:productProfile' product.pk %}">{{ product.name }}</a></td>
+					<td id="stock-{{product.pk}}">{{ product.stock }}</td>
+					<td><button class="update-stock" data-pk="{{product.pk}}" data-stock="{{product.stock}}" ><i class="fa fa-marker"></i></button></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endfor %}
+<script src="{% static 'jquery.js' %}"></script>
+<script src="{% static 'stocks.js' %}"></script>
+{% endblock %}

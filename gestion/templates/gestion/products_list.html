@@ -19,8 +19,7 @@
 				<tr>
 					<th>Nom</th>
 					<th>Prix</th>
-					<th>Stock (soute)</th>
-					<th>Stock (bar)</th>
+					<th>Stock</th>
 					<th>Catégorie</th>
 					<th>Actif</th>
 					<th>Degré</th>
@@ -33,8 +32,7 @@
 				<tr>
 					<td><a href="{% url 'gestion:productProfile' product.pk %}">{{ product.name }}</a></td>
 					<td>{{ product.amount}}</td>
-					<td>{{ product.stockHold }}</td>
-					<td>{{ product.stockBar }}</td>
+					<td>{{ product.stock }}</td>
 					<td>{{ product.category }}</td>
 					<td>{{ product.is_active | yesno:"Oui, Non"}}</td>
 					<td>{{ product.deg }}</td>

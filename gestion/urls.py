@@ -55,4 +55,6 @@ urlpatterns = [
     path('divide', views.divide, name="divide"),
     path('gen_invoice', views.gen_invoice, name="gen_invoice"),
     path('compute-price', views.compute_price_view, name="compute-price"),
+    path('stocks', views.stocks, name="stocks"),
+    path('updateStock/<int:pk>', views.update_stock, name="updateStock"),
 ]

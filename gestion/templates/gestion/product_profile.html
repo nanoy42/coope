@@ -14,8 +14,7 @@
     {% if perms.gestion.change_product %}<a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}Désa{% else %}A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small">Modifier</a><br>{% endif %}<br>
         <strong>Nom</strong> : {{ product.name }}<br>
         <strong>Prix de vente</strong> : {{ product.amount }}€<br>
-        <strong>Stock en soute</strong> : {{ product.stockHold }}<br>
-        <strong>Stock au bar</strong> : {{ product.stockBar }}<br>
+        <strong>Stock en soute</strong> : {{ product.stock }}<br>
         <strong>Catégorie</strong> : <a href="{% url 'gestion:categoryProfile' product.category.pk %}">{{ product.category }}</a><br>
         <strong>Actif</strong> : {{ product.is_active | yesno:"Oui, Non"}}<br>
         <strong>Dégré</strong> : {{ product.deg }}<br>

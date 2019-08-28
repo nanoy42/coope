@@ -161,9 +161,11 @@ def order(request):
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
                     else:
-                        if(product.stockHold > 0):
-                            product.stockHold -= 1
+                        if(product.stock > quantity):
+                            product.stock -= quantity
                             product.save()
+                        else:
+                            raise Exception("Le stock du produit n'autorise pas l'opération")
                     consumption, _ = Consumption.objects.get_or_create(customer=user, product=product)
                     consumption.quantity += quantity
                     consumption.save()
@@ -195,9 +197,11 @@ def order(request):
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
                         consumption.save()
-                        if(article.stockHold > 0):
-                            article.stockHold -= 1
+                        if(article.stock > quantity):
+                            article.stock -= quantity
                             article.save()
+                        else:
+                            raise Exception("Le stock du produit " + article.name + "n'autorise pas l'opération")
                         user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
                 return HttpResponse("La commande a bien été effectuée")
@@ -282,6 +286,7 @@ def cancel_consumption(request, pk):
     """
     consumption = get_object_or_404(ConsumptionHistory, pk=pk)
     user = consumption.customer
+    product = consumption.product
     if consumption.paymentMethod.affect_balance:
         user.profile.debit -= consumption.amount
     else:
@@ -291,6 +296,8 @@ def cancel_consumption(request, pk):
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
     consumptionT.quantity -= consumption.quantity
     consumptionT.save()
+    product.stock += consumption.quantity
+    product.save()
     consumption.delete()
     messages.success(request, "La consommation a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -311,7 +318,9 @@ def cancel_menu(request, pk):
         user.profile.debit -= menu_history.amount
     else:
         user.profile.direct_debit -= menu_history.amount
-    for product in manu_history.menu.articles:
+    for product in menu_history.menu.articles:
+        product.stock += menu_history.quantity
+        product.save()
         consumptionT = Consumption.objects.get(customer=user, product=product)
         consumptionT -= menu_history.quantity
         consumptionT.save()
@@ -322,6 +331,7 @@ def cancel_menu(request, pk):
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
 
 ########## Products ##########
+
 @active_required
 @login_required
 @acl_or('gestion.add_product', 'gestion.view_product', 'gestion.add_keg', 'gestion.view_keg', 'gestion.change_keg', 'gestion.view_menu', 'gestion.add_menu')
@@ -451,6 +461,26 @@ class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
             qs = qs.filter(name__icontains=self.q)
         return qs
 
+@active_required
+@login_required
+@permission_required('gestion.change_product')
+def update_stock(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if("stock" in request.GET):
+        product.stock = request.GET.get("stock")
+        product.save()
+    return HttpResponse("Le stock a bien été mis à jour")
+
+@active_required
+@login_required
+@permission_required('gestion.change_product')
+def stocks(request):
+    """
+    View to update stocks of active products
+    """
+    categories = Category.objects.exclude(order=0).order_by("order")
+    return render(request, "gestion/stocks.html", {"categories": categories})
+
 ########## Kegs ##########
 
 @active_required
@@ -471,8 +501,7 @@ def addKeg(request):
         pinte = Product(
             name = "Pinte " + name,
             amount = pinte_price,
-            stockHold = 0,
-            stockBar = 0,
+            stock = 0,
             category = form.cleaned_data["category"],
             needQuantityButton = False,
             is_active = True,
@@ -487,8 +516,7 @@ def addKeg(request):
         demi = Product(
             name = "Demi " + name,
             amount = ceil(5*pinte_price)/10,
-            stockHold = 0,
-            stockBar = 0,
+            stock = 0,
             category = form.cleaned_data["category"],
             needQuantityButton = False,
             is_active = True,
@@ -504,8 +532,7 @@ def addKeg(request):
             galopin = Product(
                 name = "Galopin " + name,
                 amount = ceil(2.5 * pinte_price)/10,
-                stockHold = 0,
-                stockBar = 0,
+                stock = 0,
                 category = form.cleaned_data["category"],
                 needQuantityButton = False,
                 is_active = True,
