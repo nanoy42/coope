@@ -44,14 +44,13 @@ def about(request):
     """
     A page about the project
     """
-    os.system("git -C " + settings.BASE_DIR + " shortlog -n $@ | grep \"):\" | sed 's|:||' >> " + settings.BASE_DIR + "/contributors.txt")
     contributors = []
-    with open(settings.BASE_DIR + "/contributors.txt", "r") as f:
-        for line in f:
-            print(line)
-            print(line.split(" ")[0])
-            contributors.append((line.split(" ")[0], int(line.split(" ")[1].replace("(", "").replace(")", "").replace("\n", ""))))
-    os.system("rm " + settings.BASE_DIR + "/contributors.txt")
+    try:
+        with open(settings.BASE_DIR + "/contributors.txt", "r") as f:
+            for line in f:
+                contributors.append((line[:line.find('(')], int(line[(line.find('(') + 1):line.find(')')])))
+    except:
+        pass
     license = []
     with open(settings.BASE_DIR + "/LICENSE", "r") as f:
         for line in f:
