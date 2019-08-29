@@ -59,10 +59,10 @@ class ProductAdmin(SimpleHistoryAdmin):
     """
     The admin class for :class:`Products <gestion.models.Product>`.
     """
-    list_display = ('name', 'amount', 'is_active', 'category', 'adherentRequired', 'stock', 'volume', 'deg')
+    list_display = ('name', 'amount', 'is_active', 'category', 'adherentRequired', 'stock', 'volume', 'deg', 'use_stocks')
     ordering = ('name', 'amount', 'stock', 'deg')
     search_fields = ('name',)
-    list_filter = ('is_active', 'adherentRequired', 'category')
+    list_filter = ('is_active', 'adherentRequired', 'category', 'use_stocks')
 
 class ReloadAdmin(SimpleHistoryAdmin):
     """

@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{% for product in category.active_products %}
+				{% for product in category.active_stock_products %}
 				<tr id="tr-{{product.pk}}">
 					<td><a href="{% url 'gestion:productProfile' product.pk %}">{{ product.name }}</a></td>
 					<td id="stock-{{product.pk}}">{{ product.stock }}</td>

@@ -26,6 +26,13 @@ class Category(models.Model):
         Return active producs of this category
         """
         return self.product_set.filter(is_active=True)
+    
+    @property
+    def active_stock_products(self):
+        """
+        Return active products that use stocks
+        """
+        return self.product_set.filter(is_active=True).filter(use_stocks=True)
 
 class Product(models.Model):
     """
@@ -87,6 +94,7 @@ class Product(models.Model):
     On the graphs on :func:`users.views.profile` view, the number of total consumptions is divised by the showingMultiplier
     """
     draft_category = models.IntegerField(choices=DRAFT_TYPES, default=DRAFT_NONE, verbose_name="Type de pression")
+    use_stocks = models.BooleanField(default=True, verbose_name="Utiliser les stocks ?")
     history = HistoricalRecords()
 
     def __str__(self):

@@ -54,7 +54,7 @@ class KegForm(forms.ModelForm):
 
     category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie")
     deg = forms.DecimalField(max_digits=5, decimal_places=2, label="Degré", validators=[MinValueValidator(0)])
-    create_galopin = forms.BooleanField(label="Créer le produit galopin ?")
+    create_galopin = forms.BooleanField(required=False, label="Créer le produit galopin ?")
 
     def clean(self):
         cleaned_data = super().clean()
