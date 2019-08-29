@@ -1,3 +1,6 @@
+## v3.6.4
+* Ajout d'un champ use_stocks
+* Séparation des formulaires de fût
 ## v3.6.3
 * Refonte totale du système de stocks
 * Fix price profile

@@ -19,5 +19,6 @@
         <strong>Actif</strong> : {{ product.is_active | yesno:"Oui, Non"}}<br>
         <strong>Dégré</strong> : {{ product.deg }}<br>
         <strong>Volume</strong> : {{ product.volume }}cl<br>
+        <strong>Utiliser les stocks</strong> : {{product.use_stocks|yesno:"Oui,Non"}}<br>
 </section>
 {% endblock %}

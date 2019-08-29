@@ -22,7 +22,7 @@ from decimal import *
 import os
 from math import floor, ceil
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
+from .forms import ReloadForm, RefundForm, ProductForm, CreateKegForm, EditKegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
 from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory, PriceProfile
@@ -160,7 +160,7 @@ def order(request):
                         kegHistory.quantitySold += Decimal(quantity * 0.125)
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
-                    else:
+                    if product.use_stocks:
                         if(product.stock > quantity):
                             product.stock -= quantity
                             product.save()
@@ -197,11 +197,36 @@ def order(request):
                         consumption, _ = Consumption.objects.get_or_create(customer=user, product=article)
                         consumption.quantity += quantity
                         consumption.save()
-                        if(article.stock > quantity):
-                            article.stock -= quantity
-                            article.save()
-                        else:
-                            raise Exception("Le stock du produit " + article.name + "n'autorise pas l'opération")
+                        if(article.draft_category == Product.DRAFT_PINTE):
+                            keg = get_object_or_404(Keg, pinte=article)
+                            if(not keg.is_active):
+                                raise Exception("Fût non actif")
+                            kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                            kegHistory.quantitySold += Decimal(quantity * 0.5)
+                            kegHistory.amountSold += Decimal(quantity * product.amount)
+                            kegHistory.save()
+                        elif(article.draft_category == Product.DRAFT_DEMI):
+                            keg = get_object_or_404(Keg, demi=article)
+                            if(not keg.is_active):
+                                raise Exception("Fût non actif")
+                            kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                            kegHistory.quantitySold += Decimal(quantity * 0.25)
+                            kegHistory.amountSold += Decimal(quantity * product.amount)
+                            kegHistory.save()
+                        elif(article.draft_category == Product.DRAFT_GALOPIN):
+                            keg = get_object_or_404(Keg, galopin=article)
+                            if(not keg.is_active):
+                                raise Exception("Fût non actif")
+                            kegHistory = get_object_or_404(KegHistory, keg=keg, isCurrentKegHistory=True)
+                            kegHistory.quantitySold += Decimal(quantity * 0.125)
+                            kegHistory.amountSold += Decimal(quantity * product.amount)
+                            kegHistory.save()
+                        if article.use_stocks:
+                            if(article.stock > quantity):
+                                article.stock -= quantity
+                                article.save()
+                            else:
+                                raise Exception("Le stock du produit " + article.name + "n'autorise pas l'opération")
                         user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
                 return HttpResponse("La commande a bien été effectuée")
@@ -296,8 +321,9 @@ def cancel_consumption(request, pk):
     consumptionT = Consumption.objects.get(customer=user, product=consumption.product)
     consumptionT.quantity -= consumption.quantity
     consumptionT.save()
-    product.stock += consumption.quantity
-    product.save()
+    if product.use_stocks:
+        product.stock += consumption.quantity
+        product.save()
     consumption.delete()
     messages.success(request, "La consommation a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
@@ -467,8 +493,9 @@ class ActiveProductsAutocomplete(autocomplete.Select2QuerySetView):
 def update_stock(request, pk):
     product = get_object_or_404(Product, pk=pk)
     if("stock" in request.GET):
-        product.stock = request.GET.get("stock")
-        product.save()
+        if product.use_stocks:
+            product.stock = request.GET.get("stock")
+            product.save()
     return HttpResponse("Le stock a bien été mis à jour")
 
 @active_required
@@ -488,12 +515,16 @@ def stocks(request):
 @permission_required('gestion.add_keg')
 def addKeg(request):
     """
-    Displays a :class:`gestion.forms.KegForm` to add a :class:`gestion.models.Keg`.
+    Displays a :class:`gestion.forms.CreateKegForm` to add a :class:`gestion.models.Keg`.
     """
-    form = KegForm(request.POST or None)
+    form = CreateKegForm(request.POST or None)
     if form.is_valid():
+        try:
+            price_profile = PriceProfile.objects.get(use_for_draft=True)
+        except:
+            messages.error(request, "Il n'y a pas de profil de prix pour les pressions")
+            return redirect(reverse('preferences:priceProfilesIndex'))
         keg = form.save(commit=False)
-        price_profile = get_object_or_404(PriceProfile, use_for_draft=True)
         pinte_price = compute_price(form.cleaned_data["amount"]/(2*form.cleaned_data["capacity"]), price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
         pinte_price = ceil(10*pinte_price)/10
         name = form.cleaned_data["name"][4:]
@@ -509,7 +540,8 @@ def addKeg(request):
             deg = form.cleaned_data["deg"],
             adherentRequired = True,
             showingMultiplier = 1,
-            draft_category = Product.DRAFT_PINTE
+            draft_category = Product.DRAFT_PINTE,
+            use_stocks=False,
         )
         pinte.save()
         keg.pinte = pinte
@@ -524,7 +556,8 @@ def addKeg(request):
             deg = form.cleaned_data["deg"],
             adherentRequired = True,
             showingMultiplier = 1,
-            draft_category = Product.DRAFT_DEMI
+            draft_category = Product.DRAFT_DEMI,
+            use_stocks=False,
         )
         demi.save()
         keg.demi = demi
@@ -540,7 +573,8 @@ def addKeg(request):
                 deg = form.cleaned_data["deg"],
                 adherentRequired = True,
                 showingMultiplier = 1,
-                draft_category = Product.DRAFT_DEMI
+                draft_category = Product.DRAFT_DEMI,
+                use_stocks=False,
             )
             galopin.save()
             keg.galopin = galopin
@@ -554,13 +588,13 @@ def addKeg(request):
 @permission_required('gestion.change_keg')
 def editKeg(request, pk):
     """
-    Displays a :class:`gestion.forms.KegForm` to edit a :class:`gestion.models.Keg`.
+    Displays a :class:`gestion.forms.EditKegForm` to edit a :class:`gestion.models.Keg`.
 
     pk
         The primary key of the :class:`gestion.models.Keg` to edit.
     """
     keg = get_object_or_404(Keg, pk=pk)
-    form = KegForm(request.POST or None, instance=keg)
+    form = EditKegForm(request.POST or None, instance=keg)
     if(form.is_valid()):
         form.save()
         messages.success(request, "Le fût a bien été modifié")
