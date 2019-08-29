@@ -22,7 +22,7 @@ from decimal import *
 import os
 from math import floor, ceil
 
-from .forms import ReloadForm, RefundForm, ProductForm, KegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
+from .forms import ReloadForm, RefundForm, ProductForm, CreateKegForm, EditKegForm, MenuForm, GestionForm, SearchMenuForm, SearchProductForm, SelectPositiveKegForm, SelectActiveKegForm, PinteForm, GenerateReleveForm, CategoryForm, SearchCategoryForm, GenerateInvoiceForm, ComputePriceForm
 from .models import Product, Menu, Keg, ConsumptionHistory, KegHistory, Consumption, MenuHistory, Pinte, Reload, Refund, Category
 from users.models import School
 from preferences.models import PaymentMethod, GeneralPreferences, Cotisation, DivideHistory, PriceProfile
@@ -515,9 +515,9 @@ def stocks(request):
 @permission_required('gestion.add_keg')
 def addKeg(request):
     """
-    Displays a :class:`gestion.forms.KegForm` to add a :class:`gestion.models.Keg`.
+    Displays a :class:`gestion.forms.CreateKegForm` to add a :class:`gestion.models.Keg`.
     """
-    form = KegForm(request.POST or None)
+    form = CreateKegForm(request.POST or None)
     if form.is_valid():
         try:
             price_profile = PriceProfile.objects.get(use_for_draft=True)
@@ -588,13 +588,13 @@ def addKeg(request):
 @permission_required('gestion.change_keg')
 def editKeg(request, pk):
     """
-    Displays a :class:`gestion.forms.KegForm` to edit a :class:`gestion.models.Keg`.
+    Displays a :class:`gestion.forms.EditKegForm` to edit a :class:`gestion.models.Keg`.
 
     pk
         The primary key of the :class:`gestion.models.Keg` to edit.
     """
     keg = get_object_or_404(Keg, pk=pk)
-    form = KegForm(request.POST or None, instance=keg)
+    form = EditKegForm(request.POST or None, instance=keg)
     if(form.is_valid()):
         form.save()
         messages.success(request, "Le fût a bien été modifié")

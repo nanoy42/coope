@@ -42,9 +42,9 @@ class ProductForm(forms.ModelForm):
         fields = "__all__"
         widgets = {'amount': forms.TextInput}
 
-class KegForm(forms.ModelForm):
+class CreateKegForm(forms.ModelForm):
     """
-    A form to create and edit a :class:`~gestion.models.Keg`.
+    A form to create a :class:`~gestion.models.Keg`.
     """
 
     class Meta:
@@ -52,9 +52,24 @@ class KegForm(forms.ModelForm):
         fields = ["name", "stockHold", "amount", "capacity"]
         widgets = {'amount': forms.TextInput}
 
-    category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie")
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie", help_text="Catégorie dans laquelle placer les produits pinte, demi (et galopin si besoin).")
     deg = forms.DecimalField(max_digits=5, decimal_places=2, label="Degré", validators=[MinValueValidator(0)])
     create_galopin = forms.BooleanField(required=False, label="Créer le produit galopin ?")
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if cleaned_data.get("name")[0:4] != "Fût ":
+            raise ValidationError("Le nom du fût doit être sous la forme 'Fût nom de la bière'")
+
+class EditKegForm(forms.ModelForm):
+    """
+    A form to edit a :class:`~gestion.models.Keg`.
+    """
+
+    class Meta:
+        model = Keg
+        fields = ["name", "stockHold", "amount", "capacity", "pinte", "demi", "galopin"]
+        widgets = {'amount': forms.TextInput}
 
     def clean(self):
         cleaned_data = super().clean()
