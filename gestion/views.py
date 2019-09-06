@@ -72,13 +72,15 @@ def order(request):
     """
     Processes the given order. The order is passed through POST.
     """
-    error_message = "Impossible d'effectuer la transaction. Toute opération abandonnée. Veuillez contacter le président ou le trésorier"
     try:
         with transaction.atomic():
             if("user" not in request.POST or "paymentMethod" not in request.POST or "amount" not in request.POST or "order" not in request.POST):
-                raise Exception("Erreur du post")
+                raise Exception("Erreur du post.")
             else:
-                user = get_object_or_404(User, pk=request.POST['user'])
+                try:
+                    user = User.objects.get(pk=request.POST['user'])
+                except:
+                    raise Exception("Impossible de récupérer l'utilisateur")
                 paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
                 amount = Decimal(request.POST['amount'])
                 order = json.loads(request.POST["order"])
@@ -87,8 +89,7 @@ def order(request):
                 cotisations = json.loads(request.POST['cotisations'])
                 gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
                 if (not order) and (not menus) and (not cotisations):
-                    error_message = "Pas de commande"
-                    raise Exception(error_message)
+                    raise Exception("Pas de commande.")
                 if(cotisations):
                     for co in cotisations:
                         cotisation = Cotisation.objects.get(pk=co['pk'])
@@ -98,8 +99,7 @@ def order(request):
                                 if(user.profile.balance >= cotisation_history.cotisation.amount):
                                     user.profile.debit += cotisation_history.cotisation.amount
                                 else:
-                                    error_message = "Solde insuffisant"
-                                    raise Exception(error_message)
+                                    raise Exception("Solde insuffisant")
                             else:
                                 user.profile.direct_debit += cotisation_history.cotisation.amount
                             cotisation_history.user = user
@@ -122,15 +122,13 @@ def order(request):
                     menu = get_object_or_404(Menu, pk=m["pk"])
                     adherentRequired = adherentRequired or menu.adherent_required
                 if(adherentRequired and not user.profile.is_adherent):
-                    error_message = "N'est pas adhérent et devrait l'être."
-                    raise Exception(error_message)
+                    raise Exception("N'est pas adhérent et devrait l'être.")
                 # Partie un peu complexe : je libère toutes les pintes de la commande, puis je test
                 # s'il a trop de pintes non rendues, puis je réalloue les pintes
                 for pinte in listPintes:
                     allocate(pinte, None)
                 if(gp.use_pinte_monitoring and gp.lost_pintes_allowed and user.profile.nb_pintes >= gp.lost_pintes_allowed):
-                    error_message = "Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes."
-                    raise Exception(error_message)
+                    raise Exception("Impossible de réaliser la commande : l'utilisateur a perdu trop de pintes.")
                 for pinte in listPintes:
                     allocate(pinte, user)
                 for o in order:
@@ -161,7 +159,7 @@ def order(request):
                         kegHistory.amountSold += Decimal(quantity * product.amount)
                         kegHistory.save()
                     if product.use_stocks:
-                        if(product.stock > quantity):
+                        if(product.stock >= quantity):
                             product.stock -= quantity
                             product.save()
                         else:
@@ -176,8 +174,7 @@ def order(request):
                         if(user.profile.balance >= Decimal(product.amount*quantity)):
                             user.profile.debit += Decimal(product.amount*quantity)
                         else:
-                            error_message = "Solde insuffisant"
-                            raise Exception(error_message)
+                            raise Exception("Solde insuffisant")
                     else:
                         user.profile.direct_debit += Decimal(product.amount*quantity)
                 for m in menus:
@@ -189,8 +186,7 @@ def order(request):
                         if(user.profile.balance >= Decimal(product.amount*quantity)):
                             user.profile.debit += Decimal(product.amount*quantity)
                         else:
-                            error_message = "Solde insuffisant"
-                            raise Exception(error_message)
+                            raise Exception("Solde insuffisant")
                     else:
                         user.profile.direct_debit += Decimal(product.amount*quantity)
                     for article in menu.articles.all():
@@ -222,7 +218,7 @@ def order(request):
                             kegHistory.amountSold += Decimal(quantity * product.amount)
                             kegHistory.save()
                         if article.use_stocks:
-                            if(article.stock > quantity):
+                            if(article.stock >= quantity):
                                 article.stock -= quantity
                                 article.save()
                             else:
@@ -231,7 +227,7 @@ def order(request):
                 user.save()
                 return HttpResponse("La commande a bien été effectuée")
     except Exception as e:
-        return HttpResponse(error_message)
+        return HttpResponse("Impossible d'effectuer la transaction : " + e.args[0])
 
 @active_required
 @login_required

@@ -211,6 +211,7 @@ $(document).ready(function(){
 			location.reload();
 		}).fail(function(data){
 			alert("Impossible d'effectuer la transaction. Veuillez contacter le trésorier ou le président");
+			console.log(data);
 			location.reload();
 		});
 	});
