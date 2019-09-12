@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block entete %}Amélioration {{improvement.title}}{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">{{improvement.title}}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>{{improvement.title}}</h2>
+	</header>
+    <a href="{% url 'preferences:improvementsIndex' %}" class="button">Retour à la liste des améliorations</a><br><br>
+	<strong>Titre : </strong> {{improvement.title}}<br>
+    <strong>Type : </strong> {{improvement.get_mode_display}}<br>
+    <strong>Date : </strong> {{improvement.date}}<br>
+    <strong>Fait : </strong> {{improvement.done|yesno:"Oui,Non"}}<br>
+    <strong>Coopeman : </strong> {{improvement.coopeman}}<br>
+    <strong>Description : </strong> {{improvement.description}}<br>
+</section>
+{% endblock %}

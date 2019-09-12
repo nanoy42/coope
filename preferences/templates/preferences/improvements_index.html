@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block entete %}Améliorations{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">Liste des améliorations à faire</a></li>
+    <li><a href="#seconde">Liste des améliorations faîtes</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Liste des améliorations à faire</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Type</th>
+					<th>Vu ?</th>
+					<th>Date</th>
+                    <th>Administration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for improvement in todo_improvements %}
+				<tr>
+					<td>{{improvement.title}}</td>
+                    <td>{{improvement.get_mode_display}}</td>
+                    <td>{{improvement.seen|yesno:"Oui,Non"}}</td>
+                    <td>{{improvement.date}}</td>
+                    <td><a href="{% url 'preferences:improvementProfile' improvement.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a> <a href="{% url 'preferences:changeImprovementState' improvement.pk %}" class="button small"><i class="fa fa-check"></i> Passer en fait</a> <a href="{% url 'preferences:deleteImprovement' improvement.pk %}" class="button small"><i class="fa fa-trash"></i> Supprimer</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+<section id="second" class="main">
+	<header class="major">
+		<h2>Liste des améliorations faîtes</h2>
+	</header>
+	<div class="table-wrapper">
+		<table>
+			<thead>
+				<tr>
+					<th>Titre</th>
+					<th>Type</th>
+					<th>Vu ?</th>
+					<th>Date</th>
+                    <th>Administration</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for improvement in done_improvements %}
+				<tr>
+					<td>{{improvement.title}}</td>
+                    <td>{{improvement.get_mode_display}}</td>
+                    <td>{{improvement.seen|yesno:"Oui,Non"}}</td>
+                    <td>{{improvement.date}}</td>
+                    <td><a href="{% url 'preferences:improvementProfile' improvement.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a> <a href="{% url 'preferences:changeImprovementState' improvement.pk %}" class="button small"><i class="fa fa-check"></i> Passer en non fait</a> <a href="{% url 'preferences:deleteImprovement' improvement.pk %}" class="button small"><i class="fa fa-trash"></i> Supprimer</a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</section>
+{% endblock %}

@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-from .models import Cotisation, PaymentMethod, GeneralPreferences, PriceProfile
+from .models import Cotisation, PaymentMethod, GeneralPreferences, PriceProfile, Improvement
 
 class CotisationForm(forms.ModelForm):
     """
@@ -50,3 +50,11 @@ class GeneralPreferencesForm(forms.ModelForm):
             'home_text': forms.Textarea(attrs={'placeholder': 'Ce message sera affiché sur la page d\'accueil'})
         }
 
+
+class ImprovementForm(forms.ModelForm):
+    """
+    Form to create an improvement
+    """
+    class Meta:
+        model = Improvement
+        fields = ["title", "mode", "description"]

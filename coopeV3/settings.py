@@ -130,3 +130,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
 INTERNAL_IPS = ["127.0.0.1"]
+
+EMAIL_SUBJECT_PREFIX = "[Coope Admin] "

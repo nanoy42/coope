@@ -71,6 +71,14 @@
 </span>
 {% endif %}
 <span class="tabulation2">
+	<i class="fa fa-bug"></i> <a href="{% url 'preferences:addImprovement' %}">Proposition d'amélioration</a>
+</span>
+{% if perms.preferences.view_improvement %}
+<span class="tabulation2">
+	<i class="fa fa-bug"></i> <a href="{% url 'preferences:improvementsIndex' %}">Améliorations</a>
+</span>
+{% endif %}
+<span class="tabulation2">
 	<i class="fa fa-bed"></i> <a href="{% url 'users:logout' %}">Deconnexion</a>
 </span>
 {% else %}
