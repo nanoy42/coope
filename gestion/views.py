@@ -592,7 +592,29 @@ def editKeg(request, pk):
     keg = get_object_or_404(Keg, pk=pk)
     form = EditKegForm(request.POST or None, instance=keg)
     if(form.is_valid()):
-        form.save()
+        try:
+            price_profile = PriceProfile.objects.get(use_for_draft=True)
+        except:
+            messages.error(request, "Il n'y a pas de profil de prix pour les pressions")
+            return redirect(reverse('preferences:priceProfilesIndex'))
+        keg = form.save()
+        # Update produtcs
+        name = form.cleaned_data["name"][4:]
+        pinte_price = compute_price(keg.amount/(2*keg.capacity), price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        pinte_price = ceil(10*pinte_price)/10
+        keg.pinte.deg = keg.deg
+        keg.pinte.amount = pinte_price
+        keg.pinte.name = "Pinte " + name
+        keg.pinte.save()
+        keg.demi.deg = keg.deg
+        keg.demi.amount = ceil(5*pinte_price)/10
+        keg.demi.name = "Demi " + name
+        keg.demi.save()
+        if(keg.galopin):
+            keg.galopin.deg = deg
+            keg.galopin.amount = ceil(2.5 * pinte_price)/10
+            keg.galopin.name = "Galopin " + name
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été modifié")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title": "Modification d'un fût", "form_button": "Modifier", "form_button_icon": "pencil-alt"})

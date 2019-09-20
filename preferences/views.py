@@ -274,8 +274,8 @@ def improvements_index(request):
     """
     Display all improvements
     """
-    todo_improvements = Improvement.objects.filter(done=False)
-    done_improvements = Improvement.objects.filter(done=True)
+    todo_improvements = Improvement.objects.filter(done=False).order_by('-date')
+    done_improvements = Improvement.objects.filter(done=True).order_by('-date')
     return render(request, "preferences/improvements_index.html", {"todo_improvements": todo_improvements, "done_improvements": done_improvements})
 
 
