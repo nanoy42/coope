@@ -61,7 +61,6 @@
 			</header>
 			<div class="row uniform">
 				<div class="12u$">
-					<a class="button small" href=""><i class="fa fa-times"></i> Annuler</a><br><br>
 					{{gestion_form}}
 				</div>
 			</div>
@@ -84,7 +83,7 @@
 								<td id="balance">0€</td>
 								<td id="totalAmount">0€</td>
 								<td id="totalAfter">0€</td>
-								<td>{% for pm in pay_buttons %}<button class="btn small pay_button" data-payment="{{pm.pk}}"><i class="fa fa-{{pm.icon}}"></i> {{pm.name}}</button> {% endfor %}</td>
+								<td>{% for pm in pay_buttons %}<button class="btn small pay_button" data-payment="{{pm.pk}}"><i class="fa fa-{{pm.icon}}"></i> {{pm.name}}</button> {% endfor %} <a class="button small" href="" tooltip="lol"><i class="fa fa-times"></i> Annuler</a></td>
 							</tr>
 						</tbody>
 					</table>
@@ -127,6 +126,25 @@
 								{% if not cotisations|divisibleby:3 %}
 								</tr>
 								{% endif %}
+								<tr style="text-align:center; font-weight:bold;">
+									<td colspan="1">Rechargements</td>
+									<td>
+										<div class="dropdown">
+											<button onclick="dropdown('myDropdown1')" class="dropbtn small">Rechargement 1€</button>
+											<div id="myDropdown1" class="dropdown-content">
+												{% for pm in pay_buttons %}{% if not pm.affect_balance%}<a class="reload" data-payment="{{pm.pk}}" data-payment-name="{{pm.name}}" target="1"><i class="fa fa-{{pm.icon}}"></i> {{pm.name}}</a> {% endif %}{% endfor %}
+											</div>
+										</div> 
+									</td>
+									<td>
+										<div class="dropdown">
+											<button onclick="dropdown('myDropdown2')" class="dropbtn small" target="myDropdown2">Rechargement 10€</button>
+											<div id="myDropdown2" class="dropdown-content">
+												{% for pm in pay_buttons %}{% if not pm.affect_balance%}<a class="reload" data-payment="{{pm.pk}}" data-payment-name="{{pm.name}}" target="10"><i class="fa fa-{{pm.icon}}"></i> {{pm.name}}</a> {% endif %}{% endfor %}
+											</div>
+										</div> 
+									</td>
+								</tr>
 								<tr style="text-align:center; font-weight:bold;"><td colspan="4">Bières pression</td></tr>
 								{% for product in bieresPression %}
 								{% if forloop.counter0|divisibleby:3 %}

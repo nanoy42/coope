@@ -87,9 +87,18 @@ def order(request):
                 menus = json.loads(request.POST["menus"])
                 listPintes = json.loads(request.POST["listPintes"])
                 cotisations = json.loads(request.POST['cotisations'])
+                reloads = json.loads(request.POST['reloads'])
                 gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
                 if (not order) and (not menus) and (not cotisations):
                     raise Exception("Pas de commande.")
+                if(reloads):
+                    for reload in reloads:
+                        reload_payment_method = get_object_or_404(PaymentMethod, pk=reload["payment_method"])
+                        reload_amount = Decimal(reload["value"])*Decimal(reload["quantity"])
+                        reload_entry = Reload(customer=user, amount=reload_amount, PaymentMethod=reload_payment_method, coopeman=request.user)
+                        reload_entry.save()
+                        user.profile.credit += reload_amount
+                        user.save()
                 if(cotisations):
                     for co in cotisations:
                         cotisation = Cotisation.objects.get(pk=co['pk'])
@@ -639,6 +648,15 @@ def openKeg(request):
         keg.stockHold -= 1
         keg.is_active = True
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = True
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = True
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = True
+            keg.galopin.save()
         messages.success(request, "Le fut a bien été percuté")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title":"Percutage d'un fût", "form_button":"Percuter", "form_button_icon": "fill-drip"})
@@ -665,6 +683,15 @@ def openDirectKeg(request, pk):
         keg.stockHold -= 1
         keg.is_active = True
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = True
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = True
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = True
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été percuté")
     else:
         messages.error(request, "Il n'y a pas de fût en stock")
@@ -686,6 +713,15 @@ def closeKeg(request):
         kegHistory.save()
         keg.is_active = False
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = False
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = False
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = False
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été fermé")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title":"Fermeture d'un fût", "form_button":"Fermer le fût", "form_button_icon": "fill"})
@@ -708,6 +744,15 @@ def closeDirectKeg(request, pk):
         kegHistory.save()
         keg.is_active = False
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = False
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = False
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = False
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été fermé")
     else:
         messages.error(request, "Le fût n'est pas ouvert")
