@@ -93,8 +93,12 @@ def order(request):
                     raise Exception("Pas de commande.")
                 if(reloads):
                     for reload in reloads:
-                        reload_payment_method = get_object_or_404(PaymentMethod, pk=reload["payment_method"])
                         reload_amount = Decimal(reload["value"])*Decimal(reload["quantity"])
+                        if(reload_amount <= 0):
+                            raise Exception("Impossible d'effectuer un rechargement négatif")
+                        reload_payment_method = get_object_or_404(PaymentMethod, pk=reload["payment_method"])
+                        if not reload_payment_method.is_usable_in_reload:
+                            raise Exception("Le moyen de paiement ne peut pas être utilisé pour les rechargements.")
                         reload_entry = Reload(customer=user, amount=reload_amount, PaymentMethod=reload_payment_method, coopeman=request.user)
                         reload_entry.save()
                         user.profile.credit += reload_amount
@@ -104,6 +108,8 @@ def order(request):
                         cotisation = Cotisation.objects.get(pk=co['pk'])
                         for i in range(co['quantity']):
                             cotisation_history = CotisationHistory(cotisation=cotisation)
+                            if not paymentMethod.is_usable_in_cotisation:
+                                raise Exception("Le moyen de paiement ne peut pas être utilisé pour les cotisations.")
                             if(paymentMethod.affect_balance):
                                 if(user.profile.balance >= cotisation_history.cotisation.amount):
                                     user.profile.debit += cotisation_history.cotisation.amount
