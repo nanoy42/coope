@@ -34,7 +34,7 @@
 					<td>{{ pp.b }}</td>
 					<td>{{ pp.c }}</td>
 					<td>{{ pp.alpha }}</td>
-					<td>{{ pp.use_for_draft | yesno:"Oui,Non"}}</td>
+					<td><i class="fa fa-{{ pp.use_for_draft | yesno:'check,times'}}"></i></td>
 					<td>{% if perms.preferences.change_priceprofile %}<a class="button small" href="{% url 'preferences:editPriceProfile' pp.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_priceprofile %}<a class="button small" href="{% url 'preferences:deletePriceProfile' pp.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
 				{% endfor %}

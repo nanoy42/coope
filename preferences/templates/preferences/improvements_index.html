@@ -27,7 +27,7 @@
 				<tr>
 					<td>{{improvement.title}}</td>
                     <td>{{improvement.get_mode_display}}</td>
-                    <td>{{improvement.seen|yesno:"Oui,Non"}}</td>
+                    <td><i class="fa fa-{{improvement.seen|yesno:'check,times'}}"></i></td>
                     <td>{{improvement.date}}</td>
                     <td><a href="{% url 'preferences:improvementProfile' improvement.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a> <a href="{% url 'preferences:changeImprovementState' improvement.pk %}" class="button small"><i class="fa fa-check"></i> Passer en fait</a> <a href="{% url 'preferences:deleteImprovement' improvement.pk %}" class="button small"><i class="fa fa-trash"></i> Supprimer</a></td>
 				</tr>
@@ -56,7 +56,7 @@
 				<tr>
 					<td>{{improvement.title}}</td>
                     <td>{{improvement.get_mode_display}}</td>
-                    <td>{{improvement.seen|yesno:"Oui,Non"}}</td>
+                    <td><i class="fa fa-{{improvement.seen|yesno:'check,times'}}"></i></td>
                     <td>{{improvement.date}}</td>
                     <td><a href="{% url 'preferences:improvementProfile' improvement.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a> <a href="{% url 'preferences:changeImprovementState' improvement.pk %}" class="button small"><i class="fa fa-check"></i> Passer en non fait</a> <a href="{% url 'preferences:deleteImprovement' improvement.pk %}" class="button small"><i class="fa fa-trash"></i> Supprimer</a></td>
 				</tr>

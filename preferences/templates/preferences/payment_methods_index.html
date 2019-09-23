@@ -30,10 +30,10 @@
 				{% for pm in paymentMethods %}
 				<tr>
 					<td>{{ pm.name }} </td>
-					<td>{{ pm.is_active | yesno:"Oui, Non"}}</td>
-					<td>{{ pm.is_usable_in_cotisation | yesno:"Oui, Non" }}</td>
-					<td>{{ pm.is_usable_in_reload | yesno:"Oui, Non" }}</td>
-					<td>{{ pm.affect_balance | yesno:"Oui, Non" }}</td>
+					<td><i class="fa fa-{{ pm.is_active | yesno:'check,times'}}"></i></td>
+					<td><i class="fa fa-{{ pm.is_usable_in_cotisation | yesno:'check,times' }}"></i></td>
+					<td><i class="fa fa-{{ pm.is_usable_in_reload | yesno:'check,times' }}"></i></td>
+					<td><i class="fa fa-{{ pm.affect_balance | yesno:'check,times' }}"></i></td>
 					<td><i class="fa fa-{{ pm.icon }}"></i></td>
 					<td>{% if perms.preferences.change_paymentmethod %}<a class="button small" href="{% url 'preferences:editPaymentMethod' pm.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a> {% endif %}{% if perms.preferences.delete_paymentmethod %}<a class="button small" href="{% url 'preferences:deletePaymentMethod' pm.pk %}"><i class="fa fa-trash"></i> Supprimer</a>{% endif %}</td>
 				</tr>
