@@ -8,8 +8,6 @@ from preferences.models import PaymentMethod, Cotisation
 from gestion.models import ConsumptionHistory
 
 
-User._meta.get_field('email')._unique = True
-
 class School(models.Model):
     """
     Stores school.

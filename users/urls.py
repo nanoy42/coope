@@ -14,7 +14,6 @@ urlpatterns = [
     path('editGroups/<int:pk>', views.editGroups, name="editGroups"),
     path('editPassword/<int:pk>', views.editPassword, name="editPassword"),
     path('editUser/<int:pk>', views.editUser, name="editUser"),
-    path('resetPassword/<int:pk>', views.resetPassword, name="resetPassword"),
     path('groupsIndex', views.groupsIndex, name="groupsIndex"),
     path('groupProfile/<int:pk>', views.groupProfile, name="groupProfile"),
     path('createGroup', views.createGroup, name="createGroup"),

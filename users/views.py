@@ -284,23 +284,6 @@ def editUser(request, pk):
 
 @active_required
 @login_required
-@permission_required('auth.change_user')
-def resetPassword(request, pk):
-    """
-    Reset the password of a user (:class:`django.contrib.auth.models.User`).
-    """ 
-    user = get_object_or_404(User, pk=pk)
-    if user.is_superuser:
-        messages.error(request, "Impossible de réinitialiser le mot de passe de " + user.username + " : il est superuser.")
-        return redirect(reverse('users:profile', kwargs={'pk': pk}))
-    else:
-        user.set_password(user.username)
-        user.save()
-        messages.success(request, "Le mot de passe de " + user.username + " a bien été réinitialisé.")
-        return redirect(reverse('users:profile', kwargs={'pk': pk}))
-
-@active_required
-@login_required
 @permission_required('auth.view_user')
 def getUser(request, pk):
     """
