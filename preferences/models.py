@@ -202,3 +202,31 @@ class PriceProfile(models.Model):
 
     def __str__(self):
         return self.name
+
+class Improvement(models.Model):
+    """
+    Stores bugs and amelioration proposals.
+    """
+
+    BUG = 0
+    AMELIORATION = 1
+    NEWFEATURE = 2
+
+    MODES = (
+        (BUG, "Bug"),
+        (AMELIORATION, "Amélioration"),
+        (NEWFEATURE, "Nouvelle fonctionnalité")
+    )
+
+    class Meta:
+        verbose_name = "Amélioration"
+
+    title = models.CharField(max_length=255, verbose_name="Titre")
+    mode = models.IntegerField(choices=MODES, verbose_name="Type")
+    description = models.TextField()
+    seen = models.BooleanField(default=False, verbose_name="Vu ?")
+    done = models.BooleanField(default=False, verbose_name="Fait ?")
+    coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="improvement_submitted")
+    date = models.DateTimeField(auto_now_add=True)
+
+    

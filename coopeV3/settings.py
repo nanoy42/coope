@@ -34,11 +34,12 @@ INSTALLED_APPS = [
     'users',
     'preferences',
     'coopeV3',
+    'search',
     'dal',
     'dal_select2',
     'simple_history',
     'django_tex',
-    'debug_toolbar'
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 MEDIA_URL = '/media/'
 
 INTERNAL_IPS = ["127.0.0.1"]
+
+EMAIL_SUBJECT_PREFIX = "[Coopé Technopôle Metz] "

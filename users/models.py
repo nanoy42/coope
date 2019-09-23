@@ -7,6 +7,7 @@ from simple_history.models import HistoricalRecords
 from preferences.models import PaymentMethod, Cotisation
 from gestion.models import ConsumptionHistory
 
+
 class School(models.Model):
     """
     Stores school.

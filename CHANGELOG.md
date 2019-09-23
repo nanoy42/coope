@@ -1,3 +1,12 @@
+## v3.7
+* Corrections de bugs mineurs et d'erreur d'affichage
+* Mise en place des rechargements directs sur les transactions
+* Réinitialisation de mot de passe
+* Mise en place de l'initialisation de mot de passe et de l'envoi des statuts et du RI par mail à l'inscritpion
+* Mise en place d'une barre de recherche globale
+* Mise à jour de stellar (pour la navigation en particulier)
+* Passage sous django_tex par pip
+* Ajout des propositions d'améliorations
 ## v3.6.4
 * Ajout d'un champ use_stocks
 * Séparation des formulaires de fût

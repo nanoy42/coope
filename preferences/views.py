@@ -7,12 +7,13 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.http import HttpResponse
 from django.forms.models import model_to_dict
 from django.http import Http404
+from django.core.mail import mail_admins
 
 from coopeV3.acl import active_required
 
-from .models import GeneralPreferences, Cotisation, PaymentMethod, PriceProfile
+from .models import GeneralPreferences, Cotisation, PaymentMethod, PriceProfile, Improvement
 
-from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm, PriceProfileForm
+from .forms import CotisationForm, PaymentMethodForm, GeneralPreferencesForm, PriceProfileForm, ImprovementForm
 
 @active_required
 @login_required
@@ -245,3 +246,73 @@ def delete_price_profile(request,pk):
     price_profile.delete()
     messages.success(request, message)
     return redirect(reverse('preferences:priceProfilesIndex'))
+
+
+########## Improvements ##########
+
+@active_required
+@login_required
+def add_improvement(request):
+    """
+    Display a form to create an improvement. Any logged user can access it
+    """
+    form = ImprovementForm(request.POST or None)
+    if form.is_valid():
+        improvement = form.save(commit=False)
+        improvement.coopeman = request.user
+        improvement.save()
+        mail_admins("Nouvelle proposition d'amélioration", "Une nouvelle proposition d'amélioration a été postée (" + improvement.title + ", " + improvement.get_mode_display() + "). Le corps est le suivant : " + improvement.description)
+        messages.success(request, "Votre proposition a bien été envoyée")
+        return redirect(reverse('home'))
+    return render(request, "form.html", {"form": form, "form_title": "Proposition d'amélioration", "form_button": "Envoyer", "form_button_icon": "bug"})
+
+
+@active_required
+@login_required
+@permission_required('preferences.view_improvement')
+def improvements_index(request):
+    """
+    Display all improvements
+    """
+    todo_improvements = Improvement.objects.filter(done=False).order_by('-date')
+    done_improvements = Improvement.objects.filter(done=True).order_by('-date')
+    return render(request, "preferences/improvements_index.html", {"todo_improvements": todo_improvements, "done_improvements": done_improvements})
+
+
+@active_required
+@login_required
+@permission_required('preferences.view_improvement')
+@permission_required('preferences.change_improvement')
+def improvement_profile(request, pk):
+    """
+    Display an improvement
+    """
+    improvement = get_object_or_404(Improvement, pk=pk)
+    improvement.seen = 1
+    improvement.save()
+    return render(request, "preferences/improvement_profile.html", {"improvement": improvement})
+
+@active_required
+@login_required
+@permission_required('preferences.change_improvement')
+def change_improvement_state(request, pk):
+    """
+    Change done state of an improvement
+    """
+    improvement = get_object_or_404(Improvement, pk=pk)
+    improvement.done = 1 - improvement.done
+    improvement.save()
+    messages.success(request, "L'état a bien été changé")
+    return redirect(reverse('preferences:improvementsIndex'))
+
+@active_required
+@login_required
+@permission_required('preferences.delete_improvement')
+def delete_improvement(request, pk):
+    """
+    Delete an improvement
+    """
+    improvement = get_object_or_404(Improvement, pk=pk)
+    improvement.delete()
+    messages.success(request, "L'amélioration a bien été supprimée.")
+    return redirect(reverse('preferences:improvementsIndex'))

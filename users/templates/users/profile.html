@@ -58,9 +58,6 @@
 						{% if self %}
 						<span class="tabulation"><a href="{% url 'users:editPassword' user.pk %}"><i class="fa fa-user-lock"></i> Changer mon mot de passe</a></span>
 						{% endif %}
-						{% if perms.users.can_reset_password %}
-						<span class="tabulation"><a href="{% url 'users:resetPassword' user.pk %}"><i class="fa fa-lock-open"></i> Réinitialiser le mot de passe</a></span>
-						{% endif %}
 						{% if perms.users.can_change_user_perm %}
 						<span class="tabulation"><a href="{% url 'users:editGroups' user.pk %}"><i class="fa fa-layer-group"></i> Changer les groupes</a></span>
 						{% endif %}

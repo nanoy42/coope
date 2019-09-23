@@ -34,7 +34,7 @@
 					<td>{{ product.amount}}</td>
 					<td>{{ product.stock }}</td>
 					<td>{{ product.category }}</td>
-					<td>{{ product.is_active | yesno:"Oui, Non"}}</td>
+					<td><i class="fa fa-{{ product.is_active | yesno:'check,times'}}"></i></td>
 					<td>{{ product.deg }}</td>
 					<td>{{ product.volume }} cl</td>
 					<td><a href="{% url 'gestion:productProfile' product.pk %}" class="button small"><i class="fa fa-eye"></i> Profil</a> {% if perms.gestion.change_product %}<a href="{% url 'gestion:switchActivate' product.pk %}" class="button small">{% if product.is_active %}<i class="fa fa-times-circle"></i> Désa{% else %}<i class="fa fa-check-circle"></i> A{% endif %}ctiver</a> <a href="{% url 'gestion:editProduct' product.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>

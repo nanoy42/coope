@@ -21,6 +21,12 @@ class CreateUserForm(forms.ModelForm):
 
     school = forms.ModelChoiceField(queryset=School.objects.all(), label="École")
 
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get("email")
+        if User.objects.filter(email=email).count() > 0:
+            raise forms.ValidationError("L'email est déjà utilisé")
+
 class CreateGroupForm(forms.ModelForm):
     """
     Form to create a new group (:class:`django.contrib.auth.models.Group`).

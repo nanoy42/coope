@@ -87,14 +87,29 @@ def order(request):
                 menus = json.loads(request.POST["menus"])
                 listPintes = json.loads(request.POST["listPintes"])
                 cotisations = json.loads(request.POST['cotisations'])
+                reloads = json.loads(request.POST['reloads'])
                 gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
                 if (not order) and (not menus) and (not cotisations):
                     raise Exception("Pas de commande.")
+                if(reloads):
+                    for reload in reloads:
+                        reload_amount = Decimal(reload["value"])*Decimal(reload["quantity"])
+                        if(reload_amount <= 0):
+                            raise Exception("Impossible d'effectuer un rechargement négatif")
+                        reload_payment_method = get_object_or_404(PaymentMethod, pk=reload["payment_method"])
+                        if not reload_payment_method.is_usable_in_reload:
+                            raise Exception("Le moyen de paiement ne peut pas être utilisé pour les rechargements.")
+                        reload_entry = Reload(customer=user, amount=reload_amount, PaymentMethod=reload_payment_method, coopeman=request.user)
+                        reload_entry.save()
+                        user.profile.credit += reload_amount
+                        user.save()
                 if(cotisations):
                     for co in cotisations:
                         cotisation = Cotisation.objects.get(pk=co['pk'])
                         for i in range(co['quantity']):
                             cotisation_history = CotisationHistory(cotisation=cotisation)
+                            if not paymentMethod.is_usable_in_cotisation:
+                                raise Exception("Le moyen de paiement ne peut pas être utilisé pour les cotisations.")
                             if(paymentMethod.affect_balance):
                                 if(user.profile.balance >= cotisation_history.cotisation.amount):
                                     user.profile.debit += cotisation_history.cotisation.amount
@@ -592,7 +607,29 @@ def editKeg(request, pk):
     keg = get_object_or_404(Keg, pk=pk)
     form = EditKegForm(request.POST or None, instance=keg)
     if(form.is_valid()):
-        form.save()
+        try:
+            price_profile = PriceProfile.objects.get(use_for_draft=True)
+        except:
+            messages.error(request, "Il n'y a pas de profil de prix pour les pressions")
+            return redirect(reverse('preferences:priceProfilesIndex'))
+        keg = form.save()
+        # Update produtcs
+        name = form.cleaned_data["name"][4:]
+        pinte_price = compute_price(keg.amount/(2*keg.capacity), price_profile.a, price_profile.b, price_profile.c, price_profile.alpha)
+        pinte_price = ceil(10*pinte_price)/10
+        keg.pinte.deg = keg.deg
+        keg.pinte.amount = pinte_price
+        keg.pinte.name = "Pinte " + name
+        keg.pinte.save()
+        keg.demi.deg = keg.deg
+        keg.demi.amount = ceil(5*pinte_price)/10
+        keg.demi.name = "Demi " + name
+        keg.demi.save()
+        if(keg.galopin):
+            keg.galopin.deg = deg
+            keg.galopin.amount = ceil(2.5 * pinte_price)/10
+            keg.galopin.name = "Galopin " + name
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été modifié")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title": "Modification d'un fût", "form_button": "Modifier", "form_button_icon": "pencil-alt"})
@@ -617,6 +654,15 @@ def openKeg(request):
         keg.stockHold -= 1
         keg.is_active = True
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = True
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = True
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = True
+            keg.galopin.save()
         messages.success(request, "Le fut a bien été percuté")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title":"Percutage d'un fût", "form_button":"Percuter", "form_button_icon": "fill-drip"})
@@ -643,6 +689,15 @@ def openDirectKeg(request, pk):
         keg.stockHold -= 1
         keg.is_active = True
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = True
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = True
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = True
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été percuté")
     else:
         messages.error(request, "Il n'y a pas de fût en stock")
@@ -664,6 +719,15 @@ def closeKeg(request):
         kegHistory.save()
         keg.is_active = False
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = False
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = False
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = False
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été fermé")
         return redirect(reverse('gestion:kegsList'))
     return render(request, "form.html", {"form": form, "form_title":"Fermeture d'un fût", "form_button":"Fermer le fût", "form_button_icon": "fill"})
@@ -686,6 +750,15 @@ def closeDirectKeg(request, pk):
         kegHistory.save()
         keg.is_active = False
         keg.save()
+        if keg.pinte:
+            keg.pinte.is_active = False
+            keg.pinte.save()
+        if keg.demi:
+            keg.demi.is_active = False
+            keg.demi.save()
+        if keg.galopin:
+            keg.galopin.is_active = False
+            keg.galopin.save()
         messages.success(request, "Le fût a bien été fermé")
     else:
         messages.error(request, "Le fût n'est pas ouvert")

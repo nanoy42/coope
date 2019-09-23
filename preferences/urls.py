@@ -19,5 +19,10 @@ urlpatterns = [
     path('deletePriceProfile/<int:pk>', views.delete_price_profile, name="deletePriceProfile"),
     path('inactive', views.inactive, name="inactive"),
     path('getConfig', views.get_config, name="getConfig"),
-    path('getCotisation/<int:pk>', views.get_cotisation, name="getCotisation")
-,]
+    path('getCotisation/<int:pk>', views.get_cotisation, name="getCotisation"),
+    path('addImprovement', views.add_improvement, name="addImprovement"),
+    path('improvementsIndex', views.improvements_index, name="improvementsIndex"),
+    path('improvementProfile/<int:pk>', views.improvement_profile, name="improvementProfile"),
+    path('deleteImprovement/<int:pk>', views.delete_improvement, name="deleteImprovement"),
+    path('changeImprovementState/<int:pk>', views.change_improvement_state, name="changeImprovementState"),
+]

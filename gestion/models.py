@@ -194,6 +194,7 @@ class Keg(models.Model):
     """
     If True, will be displayed on :func:`~gestion.views.manage` view
     """
+    deg = models.DecimalField(default=0,max_digits=5, decimal_places=2, verbose_name="Degré", validators=[MinValueValidator(0)])
     history = HistoricalRecords()
 
     def __str__(self):

@@ -6,3 +6,4 @@ docutils==0.14
 django-simple-history==2.5.1
 jinja2==2.10
 Sphinx==1.8.4
+django-tex==1.1.7

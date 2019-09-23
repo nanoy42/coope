@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block entete %}{{form_title}}{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">{{form_title}}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>{{form_title}}</h2>
+		<p>{{form_p}}</p>
+	</header>
+	<section>
+		<form action="" method="post">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			{{ extra_html | safe }}<br><br>
+			<button type="submit"><i class="fa fa-{{form_button_icon}}"></i> {{form_button}}</button>
+		</form>
+	</section>
+    Si vous avez perdu votre mot de passe : <a href="{% url 'password_reset' %}">mot de passe oublié</a>.
+</section>
+{% if extra_css %}
+<style>
+{{extra_css}}
+</style>
+{% endif %}
+{{form.media}}
+{% endblock %}

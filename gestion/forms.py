@@ -49,11 +49,10 @@ class CreateKegForm(forms.ModelForm):
 
     class Meta:
         model = Keg
-        fields = ["name", "stockHold", "amount", "capacity"]
+        fields = ["name", "stockHold", "amount", "capacity", "deg"]
         widgets = {'amount': forms.TextInput}
 
     category = forms.ModelChoiceField(queryset=Category.objects.all(), label="Catégorie", help_text="Catégorie dans laquelle placer les produits pinte, demi (et galopin si besoin).")
-    deg = forms.DecimalField(max_digits=5, decimal_places=2, label="Degré", validators=[MinValueValidator(0)])
     create_galopin = forms.BooleanField(required=False, label="Créer le produit galopin ?")
 
     def clean(self):
@@ -68,7 +67,7 @@ class EditKegForm(forms.ModelForm):
 
     class Meta:
         model = Keg
-        fields = ["name", "stockHold", "amount", "capacity", "pinte", "demi", "galopin"]
+        fields = ["name", "stockHold", "amount", "capacity", "pinte", "demi", "galopin", "deg"]
         widgets = {'amount': forms.TextInput}
 
     def clean(self):
