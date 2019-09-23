@@ -358,7 +358,7 @@ def gen_user_infos(request, pk):
     """
     Generates a latex document include adhesion certificate and list of `cotisations <users.models.CotisationHistory>`.
     """
-    user= get_object_or_404(User, pk=pk)
+    user = get_object_or_404(User, pk=pk)
     cotisations = CotisationHistory.objects.filter(user=user).order_by('-paymentDate')
     now = datetime.now()
     path = os.path.join(settings.BASE_DIR, "templates/coope.png")

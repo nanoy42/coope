@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'dal_select2',
     'simple_history',
     'django_tex',
-    'debug_toolbar'
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -133,4 +133,3 @@ MEDIA_URL = '/media/'
 INTERNAL_IPS = ["127.0.0.1"]
 
 EMAIL_SUBJECT_PREFIX = "[Coopé Technopôle Metz] "
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # During development only
