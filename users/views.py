@@ -2,14 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.contrib.auth.models import User, Group, Permission
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
 from django.contrib import messages
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import get_template
+from django.template import Context
 from django.contrib.auth.decorators import login_required, permission_required
 from django.forms.models import model_to_dict
 from django.utils import timezone
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes
 
 import simplejson as json
 from datetime import datetime, timedelta
@@ -23,6 +30,7 @@ from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, ac
 from .models import CotisationHistory, WhiteListHistory, School
 from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
 from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
+from preferences.models import GeneralPreferences
 
 @active_required
 def loginView(request):
@@ -169,6 +177,30 @@ def createUser(request):
         user.save()
         user.profile.school = form.cleaned_data['school']
         user.save()
+        uid = urlsafe_base64_encode(force_bytes(user.pk)).decode('UTF-8')
+        print(uid)
+        token = default_token_generator.make_token(user)
+        plaintext = get_template('users/welcome_email.txt')
+        htmly = get_template('users/welcome_email.html')
+        context = {'user': user, 'uid': uid, 'token': token, 'protocol': "http", 'domain': get_current_site(request).name}
+        text_content = plaintext.render(context)
+        html_content = htmly.render(context)
+        email = EmailMultiAlternatives(
+            "Bienvenue à l'association Coopé Technopôle Metz",
+            text_content,
+            "Coopé Technopôle Metz <no-reply@coope.rezometz.org>",
+            [user.email],
+            reply_to=["coopemetz@gmail.com"]
+        )
+        email.attach_alternative(html_content, "text/html")
+        gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
+        if gp.statutes:
+            #email.attach("statuts.pdf", gp.statutes.read(), "application/pdf")
+            pass
+        if gp.rules:
+            #email.attach("ri.pdf", gp.rules.read(), "application/pdf")
+            pass
+        email.send()
         messages.success(request, "L'utilisateur a bien été créé")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
     return render(request, "form.html", {"form_entete": "Gestion des utilisateurs", "form":form, "form_title":"Création d'un nouvel utilisateur", "form_button":"Créer mon compte", "form_button_icon": "user-plus", 'extra_html': '<strong>En cliquant sur le bouton "Créer mon compte", vous :<ul><li>attestez sur l\'honneur que les informations fournies à l\'association Coopé Technopôle Metz sont correctes et que vous n\'avez jamais été enregistré dans l\'association sous un autre nom / pseudonyme</li><li>joignez l\'association de votre plein gré</li><li>vous engagez à respecter les statuts et le réglement intérieur de l\'association (envoyés par mail)</li><li>reconnaissez le but de l\'assocation Coopé Technopôle Metz et vous attestez avoir pris conaissances des droits et des devoirs des membres de l\'association</li><li>consentez à ce que les données fournies à l\'association, ainsi que vos autres données de compte (débit, crédit, solde et historique des transactions) soient stockées dans le logiciel de gestion et accessibles par tous les membres actifs de l\'association, en particulier par le comité de direction</li></ul></strong>'})
