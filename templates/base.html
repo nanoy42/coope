@@ -18,6 +18,10 @@
 	</head>
 	<body>
 		<div id="wrapper">
+
+		<form method="get" action="/search/search">
+			<input id="search_input" placeholder="Rechercher" name="q" value="{{q}}" style="float:left; color:black;"> <button class="button small" action="submit" style="float:left;background-color:white;color:black;margin-left:10px;min-width:0;"><i class="fa fa-search" style="color:black"></i></button>
+		</form>
 			<header id="header" class="alt">
 				<span class="logo"><img src="{%static 'Images/coope.png' %}" alt="" /></span>
 				<h1>{% block entete %}{% endblock %}</h1>
@@ -57,5 +61,12 @@
 			</script>
 		{% endif %}
 		<script src="{% static 'dropdown.js' %}"></script>
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrollex.min.js' %}"></script>
+		<script src="{% static 'js/jquery.scrolly.min.js' %}"></script>
+		<script src="{% static 'js/browser.min.js' %}"></script>
+		<script src="{% static 'js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'js/util.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
 	</body>
 </html>

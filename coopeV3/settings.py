@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'users',
     'preferences',
     'coopeV3',
+    'search',
     'dal',
     'dal_select2',
     'simple_history',

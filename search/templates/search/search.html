@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+{% block entete %}Recherche{% endblock %}
+{% block navbar%}
+<ul>
+	{% if perms.auth.view_user %}
+	<li><a href="#first">Utilisateurs ({{users.count}})</a></li>
+	{% endif %}
+	{% if perms.gestion.view_product %}
+	<li><a href="#second">Produits ({{products.count}})</a></li>
+	{% endif %}
+	{% if perms.gestion.view_keg %}
+	<li><a href="#third">Fûts ({{kegs.count}})</a></li>
+	{% endif %}
+	{% if perms.gestion.view_menu %}
+	<li><a href="#fourth">Menus ({{menus.count}})</a></li>
+	{% endif %}	
+	{% if perms.auth.view_group %}
+	<li><a href="#fifth">Groupes ({{groups.count}})</a></li>
+	{% endif %}
+</ul>
+{% endblock %}
+{% block content %}
+{% if perms.auth.view_user %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>Résultats dans les utilisateurs ({{users.count}} résultat{% if users.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if users.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom d'utilisateur</th>
+						<th>Prénom Nom</th>
+						<th>Solde</th>
+						<th>Fin d'adhésion</th>
+						<th>Staff</th>
+						<th>Profil</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+					<tr>
+                        <td>{{user.username}}</td>
+                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td>{{user.profile.balance}} €</td>
+                        <td>{% if user.profile.is_adherent %}{{user.profile.cotisationEnd}}{% else %}Non adhérent{% endif%}</td>
+                        <td><i class="fa fa-{{user.is_staff|yesno:'check,times'}}"></i></td>
+                        <td><a class="button small" href="{% url 'users:profile' user.pk %}"><i class="fa fa-user"></i> Profil</a></td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+{% if perms.gestion.view_product %}
+<section id="second" class="main">
+	<header class="major">
+		<h2>Résultats dans les produits ({{products.count}} résultat{% if products.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if products.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prix</th>
+						<th>Actif</th>
+						<th>Catégorie</th>
+						<th>Adhérent</th>
+						<th>Stock</th>
+                        <th>Volume</th>
+                        <th>Degré</th>
+                        <th>Administration</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in products %}
+					<tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.amount}} €</td>
+                        <td><i class="fa fa-{{product.is_active|yesno:'check,times'}}"></i></td>
+                        <td>{{product.category}}</td>
+                        <td><i class="fa fa-{{product.adherentRequired|yesno:'check,times'}}"></i></td>
+                        <td>{{product.stock}}</td>
+                        <td>{{product.volume}} cl</td>
+                        <td>{{product.deg}}</td>
+                        <td>{% if perms.gestion.change_product %}<a class="button small" href="{% url 'gestion:switchActivate' product.pk %}"><i class="fa fa-check-circle"></i> {{product.is_active|yesno:"Désa,A"}}ctiver</a> <a class="button small" href="{% url 'gestion:editProduct' product.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+{% if perms.gestion.view_keg %}
+<section id="third" class="main">
+	<header class="major">
+		<h2>Résultats dans les fûts ({{kegs.count}} résultat{% if kegs.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if kegs.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Stock</th>
+						<th>Capacité</th>
+                        <th>Actif</th>
+						<th>Prix du fût</th>
+                        <th>Degré</th>
+                        <th>Historique</th>
+                        <th>Administration</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for keg in kegs %}
+					<tr>
+                        <td>{{keg.name}}</td>
+                        <td>{{keg.stockHold}}</td>
+                        <td>{{keg.capacity}} L</td>
+                        <td><i class="fa fa-{{keg.is_active|yesno:'check,times'}}"></i></td>
+                        <td>{{keg.amount}} €</td>
+                        <td>{{keg.deg}}°</td>
+                        <td><a href="{% url 'gestion:kegH' keg.pk %}" class="button small"><i class="fa fa-history"></i> Voir</a></td>
+                        <td>{% if perms.gestion.change_keg %}<a class="button small" href="{% url 'gestion:editKeg' keg.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+{% if perms.gestion.view_menu %}
+<section id="fourth" class="main">
+	<header class="major">
+		<h2>Résultats dans les menus ({{menus.count}} résultat{% if menus.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if menus.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prix</th>
+						<th>Actif</th>
+						<th>Adhérent</th>
+                        <th>Nombre de produit</th>
+                        <th>Administration</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for menu in menus %}
+					<tr>
+                        <td>{{menu.name}}</td>
+                        <td>{{menu.amount}} €</td>
+                        <td><i class="fa fa-{{menu.is_active|yesno:'check,times'}}"></i></td>
+                        <td><i class="fa fa-{{menu.adherentRequired|yesno:'check,times'}}"></i></td>
+                        <td>{{menu.articles.count}}</td>
+                        <td>{% if perms.gestion.change_menu %}<a class="button small" href="{% url 'gestion:switchActivateMenu' menu.pk %}"><i class="fa fa-check-circle"></i> {{menu_is_active|yesno:"Désa,A"}}ctiver</a> <a class="button small" href="{% url 'gestion:editMenu' menu.pk %}"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+{% if perms.auth.view_group %}
+<section id="fifth" class="main">
+	<header class="major">
+		<h2>Résultats dans les groupes ({{groups.count}} résultat{% if groups.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if groups.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Nombre de droits</th>
+						<th>Nombre d'utilisateurs</th>
+						<th>Administrer</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for group in groups %}
+					<tr>
+                        <td>{{group.name}}</td>
+                        <td>{{group.permissions.count}}</td>
+                        <td>{{group.user_set.count}}</td>
+                        <td><a href="{% url 'users:groupProfile' group.pk %}" class="button small"><i class="fa fa-eye"></i> Voir</a>{% if perms.auth.change_group %}<a href="{% url 'users:editGroup' group.pk %}" class="button small"><i class="fa fa-pencil-alt"></i> Modifier</a>{% endif %}</td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+{% endblock %}
