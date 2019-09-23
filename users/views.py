@@ -188,18 +188,16 @@ def createUser(request):
         email = EmailMultiAlternatives(
             "Bienvenue à l'association Coopé Technopôle Metz",
             text_content,
-            "Coopé Technopôle Metz <no-reply@coope.rezometz.org>",
+            "Coopé Technopôle Metz <no-reply-coope@rezometz.org>",
             [user.email],
             reply_to=["coopemetz@gmail.com"]
         )
         email.attach_alternative(html_content, "text/html")
         gp,_ = GeneralPreferences.objects.get_or_create(pk=1)
         if gp.statutes:
-            #email.attach("statuts.pdf", gp.statutes.read(), "application/pdf")
-            pass
+            email.attach("statuts.pdf", gp.statutes.read(), "application/pdf")
         if gp.rules:
-            #email.attach("ri.pdf", gp.rules.read(), "application/pdf")
-            pass
+            email.attach("ri.pdf", gp.rules.read(), "application/pdf")
         email.send()
         messages.success(request, "L'utilisateur a bien été créé")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
