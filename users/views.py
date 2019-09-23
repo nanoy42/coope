@@ -38,7 +38,7 @@ def loginView(request):
             return redirect(reverse('home'))
         else:
             messages.error(request, "Nom d'utilisateur et/ou mot de passe invalide")
-    return render(request, "form.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter", "form_button_icon": "sign-in-alt"})
+    return render(request, "users/login.html", {"form_entete": "Connexion", "form": form, "form_title": "Connexion", "form_button": "Se connecter", "form_button_icon": "sign-in-alt"})
 
 @active_required
 @login_required
