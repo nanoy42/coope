@@ -112,7 +112,10 @@ class Profile(models.Model):
     """
     class Meta:
         verbose_name = "Profil"
-        permissions = (('can_generate_invoices', 'Can generate invocies'),)
+        permissions = (
+            ('can_generate_invoices', 'Can generate invocies'),
+            ('can_change_user_perm', 'Can change user groups'),
+        )
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Utilisateur")
     """
