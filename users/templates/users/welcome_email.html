@@ -1,13 +1,13 @@
 {% autoescape off %}
 Bonjour {{user.username}},<br>
 
-Vous venez de créer votre compte sur le logiciel de gestion de l'association Coopé Technopôle Metz. Pour finir vous adhésion à l'association, vous devez
+Vous venez de créer votre compte sur le logiciel de gestion de l'association Coopé Technopôle Metz. Pour finir votre adhésion à l'association, vous devez
 <ul>
 <li>lire et accepter les statuts et le règlement intérieur (disponibles en pièces jointes),</li>
 <li>vous acquittez d'une cotisation auprès de l'un de nos membres actifs.</li>
 </ul>
 
-Vous pouvez acceder à votre compte sur {{protocol}}://{{domain}} après avoir activé votre mot de passe avec le lien suivant : <br>
+Vous pouvez accéder à votre compte sur {{protocol}}://{{domain}} après avoir activé votre mot de passe avec le lien suivant : <br>
 
 {{ protocol }}://{{ domain }}{% url 'password_reset_confirm' uidb64=uid token=token %}<br><br>
 
