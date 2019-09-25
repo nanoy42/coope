@@ -19,13 +19,20 @@ class CreateUserForm(forms.ModelForm):
         model = User
         fields = ("username", "last_name", "first_name", "email")
 
-    school = forms.ModelChoiceField(queryset=School.objects.all(), label="École")
+    school = forms.ModelChoiceField (queryset=School.objects.all(), label="École")
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(CreateUserForm, self).__init__(*args, **kwargs)
 
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get("email")
         if User.objects.filter(email=email).count() > 0:
-            raise forms.ValidationError("L'email est déjà utilisé")
+            if User.objects.filter(email=email).count() == 1 and User.objects.get(email=email) == self.user:
+                pass
+            else:
+                raise forms.ValidationError("L'adresse email est déjà utilisée")
 
 class CreateGroupForm(forms.ModelForm):
     """

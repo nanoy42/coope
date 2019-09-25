@@ -171,7 +171,7 @@ def createUser(request):
     """
     Displays a :class:`~users.forms.CreateUserForm` to create a user (:class:`django.contrib.auth.models.User`).
     """
-    form = CreateUserForm(request.POST or None)
+    form = CreateUserForm(request.POST or None, user=User.objects.none())
     if(form.is_valid()):
         user = form.save(commit=False)
         user.save()
@@ -272,7 +272,7 @@ def editUser(request, pk):
     Displays a :class:`~users.forms.CreateUserForm` to edit a user (:class:`django.contrib.auth.models.User`).
     """
     user = get_object_or_404(User, pk=pk)
-    form = CreateUserForm(request.POST or None, instance=user, initial = {'school': user.profile.school})
+    form = CreateUserForm(request.POST or None, instance=user, initial = {'school': user.profile.school}, user=user)
     if(form.is_valid()):
         user.profile.school = form.cleaned_data['school']
         user.save()
