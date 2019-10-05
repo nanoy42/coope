@@ -626,7 +626,7 @@ def editKeg(request, pk):
         keg.demi.name = "Demi " + name
         keg.demi.save()
         if(keg.galopin):
-            keg.galopin.deg = deg
+            keg.galopin.deg = keg.deg
             keg.galopin.amount = ceil(2.5 * pinte_price)/10
             keg.galopin.name = "Galopin " + name
             keg.galopin.save()

@@ -8,6 +8,9 @@
 	{% if perms.gestion.view_product %}
 	<li><a href="#second">Produits ({{products.count}})</a></li>
 	{% endif %}
+	{% if perms.gestion.view_consumptionhistory %}
+	<li><a href="#secondbis">Dernières transactions ({{last_consumptions.count}})</a></li>
+	{% endif %}
 	{% if perms.gestion.view_keg %}
 	<li><a href="#third">Fûts ({{kegs.count}})</a></li>
 	{% endif %}
@@ -104,6 +107,46 @@
 	</section>
 </section>
 {% endif %}
+{% if perms.auth.view_consumptionhistory %}
+<section id="secondbis" class="main">
+	<header class="major">
+		<h2>Résultats dans les dernières transactions ({{last_consumptions.count}} résultat{% if last_consumptions.count != 1 %}s{% endif %})</h2>
+	</header>
+    <section>
+    {% if last_consumptions.count %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Produit</th>
+						<th>Quantité</th>
+						<th>Utilisateur</th>
+						<th>Date</th>
+						<th>Type de paiement</th>
+						<th>Administration</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for consumption in last_consumptions %}
+					<tr>
+                        <td>{{consumption.product}}</td>
+			<td>{{consumption.quantity}}</td>
+			<td>{{consumption.customer}}</td>
+                        <td>{{consumption.date}}</td>
+			<td>{{consumption.payment_method}}</td>
+			<td>{% if perms.gestion.delete_consumptionhistory %}<a href="{% url 'gestion:cancelConsumption' consumption.pk %}" class="button small"><i class="fa fa-times"></i> Annuler</a>{% endif %}</td>
+					</tr>
+					{%endfor%}
+				</tbody>
+			</table>
+		</div>
+        {% else %}
+        Aucun résultat n'a pu être trouvé.
+        {% endif %}
+	</section>
+</section>
+{% endif %}
+
 {% if perms.gestion.view_keg %}
 <section id="third" class="main">
 	<header class="major">
