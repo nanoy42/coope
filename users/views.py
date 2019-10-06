@@ -27,8 +27,8 @@ import os
 
 from django_tex.views import render_to_pdf
 from coopeV3.acl import admin_required, superuser_required, self_or_has_perm, active_required
-from .models import CotisationHistory, WhiteListHistory, School
-from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm
+from .models import CotisationHistory, WhiteListHistory, School, BanishmentHistory
+from .forms import CreateUserForm, LoginForm, CreateGroupForm, EditGroupForm, SelectUserForm, GroupsEditForm, EditPasswordForm, addCotisationHistoryForm, addCotisationHistoryForm, addWhiteListHistoryForm, SelectNonAdminUserForm, SelectNonSuperUserForm, SchoolForm, ExportForm, addBanishmentHistoryForm
 from gestion.models import Reload, Consumption, ConsumptionHistory, MenuHistory
 from preferences.models import GeneralPreferences
 
@@ -132,6 +132,7 @@ def profile(request, pk):
     whitelists = WhiteListHistory.objects.filter(user=user)
     reloads = Reload.objects.filter(customer=user).order_by('-date')[:5]
     consumptionsChart = Consumption.objects.filter(customer=user)
+    banishments = BanishmentHistory.objects.filter(user=user)
     products_pre = []
     quantities_pre = []
     for ch in consumptionsChart:
@@ -162,6 +163,7 @@ def profile(request, pk):
                     "quantities": quantities,
                     "lastConsumptions": lastConsumptions,
                     "lastMenus": lastMenus,
+                    "banishments": banishments
                 })
 
 @active_required
@@ -653,6 +655,26 @@ def addWhiteListHistory(request, pk):
         messages.success(request, "L'accès gracieux a bien été ajouté")
         return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
     return render(request, "form.html", {"form": form, "form_title": "Ajout d'un accès gracieux pour " + user.username, "form_button": "Ajouter", "form_button_icon": "plus-square"})
+
+########## Banishment ##########
+
+@active_required
+@login_required
+@permission_required('users.add_banishmenthistory')
+def addBanishmentHistory(request, pk):
+    """
+    Displays a :class:`users.forms.addBanishmenthisotryForm` to add a :class:`~users.models.BanishmentHistory` to the requested user (:class:`django.contrib.auth.models.User`).
+    """
+    user = get_object_or_404(User, pk=pk)
+    form = addBanishmentHistoryForm(request.POST or None)
+    if(form.is_valid()):
+        ban = form.save(commit=False)
+        ban.user = user
+        ban.coopeman = request.user
+        ban.save()
+        messages.success(request, "Le banissement a bien été ajouté")
+        return redirect(reverse('users:profile', kwargs={'pk':user.pk}))
+    return render(request, "form.html", {"form": form, "form_title": "Ajout d'un banissement pour " + user.username, "form_button": "Ajouter", "form_button_icon": "plus-square", "extra_html": "La date doit être au format JJ/MM/AAAA HH:ii"})
 
 ########## Schools ##########
 

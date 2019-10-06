@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User, Group
 from dal import autocomplete
-from .models import School, CotisationHistory, WhiteListHistory
+from .models import School, CotisationHistory, WhiteListHistory, BanishmentHistory
 from preferences.models import PaymentMethod
 
 class LoginForm(forms.Form):
@@ -113,6 +113,15 @@ class addWhiteListHistoryForm(forms.ModelForm):
     class Meta:
         model = WhiteListHistory
         fields = ("duration", "reason")
+
+
+class addBanishmentHistoryForm(forms.ModelForm):
+    """
+    Form to add a :class:`users.models.BanishmentHistory` to user (:class:`django.contrib.auth.models.User`).
+    """
+    class Meta:
+        model = BanishmentHistory
+        fields = ("end_date", "reason")
 
 class SchoolForm(forms.ModelForm):
     """

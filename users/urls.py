@@ -45,4 +45,5 @@ urlpatterns = [
     path('exportCSV', views.export_csv, name="exportCSV"),
     path('switchActivateUser/<int:pk>', views.switch_activate_user, name="switchActivateUser"),
     path('genUserInfos/<int:pk>', views.gen_user_infos, name="genUserInfos"),
+    path('addBanishmentHistory/<int:pk>', views.addBanishmentHistory, name="addBanishmentHistory"),
 ]

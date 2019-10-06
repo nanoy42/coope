@@ -13,6 +13,7 @@
 	</li>
 	<li><a href="#fourth">{% if self %} Mes cotisations {% else %} Cotisations {% endif %}</a></li>
 	<li><a href="#fifth">{% if self %} Mes accès gracieux {% else %} Accès gracieux {% endif %}</a></li>
+	<li><a href="#sixth">{% if self %} Mes banissements {% else %} Banissements {% endif %}</a></li>
 </ul>
 {% endblock %}
 {% block content %}
@@ -271,6 +272,37 @@
 						<td>{{whitelist.endDate}}</td>
 						<td>{{whitelist.duration}} jours</td>
 						<td>{{ whitelist.reason }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</section>
+
+<section id="sixth" class="main">
+	<header class="major">
+		<h2>{{ self | yesno:"Mes banissements,Banissements"}}</h2>
+	</header>
+	<section>
+		{% if perms.users.add_banishmenthistory %}
+		<a class="button" href="{% url 'users:addBanishmentHistory' user.pk %}"><i class="fa fa-hand-paper"></i> Ajouter un banissement</a><br><br>
+		{% endif %}
+		<div class="table-wrapper">
+			<table>
+				<thead>
+					<tr>
+						<th>Date de début</th>
+						<th>Date de fin</th>
+						<th>Raison</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for banishment in banishments %}
+					<tr>
+						<td>{{banishment.ban_date}}</td>
+						<td>{{banishment.end_date}}</td>
+						<td>{{ banishment.reason }}</td>
 					</tr>
 					{% endfor %}
 				</tbody>

@@ -152,6 +152,9 @@ class Profile(models.Model):
         """
         Test if a client is adherent.
         """
+        banishments = self.user.banishmenthistory_set.order_by("-end_date")
+        if banishments and banishments[0].end_date > timezone.now():
+            return False
         if(self.cotisationEnd and self.cotisationEnd > timezone.now()):
             return True
         else:
@@ -228,3 +231,33 @@ def str_user(self):
 
 
 User.add_to_class("__str__", str_user)
+
+class BanishmentHistory(models.Model):
+    """
+    Stores banishment history.
+    """
+    class Meta:
+        verbose_name = "Historique banissement"
+        verbose_name_plural = "Historique banissements"
+
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name="Client")
+    """
+    Client (:class:`django.contrib.auth.models.User`).
+    """
+    ban_date = models.DateTimeField(auto_now_add=True, verbose_name="Date du banissement")
+    """
+    Date of the beginning of the whitelist.
+    """
+    end_date = models.DateTimeField(verbose_name="Date de fin")
+    """
+    End date of the whitelist.
+    """
+    coopeman = models.ForeignKey(User, on_delete=models.PROTECT, related_name="banishment_made")
+    """
+    User (:class:`django.contrib.auth.models.User`) who registered the cotisation.
+    """
+    reason = models.CharField(max_length=255, verbose_name="Raison", blank=True)
+    """
+    Reason of the whitelist
+    """
+    history = HistoricalRecords()
