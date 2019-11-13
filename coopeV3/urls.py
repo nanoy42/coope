@@ -25,6 +25,7 @@ urlpatterns = [
     path('home', views.homepage, name="homepage"),
     path('about', views.about, name="about"),
     path('coope-runner', views.coope_runner, name="coope-runner"),
+    path('wall-of-fame/<int:pk>', views.wall_of_fame, name="wall-of-fame"),
     path('stats', views.stats, name="stats"),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),

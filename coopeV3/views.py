@@ -1,6 +1,6 @@
 import os
 
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -8,7 +8,7 @@ from django.contrib.auth.models import User, Group
 
 from preferences.models import GeneralPreferences, PaymentMethod, Cotisation
 from gestion.models import Keg, ConsumptionHistory, Category, Product, Menu
-from users.models import School
+from users.models import School, Profile
 
 
 from .acl import active_required, admin_required
@@ -100,3 +100,8 @@ def stats(request):
         "cotisations": cotisations,
         "nb_quotes": nb_quotes,
     })
+
+def wall_of_fame(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    other_famous = Profile.objects.filter(debit__gte=1000)
+    return render(request, "wall_of_fame.html", {"user": user, "other_famous": other_famous})

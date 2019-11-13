@@ -243,8 +243,12 @@ $(document).ready(function(){
 			}
 		}
 		$.post("order", {"user":id_user, "paymentMethod": $(this).attr('data-payment'), "order_length": products.length + menus.length + cotisations.length + reloads.length, "order": JSON.stringify(products), "amount": total, "menus": JSON.stringify(menus), "listPintes": JSON.stringify(listPintes), "cotisations": JSON.stringify(cotisations), "reloads": JSON.stringify(reloads)}, function(data){
-			alert(data);
-			location.reload();
+			if(data == "fame"){
+				document.location.href="../wall-of-fame/"+id_user; 
+			}else{
+				alert(data);
+				location.reload();
+			}
 		}).fail(function(data){
 			alert("Impossible d'effectuer la transaction. Veuillez contacter le trésorier ou le président");
 			console.log(data);

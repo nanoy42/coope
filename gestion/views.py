@@ -81,6 +81,7 @@ def order(request):
                     user = User.objects.get(pk=request.POST['user'])
                 except:
                     raise Exception("Impossible de récupérer l'utilisateur")
+                previous_debit = user.profile.debit
                 paymentMethod = get_object_or_404(PaymentMethod, pk=request.POST['paymentMethod'])
                 amount = Decimal(request.POST['amount'])
                 order = json.loads(request.POST["order"])
@@ -240,6 +241,8 @@ def order(request):
                                 raise Exception("Le stock du produit " + article.name + "n'autorise pas l'opération")
                         user.profile.alcohol += Decimal(quantity * float(product.deg) * product.volume * 0.79 /10 /1000)
                 user.save()
+                if user.profile.debit >= 1000 and previous_debit < 1000:
+                    return HttpResponse("fame")
                 return HttpResponse("La commande a bien été effectuée")
     except Exception as e:
         return HttpResponse("Impossible d'effectuer la transaction : " + e.args[0])

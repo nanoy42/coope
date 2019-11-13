@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block entete %}Wall of fame{% endblock %}
+{% block navbar %}
+<ul>
+	<li><a href="#first">{% if user.profile.debit >= 1000%}Félicitations{% else %}Tu n'as rien à faire ici{% endif %}</a></li>
+</ul>
+{% endblock %}
+{% block content %}
+<section id="first" class="main">
+	<header class="major">
+		<h2>{% if user.profile.debit >= 1000%}Félicitations{% else %}Tu n'as rien à faire ici{% endif %}</h2>
+	</header>
+	<section>
+		{% if user.profile.debit >= 1000%}
+			{% if other_famous.count == 1 %}
+				Tu es seul mais tu peux te féliciter toi même.
+			{% else %}
+				Bravo à {{user.username}} pour son entrée dans le club 1000 boules (aussi appelé club des gros sacs), actuellement composé de : 
+				<ul>
+					{% for famous_user in other_famous %}
+						{% if famous_user.user != user %}
+							<li>{{famous_user.user.username}}</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+				Il est des nôôôôôôôtreees...
+			{% endif %}
+		{% else %}
+			Tu n'as rien à faire ici.
+		{% endif %}
+	</section>
+</section>
+{% endblock %}
