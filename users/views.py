@@ -17,6 +17,7 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes
+from django.db.models import Sum
 
 import simplejson as json
 from datetime import datetime, timedelta
@@ -163,7 +164,7 @@ def profile(request, pk):
                     "quantities": quantities,
                     "lastConsumptions": lastConsumptions,
                     "lastMenus": lastMenus,
-                    "banishments": banishments
+                    "banishments": banishments,
                 })
 
 @active_required
