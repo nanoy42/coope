@@ -342,23 +342,47 @@ def cancel_consumption(request, pk):
         keg = get_object_or_404(Keg, pinte=product)
         kegHistory = KegHistory.objects.filter(keg=keg, isCurrentKegHistory=True)
         if kegHistory:
-            kegHistory[0].quantitySold -= Decimal(quantity * 0.5)
-            kegHistory[0].amountSold -= Decimal(quantity * product.amount)
-            kegHistory[0].save()
+            kegH = kegHistory[0]
+        else:
+            kegHistory =  KegHistory.objects.filter(keg=keg).order_by('-closingDate')
+            if kegHistory:
+                kegH = kegHistory[0]
+            else:
+                kegH = None
+        if kegH:
+            kegH.quantitySold -= Decimal(consumption.quantity * 0.5)
+            kegH.amountSold -= Decimal(consumption.quantity * product.amount)
+            kegH.save()
     elif(product.draft_category == Product.DRAFT_DEMI):
         keg = get_object_or_404(Keg, demi=product)
         kegHistory = KegHistory.objects.filter(keg=keg, isCurrentKegHistory=True)
         if kegHistory:
-            kegHistory[0].quantitySold -= Decimal(quantity * 0.25)
-            kegHistory[0].amountSold -= Decimal(quantity * product.amount)
-            kegHistory[0].save()
+            kegH = kegHistory[0]
+        else:
+            kegHistory =  KegHistory.objects.filter(keg=keg).order_by('-closingDate')
+            if kegHistory:
+                kegH = kegHistory[0]
+            else:
+                kegH = None
+        if kegH:
+            kegH.quantitySold -= Decimal(consumption.quantity * 0.25)
+            kegH.amountSold -= Decimal(consumption.quantity * product.amount)
+            kegH.save()
     elif(product.draft_category == Product.DRAFT_GALOPIN):
         keg = get_object_or_404(Keg, galopin=product)
         kegHistory = KegHistory.objects.filter(keg=keg, isCurrentKegHistory=True)
         if kegHistory:
-            kegHistory[0].quantitySold += Decimal(quantity * 0.125)
-            kegHistory[0].amountSold += Decimal(quantity * product.amount)
-            kegHistory[0].save()
+            kegH = kegHistory[0]
+        else:
+            kegHistory =  KegHistory.objects.filter(keg=keg).order_by('-closingDate')
+            if kegHistory:
+                kegH = kegHistory[0]
+            else:
+                kegH = None
+        if kegH:
+            kegH.quantitySold += Decimal(consumption.quantity * 0.125)
+            kegH.amountSold += Decimal(consumption.quantity * product.amount)
+            kegH.save()
     consumption.delete()
     messages.success(request, "La consommation a bien été annulée")
     return redirect(reverse('users:profile', kwargs={'pk': user.pk}))
